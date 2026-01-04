@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (C) www.wellcms.cn
+ * Copyright (C) www.wellcms.cn bang
  */
 
 // 0: Production mode; 1: Developer mode; 2: Plugin developement mode;
