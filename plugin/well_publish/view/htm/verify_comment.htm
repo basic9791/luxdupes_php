@@ -1,0 +1,114 @@
+<template include="./view/htm/common.header.htm">
+	<slot name="body">
+		<ul class="list-unstyled bg-white">
+            <?php if(!empty($postlist)) { foreach($postlist as $_post) { ?>
+            <li class="media thread px-2" data-pid="<?php echo $_post['pid'];?>" data-uid="<?php echo $_post['uid'];?>">
+
+                <!-- 批量管理选择框 -->
+                <?php if($_post['allowdelete']) { ?>
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="modpid-<?php echo $_post['pid']; ?>" name="modpid" value="<?php echo $_post['pid']; ?>" />
+                    <label class="custom-control-label custom-checkbox" for="modpid-<?php echo $_post['pid']; ?>">
+                    </label>
+                </div>
+                <?php } ?>
+
+                <div class="media-body">
+                    <div class="d-flex justify-content-between small text-muted">
+                        <div>
+                            <!-- 用户头像 -->
+                            <a target="_blank" href="<?php echo ($conf['url_rewrite_on'] < 2 ? '../' : ''),url('user-' . $_post['uid'], '', 2);?>" rel="nofollow" tabindex="-1" class="mr-2">
+                                <img class="avatar-1" src="<?php echo admin_access_file(array_value($_post['user'], 'avatar'), $_post['user_avatar_url']);?>">
+                            </a>
+                            <span>
+                                <a target="_blank" href="<?php echo ($conf['url_rewrite_on'] < 2 ? '../' : ''),url('user-' . $_post['uid'], '', 2);?>" class="font-weight-bold"><?php echo $_post['username'];?></a>
+                            </span>
+
+                            <!-- 评论时间 -->
+                            <span class="date text-grey ml-2"><?php echo $_post['create_date_fmt'];?></span>
+
+                        </div>
+                        <div>
+                            <!-- 编辑链接 -->
+                            <?php if($_post['allowupdate']) { ?>
+                            <a class="mx-2" target="_blank" href="<?php echo url('comment-update-'.$_post['pid'],array('op'=>'pending'));?>"><i class="icon-edit" title="<?php echo lang('edit');?>"></i></a>
+                            <?php } ?>
+
+                            <!-- 删除链接 -->
+                            <?php if($_post['allowdelete']) { ?>
+                            <a class="confirm mx-2" href="<?php echo url('home-content', array('op'=>'delete','type'=>3,'pid'=>$_post['pid'],'safe_token' => $safe_token));?>" data-method="post" data-confirm-text="<?php echo lang('confirm_delete');?>" title="<?php echo lang('delete');?>"><i class="icon-remove text-danger"></i></a>
+                            <?php } ?>
+
+                            <a class="confirm mx-2" data-method="post" data-confirm-text="<?php echo lang('well_publish_verified');?>" href="<?php echo url('verify-comment-'.$_post['pid'], $extra);?>" title="<?php echo lang('well_publish_verified');?>">
+                                <i class="icon-check text-success"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="message mt-2 text-break">
+                        <!-- 评论的标题链接 -->
+                        <h6 class="h6 text-break font-weight-bold"><a href="<?php echo ($conf['url_rewrite_on'] < 2 ? '../' : ''),url('read-' . $_post['tid'], '', 2);?>" target="_blank"><?php echo $_post['subject'];?></a></h6>
+
+                        <!-- 评论内容 -->
+                        <?php echo $_post['message'];?>
+
+                        <!-- 评论附件 -->
+                        <?php echo data_file_list_html($_post['filelist']);?>
+                    </div>
+                </div>
+            </li>
+            <?php }} else { ?>
+            <li class="thread px-3">
+                <div><?php echo lang('none');?></div>
+            </li>
+            <?php } ?>
+		</ul>
+
+        <div class="text-center">
+            <label class="mr-3">
+                <!-- input 必须保留 -->
+                <input type="checkbox" data-target='input[name="modpid"]' class="checkall mt-2 mr-2" value="" aria-label="<?php echo lang('checkall');?>" />
+                <?php echo lang('checkall');?>
+            </label>
+            <div class="btn-group mod-button my-3" role="group" aria-label="">
+                <!-- btn-operate 必须保留 JS绑定 -->
+                <button class="btn btn-secondary btn-operate" data-href="<?php echo url('verify-comment', $extra);?>" title="<?php echo lang('well_publish_verified');?>">
+                    <?php echo lang('well_publish_verified');?>
+                </button>
+                <button class="btn btn-secondary btn-operate" data-href="<?php echo url('home-content', array('op'=>'delete','type'=>3,'safe_token' => $safe_token));?>" title="<?php echo lang('delete');?>">
+                    <?php echo lang('delete');?>
+                </button>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+		<?php if ($pagination) { ?>
+		<nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+        </nav>
+		<?php } ?>
+	</slot>
+</template>
+
+<script>
+    $('body').on('click', '.btn-operate', function() {
+        var jthis = $(this);
+        var pidarr = $('input[name="modpid"]').checked();
+        var href = jthis.data('href');
+        var title = jthis.attr('title');
+        var safe_token = '<?php echo $safe_token;?>';
+        if (window.confirm(title)) {
+            $.xpost(href, {pid:pidarr,safe_token: safe_token}, function(code, message) {
+                if(code == 0) {
+                    window.location.reload();
+                } else {
+                    $.alert(message);
+                }
+            });
+        }
+        return false;
+    });
+    $('a[data-active="verify-comment"]').addClass('active');
+    $('a[data-active="menu-verify"]').addClass('active');
+</script>

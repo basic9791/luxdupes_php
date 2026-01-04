@@ -1,0 +1,570 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+<!-- 写文章页面 -->
+<!--{hook home_content_post_start.htm}-->
+<div class="row">
+    <div class="col-lg-12">
+        <!--{hook home_content_post_breadcrumb_before.htm}-->
+        <!-- 页头导航位置 -->
+        <?php if(empty($hide_breadcrumb)) { ?>
+        <ol class="breadcrumb text-muted border-left-danger">
+            <li class="breadcrumb-item">
+                <a href="<?php echo $conf['path'];?>">
+                    <i class="icon-home text-danger" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="<?php echo url('home-article');?>">
+                    <?php echo lang('my_home');?>
+                </a>
+            </li>
+            <!--{hook home_content_post_breadcrumb.htm}-->
+        </ol>
+        <?php } ?>
+        <!--{hook home_content_post_breadcrumb_after.htm}-->
+        <div class="card">
+            <div class="card-body">
+                <!--{hook home_content_post_form_start.htm}-->
+                <!-- 写文章表单 -->
+                <form action="<?php echo $form_action;?>" method="post" id="form">
+                    <!-- 1.0.13新增 div 全部保留 -->
+                    <?php $access_flag = $access['flag'] ? xn_json_encode($access['flag']) : ''; ?>
+                    <div id="root-data" tid="<?php echo param('tid', 0); ?>" referer="<?php echo $referer;?>" fid="<?php echo $fid;?>" managecontent="<?php echo $managecontent; ?>" allowattach="<?php echo group_access($gid, 'allowattach');?>" forumlist='<?php echo xn_json_encode($forumlist_show);?>' flag='<?php echo $access_flag; ?>'></div>
+
+                    <input type="hidden" name="doctype" value="<?php echo $form_doctype;?>" />
+                    <input type="hidden" name="safe_token" value="<?php echo $safe_token;?>" />
+                    <!--{hook home_content_inc_hidden_before.htm}-->
+                    <div class="row">
+                        <div class="col-12 col-md-9">
+                            <div class="form-group">
+                                <!--{hook home_content_inc_fid_select_before.htm}-->
+                                <!-- 选择可进行投稿的版块 -->
+                                <select id="fid-list" class="custom-select mr-1 w-auto" name="fid">
+                                    <?php foreach ($forumlist_show as $_forum) { ?>
+                                    <option value="<?php echo $_forum['fid']; ?>">
+                                        <?php echo $_forum['name']; ?>
+                                    </option>
+                                    <?php } ?>
+                                </select>
+                                <!--{hook home_content_inc_fid_select_after.htm}-->
+                            </div>
+                            <!--{hook home_content_inc_subject_before.htm}-->
+                            <div class="form-group subject">
+                                <!-- input标题 -->
+                                <input type="text" class="form-control" placeholder="<?php echo lang('subject');?>" name="subject" value="<?php echo $form_subject;?>" id="subject">
+                            </div>
+                            <!--{hook home_content_inc_subject_after.htm}-->
+                            <div class="form-group form-message">
+                                <!-- 写内容框 -->
+                                <textarea class="form-control text-break" placeholder="<?php echo lang('message');?>" name="message" id="message" style="height: 300px;"><?php echo $form_message;?></textarea>
+                            </div>
+                            <!--{hook home_content_inc_message_after.htm}-->
+
+                        </div>
+                        <!-- JS 绑定了button-show移动端展示按钮 -->
+                        <div class="button-show d-lg-none position-fixed bg-secondary d-flex align-items-center rounded-left nav-block">
+                            <i class="icon-chevron-left text-white mx-auto"></i>
+                        </div>
+
+                        <!-- JS 绑定nav-show移动端展示隐藏 -->
+                        <div id="nav-show" class="col-lg-3 d-none d-lg-block">
+                            <!-- JS 绑定button-hide移动端隐藏按钮 -->
+                            <div class="button-hide d-lg-none position-absolute bg-secondary d-flex align-items-center rounded-left nav-block">
+                                <i class="icon-chevron-right text-white mx-auto"></i>
+                            </div>
+                            <div class="sticky-top post-sticky-top">
+
+                                <!-- JS 绑定accordionthread -->
+                                <div id="accordionthread">
+                                    <!--{hook home_content_inc_nav_start.htm}-->
+                                    <ul class="navbar-nav flex-column">
+                                        <!--{hook home_content_inc_nav_before.htm}-->
+                                        <?php if ($allowthumbnail){?>
+                                        <!-- 缩略图 thumbnail -->
+                                        <li class="nav-item">
+                                            <a class="nav-link alert-primary px-3 mb-2" data-toggle="collapse" data-target="#thumbnail" aria-expanded="true" aria-controls="collapse" href="javascript:void(0);">
+                                                <?php echo lang('thumbnail');?>
+                                            </a>
+
+                                            <!-- JS 绑定thumbnail -->
+                                            <div id="thumbnail" class="collapse show" aria-labelledby="heading" data-parent="#accordionthread">
+
+                                                <!--{hook home_content_inc_addicon_start.htm}-->
+                                                <!-- JS 绑定addicon -->
+                                                <div class="addicon form-group small mb-2">
+                                                    <!--{hook home_content_inc_addicon_before.htm}-->
+                                                    <!-- JS 绑定img_1 -->
+                                                    <label class="img_1 d-block" tabindex="10" data-toggle="tooltip" title="<?php echo lang('thumbnail'); ?>">
+                                                        <!-- JS 绑定img_1 n="1" -->
+                                                        <img id="img_1" n="1" class="img-thumbnail mx-auto d-block" src="<?php echo $thumbnail; ?>" />
+                                                        <!-- JS 绑定input表单，上传缩略图 -->
+                                                        <span class="addpic" style="display: none;">
+                                                            <input type="file" multiple="multiple" data-assoc="img_1" />
+                                                        </span>
+                                                    </label>
+                                                    <!--{hook home_content_inc_addicon_after.htm}-->
+
+                                                </div>
+
+                                                <!-- 1.0.13 New addition -->
+                                                <div class="d-flex flex-wrap justify-content-around mb-2">
+                                                    <!--{hook home_content_inc_thumbnail_delete_before.htm}-->
+                                                    <a class="btn btn-outline-danger btn-sm" id="thumbnail-delete" href="javascript:void(0);" data-href="<?php echo $form_thumbnailDelete; ?>"><?php echo lang('delete');?></a>
+                                                    <!--{hook home_content_inc_thumbnail_delete_after.htm}-->
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <?php } ?>
+
+                                        <!--{hook home_content_inc_nav_thumbnail.htm}-->
+
+                                        <!-- 内容 content -->
+                                        <li class="nav-item">
+                                            <a class="nav-link alert-primary px-3 mb-2" data-toggle="collapse" data-target="#content" aria-expanded="false" aria-controls="collapse" href="javascript:void(0);">
+                                                <?php echo lang('message');?>
+                                            </a>
+                                            <!-- JS 绑定content -->
+                                            <div id="content" class="collapse" aria-labelledby="heading" data-parent="#accordionthread">
+                                                <div class="form-group">
+                                                    <div class="d-flex flex-wrap justify-content-around mb-2">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <!-- 禁止评论表单 -->
+                                                            <input class="custom-control-input" type="checkbox" id="closed-box" name="closed" value="1" <?php echo $form_closed;?> />
+                                                            <label class="custom-control-label custom-checkbox mr-1" for="closed-box">
+                                                                <?php echo lang('disable_comment');?>
+                                                            </label>
+                                                        </div>
+                                                        <!--{hook home_content_inc_brief_auto_before.htm}-->
+                                                        <?php if ($allow_auto_brief){?>
+                                                        <div class="custom-control custom-checkbox">
+                                                            <!-- 获取摘要表单 -->
+                                                            <input class="custom-control-input" type="checkbox" id="brief_auto-box" name="brief_auto" value="1" />
+                                                            <label class="custom-control-label custom-checkbox mr-1" for="brief_auto-box">
+                                                                <?php echo lang('brief_get');?>
+                                                            </label>
+                                                        </div>
+                                                        <?php } ?>
+                                                        <!--{hook home_content_inc_brief_auto_after.htm}-->
+                                                    </div>
+
+                                                    <!-- 是否开启用户填写tag -->
+                                                    <?php if ($managecontent || $well_publish_conf['enable_tag']){?>
+                                                    <!-- JS绑定tags -->
+                                                    <div class="tags form-group row mx-0 mb-2">
+                                                        <!--tag插在这里-->
+                                                        <?php if (!empty($thread['tag_fmt'])) {foreach ($thread['tag_fmt'] as $key => $_tag) { ?>
+                                                        <!-- JS绑定tag tags-token -->
+                                                        <span class="tag tags-token border border-secondary btn-sm my-1 mr-3">
+                                                            <?php echo $_tag; ?>
+                                                        </span>
+                                                        <?php }} ?>
+                                                        <div class="tag-wrap">
+                                                            <!-- 填写tag表单 JS绑定tag-input -->
+                                                            <input id="tag-input" type="text" class="tag-input form-control text-small btn-sm my-1" placeholder="<?php echo lang('spatial_segmentation');?>" title="Tag<?php echo lang('spatial_segmentation');?>" name="tag-input" value="" style="width: 90px">
+                                                        </div>
+                                                        <!-- tag字符串隐藏表单 JS绑定tags-val -->
+                                                        <input class="tags-val" type="hidden" name="tags" id="tags" value="<?php echo $tagstr;?>" />
+                                                    </div>
+                                                    <!--{hook home_content_inc_tag_after.htm}-->
+                                                    <?php } ?>
+
+                                                    <?php if ($allowbrief){ ?>
+                                                    <!-- 简介 js 绑定brief -->
+                                                    <div class="brief form-group mb-2">
+                                                        <!-- 简介表单框 -->
+                                                        <textarea class="form-control text-small" placeholder="<?php echo lang('brief_limit_character');?>" name="brief" id="brief" style="height: 2.5rem;"><?php echo $form_brief;?></textarea>
+                                                    </div>
+                                                    <?php } ?>
+
+                                                    <!--{hook home_content_inc_brief_after.htm}-->
+                                                    <!-- 关键词 js 绑定keyword -->
+                                                    <?php if ($allowkeywords){ ?>
+                                                    <div class="keyword form-group mb-2">
+                                                        <!-- 关键词表单框 -->
+                                                        <textarea class="form-control text-small" placeholder="SEO<?php echo lang('keywords') . lang('exceed_limit_will_be_intercepted', array('n' => 64));?>" name="keyword" id="keyword" style="height: 2.5rem;"><?php echo $form_keyword;?></textarea>
+                                                    </div>
+                                                    <?php } ?>
+                                                    <!--{hook home_content_inc_keyword_after.htm}-->
+
+                                                    <!-- 描述 js 绑定description -->
+                                                    <?php if ($allowdescription){ ?>
+                                                    <div class="description form-group mb-2">
+                                                        <!-- 描述表单框 -->
+                                                        <textarea class="form-control text-small description" placeholder="<?php echo !empty($form_link)?lang('external_link'):('SEO'.lang('description') . lang('exceed_limit_will_be_intercepted', array('n' => 120)) .'('.lang('description_empty_use_brief').')');?>" name="description" id="description" style="height: 2.5rem;"><?php echo $form_description;?></textarea>
+                                                    </div>
+                                                    <?php } ?>
+                                                    <!--{hook home_content_inc_description_after.htm}-->
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <!--{hook home_content_inc_nav_content.htm}-->
+
+                                        <!-- 附件上传 -->
+                                        <?php if ($allowattach){ ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link alert-primary px-3 mb-2" data-toggle="collapse" data-target="#attach" aria-expanded="false" aria-controls="collapse" href="javascript:void(0);">
+                                                <?php echo lang('attach');?>
+                                            </a>
+                                            <!-- js绑定attach -->
+                                            <div id="attach" class="collapse" aria-labelledby="heading" data-parent="#accordionthread">
+                                                <div class="form-group">
+                                                    <!--{hook home_content_inc_attach_before.htm}-->
+                                                    <!-- js绑定attachlist_parent -->
+                                                    <div class="attachlist_parent">
+                                                        <a class="small text-left" href="javascript:void(0)">
+                                                            <!-- js绑定addattach -->
+                                                            <label class="addattach" id="addattach">
+                                                                <i class="icon-folder-open-o"></i>
+                                                                <?php echo lang('add_attach');?>
+                                                                <span style="display: none;">
+                                                                    <!-- 附件上传表单 -->
+                                                                    <input type="file"  multiple="multiple" />
+                                                                </span>
+                                                            </label>
+                                                        </a>
+                                                        <!--{hook home_content_inc_file_list_before.htm}-->
+                                                        <!-- 上传成功的附件 -->
+                                                        <?php echo data_file_list_html($filelist, TRUE, TRUE, TRUE);?>
+                                                        <!--{hook home_content_inc_file_list_after.htm}-->
+                                                    </div>
+                                                </div>
+                                                <!--{hook home_content_inc_attach_after.htm}-->
+                                            </div>
+                                        </li>
+                                        <?php } ?>
+
+                                        <!--{hook home_content_inc_nav_attach.htm}-->
+
+                                        <!-- 自定义分类 -->
+                                        <?php if ($managecontent) { ?>
+                                        <li class="nav-item">
+                                            <a class="nav-link alert-primary px-3 mb-2" data-toggle="collapse" data-target="#flag" aria-expanded="false" aria-controls="collapse" href="javascript:void(0);">
+                                                <?php echo lang('customize');?>
+                                            </a>
+                                            <!-- js绑定flag -->
+                                            <div id="flag" class="collapse" aria-labelledby="heading" data-parent="#accordionthread">
+                                                <!--{hook home_content_inc_flag_before.htm}-->
+                                                <div class="form-group">
+                                                    <!-- js绑定index-flag-list -->
+                                                    <div class="row index-flag-list">
+                                                    </div>
+                                                    <!-- js绑定flag-list -->
+                                                    <div class="row flag-list">
+                                                    </div>
+                                                </div>
+                                                <!--{hook home_content_inc_flag_after.htm}-->
+                                            </div>
+                                        </li>
+                                        <?php } ?>
+
+                                        <!--{hook home_content_inc_nav_after.htm}-->
+                                    </ul>
+                                    <!--{hook home_content_inc_nav_end.htm}-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group my-3">
+                        <!--{hook home_content_inc_submit_before.htm}-->
+                        <!--提交表单按钮-->
+                        <button type="submit" class="btn btn-danger btn-block col-md-3 mx-auto my-2" id="content-submit" data-loading-text="<?php echo lang('submiting');?>...">
+                            <?php echo $form_submit_txt;?>
+                        </button>
+                        <!--{hook home_content_inc_submit_after.htm}-->
+                        <!--返回按钮-->
+                        <a role="button" class="btn btn-secondary btn-block col-md-3 mx-auto my-2" href="javascript:history.back();">
+                            <?php echo lang('back');?>
+                        </a>
+                        <!--{hook home_content_inc_history_back_after.htm}-->
+                    </div>
+                </form>
+                <!--{hook home_content_post_form_end.htm}-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--{hook home_content_post_end.htm}-->
+
+<?php include _include(APP_PATH.'view/htm/footer.inc.htm');?>
+
+<!-- 1.0.13 版本 删除之前的 JS 替换下面的代码 -->
+<script>
+    /* 主题 */
+    <!--{hook home_content_post_start.htm}-->
+    var form = document.getElementById('root-data');
+    var tid = form.getAttribute('tid');
+    var referer = form.getAttribute('referer');
+    var safe_token = document.querySelector("input[name='safe_token']").value;
+    var managecontent = form.getAttribute('managecontent');
+    var allowattach = form.getAttribute('allowattach');
+    var forumlist = form.getAttribute('forumlist');
+    forumlist = JSON.parse(forumlist);
+
+    var jfid = $('select[name="fid"]');
+    var fid = parseInt(form.getAttribute('fid')) || jfid.checked();
+
+    if (managecontent) {
+        var flag = form.getAttribute('flag');
+        flag = JSON.parse(flag);
+        /* 初始化值，选中的值 */
+        var index_flagids = flag.index;
+        var index_flag_list = flag.index_flag;
+
+        var forum_flagids = flag.forum;
+        var category_flagids = flag.category;
+    }
+
+    jfid.on('change', function() {
+        fid = jfid.checked();
+        fid_on_change(fid);
+    });
+
+    fid_on_change(fid);
+
+    /* 当选择栏目时，加载对应需要加载的代码 */
+    function fid_on_change(fid) {
+        let forum = forumlist[fid];
+
+        <!--{hook home_content_js_on_change_start.htm}-->
+
+        <!--{hook home_content_js_on_change_middle.htm}-->
+
+        if (managecontent) {
+            let s = '<div class="col-lg-12">';
+            let fup = forumlist[forum.fup];
+
+            if (fup && !xn_bg.empty(forum.fup) && !xn_bg.empty(fup.flagstr)) {
+                s += ' <p class="font-weight-bold mb-2"><?php echo lang('channel').lang('flag');?></p>';
+                s += '<p class="tag-outline-list">';
+                $.each(fup.flagstr_fmt, function(k, flag) {
+                    s += '<a href="javascript:void(0);" class="btn btn-outline-secondary btn-sm mr-3 mb-2 flag-option ' + (xn_bg.in_array(flag.flagid, category_flagids) ? 'active' : '') + '" flagid="' + flag.flagid + '">' + flag.name + '</a>';
+                    s += '<input type="hidden" name="category[]" value="' + (xn_bg.in_array(flag.flagid, category_flagids) ? flag.flagid : '') + '" />';
+                });
+                s += '</p>';
+            }
+
+            if (forum.flagstr && xn_bg.isset(forum.flagstr_fmt)) {
+                s += ' <p class="font-weight-bold mb-2"><?php echo lang('column').lang('flag');?></p>';
+                s += '<p class="tag-outline-list">';
+                $.each(forum.flagstr_fmt, function(k, flag) {
+                    s += '<a href="javascript:void(0);" class="btn btn-outline-secondary btn-sm mr-3 mb-2 flag-option ' + (xn_bg.in_array(flag.flagid, forum_flagids) ? 'active' : '') + '" flagid="' + flag.flagid + '">' + flag.name + '</a>';
+                    s += '<input type="hidden" name="forum[]" value="' + (xn_bg.in_array(flag.flagid, forum_flagids) ? flag.flagid : '') + '" />';
+                });
+                s += '</p>';
+            }
+
+            s += '</div>';
+            $('.flag-list').html(s);
+        }
+
+        <!--{hook home_content_js_on_change_end.htm}-->
+    }
+
+    if (managecontent) {
+        if (index_flag_list) {
+            index_flag();
+        }
+
+        function index_flag() {
+            let s = '<div class="col-lg-12">';
+            s += ' <p class="font-weight-bold pt-0 mb-2"><?php echo lang('index_page').lang('flag');?></p>';
+            s += '<p class="tag-outline-list">';
+            $.each(index_flag_list, function (k, flag) {
+                s += '<a href="javascript:void(0);" class="btn btn-outline-secondary btn-sm mr-3 mb-2 flag-option ' + (xn_bg.in_array(flag.flagid, index_flagids) ? 'active' : '') + '" flagid="' + flag.flagid + '">' + flag.name + '</a>';
+                s += '<input type="hidden" name="index[]" value="' + (xn_bg.in_array(flag.flagid, index_flagids) ? flag.flagid : '') + '" />';
+            });
+            s += '</p>';
+            s += '</div>';
+            $('.index-flag-list').html(s);
+        }
+
+        $('.flag-list,.index-flag-list').on('click', 'a.flag-option', function () {
+            let jthis = $(this);
+            let flagid = jthis.attr('flagid');
+            jthis.toggleClass('active');
+            /*隐藏域*/
+            let v = jthis.hasClass('active') ? flagid : '';
+            jthis.next().attr('value', v);
+        });
+    }
+
+    var jform = $('#form');
+    jform.on('submit', function() {
+        jform.reset();
+        let jthis = $(this);
+        let jsubmit = jthis.find('#content-submit');
+        jsubmit.button('loading');
+        let postdata = jform.serialize();
+        $.modal('<div class="text-center py-3"><div>'+lang.uploading+'</div></div>', {'timeout':'-1', 'size':'modal-dialog modal-sm'});
+        $.xpost(jform.attr('action'), postdata, function(code, message) {
+            if(code == 0) {
+                if (message) {
+					$.modal('<div style="text-align: center;padding: 1rem 1rem;">'+message+'</div>', {'timeout':'1', 'size':'modal-dialog modal-sm'});
+				}
+                setTimeout(function() {
+                    window.location = referer || xn_bg.url('home-article');
+                }, 1000);
+                /*let jump_url = referer || xn_bg.url('home-article');
+                jsubmit.button(message).delay(1000).location(jump_url);*/
+            } else if(xn_bg.is_number(code)) {
+                $.modal('<div style="text-align: center;padding-bottom: 1.5rem;padding-top: .5rem;">'+message+'</div>', {'timeout':'0', 'size':'modal-dialog modal-sm'});
+                jsubmit.button('reset');
+            } else {
+                /*jform.find('[name="'+code+'"]').alert(message).focus();*/
+                $.modal('<div style="text-align: center;padding-bottom: 1.5rem;padding-top: .5rem;">'+message+'</div>', {'timeout':'0', 'size':'modal-dialog modal-sm'});
+                jsubmit.button('reset');
+            }
+        }, function(percent) {
+            /*percent = xn_bg.intval(percent);
+            $('#modal-progress').text(percent+'%');*/
+            console.log('progress:'+ percent);
+        });
+        return false;
+    });
+
+    var addicon = $('.addicon');
+    addicon.on('change', 'input[type="file"]', function(e) {
+        let jfile = $(this);
+        let jassoc = jfile.data('assoc') ? $('#'+jfile.data('assoc')) : null;
+        let n = $('img#'+jfile.data('assoc')).attr('n');
+        let files = xn_bg.get_files_from_event(e);
+        if (!files) return;
+
+        let fid = jfid.checked();
+        let forum = forumlist[fid];
+        let picture_size = forum.thumbnail;
+
+        $.each_sync(files, function (i, callback) {
+            let file = files[i];
+            xn_bg.upload_file(file, xn_bg.url('attach-create'), {
+                'fid': fid,
+                'is_image': 1,
+                'convert': 1, /*转码*/
+                'filetype': 'jpeg',   /*压缩类型*/
+                'quality': '0.7',  /*压缩比例*/
+                'width': picture_size.width || "<?php echo $pic_width; ?>",
+                'height': picture_size.height || "<?php echo $pic_height; ?>",
+                'action': "<?php echo array_value($conf, 'upload_resize', 'clip'); ?>",
+                'n': n,
+                'mode': 1, /*缩略图*/
+                'safe_token': safe_token
+            }, function (code, message) {
+                if (code != 0) return $.alert(message);
+                jassoc.attr('src', message.url);
+                /*jassoc.css('max-width',150);
+                 jassoc.css('height','auto');*/
+                callback();
+            }, function (percent) {
+                /*percent = xn_bg.intval(percent);
+                 jprogressbar.css('width', percent+'%');
+                 jprogressbar.text(percent+'%');
+                 jprogress.show();
+                 console.log('progress:'+ percent);*/
+            }, function (base64_data) {
+                /*base64_data 用来显示缩略图*/
+            });
+        });
+    });
+
+    if (allowattach) {
+        var jattachparent = $('.attachlist_parent');
+        $('#addattach').on('change', function(e) {
+            var files = xn_bg.get_files_from_event(e);
+            if (!files) return;
+
+            /*并发下会 服务端 session 写入会有问题，由客户端控制改为串行*/
+            if (!jattachparent.find('.attachlist').length) {
+                jattachparent.append('<fieldset class="fieldset m-0 p-0"><legend><?php echo lang('uploaded_attach');?></legend><ul class="list-unstyled attachlist nowrap"><ul></fieldset>');
+            }
+
+            var jprogress = jattachparent.find('.progress');
+            if(!jprogress.length) {
+                jprogress = $('<div class="progress"><div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div></div>').appendTo(jattachparent);
+            }
+            jprogressbar = jprogress.find('.progress-bar');
+
+            var fid = jfid.checked();
+            $.each_sync(files, function(i, callback) {
+                var file = files[i];
+                xn_bg.upload_file(file, xn_bg.url('attach-create'), {'fid': fid,'is_image': 0,'safe_token': safe_token}, function (code, message) {
+                    if (code != 0) return $.alert(message);
+                    /*把文件 append 到附件列表*/
+                    var url = message.url;
+                    var filetype = message.filetype;
+                    var aid = message.aid;
+                    var s = '<a href="' + url + '" target="_blank" class="d-block ellipsis"><i class="icon filetype ' + filetype + '"></i> ' + message.orgfilename + '</a>';
+                    <!--{hook home_content_post_attach_before.htm}-->
+                    s += '<span class="btn px-1 py-0 delete"><i class="icon-remove"></i></span>';
+                    <!--{hook home_content_post_attach_after.htm}-->
+                    var attachlist = '<li aid="' + aid + '" class="d-flex justify-content-between p-1">' + s +'</li>';
+                    $('.attachlist').append(attachlist);
+                    callback();
+                    jprogress.hide();
+                }, function(percent) {
+                    percent = xn_bg.intval(percent);
+                    jprogressbar.css('width', percent+'%');
+                    jprogressbar.text(percent+'%');
+                    jprogress.show();
+                    console.log('progress:'+ percent);
+                });
+            });
+        });
+
+        /*删除附件*/
+        jattachparent.on('click', 'span.delete', function() {
+            var jlink = $(this);
+            var jli = jlink.parents('li');
+            var aid = jli.attr('aid');
+            if(!window.confirm(lang.confirm_delete)) return false;
+            $.xpost(xn_bg.url('attach-delete-'+aid), function(code, message) {
+                if(code != 0) return $.alert(message);
+                jlink.parent().remove();
+            });
+            return false;
+        });
+    }
+
+    $('#brief,#keyword,#description').on('focus', function () {
+        var jthis = $(this);
+        if ($(this).t) {
+            clearTimeout($(this).t);
+            $(this).t = null;
+        }
+        jthis.css('height', '5rem');
+        jthis.blur(function () {
+            jthis.t = setTimeout(function () {
+                jthis.css('height', '2.5rem');
+            }, 1000);
+        });
+    });
+
+    jform.find('[name="fid"]').checked(fid);
+
+    if ($(document.body).width() < 992) {
+        $('#nav-show').css({"position": "fixed", "top": "0", "padding-top": ".5rem", "bottom": "0", "right": "0", "z-index": "1032"});
+        $('.nav-block,.button-hide').css("top","45%");
+    }
+
+    let thumbnailDelete = document.getElementById('thumbnail-delete');
+    if (thumbnailDelete) {
+        thumbnailDelete.addEventListener('click', function (e) {
+            let url = this.getAttribute('data-href');
+            $.xget(url, function (code, message) {
+                if (0 == code) {
+                    document.querySelector('.img-thumbnail').setAttribute('src', message.thumbnail);
+                } else {
+                    $.alert(message.message);
+                }
+            });
+            e.stopPropagation();
+        });
+    }
+
+    <!--{hook home_content_post_js_end.htm}-->
+
+</script>
+
+<!-- 尽量把JS代码写到上面的script里，引用的JS文件可以hook到这里 -->
+<!--{hook home_content_post_js.htm}-->

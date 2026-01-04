@@ -1,0 +1,21 @@
+<template include="./view/htm/user_common.header.htm">
+	<slot name="body">
+        <!-- threadlist 必须保留 -->
+        <ul class="threadlist list-unstyled bg-white">
+            <?php include _include(APP_PATH . 'view/htm/thread_list.inc.htm');?>
+        </ul>
+
+        <!-- 分页-->
+		<?php if ($pagination) { ?>
+		<nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+        </nav>
+		<?php } ?>
+	</slot>
+</template>
+
+<script>
+    $('a[data-active="user-favorites"]').addClass('active');
+</script>

@@ -1,0 +1,9 @@
+# 404错误页面配置
+ErrorDocument 404 /view/htm/404.htm
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.+) index.php?rewrite=$1 [L]
+</IfModule>

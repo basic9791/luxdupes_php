@@ -1,0 +1,68 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<!--{hook index_flat_start.htm}-->
+
+
+        <?php if($page<2){ ?>
+            <div class="shadow">
+            <div class="card-header">
+                <h3 class="h6 font-weight-bold my-0">
+                   Hot Brands
+                </h3>
+            </div>
+        <div class="hotBrands">
+			<a href="/brands/203">Louis Vuitton</a><a href="/brands/6">Chanel</a><a href="/brands/3">Dior</a><a href="/brands/2">Gucci</a><a href="/brands/5">Hermès</a><a href="/brands/15">Prada</a><a href="/brands/1">Burberry</a><a href="/brands/18">Fendi</a><a href="/brands/17">Balenciaga</a><a href="/brands/9">YSL</a><a href="/brands/4">Celine</a><a href="/brands/14">Loewe</a><a href="/brands/28">Miu Miu</a><a href="/brands/124">AIMER MEN</a><a href="/brands/25">Valentino</a><a href="/brands/87">Moncler</a><a href="/brands/45">Versace</a><a href="/brands/7">Bottega Veneta</a><a href="/brands/75">Givenchy</a><a href="/brands/64">Nike</a><a href="/brands/40">Chrome Hearts</a><a href="/brands/204">DolceGabbana</a><a href="/brands/42">Ferragamo</a><a href="/brands/83">Thom Browne</a><a href="/brands/61">AIR JORDAN</a><a href="/brands/99">Zegna</a><a href="/brands/77">Adidas</a><a href="/brands/57">Dunk</a><a href="/brands/63">Balmain</a><a href="/brands/94">Other Brands of</a><a href="/brands/73">Bally</a><a href="/brands/55">Alexander Wang</a><a href="/brands/107">Summer Shorts</a><a href="/brands/96">Armani</a><a href="/brands/51">McQueen</a><a href="/brands/53">TODS</a><a href="/brands/49">Van CleefArpels</a>
+
+				
+		
+            </div>
+            <?php } ?>
+
+
+    <div class="main">
+        <!--{hook index_flat_main_start.htm}-->
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link <?php echo 'default' == $active ? 'active' : '';?>" href="<?php echo $conf['path'];?>">
+                        <?php echo lang('new_thread');?>
+                    </a>
+                </li>
+                <!--{hook index_flat_thread_list_nav_item_after.htm}-->
+            </ul>
+        </div>
+        <div class="row mainBody">
+            <!--{hook index_flat_threadlist_before.htm}-->
+            <?php include _include(APP_PATH . 'view/htm/thread_list.inc.htm');?>
+            <!--{hook index_flat_threadlist_after.htm}-->
+        </div>
+
+        <!--{hook index_flat_mod_before.htm}-->
+
+        <?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+
+        <!--{hook index_flat_page_before.htm}-->
+        <?php if ($pagination) { ?>
+        <nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+            <div class="loadMoreBox">
+                <button type="button" id="listLoadMore" curPage="<?php echo $page ?>" class="btn btn-secondary btn-lg">Load More</button>
+            </div>
+        </nav>
+        <?php } ?>
+        <!--{hook index_flat_page_end.htm}-->
+    </div>
+
+
+
+<!--{hook index_flat_end.htm}-->
+
+<?php include _include(APP_PATH . 'view/htm/footer.inc.htm');?>
+
+<script>
+    xn_bg.url('index-login', {'k1':'v1', 'k2':'v2', 'k3':'v3'});
+    $('#nav li[data-active="fid-<?php echo $fid;?>"]').addClass('active');
+</script>
+<!--{hook index_flat_js.htm}-->

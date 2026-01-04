@@ -1,0 +1,12 @@
+{
+    "name": "Sitemap",
+    "brief": "WellCMS 站点地图，无需生成，直接解析即可实现地图，仅支持 txt 格式",
+    "type": "0",
+    "version": "2.0.02",
+    "software_version": "2.1.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "overwrites_rank": [],
+    "dependencies": []
+}

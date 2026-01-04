@@ -1,0 +1,554 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<!--{hook read_start.htm}-->
+
+
+		<!--{hook read_main_breadcrumb_start.htm}-->
+		<ol class="breadcrumb d-md-flex border-light border-left-primary">
+			<li class="breadcrumb-item">
+				<a href="<?php echo $conf['path'];?>" aria-label="<?php echo lang('index_page'); ?>">
+					<i class="icon-home text-primary"></i>
+				</a>
+			</li>
+			<!--{hook read_main_breadcrumb_before.htm}-->
+			<?php if($tagUrl!=='') { ?>
+			<li class="breadcrumb-item">
+					<a href="<?php echo url('brands-list');?>">
+						Brands
+                    </a>
+				</li>
+				<li class="breadcrumb-item">
+					<a href="/brands/<?php echo $tagid.$tagUrl;?>">
+                        <?php echo $forum['name'];?>
+                    </a>
+				</li>
+
+			<?php }else{ 
+				if($forum['fup']) { ?>
+			<li class="breadcrumb-item">
+			    <a href="<?php echo url('category-' . $forum['fup'], '', FALSE);?>" tabindex="0">
+							 <?php echo $fup['name'];?>
+						</a>
+			   
+			</li>
+			<?php } ?>
+			
+			<li class="breadcrumb-item">
+                <a href="<?php echo $forum['url']; ?>">
+                    <?php echo $forum['name'];?>
+                </a>
+      </li>
+			<?php } ?>
+
+
+
+            <!--{hook read_main_breadcrumb_after.htm}-->
+			<li class="breadcrumb-item active d-none">
+                <a href="<?php echo $thread['url']; ?>" title="<?php echo $thread['subject'];?>">
+                    <?php echo $thread['subject'];?>
+                </a>
+            </li>
+			<!--{hook read_main_breadcrumb_middle.htm}-->
+		</ol>
+		<!--{hook read_main_breadcrumb_end.htm}-->
+		
+		<div class="card card-thread border-white mb-3">
+			<div class="card-body">
+				 <div class="row">
+					<?php if($fid<790) { ?>
+					
+            <div class="col-md-6 col-12">
+							<div class="videoBox"></div>
+							<div class="maxImgBox" id="maxImgBox">
+
+							</div>
+							<ul id="images" data="<?php echo $thread['image_url'];?>"></ul>
+					</div>
+					<?php } ?>
+            <div class="col-md-6 col-12">
+               
+           
+
+				<div class="media">
+					<!--{hook read_main_avatar_before.htm}-->
+					<?php if($thread['uid']>1) { ?>
+					<div class="position-relative mr-3">
+						<a href="<?php echo url('user-'.$thread['uid']);?>" tabindex="-1">
+							<img class="avatar-3" src="<?php echo $thread['user_avatar_url'];?>">
+							<!--{hook read_avatar_after_after.htm}-->
+						</a>
+						<!--{hook read_avatar_after_end.htm}-->
+					</div>
+					<?php } ?>
+					<!--{hook read_main_after_before.htm}-->
+					<div class="media-body subject">
+						<!--{hook read_subject_before.htm}-->
+						<h1 class="h5 text-break font-weight-bold">
+							<!--{hook read_subject_start.htm}-->
+							<?php echo $thread['subject'];?>
+							<!--{hook read_subject_end.htm}-->
+						</h1>
+						<!--{hook read_subject_after.htm}-->
+						<?php if($thread['uid']>1) { ?>
+						<div class="d-flex justify-content-between">
+							<div>
+								<!--{hook read_username_before.htm}-->
+								<span>
+									<a href="<?php echo url('user-'.$thread['uid']);?>" class="text-muted">
+                                        <?php echo $thread['username'];?>
+                                    </a>
+								</span>
+                                <!--{hook read_date_before.htm}-->
+								<span class="date text-grey ml-2">
+                                    <?php echo $thread['create_date_fmt_ymd'];?>
+                                </span>
+                                <!--{hook read_date_after.htm}-->
+								<span class="text-grey ml-2" title="Click-to-view count"><i class="icon-eye"></i>&nbsp;
+                                    <?php echo format_number($thread['views']);?>
+                                </span>
+								<!--{hook read_views_after.htm}-->
+							</div>
+
+                            <div>
+                                <!--{hook read_manage_start.htm}-->
+                            <?php if($allowdelete || $allowupdate) { ?>
+                            <span class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo lang('manage');?>
+                                </a>
+                                <span class="dropdown-menu dropdown-menu-right animated--fade-in-up border-left-primary py-0">
+                                    <!--{hook read_dropdown_menu_start.htm}-->
+                                    <?php if($allowdelete) { ?>
+									<a isfirst="1" forum-url="<?php echo $thread['forum_url'];?>" data-href="<?php echo url('operate-delete-'.$tid);?>" href="javascript:void(0);" class="dropdown-item post_delete">
+                                    <?php echo lang('delete');?>
+                                    </a>
+									<?php } ?>
+                                    <!--{hook read_dropdown_menu_end.htm}-->
+                                </span>
+                            </span>
+                            <?php } ?>
+                                <!--{hook read_manage_end.htm}-->
+                            </div>
+						</div>
+						<?php } ?>
+					</div>
+				</div>
+					<?php if ($thread['tag']) { ?>
+				<div class="row">
+					<div class="col-lg-12 text-muted mt-2">
+					<i class="icon-tags mr-2"></i>Brand:	
+						<?php foreach($thread['tag_fmt'] as $_tag => $_tagname) { ?>
+						<span class="badge border border-secondary mr-2">
+                            <h2 class="h6 mb-0 small">
+                                <a class="text-secondary" href="<?php echo url('brands-' . $_tag);?>">
+                                    <?php echo $_tagname; ?>
+                                </a>
+							</h2>
+                        </span>
+						<?php }?>
+
+					</div>
+				</div>
+				<?php }?>
+				 </div>
+				  </div>
+
+
+
+
+
+				<hr />
+
+				<?php if(1 == $page) { ?>
+				<div class="message text-break">
+					<!--需要 主图 文字环绕 删除下面的注释代码即可-->
+                    <!--<div class="clearfix float-left mx-2">
+                        <img src="<?php echo $thread['icon_fmt'];?>" alt="<?php echo $thread['subject'];?>" />
+                    </div>-->
+					<!--{hook read_message_before.htm}-->
+					
+					
+					<?php if($fid == 799) { 
+						 echo str_ireplace('luxdupes',$conf['sitename'],$data['message']) ;
+					}else {
+						echo $data['message'] ;
+					}?>
+
+					<?php if($thread['type']==9) {   $index=0;?>
+						<form id="voteForm">
+							<?php foreach($jsonData['voteList'] as $_vote) { ?>
+								<div class="voteList">
+								<div class="voteName">
+								Question:	<?php echo $index+1; echo $_vote[name]; ?>;
+									<span><?php echo $_vote['isCheck']?'Multiple Choice':'Single Choice'; ?></span>
+								</div>
+								<?php foreach($_vote['list'] as $item) { ?>
+									<div class="itemBox">
+										<label>
+											<input name="item<?php echo $index; ?>" value="<?php echo $item['name'] ?>" type="<?php echo $_vote['isCheck']?'checkbox':'radio'; ?>" />
+											<?php echo $item['name']; ?>
+
+										</label>
+										<!-- <div class="tsBox">
+											<div class="tsLine" style="width:<?php echo $item['jNum']/$_vote['countNum']*100 ?>%">
+
+											</div>
+											<span title="Vote Count">
+												<?php echo $item['jNum'] ?>
+											</span>
+ 									</div> -->
+
+									
+										</div>
+									<?php }?>
+									</div>
+									<?php $index++;?>
+								<?php }?>
+								<button type="submit" class="btn btn-danger btn-block col-md-3 mx-auto mb-4" id="submit">
+           Confirm Vote
+        </button>
+							</form>
+
+							
+					<?php }?>
+					<!--{hook read_message_after.htm}-->
+					<?php echo data_file_list_html($thread['filelist']);?>
+					<!--{hook read_filelist_after.htm}-->
+				</div>
+				<?php } else { ?>
+				<!--{hook read_message_more_before.htm}-->
+				<p>
+					<a href="<?php echo $thread['url'].$tagUrl; ?>">
+						<?php echo lang('view_thread_message');?>
+					</a>
+				</p>
+				<!--{hook read_message_more_after.htm}-->
+				<?php } ?>
+
+				<?php if (1 == $page) { ?>
+
+				<!--{hook read_plugin_before.htm}-->
+				<div class="plugin d-flex justify-content-center mt-3">
+					<!--{hook read_plugin_body.htm}-->
+				</div>
+				<!--{hook read_plugin_after.htm}-->
+
+			
+				<!--{hook read_random.htm}-->
+				<?php }?>
+			</div>
+		</div>
+
+		<?php if ( $fid < 799) { ?>
+        <?php if ($allowpost) { ?>
+		<!--{hook read_comment_before.htm}-->
+		<div class="card card-postlist border-white">
+			<div class="card-body">
+				<div class="card-title">
+					<div class="d-flex justify-content-between">
+						<div>
+							<b>
+                                <?php echo lang('new_post');?>
+                            </b>(<span class="posts"><?php echo $thread['posts'];?></span>)
+						</div>
+						<!--{hook read_comment_list_title_middle.htm}-->
+						<div>
+							<!--{hook read_comment_list_title_right.htm}-->
+						</div>
+					</div>
+				</div>
+				<!--<ul class="list-unstyled postlist">-->
+				<ul class="postlist list-unstyled">
+					<?php include _include(APP_PATH.'view/htm/comment_list.inc.htm'); ?>
+					
+					<?php if(!empty($user) && 0 == $thread['closed']) { ?>
+					<li class="row post newpost media">
+                        <div class="col-lg-12 d-flex justify-content-between small text-muted">
+                            <!--{hook read_comment_post_start.htm}-->
+                            <div>
+                                <a href="<?php echo url('user-'.$user['uid']);?>" tabindex="-1">
+                                <img class="avatar-1 mr-2" src="<?php echo $user['avatar_url'];?>">
+                                </a>
+                                <!--{hook read_comment_post_username_before.htm}-->
+                                <span><?php echo $user['username'];?></span>
+                                <!--{hook read_comment_post_username_after.htm}-->
+                            </div>
+                            <div>
+                                <!--{hook read_comment_post_floor_before.htm}-->
+                                <span class="floor" id="newfloor">
+                                    <?php echo ($thread['posts'] + 2);?>
+                                </span>
+                                <?php echo lang('floor');?>
+                                <!--{hook read_comment_post_floor_after.htm}-->
+                            </div>
+                            <!--{hook read_comment_post_end.htm}-->
+                        </div>
+                        <div class="col-lg-12">
+                            <!--{hook read_comment_form_start.htm}-->
+                            <form action="<?php echo $comment_action;?>" method="post" id="form" class="d-block">
+                                <input type="hidden" name="doctype" value="1" />
+                                <input type="hidden" name="quotepid" value="0" />
+                                <!--{hook read_comment_form_before.htm}-->
+                                <div class="message mt-1">
+                                    <textarea class="form-control" placeholder="<?php echo lang('message');?>" name="message" id="message"></textarea>
+                                </div>
+                                <!--{hook read_comment_form_after.htm}-->
+                                <div class="d-flex justify-content-around text-muted mt-2 small">
+                                    <!--{hook read_quick_comment_submit_before.htm}-->
+                                    <button type="submit" class="btn btn-sm btn-secondary" id="submit" data-loading-text="<?php echo lang('submiting');?>...">
+                                        <?php echo lang('reply');?>
+                                    </button>
+                                    <!--{hook read_quick_comment_submit_after.htm}-->
+                                    <?php if(2 == array_value($forum, 'comment', 0)) { ?>
+									<a class="icon-mail-forward text-muted" href="<?php echo url('comment-create-'.$tid);?>" id="advanced_reply"><?php echo lang('advanced_reply');?></a>
+                                    <?php } ?>
+                                </div>
+                            </form>
+                            <!--{hook read_comment_form_end.htm}-->
+                        </div>
+					</li>
+					<?php } ?>
+				</ul>
+			</div>
+		</div>
+		<!--{hook read_comment_after.htm}-->
+		
+        <?php if($pagination) { ?>
+        <nav>
+            <ul class="pagination my-4 justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+        </nav>
+        <?php }?>
+        <!--{hook read_page_after.htm}-->
+        <?php } ?>
+
+		<div class="d-none threadlist">
+            <input type="checkbox" name="modtid" value="<?php echo $thread['tid']; ?>" checked />
+			<?php $extra['fid'] = $fid;?>
+        </div>
+        <?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+		
+		<!--<a role="button" class="btn btn-secondary btn-block xn-back col-lg-6 mx-auto mb-3" href="javascript:history.back();"><?php echo lang('back');?></a>-->
+		<!--{hook read_back_after.htm}-->
+
+	
+	
+	
+	
+	
+	<?php
+        $arrlist = thread_tid_find_by_fid($fid, 1, 1000, FALSE);
+        if ($arrlist) {
+            $total = $forum['threads'] > 10 ? 10 : $forum['threads'];
+            $tidarr = $forum['threads'] > 10 ? array_rand($arrlist, $total) : array_keys($arrlist);
+            $arrlist = well_thread_find_asc($tidarr, $total);
+        }
+      
+    ?>
+    <!-- 判断是否有相关主题 开始 -->
+    <?php if (!empty($arrlist)) { ?>
+    
+    <style>
+        .relatedBox{
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0; margin: 0;
+        }
+        
+       .relatedLi{
+           list-style:none; margin: 0;
+           width:25%;  box-sizing: border-box; padding:10px;
+       } 
+        
+    </style>
+    
+    
+    <div class="card card-postlist border-white" style="width:100%">
+    	<div class="card-header bg-white">
+    		<h3 class="h6 font-weight-400 my-0">
+    		Related Articles
+    		</h3>
+    	</div>
+    	<ul class="relatedBox">
+    		<!-- 循环输出相关主题 开始 -->
+    		<?php foreach($arrlist as $_thread) { ?>
+    		<li class="relatedLi">
+					 <?php if ($_thread['image_url']) { ?>
+            <div class="relatedLiDiv">
+                <a href="<?php echo $_thread['url'].$tagUrl; ?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                    <img class="d-block w-100 rounded" imgUrl="<?php echo $_thread['image_url'];?>" src="/upload/loading.gif" title='<?php echo $_thread['subject'];?>' alt='<?php echo $_thread['subject'];?>' />
+                    <!--{hook thread__list_inc_avatar_after.htm}-->
+                </a>
+            </div>
+            <?php } else { ?>
+            <div class="relatedLiDiv">
+                <a href="<?php echo $_thread['url'].$tagUrl; ?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                    <img class="d-block w-100 rounded" imgUrl="<?php echo $_thread['icon_fmt']?$_thread['icon_fmt']:'/view/img/nopic.png';?>" src="/upload/loading.gif" title='<?php echo $_thread['subject'];?>' alt='<?php echo $_thread['subject'];?>' />
+                    <!--{hook thread__list_inc_avatar_after.htm}-->
+                </a>
+            </div>
+            <?php } ?>
+            
+            
+            
+            
+            
+    			<h4 class="h6 my-0">
+    				<a href="<?php echo $_thread['url'].$tagUrl;?>" class="d-block text-truncate">
+    					<?php echo $_thread['subject'];?>
+    				</a>
+    			</h4>
+    		</li>
+    		<?php } ?>
+    		<!-- 循环输出相关主题 结束 -->
+    	</ul>
+    </div>
+    <?php } ?>
+    <!-- 判断是否有相关主题 结束 -->
+	
+		<?php } ?>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<?php if($flaglist){ ?>
+	<div class="col-lg-3 d-none d-lg-block aside">
+        <!--{hook read_item_right_start.htm}-->
+		<?php foreach($flaglist as $_flag) { ?>
+        <div class="d-none d-lg-block aside mb-3">
+            <div class="card-header">
+                <h3 class="h6 font-weight-bold my-0">
+					<a href="<?php echo $_flag['url'].$tagUrl;?>" title='<?php echo $_flag['name'];?>' aria-label='<?php echo $_flag['name'];?>'>
+                        <?php echo $_flag['name']; ?>
+                    </a>
+				</h3>
+			</div>
+            <ul class="threadlist list-unstyled bg-white nowrap">
+				<?php if(isset($_flag['list'])){foreach($_flag['list'] as $_thread) { ?>
+                <li class="thread">
+                    <h4 class="h6 my-0 mx-3">
+						<a href="<?php echo $_thread['url'].$tagUrl;?>" class="d-block ellipsis" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?> title='<?php echo $_thread['subject'];?>' aria-label='<?php echo $_thread['subject'];?>'>
+                            <?php echo $_thread['subject'];?>
+						</a>
+					</h4>
+				</li>
+				<?php }} ?>
+			</ul>
+		</div>
+		<?php } ?>
+        <!--{hook read_item_right_end.htm}-->
+	</div>
+    <?php } ?>
+
+<!--{hook read_end.htm}-->
+
+<?php include _include(APP_PATH . 'view/htm/footer.inc.htm');?>
+
+<script>
+var forum_url = '<?php echo array_value($forum, 'url');?>';
+var safe_token = '<?php echo GLOBALS('safe_token');?>';
+var body = $('body');
+body.on('submit', '#form', function() {
+	var jthis = $(this);
+    var jsubmit = jthis.find('#submit');
+	jthis.reset();
+	jsubmit.button('loading');
+	var postdata = jthis.serializeObject();
+	$.xpost(jthis.attr('action'), postdata, function(code, message) {
+		if(code == 0) {
+			location.reload();
+		} else {
+			$.alert(message);
+			jsubmit.button('reset');
+		}
+	});
+	return false;
+});
+
+/*缩放图片，适应屏幕大小*/
+function resize_image() {
+	var jmessagelist = $('div.message');
+	var first_width = jmessagelist.width(); /* 815 : 746; 734 746*/
+	jmessagelist.each(function() {
+		var jdiv = $(this);
+		var maxwidth = jdiv.attr('isfirst') ? first_width : jdiv.width();
+		var jmessage_width = Math.min(jdiv.width(), maxwidth);
+		jdiv.find('img, embed, iframe, video').each(function() {
+			var jimg = $(this);
+			var img_width = this.org_width;
+			var img_height = this.org_height;
+			if(!img_width) {
+				var img_width = jimg.attr('width');
+				var img_height = jimg.attr('height');
+				this.org_width = img_width;
+				this.org_height = img_height;
+			}
+			/*var percent = xn_bg.min(100, xn_bg.ceil((img_width / jmessage_width) * 100));*/
+			if(img_width > jmessage_width) {
+				if(this.tagName == 'IMG') {
+					jimg.width(jmessage_width);
+					jimg.css('height', 'auto');
+					jimg.css('cursor', 'pointer');
+					jimg.on('click', function() {
+						/*window.open(jimg.attr('src'));*/
+					});
+				} else {
+					jimg.width(jmessage_width);
+					var height = (img_height / img_width) * jimg.width();
+					jimg.height(height);
+				}
+			}
+		});
+	});
+}
+
+/*对于超宽的表格，加上响应式*/
+function resize_table() {
+	$('div.message').each(function() {
+		var jdiv = $(this);
+		jdiv.find('table').addClass('table').wrap('<div class="table-responsive"></div>'); 
+	});
+}
+
+$(function() {
+	resize_image();
+	resize_table();
+	$(window).on('resize', resize_image);
+});
+
+/*输入框自动伸缩*/
+var jmessage = $('#message');
+jmessage.on('focus', function() {if(jmessage.t) { clearTimeout(jmessage.t); jmessage.t = null; } jmessage.css('height', '6rem'); });
+jmessage.on('blur', function() {jmessage.t = setTimeout(function() { jmessage.css('height', '2.5rem');}, 1000); });
+
+$('#nav li[data-active="fid-<?php echo $fid;?>"]').addClass('active');
+</script>
+
+<?php if($thread['closed'] && (0 == $gid || $gid > 5)) { ?>
+<script>
+jmessage.val('<?php echo lang('thread_has_already_closed');?>').attr('readonly', 'readonly');
+</script>
+<?php } ?>
+
+<!--{hook read_js.htm}-->

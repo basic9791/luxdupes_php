@@ -1,0 +1,33 @@
+<?php include _include(ADMIN_PATH.'view/htm/header.inc.htm');?>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    第 1 个为列表，其余为内容页，每个批次50000条内容，自行提交到各个搜索引擎。
+                    <ul class="threadlist list-unstyled bg-white">
+                        <li class="thread">
+                            <?php echo $http_url . url_sitemap('sitemap-list', 'txt');?>
+                        </li>
+                        <!-- <li class="thread">
+                            <?php echo $http_url . url_sitemap('sitemap', 'txt');?>
+                        </li> -->
+                        <?php if($num) { for($i=1; $i<=$num; ++$i) { ?>
+                        <li class="thread">
+                            <?php echo $http_url . url_sitemap('sitemap-'.$i, 'txt');?>
+                        </li>
+                        <?php }} ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include _include(ADMIN_PATH.'view/htm/footer.inc.htm');?>
+
+<script>
+    $('#plugin').addClass('show');
+    $('li.plugin, .menu-plugin').addClass('active').find('a').removeClass('collapsed');
+</script>

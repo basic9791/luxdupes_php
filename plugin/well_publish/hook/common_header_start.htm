@@ -1,0 +1,4 @@
+<!-- 个人中心右侧投稿链接 -->
+<?php if (group_access($gid, 'allowthread')) { ?>
+<a role="button" rel="nofollow" class="btn btn-danger btn-block mb-3" href="<?php echo url('home-content', array('op'=>'create'));?>"><?php echo lang('well_publish_article');?></a>
+<?php } ?>

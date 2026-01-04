@@ -1,0 +1,22 @@
+<?php if($_thread['fid']<799) { 
+	
+	?>
+
+
+	<div class="proBox">
+
+		<?php if($_thread['price']>0) { ?>
+			<span class="delPrice"></span>
+		<span class="priceBox none priceItemNumBox" price="<?php echo $_thread['price'];?>">$<?php echo $_thread['price'];?>USD
+		</span>
+		<?php } else { ?>
+			<div class="priceBox" style="margin-right: 10px;" price="<?php echo $_thread['price'];?>">
+			<button class="btn btn-outline-secondary btn-sm checkPrice">Check Price</button>
+			</div>
+			<?php } ?>
+	
+	</div>
+
+	<button type="button" class="btn btn-dark  btn-sm addCardBtn" ><i class="icon-cart-plus"></i> Add to cart</button>
+		
+<?php } ?>

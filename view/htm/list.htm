@@ -1,0 +1,84 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+<!--{hook list_start.htm}-->
+
+        	<!--{hook read_main_breadcrumb_start.htm}-->
+		<ol class="breadcrumb d-md-flex border-light border-left-primary">
+			<li class="breadcrumb-item">
+				<a href="<?php echo $conf['path'];?>" aria-label="<?php echo lang('index_page'); ?>">
+					<i class="icon-home text-primary"></i>
+				</a>
+			</li>
+			<!--{hook read_main_breadcrumb_before.htm}-->
+			<?php if($forum['fup']) { ?>
+			<li class="breadcrumb-item">
+			    <a href="<?php echo url('category-' . $forum['fup'], '', FALSE);?>" tabindex="0">
+				      <?php echo $fup['name'];?>
+						</a>
+			   
+			</li>
+			<?php } ?>
+			<li class="breadcrumb-item">
+                <a href="<?php echo $forum['url']; ?>">
+                    <?php echo $forum['name'];?>
+                </a>
+            </li>
+            
+		</ol>
+		
+        <?php if($forum['announcement']) { ?>
+        <div class="card card-mod-info border-0 mb-3">
+            <div class="card-body">
+                <h6 class="card-title">
+                    <?php echo lang('forum_anouncement');?>：
+                </h6>
+                <p class="small">
+                    <?php echo $forum['announcement'];?>
+                </p>
+            </div>
+        </div>
+        <?php  } ?>
+        <!--{hook list_main_start.htm}-->
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link <?php echo 'default' == $active ? 'active' : '';?>" href="<?php echo $forum['url'];?>">
+                        <?php echo lang('new_thread');?>
+                    </a>
+                </li>
+                <!--{hook list_main_nav_item_after.htm}-->
+            </ul>
+        </div>
+
+        <div class="row mainBody">
+            <!--{hook list_main_threadlist_before.htm}-->
+            <?php include _include(APP_PATH . 'view/htm/thread_list.inc.htm');?>
+            <!--{hook list_main_threadlist_after.htm}-->
+        </div>
+
+        <!--{hook list_thread_list_mod_before.htm}-->
+
+        <?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+
+        <!--{hook list_main_page_before.htm}-->
+        <?php if ($pagination) { ?>
+        <nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+            <div class="loadMoreBox">
+                <button type="button" id="listLoadMore" curPage="<?php echo $page ?>" class="btn btn-secondary btn-lg">Load More</button>
+            </div>
+        </nav>
+        <?php } ?>
+        <!--{hook list_main_page_after.htm}-->
+
+
+
+<!--{hook list_end.htm}-->
+
+<?php include _include(APP_PATH . 'view/htm/footer.inc.htm');?>
+
+<script>
+    $('#nav li[data-active="fid-<?php echo $fid;?>"]').addClass('active');
+</script>
+<!--{hook list_js.htm}-->

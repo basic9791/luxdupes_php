@@ -1,0 +1,80 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<!--{hook website_search_start.htm}-->
+
+	<div class="container-fluid">
+		<?php if($keyword) { ?>
+		<div style="padding:10px;word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem; margin-bottom: 15px;">
+			 Keywords:<b style="margin-right: 25px; display: inline;color:#000"><?php echo xn_urldecode($keyword);?> </b>
+
+			<?php if($fnameFind) { ?>
+				Category: <b style="margin-right: 25px; display: inline;color:#000"><?php echo $fnameFind;?></b>
+			<?php } ?>
+		</div>
+
+		
+		<?php if(1 == $range) { ?>
+		<?php if(!empty($threadlist)) { ?>
+		
+
+			<div class="row mainBody">
+	
+					<!--{hook website_search_threadlist_before.htm}-->
+					<?php include _include(APP_PATH.'view/htm/thread_list.inc.htm');?>
+					<!--{hook website_search_threadlist_after.htm}-->
+	
+			</div>
+	
+		
+		<?php } else { ?>
+
+        <div class="card">
+            <div class="card-body">
+                <?php echo lang('none');?>
+            </div>
+        </div>
+
+		<?php }} else { ?>
+
+		<div class="card">
+			<div class="card-body">
+				<?php echo lang('none');?>
+			</div>
+		</div>
+		
+		<?php } ?>
+		
+		<?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+		
+		<!--{hook website_search_page_before.htm}-->
+		<?php if($pagination) { ?>
+		<nav>
+            <ul class="pagination justify-content-center">
+                <?php echo $pagination; ?>
+            </ul>
+        </nav>
+		<?php } ?>
+		<!--{hook website_search_page_end.htm}-->
+
+		<?php }else{ ?>
+
+			Please enter the keyword you want to search for.
+
+		<?php } ?>
+
+	</div>
+
+
+<!--{hook website_search_end.htm}-->
+
+<?php include _include(APP_PATH.'view/htm/footer.inc.htm');?>
+
+<script>
+$('#nav_pc li[fid="<?php echo $fid;?>"]').addClass('active');
+</script>
+
+<!--{hook website_search_js.htm}-->

@@ -1,0 +1,6 @@
+{
+    "codingcopilot.enableCompletionLanguage": {
+        "scmInput": false
+    },
+    "codingcopilot.enableInlineChatIDEShortcutsTip": false
+}

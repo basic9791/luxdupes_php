@@ -1,0 +1,895 @@
+[
+  {
+    "findName": "ACOL,DWALL,冷墙",
+    "keyword": "ACOLDWALL"
+  },
+  {
+    "findName": "Adidas,adadis,阿迪,达斯,三叶草",
+    "keyword": "Adidas/阿迪达斯"
+  },
+  {
+    "findName": "AESOP,伊索",
+    "keyword": "AESOP/伊索"
+  },
+  {
+    "findName": "AHC",
+    "keyword": "AHC"
+  },
+  {
+    "findName": "AIGLE,始祖鸟,ARC,始*,始～",
+    "keyword": "AIGLE/始祖鸟"
+  },
+  {
+    "findName": "AIMER,MEN,爱慕",
+    "keyword": "AIMER MEN/爱慕先生"
+  },
+  {
+    "findName": "McQueen,麦昆",
+    "keyword": "Alexander McQueen/亚历山大麦昆"
+  },
+  {
+    "findName": "Wan,大·王,大王",
+    "keyword": "Alexander Wang/亚历山大·王"
+  },
+  {
+    "findName": "Allie,嘉娜宝",
+    "keyword": "Allie/嘉娜宝"
+  },
+  {
+    "findName": "Amina,Muaddi",
+    "keyword": "Amina Muaddi"
+  },
+  {
+    "findName": "Amir,艾米,阿米",
+    "keyword": "Amiri/艾米"
+  },
+  {
+    "findName": "Apm,monaco",
+    "keyword": "Apm monaco"
+  },
+  {
+    "findName": "Armani,Armai,Emporio,Giorgio,阿玛,阿尼,阿～,阿*,阿家,阿马,玛尼",
+    "keyword": "Armani/阿玛尼"
+  },
+  {
+    "findName": "ASICS,亚瑟士",
+    "keyword": "ASICS/亚瑟士"
+  },
+  {
+    "findName": "Asics,GelKayano",
+    "keyword": "Asics GelKayano "
+  },
+  {
+    "findName": "Audemars,爱彼,艾彼",
+    "keyword": "Audemars/爱彼"
+  },
+  {
+    "findName": "AXXZIA,晓姿",
+    "keyword": "AXXZIA/晓姿"
+  },
+  {
+    "findName": "Balen,世家,𝗕𝗮𝗹𝗲,𝗻𝗰𝗶𝗮𝗴,巴～,𝘽𝘼𝙇𝙀𝙉,𝘾𝙄𝘼𝙂𝘼",
+    "keyword": "Balenciaga/巴黎世家"
+  },
+  {
+    "findName": "BALLY,巴利",
+    "keyword": "BALLY/巴利"
+  },
+  {
+    "findName": "Balmain,巴尔曼",
+    "keyword": "Balmain/巴尔曼"
+  },
+  {
+    "findName": "Berl,伯尔鲁帝,布鲁提",
+    "keyword": "Berluti/伯尔鲁帝"
+  },
+  {
+    "findName": "Biother,碧欧泉,碧～,碧*",
+    "keyword": "Biother/碧欧泉"
+  },
+  {
+    "findName": "Birken,stock,勃肯",
+    "keyword": "Birkenstock/勃肯"
+  },
+  {
+    "findName": "Blancpain,宝珀",
+    "keyword": "Blancpain/宝珀"
+  },
+  {
+    "findName": "Bobbi,芭比,波朗",
+    "keyword": "Bobbi Brown/芭比波朗"
+  },
+  {
+    "findName": "BOLON,暴龙,保龙,爆龙,瀑龙",
+    "keyword": "BOLON/暴龙"
+  },
+  {
+    "findName": "Bottega,葆蝶,葆～,葆*,宝缇嘉,Veneta,BV , BV",
+    "keyword": "Bottega/葆蝶家"
+  },
+  {
+    "findName": "Boucheron,宝诗龙,宝龙",
+    "keyword": "Boucheron/宝诗龙"
+  },
+  {
+    "findName": "Boy,London",
+    "keyword": "Boy London"
+  },
+  {
+    "findName": "Breguet,宝玑",
+    "keyword": "Breguet/宝玑"
+  },
+  {
+    "findName": "百年灵,REITLING",
+    "keyword": "BREITLING/百年灵"
+  },
+  {
+    "findName": "Brunello,Cucinelli,布鲁内洛,库奇内利,BC新",
+    "keyword": "Brunello Cucinelli/布鲁内洛·库奇内利"
+  },
+  {
+    "findName": "Bulgari,宝格丽",
+    "keyword": "Bulgari/宝格丽"
+  },
+  {
+    "findName": "Burberry,Burbery,战马,BBR,BUR,博柏利,宝莉,巴莉,巴宝,𝑩𝑼𝑹𝑩,𝑬𝑹𝑹𝒀,巴保",
+    "keyword": "Burberry/博柏利"
+  },
+  {
+    "findName": "Bvlgari,宝格丽",
+    "keyword": "Bvlgari/宝格丽"
+  },
+  {
+    "findName": "Byrdeo,百瑞德",
+    "keyword": "Byrdeo/百瑞德"
+  },
+  {
+    "findName": "Calvin,Klein,凯文,克莱",
+    "keyword": "Calvin Klein/凯文克莱"
+  },
+  {
+    "findName": "Canada,Goose,加拿大,大鹅",
+    "keyword": "Canada Goose/加拿大鹅"
+  },
+  {
+    "findName": "Carh,artt,卡哈特",
+    "keyword": "Carhartt/卡哈特"
+  },
+  {
+    "findName": "Carrie Atelier",
+    "keyword": "Carrie Atelier"
+  },
+  {
+    "findName": "Cartie,卡地,卡家",
+    "keyword": "Cartier/卡地亚"
+  },
+  {
+    "findName": "CASIO,卡西欧",
+    "keyword": "CASIO/卡西欧"
+  },
+  {
+    "findName": "Cel,céline,琳,𝗖𝗘𝗟𝗜𝗡𝗘,塞林",
+    "keyword": "Celine/思琳/赛琳"
+  },
+  {
+    "findName": "Champion,冠军",
+    "keyword": "Champion/冠军"
+  },
+  {
+    "findName": "Chan,chn,Chal,香奈,香家,c家,小香,香～,香*,CH ,ch*,Ch@,ch～,𝑪𝒉𝒂𝒏𝒆𝒍,𝗖𝗵𝗮𝗻𝗲,𝗖𝗛𝗔𝗡𝗘𝗟,𝐂𝐡𝐚𝐧𝐞,𝗖𝗛𝗔𝗡𝗘",
+    "keyword": "Chanel/香奈儿"
+  },
+  {
+    "findName": "Chaumet,尚美",
+    "keyword": "Chaumet/尚美巴黎"
+  },
+  {
+    "findName": "Chloe,蔻依,Chloé,蔻～,蔻*,克洛,洛伊",
+    "keyword": "Chloe/蔻依"
+  },
+  {
+    "findName": "Chopard,萧邦,肖邦,萧～,萧*",
+    "keyword": "Chopard/萧邦/肖邦"
+  },
+  {
+    "findName": "Christian,Louboutin,鲁布托,Chrstian,Loubotin",
+    "keyword": "Christian Louboutin/克里斯提·鲁布托"
+  },
+  {
+    "findName": "Christopher,Kane,克里斯托弗,凯恩",
+    "keyword": "Christopher Kane/克里斯托弗·凯恩"
+  },
+  {
+    "findName": "Chrome,Hearts,克罗,剋罗心,尅罗,Chroe,Hears,克心",
+    "keyword": "Chrome Hearts/克罗心"
+  },
+  {
+    "findName": "CLA,RINS,娇韵,韵诗",
+    "keyword": "CLARINS/娇韵诗"
+  },
+  {
+    "findName": "Clinique,倩碧",
+    "keyword": "Clinique/倩碧"
+  },
+  {
+    "findName": "Coach,蔻驰",
+    "keyword": "Coach/蔻驰"
+  },
+  {
+    "findName": "Converse,匡威",
+    "keyword": "Converse/匡威"
+  },
+  {
+    "findName": "COSME,DECORTE,黛珂",
+    "keyword": "COSME DECORTE 黛珂"
+  },
+  {
+    "findName": "D&G,DG,Dolce,Gabbana,杜嘉,班纳,杜～,杜*, 杜 ",
+    "keyword": "D&G/杜嘉班纳"
+  },
+  {
+    "findName": "Daniel,Wellington,DW,丹尼尔,惠灵顿",
+    "keyword": "Daniel Wellington/丹尼尔惠灵顿"
+  },
+  {
+    "findName": "DAVID,BECKHAM,贝克,汉姆",
+    "keyword": "DAVID BECKHAM/贝克汉姆"
+  },
+  {
+    "findName": "Yurman,雅曼",
+    "keyword": "David Yurman/大卫·雅曼"
+  },
+  {
+    "findName": "Beers,戴比,尔斯",
+    "keyword": "De Beers/戴比尔斯"
+  },
+  {
+    "findName": "Desc,迪桑,迪珊",
+    "keyword": "Descente/迪桑特"
+  },
+  {
+    "findName": "Dic,kies,迪凯,凯斯",
+    "keyword": "Dickies/迪凯斯"
+  },
+  {
+    "findName": "DIESEL,迪赛",
+    "keyword": "DIESEL/迪赛"
+  },
+  {
+    "findName": "Dikies,迪克斯",
+    "keyword": "Dikies/迪克斯"
+  },
+  {
+    "findName": "Dio,CD,dir,di0,Di*,D家,DOIR,lady,DJoy,迪澳,D迪,迪家,迪奥,迪～,迪*, 迪 ",
+    "keyword": "Dior/迪奥"
+  },
+  {
+    "findName": "DIPTYQUE,蒂普,普克,克提",
+    "keyword": "DIPTYQUE/蒂普克提"
+  },
+  {
+    "findName": "DITA,迪塔,dlt",
+    "keyword": "DITA/迪塔"
+  },
+  {
+    "findName": "Martens,马丁博士",
+    "keyword": "DrMartens/马丁博士"
+  },
+  {
+    "findName": "Dsquared,D2,二次方",
+    "keyword": "Dsquared/D二次方"
+  },
+  {
+    "findName": "ECCO,爱步",
+    "keyword": "ECCO/爱步"
+  },
+  {
+    "findName": "Elizabeth,Arden,伊丽莎白,雅顿",
+    "keyword": "Elizabeth Arden/伊丽莎白·雅顿"
+  },
+  {
+    "findName": "Essentials,街头潮牌",
+    "keyword": "Essentials/街头潮牌"
+  },
+  {
+    "findName": "雅诗,兰黛,Estee,Lauder",
+    "keyword": "Estee Lauder/雅诗兰黛"
+  },
+  {
+    "findName": "evidens,伊菲丹",
+    "keyword": "evidens/伊菲丹"
+  },
+  {
+    "findName": "Evis,福神",
+    "keyword": "Evisu/福神"
+  },
+  {
+    "findName": "Fen,F D,芬迪,FD , F ",
+    "keyword": "Fendi/芬迪"
+  },
+  {
+    "findName": "FILA,斐乐",
+    "keyword": "FILA/斐乐"
+  },
+  {
+    "findName": "Fear,God,FOG,Essential",
+    "keyword": "FOG Essential"
+  },
+  {
+    "findName": "Franck,Muller,法穆兰",
+    "keyword": "Franck Muller/法穆兰"
+  },
+  {
+    "findName": "Galliano,约翰,加利亚诺",
+    "keyword": "Galliano/约翰·加利亚诺"
+  },
+  {
+    "findName": "GENTLE,MONSTER",
+    "keyword": "GENTLE MONSTER"
+  },
+  {
+    "findName": "Gina",
+    "keyword": "Gina"
+  },
+  {
+    "findName": "Giuseppe,Zanotti,朱塞佩,萨诺第",
+    "keyword": "Giuseppe Zanotti/朱塞佩·萨诺第"
+  },
+  {
+    "findName": "Givenchy,GIV,梵希,GVC",
+    "keyword": "Givenchy/纪梵希"
+  },
+  {
+    "findName": "Glashutte,格拉,苏蒂",
+    "keyword": "Glashutte/格拉苏蒂"
+  },
+  {
+    "findName": "Goros,高桥吾郎",
+    "keyword": "Goros/高桥吾郎"
+  },
+  {
+    "findName": "Goyard,雅德",
+    "keyword": "Goyard/高雅德"
+  },
+  {
+    "findName": "Gu,gcc,古驰,古家,古池,G家,古弛,古奇,GG,古～,古*,G*,古琦,酷奇,𝐆𝐮𝐜𝐜𝐢,𝙂𝙐𝘾,Supreme",
+    "keyword": "Gucci/古驰"
+  },
+  {
+    "findName": "Guerlain,娇兰,娇～,娇*",
+    "keyword": "Guerlain/娇兰"
+  },
+  {
+    "findName": "Harry,Winston,海瑞,温斯顿,温～",
+    "keyword": "Harry Winston/海瑞温斯顿"
+  },
+  {
+    "findName": "Helena,Rubinstein,赫莲娜",
+    "keyword": "Helena Rubinstein/赫莲娜"
+  },
+  {
+    "findName": "HELLY,HANSEN,海丽,汉森",
+    "keyword": "HELLY HANSEN/海丽汉森"
+  },
+  {
+    "findName": "HELLY,HANSEN,海丽,汉森",
+    "keyword": "HELLY HANSEN/海丽汉森"
+  },
+  {
+    "findName": "Herm,hm,▫️H,Hem,H专,大马,爱马,H家,H高,爱玛, H ,爱～",
+    "keyword": "Hermes/爱马仕"
+  },
+  {
+    "findName": "HOGA",
+    "keyword": "HOGAN"
+  },
+  {
+    "findName": "HUBLOT,宇舶,恒宝",
+    "keyword": "HUBLOT/宇舶/恒宝"
+  },
+  {
+    "findName": "HUGO,Boss,雨果,博斯",
+    "keyword": "HUGO Boss"
+  },
+  {
+    "findName": "issey,miyake,三宅一生",
+    "keyword": "issey miyake/三宅一生"
+  },
+  {
+    "findName": "IWC,International,万国,万～,万*,沙夫,豪森",
+    "keyword": "IWC/万国"
+  },
+  {
+    "findName": "JACOUEMUS,嘉珂,慕诗",
+    "keyword": "JACOUEMUS/嘉珂慕诗"
+  },
+  {
+    "findName": "Jacquemus",
+    "keyword": "Jacquemus"
+  },
+  {
+    "findName": "Jaeger,LeCoultre,积家",
+    "keyword": "Jaeger-LeCoultre/积家"
+  },
+  {
+    "findName": "Jean,Gaultier,高提耶,高～",
+    "keyword": "Jean Paul Gaultier/高提耶"
+  },
+  {
+    "findName": "JIL,SANDER,吉尔,桑达",
+    "keyword": "JIL SANDER/吉尔·桑达"
+  },
+  {
+    "findName": "Jimmy Choo",
+    "keyword": "Jimmy Choo"
+  },
+  {
+    "findName": "Malone,祖玛,玛珑,祖马,祖妈",
+    "keyword": "Jo Malone/祖玛珑"
+  },
+  {
+    "findName": "Jordan,乔丹",
+    "keyword": "Jordan/乔丹"
+  },
+  {
+    "findName": "Joseph,José,phine",
+    "keyword": "Joseph"
+  },
+  {
+    "findName": "Kelly,凯莉",
+    "keyword": "Kelly/凯莉"
+  },
+  {
+    "findName": "高田,贤三,kenz,肯左",
+    "keyword": "KENZO/高田贤三"
+  },
+  {
+    "findName": "Kiehl,科颜,颜氏",
+    "keyword": "Kiehl’s/科颜氏"
+  },
+  {
+    "findName": "kolon,sport,可隆",
+    "keyword": "kolon sport/可隆"
+  },
+  {
+    "findName": "COSTE,𝐂𝐎𝐒𝐓𝐄,法国鳄鱼,三色鱼,Lacote",
+    "keyword": "LACOSTE/鳄鱼"
+  },
+  {
+    "findName": "Lacroix",
+    "keyword": "Lacroix"
+  },
+  {
+    "findName": "La Mer,海蓝之谜",
+    "keyword": "La Mer/海蓝之谜"
+  },
+  {
+    "findName": "Lancome,兰蔻,兰～,兰*",
+    "keyword": "Lancome/兰蔻"
+  },
+  {
+    "findName": "Lange,朗格,Sö,hne,SAXONIA",
+    "keyword": "Lange/朗格"
+  },
+  {
+    "findName": "Lanvin,浪凡",
+    "keyword": "Lanvin/浪凡"
+  },
+  {
+    "findName": "Prairie,莱珀妮",
+    "keyword": "La Prairie/莱珀妮"
+  },
+  {
+    "findName": "ning,李宁",
+    "keyword": "LI NING/李宁"
+  },
+  {
+    "findName": "Loewe,罗意,罗威,意威,罗家",
+    "keyword": "Loewe/罗意威"
+  },
+  {
+    "findName": "Lola,Rose,罗拉",
+    "keyword": "Lola Rose/罗拉"
+  },
+  {
+    "findName": "Longines,浪琴,浪～,浪*",
+    "keyword": "Longines/浪琴"
+  },
+  {
+    "findName": "Loro,Pian,诺悠,翩雅,诺优",
+    "keyword": "Loro Piana/诺悠翩雅"
+  },
+  {
+    "findName": "LV,LOUIS, L ,▫️L,L*,Favorite,Nano,Neverfull,V登,路登,VUITTON,LOUSVUITT,Keepall,Trainer,Flight,老花,路易,威登,1V,L牌,驴,L家,L～,路～,𝕃𝕠𝕦𝕚𝕤,𝕧𝕦𝕚𝕥𝕥𝕠𝕟",
+    "keyword": "LV/路易威登"
+  },
+  {
+  
+    "findName": "Artisan,Parfumeur,阿蒂,蒂仙",
+    "keyword": "L’Artisan Parfumeur/阿蒂仙"
+  },
+  {
+    "findName": "OCCITANE,欧舒丹",
+    "keyword": "L’OCCITANE/欧舒丹"
+  },
+  {
+    "findName": "ORÉAL,OREAL,欧莱雅",
+    "keyword": "L’ORÉAL/欧莱雅"
+  },
+  {
+    "findName": "Mach",
+    "keyword": "Mach & Mach"
+  },
+  {
+    "findName": "Maison,Michel",
+    "keyword": "Maison Michel"
+  },
+  {
+    "findName": "Mammut,猛犸",
+    "keyword": "Mammut/猛犸象"
+  },
+  {
+    "findName": "margiela,马吉,吉拉",
+    "keyword": "margiela/马吉拉"
+  },
+  {
+    "findName": "MARIE,MAGE",
+    "keyword": "MARIE MAGE"
+  },
+  {
+    "findName": "Marni",
+    "keyword": "Marni"
+  },
+  {
+    "findName": "master,mind",
+    "keyword": "master mind"
+  },
+  {
+    "findName": "Matthew,Williamson,威廉姆森",
+    "keyword": "Matthew Williamson/马修·威廉姆森"
+  },
+  {
+    "findName": "Maurice,Lacroix,艾美",
+    "keyword": "Maurice Lacroix/艾美"
+  },
+  {
+    "findName": "Mara,麦丝,玛拉,麦斯",
+    "keyword": "Max Mara/麦丝玛拉"
+  },
+  {
+    "findName": "MAYBACH,迈巴赫",
+    "keyword": "MAYBACH/迈巴赫"
+  },
+  {
+    "findName": "MCM",
+    "keyword": "MCM"
+  },
+  {
+    "findName": "Mercedes,Benz,梅赛德斯",
+    "keyword": "MercedesBenz/梅赛德斯奔驰"
+  },
+  {
+    "findName": "Michael,Kors,迈克高仕",
+    "keyword": "Michael Kors/迈克高仕"
+  },
+  {
+    "findName": "Mido,美度,美～,美*",
+    "keyword": "Mido/美度"
+  },
+  {
+    "findName": "Mikimoto,御木本",
+    "keyword": "Mikimoto/御木本"
+  },
+  {
+    "findName": "Mira Martinova",
+    "keyword": "Mira Martinova"
+  },
+  {
+    "findName": "Miu,𝗠𝗜𝗨,谬,缪,𝘔𝘐𝘜",
+    "keyword": "MiuMiu/谬谬"
+  },
+  {
+    "findName": "MLB,美联棒",
+    "keyword": "MLB/美联棒"
+  },
+  {
+    "findName": "蒙口,Monc,濛口,蒙家",
+    "keyword": "MONCLER/蒙口"
+  },
+  {
+    "findName": "Montblanc,MONT,万宝龙",
+    "keyword": "Montblanc/万宝龙"
+  },
+  {
+    "findName": "MOSCHINO,莫斯奇诺",
+    "keyword": "MOSCHINO/莫斯奇诺"
+  },
+  {
+    "findName": "Mov,ado,摩凡,凡陀",
+    "keyword": "Movado/摩凡陀"
+  },
+  {
+    "findName": "Nars",
+    "keyword": "Nars"
+  },
+  {
+    "findName": "Balance,新百伦,BALNIGA",
+    "keyword": "New Balance/新百伦"
+  },
+  {
+    "findName": "holas,Kir,kwood",
+    "keyword": "Nicholas Kirkwood"
+  },
+  {
+    "findName": "Nike,耐克,NK,Zoom,Winflo",
+    "keyword": "Nike/耐克"
+  },
+  {
+    "findName": "NY,Yankees",
+    "keyword": "NY/New York Yankees"
+  },
+  {
+    "findName": "Off White,Off-white",
+    "keyword": "Off White"
+  },
+  {
+    "findName": "OLAY,玉兰油",
+    "keyword": "OLAY/玉兰油"
+  },
+  {
+    "findName": "Lynggard",
+    "keyword": "Ole Lynggard"
+  },
+  {
+    "findName": "OMEGA,欧米茄,海马,欧～",
+    "keyword": "OMEGA/欧米茄"
+  },
+  {
+    "findName": "Palm,Angels",
+    "keyword": "Palm Angels"
+  },
+  {
+    "findName": "Pan,erai,沛纳,纳海",
+    "keyword": "Panerai/沛纳海"
+  },
+  {
+    "findName": "Parfums,Marly,瑪麗,玛丽,之香",
+    "keyword": "ParfumsdeMarly/瑪麗之香"
+  },
+  {
+    "findName": "Acqua,Parma,帕尔玛",
+    "keyword": "Parma/帕尔玛"
+  },
+  {
+    "findName": "pata,gonia,巴塔哥",
+    "keyword": "patagonia/巴塔哥尼亚"
+  },
+  {
+    "findName": "Patek Philippe,百达,翡丽,百～,百 达,翡 丽,.翡",
+    "keyword": "Patek Philippe/百达翡丽"
+  },
+  {
+    "findName": "Smith,史密斯",
+    "keyword": "Paul Smith/保罗史密斯"
+  },
+  {
+    "findName": "潘海,利根,Penhal,igon ",
+    "keyword": "Penhaligon’s/潘海利根"
+  },
+  {
+    "findName": "Philip,Plein,Plaine,菲利普,莱茵,普普莱",
+    "keyword": "PHILIPP PLEIN/菲利普普莱茵"
+  },
+  {
+    "findName": "Piaget,伯爵,伯～",
+    "keyword": "Piaget/伯爵"
+  },
+  {
+    "findName": "ralph,拉夫,劳伦",
+    "keyword": "Polo ralph lauren/拉夫劳伦"
+  },
+  {
+    "findName": "Porsche,保时捷",
+    "keyword": "Porsche/保时捷"
+  },
+  {
+    "findName": "Prad,普拉达,普拉‘,普达,普拉～,P 家,▫️P,PD,rda,普～, 普 ,帕达,PA*拉,普*达,PR*DA,P家,P*,P～,普家,𝗣𝗥𝗔𝗗",
+    "keyword": "Prada/普拉达"
+  },
+  {
+    "findName": "PREMI,普拉米,亚达",
+    "keyword": "PREMIATA/普拉米亚达"
+  },
+  {
+    "findName": "Puma,彪马",
+    "keyword": "Puma/彪马"
+  },
+  {
+    "findName": "POLO,保罗",
+    "keyword": "POLO/保罗"
+  },
+  {
+    "findName": "Bone,瑞格,布恩",
+    "keyword": "Rag & Bone/瑞格布恩"
+  },
+  {
+    "findName": "Ray,Ban,雷朋",
+    "keyword": "RayBan/雷朋"
+  },
+  {
+    "findName": "Mille,理查,米尔",
+    "keyword": "Richard Mille/ 理查米尔"
+  },
+  {
+    "findName": "Roberto,Cavalli",
+    "keyword": "Roberto Cavalli"
+  },
+  {
+    "findName": "CAVALLI,Roberto,Calali,罗伯特,卡沃利",
+    "keyword": "ROBERTO CAVALLI/罗伯特·卡沃利"
+  },
+  {
+    "findName": "Dubuis,罗杰,杜彼",
+    "keyword": "Roger Dubuis/罗杰杜彼"
+  },
+  {
+    "findName": "Vivier,维维亚",
+    "keyword": "Roger Vivier,罗杰维维亚"
+  },
+  {
+    "findName": "Rolex,劳力,劳～,Clean,Diw,劳家,ARF ",
+    "keyword": "Rolex/劳力士"
+  },
+  {
+    "findName": "萨洛,洛蒙,Salomon",
+    "keyword": "Salomon/萨洛蒙"
+  },
+  {
+    "findName": "Salva,tore,Ferr,agamo,菲拉,非～,菲～,菲男,菲女",
+    "keyword": "Salvatore Ferragamo/菲拉格慕"
+  },
+  {
+    "findName": "SANDOZ,山度",
+    "keyword": "SANDOZ/山度"
+  },
+  {
+    "findName": "Sandro",
+    "keyword": "Sandro"
+  },
+  {
+    "findName": "Seiko,精工",
+    "keyword": "Seiko/精工"
+  },
+  {
+    "findName": "Portrait",
+    "keyword": "Self Portrait"
+  },
+  {
+    "findName": "ShuU,emura,植村,村秀",
+    "keyword": "ShuUemura/植村秀"
+  },
+  {
+    "findName": "Sisley,希思黎,希世黎,希～",
+    "keyword": "Sisley/希思黎"
+  },
+  {
+    "findName": "SK-,II,sk2",
+    "keyword": "SK-II"
+  },
+  {
+    "findName": "Snow,Peak",
+    "keyword": "Snow Peak"
+  },
+  {
+    "findName": "Stella,McCartney",
+    "keyword": "Stella McCartney"
+  },
+  {
+    "findName": "Stone,Island,石头岛",
+    "keyword": "Stone Island/石头岛"
+  },
+  {
+    "findName": "STU,SSY,斯图西,Stü",
+    "keyword": "STUSSY/斯图西"
+  },
+  {
+    "findName": "Swarovski,施华洛,华洛,世奇",
+    "keyword": "Swarovski/施华洛世奇"
+  },
+  {
+    "findName": "Heuer,泰格,豪雅,雅竞",
+    "keyword": "TAG Heuer/泰格豪雅竞"
+  },
+  {
+    "findName": "North,𝐍𝐨𝐫𝐭𝐡,𝗡𝗢𝗥𝗧𝗛,乐斯,菲斯,𝗡𝗼𝗿𝘁𝗵,TNF",
+    "keyword": "TheNorthFace/乐斯菲斯"
+  },
+  {
+    "findName": "Thom,Browne, TB ,汤姆布朗,【TB】",
+    "keyword": "Thom Browne/汤姆布朗"
+  },
+  {
+    "findName": "Tiffany,蒂芙尼",
+    "keyword": "Tiffany/蒂芙尼"
+  },
+  {
+    "findName": "Timbe,rland,添柏岚",
+    "keyword": "Timberland/添柏岚"
+  },
+  {
+    "findName": "TODS,托德斯",
+    "keyword": "TODS/托德斯"
+  },
+  {
+    "findName": "TOM,FORD,汤姆福特",
+    "keyword": "TOM FORD/汤姆福特"
+  },
+  {
+    "findName": "Tommy,Hilfiger,汤米,希尔,费格",
+    "keyword": "Tommy Hilfiger/汤米希尔费格"
+  },
+  {
+    "findName": "Tory,Burch汤丽,柏琦,托里,伯奇",
+    "keyword": "Tory Burch/汤丽柏琦"
+  },
+  {
+    "findName": "TUDOR,帝舵,帝陀",
+    "keyword": "TUDOR/帝舵"
+  },
+  {
+    "findName": "Under,Armour,安德玛",
+    "keyword": "Under Armour/安德玛"
+  },
+  {
+    "findName": "vacheron,constantin,江诗丹顿,江～",
+    "keyword": "vacheron constantin/江诗丹顿"
+  },
+  {
+    "findName": "Valentin,华伦,天奴,Valentio,vltn",
+    "keyword": "Valentino/华伦天奴"
+  },
+  {
+    "findName": "Van Cleef,梵克,雅宝",
+    "keyword": "Van Cleef/梵克雅宝"
+  },
+  {
+    "findName": "vans,万斯,范斯",
+    "keyword": "vans/范斯"
+  },
+  {
+    "findName": "Versa,𝙑𝙀𝙍𝙎𝘼,范,Versce",
+    "keyword": "Versace/范思哲"
+  },
+  {
+    "findName": "Victoria,维多利亚",
+    "keyword": "Victoria/维多利亚"
+  },
+  {
+    "findName": "Vivienne,Westwood,西太后",
+    "keyword": "Vivienne Westwood/西太后"
+  },
+  {
+    "findName": "Well,Done,WE11",
+    "keyword": "WellDone"
+  },
+  {
+    "findName": "BIONIC",
+    "keyword": "X-BIONIC"
+  },
+  {
+    "findName": "Yohji,Yamamoto,山本,耀司",
+    "keyword": "Yohji Yamamoto/山本耀司"
+  },
+  {
+    "findName": "YSL,YL,圣兰,圣罗兰,Yves,SAINT,LAUREN,SOLF,ERINO,niki",
+    "keyword": "YSL/圣罗兰"
+  },
+  {
+    "findName": "杰尼,zg,杰亚,尼亚,ez,zeg, 杰 ",
+    "keyword": "Zegna/杰尼亚"
+  },
+  {
+    "findName": "ZENITH,真力时",
+    "keyword": "ZENITH/真力时"
+  }
+]

@@ -1,0 +1,177 @@
+<template include="./view/htm/common.header.htm">
+	<slot name="body">
+        <ul class="list-unstyled bg-white">
+            <?php if($threadlist) { foreach($threadlist as &$_thread) { ?>
+            <li class="media thread tap" data-href="<?php echo $_thread['url']; ?>" tid="<?php echo $_thread['tid'];?>">
+
+                <!-- 批量管理选择框 -->
+                <?php if($_thread['allowdelete']) { ?>
+                <div class="custom-control custom-checkbox ml-2">
+                    <input class="custom-control-input" type="checkbox" id="modtid-<?php echo $_thread['tid']; ?>" name="modtid" value="<?php echo $_thread['tid']; ?>" />
+                    <label class="custom-control-label custom-checkbox" for="modtid-<?php echo $_thread['tid']; ?>">
+                    </label>
+                </div>
+                <?php } ?>
+
+                <div class="media-body">
+                    <div class="media">
+                        <!-- 缩略图 -->
+                        <?php if ($_thread['icon']) { ?>
+                        <div class="col-4 col-md-3">
+                            <a href="<?php echo $_thread['url']; ?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                            <img class="d-block w-100 rounded" src="<?php echo $_thread['icon_fmt'];?>" title='<?php echo $_thread['subject'];?>' alt='<?php echo $_thread['subject'];?>' />
+                            </a>
+                        </div>
+                        <?php } ?>
+
+                        <div class="media-body">
+                            <div class="col-lg-12 subject">
+
+                                <!-- 是否锁定 -->
+                                <?php if($_thread['closed'] > 0) { ?>
+                                <span class="mr-2">
+                                    <i class="icon-lock text-<?php echo 1==$_thread['closed']?'danger':'dark';?>"></i>
+                                </span>
+                                <?php } ?>
+
+                                <!-- 标题 -->
+                                <h2 class="h6 text-break font-weight-bold d-inline">
+                                    <a href="<?php echo $_thread['url']; ?>" aria-label="<?php echo $_thread['subject'];?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                                    <?php echo $_thread['subject'];?>
+                                    </a>
+                                </h2>
+
+                                <!-- 是否传有附件图标 -->
+                                <?php if($_thread['files'] > 0) { ?>
+                                &nbsp;<i class="icon small filetype other"></i>&nbsp;
+                                <?php } ?>
+                            </div>
+
+                            <?php if($_thread['brief']){?>
+                            <div class="col-lg-12 text-break text-muted brief mt-2">
+                                <!-- 简介 -->
+                                <?php echo $_thread['brief'];?>
+                            </div>
+                            <?php }?>
+
+                            <!-- 主题tag -->
+                            <?php if($_thread['tag']){?>
+                            <div class="tag col-lg-12 text-break d-none d-md-block small text-muted mt-3">
+                                <i class="icon-tags mr-2"></i>
+                                <?php foreach($_thread['tag_fmt'] as $key => $_tag) {?>
+                                <span class="mr-2">
+                                    <strong class="mb-0">
+                                        <a class="text-secondary" href="<?php echo url('tag-'.$key);?>">
+                                            <?php echo $_tag;?>
+                                        </a>
+                                    </strong>
+                                </span>
+                                <?php }?>
+                            </div>
+                            <?php }?>
+
+                            <div class="col-lg-12 d-flex justify-content-between text-grey mt-2">
+                                <div class="d-flex">
+                                    <!-- 主题创建者头像 -->
+                                    <a href="<?php echo url('user-' . $_thread['uid']);?>" tabindex="-1" class="mr-2">
+                                        <img class="avatar-1" src="<?php echo $_thread['user_avatar_url'];?>">
+                                    </a>
+                                    <span class="username mr-1" uid="<?php echo $_thread['uid'];?>">
+                                        <!-- 主题创建者 -->
+                                        <?php echo $_thread['username'];?>
+                                    </span>
+                                    <span class="date d-none d-md-block">
+                                        <!-- 主题创建时间 -->
+                                        <?php echo $_thread['create_date_fmt'];?>
+                                    </span>
+
+                                    <?php if($_thread['lastuid']) { ?>
+                                    <span class="d-none d-md-block">
+                                        <span class="mx-1">←</span>
+                                        <span class="username mr-1" uid="<?php echo $_thread['lastuid'];?>">
+                                            <!-- 最后回复的用户 -->
+                                            <?php echo $_thread['lastusername'];?>
+                                        </span>
+                                        <span>
+                                            <!-- 最后回复时间 -->
+                                            <?php echo $_thread['last_date_fmt'];?>
+                                        </span>
+                                    </span>
+                                    <?php } ?>
+                                </div>
+                                <div class="d-flex text-muted small">
+                                    <!-- 编辑链接 -->
+                                    <?php if($_thread['allowupdate']) { ?>
+                                    <a class="mr-3" href="<?php echo url('home-content', array('op'=>'update','tid' => $_thread['tid'])); ?>" title="<?php echo lang('edit');?>"><i class="icon-edit"></i></a>
+                                    <?php } ?>
+
+                                    <!-- 删除链接 -->
+                                    <?php if($uid == $_thread['uid'] || $_thread['allowdelete']) { ?>
+                                    <a class="confirm" href="<?php echo url('home-content', array('op'=>'delete','safe_token' => $safe_token,'type'=>0,'tid'=>$_thread['tid']));?>" data-method="post" data-confirm-text="<?php echo lang('confirm_delete');?>" title="<?php echo lang('delete');?>"><i class="icon-remove text-danger"></i></a>
+                                    <?php } ?>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <?php }} else { ?>
+            <li class="thread bg-white px-3">
+                <div><?php echo lang('none');?></div>
+            </li>
+            <?php } ?>
+		</ul>
+
+        <div class="text-center">
+            <label class="mr-3">
+                <!-- input 必须保留 -->
+                <input type="checkbox" data-target='input[name="modtid"]' class="checkall mt-2 mr-2" value="" aria-label="<?php echo lang('checkall');?>" />
+                <?php echo lang('checkall');?>
+            </label>
+            <div class="btn-group mod-button my-3" role="group" aria-label="">
+                <!-- btn-operate 必须保留 JS绑定 -->
+                <button class="btn btn-secondary btn-operate" data-href="<?php echo url('verify-thread', array('verified'=>1,'safe_token' => $safe_token));?>" title="<?php echo lang('well_publish_verified');?>">
+                    <?php echo lang('well_publish_verified');?>
+                </button>
+                <button class="btn btn-secondary btn-operate" data-href="<?php echo url('verify-thread', array('verified'=>0,'safe_token' => $safe_token));?>" title="<?php echo lang('well_publish_reject');?>">
+                    <?php echo lang('well_publish_reject');?>
+                </button>
+                <button class="btn btn-secondary btn-operate" data-href="<?php echo url('home-content', array('op'=>'delete','type'=>0,'safe_token' => $safe_token));?>" title="<?php echo lang('delete');?>">
+                    <?php echo lang('delete');?>
+                </button>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+		<?php if ($pagination) { ?>
+		<nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+        </nav>
+		<?php } ?>
+	</slot>
+</template>
+
+<script>
+    $('body').on('click', '.btn-operate', function() {
+        var jthis = $(this);
+        var tidarr = $('input[name="modtid"]').checked();
+        var href = jthis.data('href');
+        var title = jthis.attr('title');
+        var safe_token = '<?php echo $safe_token;?>';
+        if (window.confirm(title)) {
+            $.xpost(href, {tid:tidarr,safe_token: safe_token}, function(code, message) {
+                if(code == 0) {
+                    window.location.reload();
+                } else {
+                    $.alert(message);
+                }
+            });
+        }
+        return false;
+    });
+    $('a[data-active="verify-thread"]').addClass('active');
+    $('a[data-active="menu-verify"]').addClass('active');
+</script>

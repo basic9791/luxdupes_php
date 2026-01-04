@@ -1,0 +1,138 @@
+<template include="./view/htm/common.header.htm">
+	<slot name="body">
+        <!-- threadlist 必须保留 -->
+        <ul class="threadlist list-unstyled bg-white" id="ulMain">
+
+        </ul>
+
+        <!-- 分页-->
+		<?php if ($pagination) { ?>
+		<nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+        </nav>
+		<?php } ?>
+	</slot>
+</template>
+<style>
+.threadlist li{
+    padding:5px 10px; 
+    /* bottom: 1px solid #f2f2f2; */
+}
+.ordersTop{
+    padding:10px;
+    background-color: #eee;
+}
+.ordersTop span{
+    margin-right: 25px; display: inline-block;white-space: nowrap;;
+}
+
+.itemBox{
+    display:flex ;
+    margin:10px 0;
+    text-align: left;
+}
+.imgBox{
+    padding:0 10px; 
+}
+.imgBox img{
+    max-width: 80px;
+}
+.title{
+    font-weight: bold;
+}
+.shName span{
+    margin-right: 25px;
+}
+.shippingBox{
+    padding:0 10px ;
+}
+.orderBody{
+    display: none;
+}
+.orderDetails{
+    cursor: pointer; white-space: nowrap;display: inline-block;
+}
+.isOpen .icon-chevron-down,
+.icon-chevron-up{
+    display: none;
+}
+.isOpen .icon-chevron-up{
+    display: inline-block;
+}
+
+</style>
+
+<script>
+    var json=<?php echo json_encode($threadlist); ?>;
+    var stateList=[
+        {},
+        {label:'Pending Payment', info:''},
+        {label:'Paid', info:''},
+        {label:'In Transit', info:''},
+        {label:'Received', info:''},
+        {label:'none', info:''},
+        {label:'none', info:''},
+        {label:'none', info:''},
+        {label:'Cancelled', info:''},
+        {label:'Cancelled', info:''},
+
+
+        
+    ]
+    var html=''
+
+    for(let key in json){
+        var curObj=json[key]
+        curObj['goods']=curObj['goods'].replace(/&quot;/g,'"');
+        curObj['goods']=JSON.parse(curObj['goods']);
+        var dateStr=getDateEnFormat(curObj.create_date)
+
+        // console.log(curObj)
+        html+='<li><div class="ordersTop">';
+        html+='<span>Order:<b>#'+curObj.orderCode+'</b></span>';
+        html+='<span class="date">'+dateStr+'</span>';
+        html+='<span class="totalPrice">Order amount:<b>$'+curObj.price_total+'</b></span>';
+        html+='<span class="state">'+stateList[curObj.state].label+'</span> <span class="orderDetails" orderCode="'+curObj.orderCode+'">Details <i class="icon-chevron-up"></i><i class="icon-chevron-down"></i></span> </div>';
+        html+='<div class="orderBody" id="orderBody'+curObj.orderCode+'"><div class="proList">'
+        curObj.goods.forEach(v=>{
+            html+='<div class="itemBox">'
+            html+='<div class="imgBox"><a href="/read/'+v.tid+'"><img src="'+v.imgUrl+'?imageMogr2/auto-orient/thumbnail/!120x120r/quality/100/format/jpg"/></a></div>'
+            html+='<div class="infoBox">'
+            html+='<div class="name"><a href="/read/'+v.tid+'">'+v.proName+'</a></div>'
+            html+='<div class="note">'+v.proNotes+'</div>'
+            html+='<div class="priceNum">'
+            html+='<b class="note">$'+v.price+'</b>'
+            html+='<span class="note">x'+v.num+'</span>'
+            html+='</div>'
+            html+='</div>'
+            html+='</div>'
+        })
+        if(curObj.notes)html+='<div class="shippingBox">notes:'+curObj.notes+'</div>'
+        html+='</div>'
+        html+='<div class="shippingBox">'
+        html+='<div class="title">Shipping</div>'
+        html+='<div class="shName">'+curObj.first_name+' '+curObj.last_name
+        html+=' '+curObj.address+' '+curObj.city+' '+curObj.province+' '+curObj.ZIP_code+' '+curObj.country_region
+        html+='</div>'
+        html+='<div class="shName"><span>Email:'+curObj.email
+        html+='</span> Phone:'+curObj.phone
+        html+='</div>'
+        if(curObj.shipping_code)html+='<div class="shippingBox">Express Delivery Information:<a href="'+curObj.shipping_link+'">'+curObj.shipping_code+'</a></div>'
+
+        html+='</div></div></li>'
+    }
+    $("#ulMain").html(html)
+    $(".orderDetails").click(function(){
+        let code=$(this).attr('orderCode');
+        if($(this).hasClass('isOpen')){
+            $(this).removeClass('isOpen')
+            $("#orderBody"+code).slideUp();
+        }else{
+             $(this).addClass('isOpen')
+            $("#orderBody"+code).slideDown();
+        }
+    })
+    $('a[data-active="menu-home"],a[data-active="home-order"]').addClass('active');
+</script>

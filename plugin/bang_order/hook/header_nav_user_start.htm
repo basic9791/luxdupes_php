@@ -1,0 +1,21 @@
+<li class="nav-item cartBox">
+  <a class="nav-link" href="/cart" title="Shopping Cart" rel="nofollow">
+  <i class="icon-cart-plus"></i>
+  <span id="cartNum">0</span>
+  </a>
+</li>
+<style>
+  .cartBox{
+    cursor: pointer;
+    
+    position: relative;
+  }
+  .cartBox #cartNum{
+    display: none;
+    background-color: red; color:#fff;
+    min-width: 16px; height: 16px;padding:0 4px;
+    box-sizing: border-box;
+    text-align: center;line-height: 16px; border-radius: 50%;
+    position: absolute;top:0px;left:20px; font-size:10px;
+  }
+</style>

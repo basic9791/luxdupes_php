@@ -1,0 +1,14 @@
+{
+    "name": "Contribute / 写文章",
+    "brief": "写文章一款用户投稿的功能，可代替BBS，可作为博客，可作为自媒体平台，只要你能想到请随意扩展，预留大量钩子，可单独对每个栏目设置投稿。站点数据超过50万，安装数据表容易出错，请联系官方付费处理。User posts, Can replace BBS, can be used as a blog, can be used as a self-media platform, please feel free to expand as long as you can think of, reserve a lot of hooks, Submission can be set for each column. If the data exceeds 500,000, the installation is prone to errors, please contact the official for payment processing :: Email:wellcms@qq.com",
+    "type": "0",
+    "version": "1.0.18",
+    "software_version": "2.1.03",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": {
+        "home_start.php": "3"
+    },
+    "overwrites_rank": [],
+    "dependencies": []
+}

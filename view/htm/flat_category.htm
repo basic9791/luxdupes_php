@@ -1,0 +1,65 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<!--{hook category_flat_start.htm}-->
+
+
+        <?php if ($forum_nav[$forum['fid']]['son']) { ?>
+        <div class="container-fluid">
+            <ul class="nav">
+                <?php $forum_nav = category_tree(GLOBALS('forum_nav')); foreach($forum_nav[$forum['fid']]['sonlist'] as $_forum) { ?>
+                <?php if ($_forum['threads']>0) { ?>
+                <li class="nav-item" fid="<?php echo $_forum['fid'];?>" data-active="fid-<?php echo $_forum['fid'];?>">
+                    <a class="nav-link" href="<?php echo $_forum['url'];?>">
+                    <?php echo $_forum['name'];?>(<?php echo $_forum['threads'];?>)
+                    </a>
+                </li>
+                <?php } ?>
+                <?php } ?>
+            </ul>
+        </div>
+        <?php } ?>
+        
+        <!--{hook category_flat_main_start.htm}-->
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link <?php echo 'default' == $active ? 'active' : '';?>" href="<?php echo $forum['url'];?>">
+                        <?php echo lang('new_thread');?>
+                    </a>
+                </li>
+                <!--{hook category_flat_thread_list_nav_item_after.htm}-->
+            </ul>
+        </div>
+        <div class="row mainBody">
+            <!--{hook category_flat_threadlist_before.htm}-->
+            <?php include _include(APP_PATH . 'view/htm/thread_list.inc.htm');?>
+            <!--{hook category_flat_threadlist_after.htm}-->
+        </div>
+
+        <!--{hook category_flat_mod_before.htm}-->
+
+        <?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+
+        <!--{hook category_flat_page_before.htm}-->
+        <?php if ($pagination) { ?>
+        <nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+            
+            <div class="loadMoreBox">
+                <button type="button" id="listLoadMore" curPage="<?php echo $page ?>" class="btn btn-secondary btn-lg">Load More</button>
+            </div>
+        </nav>
+        <?php } ?>
+        <!--{hook category_flat_page_end.htm}-->
+
+
+<!--{hook category_flat_end.htm}-->
+
+<?php include _include(APP_PATH . 'view/htm/footer.inc.htm');?>
+
+<script>
+    $('#nav li[data-active="fid-<?php echo $fid;?>"]').addClass('active');
+</script>
+<!--{hook category_flat_js.htm}-->

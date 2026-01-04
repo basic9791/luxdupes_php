@@ -1,0 +1,50 @@
+<?php if($fid<799) { ?>
+<div>
+
+	<div id="addSuccess" style="display: none;" class="alert alert-primary" role="alert"><a style="float: right;" href="/cart" >View Cart</a>
+Has been added to your cart. 
+</div>
+
+	
+		<div class="proBox" style="line-height: 57px;">
+		<span class="delPrice"></span>
+		<span class="priceBox none" price="<?php echo $thread['price'];?>" id="price"> $<?php echo $thread['price'];?>USD
+		</span>
+ 		
+		<div id="checkPrice " style="display: none; margin: 10px 5px 0 0;">
+			<button class="btn btn-outline-secondary" style="margin-bottom: 10px;">Check Price</button>
+		</div>
+				<!--{hook read_bang_order_price_after.htm}-->
+		</div>
+		
+
+		<input type="text" maxlength="30" placeholder="Product Remarks" fupName="<?php echo $fup['name'].'' .$forum['name'];?>"  class="form-control" id="proInput">
+
+	<div class="proBox">
+
+		
+
+
+		<div class="input-group mb-3" style="padding:10px 10px 10px 0; width: 150px;">
+			<div class="input-group-prepend" id="minus">
+				<button class="btn btn-outline-secondary" type="button"><i class="icon-minus"></i></button>
+			</div>
+			<input type="text" id="numInput" class="form-control" style="text-align: center;" value="1">
+			<div class="input-group-append" id="plus">
+				<button class="btn btn-outline-secondary" type="button"><i class="icon-plus"></i></button>
+			</div>
+		</div>
+		<div ><button type="button" class="btn btn-dark" style="margin-top: 10px;" tid="<?php echo $tid; ?>" id="addCart"><i class="icon-cart-plus"></i> Add to cart</button></div>
+		
+	</div>
+	<div style="line-height: 2em;">
+		<b><i class="icon-fort-awesome"></i>Duty-Free & Tax-Exempt!</b><br/>
+		<b><i class="icon-bookmark"></i> 30 Days money-back guarantee.</b><br/>
+		
+		<b><i class="icon-heart"></i> 100% Satisfaction guarantee.</b><br/>
+		<b><i class="icon-truck"></i> Free shipping worldwide.</b> 7-15 days’ shipping time in total. All orders will be shipped out within 24hours, the tracking number & tracking link will be updated to your email box after 2-3 days’ processing time.
+	</div>
+</div>
+
+
+<?php } ?>

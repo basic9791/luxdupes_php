@@ -1,0 +1,368 @@
+<?php include _include(ADMIN_PATH.'view/htm/header.inc.htm');?>
+
+<div class="container-fluid">
+<div>
+  <form>
+<input value="<?php echo $orderCode;?>" placeholder="订单编码" id="orderCode"/>
+<input value="<?php echo $first_name;?>" placeholder="first Name" id="firstName"/>
+<select placeholder="订单状态" id="state">
+  
+  <option value="" >全部</option>
+  <option value="1" <?php echo $state==1?'selected':'' ?>>待支付</option>
+  <option value="2" <?php echo $state==2?'selected':'' ?>>已支付</option>
+  <option value="3" <?php echo $state==3?'selected':'' ?>>运输中</option>
+  <option value="4" <?php echo $state==4?'selected':'' ?>>已收货</option>
+  <option value="5" <?php echo $state==5?'selected':'' ?>>已完成</option>
+  <option value="9" <?php echo $state==9?'selected':'' ?>>已取消</option>
+</select>
+<button id="handleSearchBtn" type="button" class="btn">搜索</button>
+
+  </form>
+
+</div>
+<ul class="threadlist list-unstyled bg-white" id="ulMain">
+
+        </ul>
+
+        <!-- 分页-->
+		<?php if ($pagination) { ?>
+		<nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+        </nav>
+		<?php } ?>
+</div>
+<div id="loadingBox">
+    <img src="/upload/loading.gif" />
+</div>
+
+
+<?php include _include(ADMIN_PATH.'view/htm/footer.inc.htm');?>
+
+
+
+
+
+
+
+<script>
+
+
+    var json=<?php echo json_encode($threadlist); ?>;
+
+   console.log(222,json)
+
+      $("#handleSearchBtn").click(handleSearch);
+  function handleSearch(){
+    let url="/admin/index.php?0=bangOrder&page=1";
+    let orderCode=$("#orderCode").val();
+    let firstName=$("#firstName").val();
+    let state=$("#state").val();
+    url+='&state='+state+'&firstName='+firstName+'&orderCode='+orderCode
+
+    console.log(url);
+
+    window.location = url
+  }
+    function getDateEnFormat(timestamp){
+    if(timestamp<100000000000) timestamp*=1000
+    var _D=new Date(timestamp)
+    // console.log(_D,timestamp)
+    var monthNames = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12"];
+    var dateFormat=monthNames[_D.getMonth()]+' '+_D.getDate()+', '+_D.getFullYear()
+    return dateFormat;
+  }
+    var stateList=[
+        {},
+        {label:'Pending Payment', info:''},
+        {label:'Paid', info:''},
+        {label:'In Transit', info:''},
+        {label:'Received', info:''},
+        {label:'Completed', info:''},
+           {label:'none', info:''},
+        {label:'none', info:''},
+        {label:'none', info:''},
+        {label:'Cancelled', info:''},
+        {label:'Cancelled', info:''},
+    ]
+    var html=''
+ 
+
+    for(let key in json){
+        var curObj=json[key]
+        curObj['goods']=curObj['goods'].replace(/&quot;/g,'"');
+        curObj['goods']=JSON.parse(curObj['goods']);
+        var dateStr=getDateEnFormat(curObj.create_date)
+       curObj.state=parseInt(curObj.state)
+        // console.log(curObj)
+        html+='<li><div class="ordersTop">';
+        html+='<span>Order:<b>#'+curObj.orderCode+'</b></span>';
+        html+='<span class="date">'+dateStr+'</span>';
+        html+='<span class="totalPrice">Order amount:<b>$'+curObj.price_total+'</b></span>';
+        html+='<span class="state">'+stateList[curObj.state].label+'</span> <span class="orderDetails" orderCode="'+curObj.orderCode+'">Details <i class="icon-chevron-up"></i><i class="icon-chevron-down"></i></span> </div>';
+        html+='<div class="orderBody" id="orderBody'+curObj.orderCode+'"><div class="proList">'
+        let gIndex=0;
+        curObj.goods.forEach(v=>{
+            html+='<div class="itemBox">'
+            html+='<div class="imgBox"><a target="_blank" href="/read/'+v.tid+'"><img src="'+v.imgUrl+'?imageMogr2/auto-orient/thumbnail/!120x120r/quality/100/format/jpg"/></a></div>'
+            html+='<div class="infoBox">'
+            html+='<div class="name"><a target="_blank" href="/read/'+v.tid+'">'+v.proName+'</a></div>'
+            html+='<div class="note">商品备注：<input class="proNotesInput" gIndex="'+gIndex+'" jIndex="'+key+'" value="'+(v.proNotes||'')+'"/></div>'
+            html+='<div class="priceNum">'
+            html+='<b class="note">单价：$</b><input class="priceInput" gIndex="'+gIndex+'" jIndex="'+key+'" value="'+v.price+'"/>'
+            html+='<span class="note">x'+v.num+'</span>'
+            html+='</div>'
+            html+='</div>'
+            html+='</div>'
+            gIndex++;
+        })
+
+        if(curObj.notes)html+='<div class="shippingBox">notes:'+curObj.notes+'</div>'
+        html+='<div class="shippingBox">来源域名:'+curObj.url_man+'</div>'
+        html+='<div class="shippingBox">管理备注: <textarea class="notesMan" jIndex="'+key+'"> '+curObj.notes_man+'</textarea></div>'
+        html+='</div>'
+        html+='<div class="shippingBox">'
+        html+='<div class="title">Shipping</div>'
+        html+='<div class="shName">'+curObj.first_name+' '+curObj.last_name
+        html+=' '+curObj.address+' '+curObj.city+' '+curObj.province+' '+curObj.ZIP_code+' '+curObj.country_region
+        html+='</div>'
+        html+='<div class="shName"><span>Email:'+curObj.email
+        html+='</span> Phone:'+curObj.phone
+        html+='</div>'
+        if(curObj.shipping_code)html+='<div class="shippingBox">Express Delivery Information:<a href="'+curObj.shipping_link+'">'+curObj.shipping_code+'</a></div>'
+        html+='<div class="bottom">'
+        
+          if(!curObj.shipping_code) curObj.shipping_code='';
+          if(!curObj.shipping_name) curObj.shipping_name='';
+          if(!curObj.shipping_link) curObj.shipping_link='';
+
+        html+='<span class="iBox">查询编码：<input style="width:150px" id="shipping_code'+curObj.id+'" value="'+curObj.shipping_code+'" />'
+        html+='</span><span class="iBox">物流名称：<input style="width:150px"  id="shipping_name'+curObj.id+'" value="'+curObj.shipping_name+'" />'
+        html+='</span><span class="iBox">查询链接：<input style="width:150px"  id="shipping_link'+curObj.id+'" value="'+curObj.shipping_link+'" />'
+        html+='</span><span class="iBox">订单状态：<select style="width:100px"  id="state'+curObj.id+'">'
+        html+='<option value="1" '+(curObj.state==1?'selected':'')+'>待支付</option>'
+        html+='<option value="2" '+(curObj.state==2?'selected':'')+'>已支付</option>'
+        html+='<option value="3" '+(curObj.state==3?'selected':'')+'>运输中</option>'
+        html+='<option value="4" '+(curObj.state==4?'selected':'')+'>已收货</option>'
+        html+='<option value="5" '+(curObj.state==5?'selected':'')+'>已完成</option>'
+        html+='<option value="9" '+(curObj.state==9?'selected':'')+'>已取消</option>'
+        html+='</select>'
+        html+='</span><button  onclick="updateData('+curObj.id+')" type="button" class="btn btn-success">保存</button>';
+        html+='<div class="bottom">';
+        
+        if(curObj.state==1){
+            html+='<span class="iBox">支付方式：<select style="width:100px" id="payment'+curObj.id+'">'
+            html+='<option value="1" '+(curObj.payment==1?'selected':'')+'>Remitly</option>'
+            html+='<option value="2" '+(curObj.payment==2?'selected':'')+'>Wise transfer</option>'
+            html+='<option value="3" '+(curObj.payment==3?'selected':'')+'>Alipay(支付宝)</option>'
+            html+='</select>'
+            html+='</span><button  onclick="sendEmail('+curObj.id+')" type="button" class="btn btn-success">发送支付请求</button>';
+        }
+
+        html+='</div></div></div></div></li>'
+    }
+
+    $("#ulMain").html(html)
+    $("#loadingBox").hide();
+    $(".notesMan").change(function(){
+        let jIndex=$(this).attr("jIndex")
+        let curData=json[jIndex]
+        curData.notes_man=$(this).val();
+        // console.log(json,$(this).val(),555)
+        })
+    
+     $(".proNotesInput").change(function(){
+        let jIndex=$(this).attr("jIndex")
+        let gIndex=$(this).attr("gIndex")
+        let curData=json[jIndex]
+        curData.goods[gIndex].proNotes=$(this).val();
+    });
+
+    $(".priceInput").change(function(){
+        let jIndex=$(this).attr("jIndex")
+        let gIndex=$(this).attr("gIndex")
+        let curData=json[jIndex]
+        curData.goods[gIndex].price=$(this).val();
+        curData.price_total=0
+        curData.goods.forEach(v=>{
+          curData.price_total+=parseFloat(v.price) ;
+        })
+
+        console.log(json,$(this).val(),jIndex,gIndex)
+
+
+
+    });
+    $(".orderDetails").click(function(){
+        let code=$(this).attr('orderCode');
+        if($(this).hasClass('isOpen')){
+            $(this).removeClass('isOpen')
+            $("#orderBody"+code).slideUp();
+        }else{
+            $(this).addClass('isOpen')
+            $("#orderBody"+code).slideDown();
+        }
+    })
+    $('a[data-active="menu-home"],a[data-active="home-order"]').addClass('active');
+    function sendEmail(id){
+      let data
+      let payment=$("#payment"+id).val();
+      for(let key in json){
+        if(json[key].id==id){
+          data=json[key];
+          break;
+        }
+      }
+      $("#loadingBox").show();
+      $.xpost('/admin/index.php?0=bangOrder&1=sendEmail',{ payment,
+        price_total:data.price_total,
+        id:data.id,
+        orderCode:data.orderCode,
+        email:data.email,        
+        create_date:data.create_date,
+         deliveryAddress: JSON.stringify({
+          phone:data.phone,
+          email:data.email,
+          firstName:data.first_name,
+          lastName:data.last_name,
+          city:data.city,
+          province:data.province,
+          country:data.country_region,
+          ZIP_code:data.ZIP_code,
+          address:data.address,
+         }),  
+         cartData: JSON.stringify(data.goods) }, 
+         function (code, message) {
+          $("#loadingBox").hide();
+         if (code == 0) {
+            $.alert('发送成功')
+         } else {
+            $.alert(message)
+         }
+      });
+
+
+
+    };
+    function updateData(id){
+      let data
+      let sendData={}
+      for(let key in json){
+        if(json[key].id==id){
+          data=json[key];
+          break;
+        }
+      }
+      sendData.shipping_code=$("#shipping_code"+id).val();
+      sendData.shipping_link=$("#shipping_link"+id).val();
+      sendData.shipping_name=$("#shipping_name"+id).val();
+      sendData.state=$("#state"+id).val();
+      sendData.orderCode=data.orderCode
+      sendData.first_name=data.first_name;
+      sendData.email=data.email;
+      sendData.id=data.id;
+      sendData.price_total=data.price_total
+      sendData.notes_man=data.notes_man
+      sendData.goods=JSON.stringify(data.goods) 
+      if(sendData.state!=9 && sendData.state>2 && !sendData.shipping_code){
+        $.alert('已发货状态的物流编码不可以为空')
+        return;
+      }
+      $("#loadingBox").show();
+      $.xpost('/admin/index.php?0=bangOrder&1=update',sendData, function (code, message) {
+        $("#loadingBox").hide();
+        if (code == 0) {
+          $.alert('保存成功')
+          } else {
+                                $.alert(message)
+                            }
+      });
+
+
+
+    }
+</script>
+
+
+
+
+<script>
+$('li a.bang_order').addClass('active');
+</script>
+
+
+
+
+<style>
+  #loadingBox{
+    width: 100vw;
+    height: 100vh;
+    min-height: 2000px;
+    line-height: 100vh;
+    position: fixed;
+    top:0;
+    left:0;
+    padding-top: 30%;
+    z-index: 1059;
+    background-color: #00000030;
+    text-align: center;
+  }
+.threadlist li{
+    padding:5px 10px; 
+}
+.ordersTop{
+    padding:10px;
+    background-color: #eee;
+}
+.ordersTop span{
+    margin-right: 25px; display: inline-block;white-space: nowrap;;
+}
+
+.itemBox{
+    display:flex ;
+    margin:10px 0;
+    text-align: left;
+}
+.imgBox{
+    padding:0 10px; 
+}
+.imgBox img{
+  width:120px;
+}
+.title{
+    font-weight: bold;
+}
+.shName span{
+    margin-right: 25px;
+}
+.shippingBox{
+    padding:0 10px ;
+}
+.orderBody{
+    display: none;
+}
+.orderDetails{
+    cursor: pointer; white-space: nowrap;display: inline-block;
+}
+.isOpen .icon-chevron-down,
+.icon-chevron-up{
+    display: none;
+}
+.isOpen .icon-chevron-up{
+    display: inline-block;
+}
+.iBox{
+  display: inline-block;white-space: nowrap;
+}
+</style>
+
+
+
+
+
+
+
+
+
+

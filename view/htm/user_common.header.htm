@@ -1,0 +1,21 @@
+<template include="./view/htm/user_common.template.htm">
+	<slot name="nav">
+        <!-- nav -->
+        <div class="card-header">
+            <div class="nav-scroller">
+                <ul class="nav nav-pills small">
+                    <!--用户首页-->
+                    <!--{hook user_common_header_nav_thread_before.htm}-->
+                    <?php if (!empty($menulist)) { foreach ($menulist as $menu) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo $menu['url'];?>" data-active="<?php echo $menu['active'];?>">
+                            <?php echo $menu['name'];?>
+                        </a>
+                    </li>
+                    <?php }} ?>
+                    <!--{hook user_common_header_nav_comment_after.htm}-->
+                </ul>
+            </div>
+        </div>
+	</slot>
+</template>

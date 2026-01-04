@@ -1,0 +1,12 @@
+{
+    "name": "Favorites / 收藏夹",
+    "brief": "收藏最喜欢的内容。/ Favorite content.",
+    "type": "0",
+    "version": "1.0.08",
+    "software_version": "2.2.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "overwrites_rank": [],
+    "dependencies": []
+}

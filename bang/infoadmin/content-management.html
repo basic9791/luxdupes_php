@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内容管理系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        .cursor-pointer {
+            cursor: pointer;
+        }
+        .table-responsive {
+            min-height: 400px;
+        }
+        .status-badge-0 {
+            background-color: #6c757d;
+        }
+        .status-badge-1 {
+            background-color: #198754;
+        }
+        .status-badge-2 {
+            background-color: #dc3545;
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="my-4">内容管理系统</h1>
+                
+                <!-- 搜索和过滤区域 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <input type="text" id="search-keyword" class="form-control" placeholder="搜索标题或关键字">
+                            </div>
+                            <div class="col-md-2">
+                                <select id="filter-status" class="form-select">
+                                    <option value="">全部状态</option>
+                                    <option value="0">草稿</option>
+                                    <option value="1">已发布</option>
+                                    <option value="2">已下线</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" id="filter-platform" class="form-control" placeholder="平台">
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" id="filter-user" class="form-control" placeholder="使用者邮箱">
+                            </div>
+                            <div class="col-md-3">
+                                <button id="btn-search" class="btn btn-primary me-2">
+                                    <i class="bi bi-search"></i> 搜索
+                                </button>
+                                <button id="btn-reset" class="btn btn-secondary me-2">
+                                    <i class="bi bi-arrow-counterclockwise"></i> 重置
+                                </button>
+                                <button id="btn-add" class="btn btn-success">
+                                    <i class="bi bi-plus-lg"></i> 新增内容
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 导入导出区域 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>导入内容</h5>
+                                <form id="import-form" enctype="multipart/form-data">
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" id="csv-file" name="csv" accept=".csv">
+                                        <button class="btn btn-primary" type="submit">
+                                            <i class="bi bi-upload"></i> 导入
+                                        </button>
+                                    </div>
+                                    <div class="form-text">请上传CSV格式文件，必须包含"标题"列</div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>导出内容</h5>
+                                <button id="btn-export" class="btn btn-primary">
+                                    <i class="bi bi-download"></i> 导出当前筛选结果
+                                </button>
+                                <div class="form-text">将导出符合当前筛选条件的所有内容</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 内容列表 -->
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>标题</th>
+                                        <th>关键字</th>
+                                        <th>状态</th>
+                                        <th>平台</th>
+                                        <th>使用者</th>
+                                        <th>创建时间</th>
+                                        <th>发布时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="content-list">
+                                    <!-- 内容列表将通过JavaScript动态加载 -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- 分页 -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center" id="pagination">
+                                <!-- 分页将通过JavaScript动态加载 -->
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 添加/编辑内容模态框 -->
+    <div class="modal fade" id="content-modal" tabindex="-1" aria-labelledby="contentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contentModalLabel">添加内容</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="content-form">
+                        <input type="hidden" id="content-id">
+                        <div class="mb-3">
+                            <label for="content-title" class="form-label">标题 <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="content-title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="content-keywords" class="form-label">关键字</label>
+                            <input type="text" class="form-control" id="content-keywords" placeholder="多个关键字用逗号分隔">
+                        </div>
+                        <div class="mb-3">
+                            <label for="content-text" class="form-label">内容</label>
+                            <textarea class="form-control" id="content-text" rows="10"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="content-status" class="form-label">状态</label>
+                                <select class="form-select" id="content-status">
+                                    <option value="0">草稿</option>
+                                    <option value="1">已发布</option>
+                                    <option value="2">已下线</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="content-platform" class="form-label">平台</label>
+                                <input type="text" class="form-control" id="content-platform">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="content-user-email" class="form-label">使用者邮箱</label>
+                                <input type="email" class="form-control" id="content-user-email">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="content-published-at" class="form-label">发布时间</label>
+                            <input type="datetime-local" class="form-control" id="content-published-at">
+                            <div class="form-text">如果不设置，状态为"已发布"时将使用当前时间</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="btn-save">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 确认删除模态框 -->
+    <div class="modal fade" id="delete-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">确认删除</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>确定要删除这条内容吗？此操作不可撤销。</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-danger" id="btn-confirm-delete">删除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 加载中遮罩 -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">加载中...</span>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 全局变量
+        let currentPage = 1;
+        let totalPages = 1;
+        let deleteId = null;
+        
+        // DOM 加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始加载内容列表
+            loadContents();
+            
+            // 搜索按钮点击事件
+            document.getElementById('btn-search').addEventListener('click', function() {
+                currentPage = 1;
+                loadContents();
+            });
+            
+            // 重置按钮点击事件
+            document.getElementById('btn-reset').addEventListener('click', function() {
+                document.getElementById('search-keyword').value = '';
+                document.getElementById('filter-status').value = '';
+                document.getElementById('filter-platform').value = '';
+                document.getElementById('filter-user').value = '';
+                currentPage = 1;
+                loadContents();
+            });
+            
+            // 添加内容按钮点击事件
+            document.getElementById('btn-add').addEventListener('click', function() {
+                openContentModal();
+            });
+            
+            // 保存内容按钮点击事件
+            document.getElementById('btn-save').addEventListener('click', function() {
+                saveContent();
+            });
+            
+            // 确认删除按钮点击事件
+            document.getElementById('btn-confirm-delete').addEventListener('click', function() {
+                if (deleteId) {
+                    deleteContent(deleteId);
+                }
+            });
+            
+            // 导出按钮点击事件
+            document.getElementById('btn-export').addEventListener('click', function() {
+                exportContents();
+            });
+            
+            // 导入表单提交事件
+            document.getElementById('import-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                importContents();
+            });
+        });
+        
+        // 加载内容列表
+        function loadContents() {
+            showLoading();
+            
+            const keyword = document.getElementById('search-keyword').value;
+            const status = document.getElementById('filter-status').value;
+            const platform = document.getElementById('filter-platform').value;
+            const userEmail = document.getElementById('filter-user').value;
+            
+            let url = `contents.php?action=list&page=${currentPage}`;
+            if (keyword) url += `&keyword=${encodeURIComponent(keyword)}`;
+            if (status !== '') url += `&status=${status}`;
+            if (platform) url += `&platform=${encodeURIComponent(platform)}`;
+            if (userEmail) url += `&user_email=${encodeURIComponent(userEmail)}`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert('加载失败: ' + data.error);
+                        return;
+                    }
+                    
+                    renderContentList(data.contents);
+                    renderPagination(data.pagination);
+                    hideLoading();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('加载失败，请检查网络连接');
+                    hideLoading();
+                });
+        }
+        
+        // 渲染内容列表
+        function renderContentList(contents) {
+            const tbody = document.getElementById('content-list');
+            tbody.innerHTML = '';
+            
+            if (contents.length === 0) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = '<td colspan="9" class="text-center">没有找到内容</td>';
+                tbody.appendChild(tr);
+                return;
+            }
+            
+            contents.forEach(content => {
+                const tr = document.createElement('tr');
+                
+                // 格式化状态
+                let statusText = '';
+                let statusClass = '';
+                switch (parseInt(content.status)) {
+                    case 0:
+                        statusText = '草稿';
+                        statusClass = 'status-badge-0';
+                        break;
+                    case 1:
+                        statusText = '已发布';
+                        statusClass = 'status-badge-1';
+                        break;
+                    case 2:
+                        statusText = '已下线';
+                        statusClass = 'status-badge-2';
+                        break;
+                }
+                
+                tr.innerHTML = `
+                    <td>${content.id}</td>
+                    <td>${escapeHtml(content.title)}</td>
+                    <td>${escapeHtml(content.keywords || '')}</td>
+                    <td><span class="badge ${statusClass}">${statusText}</span></td>
+                    <td>${escapeHtml(content.platform || '')}</td>
+                    <td>${escapeHtml(content.user_email || '')}</td>
+                    <td>${formatDateTime(content.created_at)}</td>
+                    <td>${content.published_at ? formatDateTime(content.published_at) : ''}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary me-1" onclick="editContent(${content.id})">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger" onclick="confirmDelete(${content.id})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                `;
+                
+                tbody.appendChild(tr);
+            });
+        }
+        
+        // 渲染分页
+        function renderPagination(pagination) {
+            const paginationElement = document.getElementById('pagination');
+            paginationElement.innerHTML = '';
+            
+            totalPages = pagination.total_pages;
+            currentPage = pagination.current_page;
+            
+            // 如果只有一页，不显示分页
+            if (totalPages <= 1) {
+                return;
+            }
+            
+            // 上一页按钮
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = `
+                <a class="page-link" href="#" aria-label="Previous" ${currentPage > 1 ? 'onclick="changePage(' + (currentPage - 1) + '); return false;"' : ''}>
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            `;
+            paginationElement.appendChild(prevLi);
+            
+            // 页码按钮
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, startPage + 4);
+            
+            if (endPage - startPage < 4) {
+                startPage = Math.max(1, endPage - 4);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const pageLi = document.createElement('li');
+                pageLi.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                pageLi.innerHTML = `
+                    <a class="page-link" href="#" onclick="changePage(${i}); return false;">${i}</a>
+                `;
+                paginationElement.appendChild(pageLi);
+            }
+            
+            // 下一页按钮
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLi.innerHTML = `
+                <a class="page-link" href="#" aria-label="Next" ${currentPage < totalPages ? 'onclick="changePage(' + (currentPage + 1) + '); return false;"' : ''}>
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            `;
+            paginationElement.appendChild(nextLi);
+        }
+        
+        // 切换页码
+        function changePage(page) {
+            currentPage = page;
+            loadContents();
+        }
+        
+        // 打开内容模态框（新增或编辑）
+        function openContentModal(id = null) {
+            const modal = new bootstrap.Modal(document.getElementById('content-modal'));
+            const modalTitle = document.getElementById('contentModalLabel');
+            const form = document.getElementById('content-form');
+            
+            // 重置表单
+            form.reset();
+            document.getElementById('content-id').value = '';
+            
+            if (id) {
+                // 编辑模式
+                modalTitle.textContent = '编辑内容';
+                showLoading();
+                
+                fetch(`contents.php?action=get&id=${id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            alert('加载内容失败: ' + data.error);
+                            modal.hide();
+                            return;
+                        }
+                        
+                        // 填充表单
+                        document.getElementById('content-id').value = data.id;
+                        document.getElementById('content-title').value = data.title || '';
+                        document.getElementById('content-keywords').value = data.keywords || '';
+                        document.getElementById('content-text').value = data.content || '';
+                        document.getElementById('content-status').value = data.status || '0';
+                        document.getElementById('content-platform').value = data.platform || '';
+                        document.getElementById('content-user-email').value = data.user_email || '';
+                        
+                        // 处理发布时间
+                        if (data.published_at) {
+                            // 将MySQL datetime格式转换为HTML datetime-local格式
+                            const publishedAt = data.published_at.replace(' ', 'T');
+                            document.getElementById('content-published-at').value = publishedAt;
+                        } else {
+                            document.getElementById('content-published-at').value = '';
+                        }
+                        
+                        hideLoading();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('加载内容失败，请检查网络连接');
+                        hideLoading();
+                        modal.hide();
+                    });
+            } else {
+                // 新增模式
+                modalTitle.textContent = '添加内容';
+            }
+            
+            modal.show();
+        }
+        
+        // 编辑内容
+        function editContent(id) {
+            openContentModal(id);
+        }
+        
+        // 保存内容
+        function saveContent() {
+            const id = document.getElementById('content-id').value;
+            const title = document.getElementById('content-title').value.trim();
+            const keywords = document.getElementById('content-keywords').value.trim();
+            const content = document.getElementById('content-text').value.trim();
+            const status = document.getElementById('content-status').value;
+            const platform = document.getElementById('content-platform').value.trim();
+            const userEmail = document.getElementById('content-user-email').value.trim();
+            const publishedAt = document.getElementById('content-published-at').value;
+            
+            // 验证必填字段
+            if (!title) {
+                alert('请输入标题');
+                return;
+            }
+            
+            // 准备数据
+            const data = {
+                title,
+                keywords,
+                content,
+                status,
+                platform,
+                user_email: userEmail || null
+            };
+            
+            if (publishedAt) {
+                data.published_at = publishedAt.replace('T', ' ');
+            }
+            
+            if (id) {
+                data.id = id;
+            }
+            
+            showLoading();
+            
+            // 发送请求
+            fetch(`contents.php?action=${id ? 'edit' : 'add'}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.error) {
+                    alert('保存失败: ' + result.error);
+                    return;
+                }
+                
+                // 关闭模态框
+                const modal = bootstrap.Modal.getInstance(document.getElementById('content-modal'));
+                modal.hide();
+                
+                // 重新加载内容列表
+                loadContents();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('保存失败，请检查网络连接');
+            })
+            .finally(() => {
+                hideLoading();
+            });
+        }
+        
+        // 确认删除
+        function confirmDelete(id) {
+            deleteId = id;
+            const modal = new bootstrap.Modal(document.getElementById('delete-modal'));
+            modal.show();
+        }
+        
+        // 删除内容
+        function deleteContent(id) {
+            showLoading();
+            
+            fetch(`contents.php?action=delete&id=${id}`)
+                .then(response => response.json())
+                .then(result => {
+                    if (result.error) {
+                        alert('删除失败: ' + result.error);
+                        return;
+                    }
+                    
+                    // 关闭模态框
+                    const modal = bootstrap.Modal.getInstance(document.getElementById('delete-modal'));
+                    modal.hide();
+                    
+                    // 重新加载内容列表
+                    loadContents();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('删除失败，请检查网络连接');
+                })
+                .finally(() => {
+                    hideLoading();
+                    deleteId = null;
+                });
+        }
+        
+        // 导出内容
+        function exportContents() {
+            const keyword = document.getElementById('search-keyword').value;
+            const status = document.getElementById('filter-status').value;
+            const platform = document.getElementById('filter-platform').value;
+            const userEmail = document.getElementById('filter-user').value;
+            
+            let url = 'contents.php?action=export';
+            if (keyword) url += `&keyword=${encodeURIComponent(keyword)}`;
+            if (status !== '') url += `&status=${status}`;
+            if (platform) url += `&platform=${encodeURIComponent(platform)}`;
+            if (userEmail) url += `&user_email=${encodeURIComponent(userEmail)}`;
+            
+            // 直接打开导出链接
+            window.open(url, '_blank');
+        }
+        
+        // 导入内容
+        function importContents() {
+            const fileInput = document.getElementById('csv-file');
+            if (!fileInput.files || fileInput.files.length === 0) {
+                alert('请选择CSV文件');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            if (file.type !== 'text/csv' && !file.name.endsWith('.csv')) {
+                alert('请上传CSV格式文件');
+                return;
+            }
+            
+            showLoading();
+            
+            const formData = new FormData();
+            formData.append('csv', file);
+            
+            fetch('contents.php?action=import', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.error) {
+                    alert('导入失败: ' + result.error);
+                    return;
+                }
+                
+                let message = `成功导入 ${result.imported} 条记录`;
+                if (result.failed > 0) {
+                    message += `，失败 ${result.failed} 条`;
+                    if (result.errors && result.errors.length > 0) {
+                        message += `\n\n错误信息:\n${result.errors.join('\n')}`;
+                    }
+                }
+                
+                alert(message);
+                
+                // 重置文件输入
+                fileInput.value = '';
+                
+                // 重新加载内容列表
+                loadContents();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('导入失败，请检查网络连接');
+            })
+            .finally(() => {
+                hideLoading();
+            });
+        }
+        
+        // 显示加载中遮罩
+        function showLoading() {
+            document.getElementById('loading-overlay').style.display = 'flex';
+        }
+        
+        // 隐藏加载中遮罩
+        function hideLoading() {
+            document.getElementById('loading-overlay').style.display = 'none';
+        }
+        
+        // 格式化日期时间
+        function formatDateTime(dateTimeStr) {
+            if (!dateTimeStr) return '';
+            
+            const date = new Date(dateTimeStr);
+            if (isNaN(date.getTime())) return dateTimeStr;
+            
+            return date.toLocaleString('zh-CN', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+        }
+        
+        // HTML转义，防止XSS
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str
+                .replace(/&/g, '&')
+                .replace(/</g, '<')
+                .replace(/>/g, '>')
+                .replace(/"/g, '"')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>

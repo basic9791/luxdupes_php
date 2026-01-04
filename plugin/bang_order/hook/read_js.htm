@@ -1,0 +1,170 @@
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/lightgallery@2.8.3/css/lightgallery.css" />
+<link type="text/css" rel="stylesheet" href="https://unpkg.com/lightgallery@2.8.3/css/lightgallery-bundle.css" />
+
+<script src="https://unpkg.com/lightgallery@2.8.3/lightgallery.min.js"></script>
+<script src="https://unpkg.com/lightgallery@2.8.3/plugins/thumbnail/lg-thumbnail.min.js"></script>
+<script src="https://unpkg.com/lightgallery@2.8.3/plugins/zoom/lg-zoom.min.js"></script>
+<script>
+    let proImgArr
+    $(function(){
+    var proInput=$("#proInput")
+    var fupName=proInput.attr("fupName")
+    var shoes=/shoes/i; 
+    var clothing=/clothing/i; 
+    var price=$("#price").attr('price')
+    var msg
+    if( shoes.test(fupName)){
+        msg='Please provide your foot length measurement or shoe size.'
+        proInput.attr("placeholder",'Foot length size')
+    }else if( clothing.test(fupName)){
+        msg='Please provide your height and weight.'
+        proInput.attr("placeholder",'Height and weight')
+    }
+    if(!(price>0)){
+       $("#checkPrice").show() 
+    }else{
+        var yPrice='$'+(price/0.6).toFixed(2);
+        $(".delPrice").html(yPrice)
+        $("#price").removeClass('none')
+    }
+    $("#minus").click(function(){
+        let num=parseInt($("#numInput").val());
+        num-=1;
+        if(num<1) num=1
+        $("#numInput").val(num)
+    })
+    $("#plus").click(function(){
+        let num=parseInt($("#numInput").val());
+        num+=1;
+        $("#numInput").val(num)
+    })
+
+    $("#checkPrice").click(checkPrice)
+    $("#addCart").click(function(){
+        var proNotes=$("#proInput").val();
+
+        var num=parseInt($("#numInput").val());
+        var tid=$("#addCart").attr('tid')
+        if(num<1){
+            return $.alert('Please enter the correct quantity.')
+            return false;
+        } 
+        if(msg && !proNotes){
+          return  $.alert(msg)
+        }
+
+
+        const imgUrl=proImgArr[0];
+
+
+        var proJson={
+            proName:$("h1").text(),
+            price:$("#price").attr('price'),
+            proNotes,
+            tid,
+            num,
+            imgUrl,
+            fupName,
+        }
+        
+        var cart=localStorage.getItem('cart')
+        
+        if(cart){
+            cart=JSON.parse(cart)
+            curPro=cart.find(f=>{
+                return f.tid==tid && f.proNotes==proNotes
+            })
+            if(curPro){
+                curPro.num+=1;
+            }else{
+                cart.push(proJson)
+            }
+
+        }else{
+            cart =[proJson]
+        }
+        var num=0
+        cart.forEach(v=>{
+            num+=v.num
+        })
+        $("#addSuccess").slideDown();
+        setTimeout(()=>{
+            $("#addSuccess").slideUp();
+        },5000)
+        localStorage.setItem('cart',JSON.stringify(cart));
+        updateCartNum()
+
+    })
+})
+
+    function getMiniImgUrl2(str){
+
+        if(!str) return '';
+         if(str.indexOf('amzrepe.com')>-1 || str.indexOf('amzswis.com')>-1 || str.indexOf('amzrep.top')>-1){
+           str= str.replace(/\.jpg/ig,'-80x100.jpg')
+        }else if(str.indexOf('xcimg.szwego.com')>-1){
+           str= str.replace(/\.jpg/ig,'.jpg?imageMogr2/auto-orient/thumbnail/!80x100r/quality/100/format/jpg')
+        }
+        return str;
+
+    }
+
+    $(function(){
+        if(fid>790) return;  
+        
+        // 选择所有img元素并逐个处理
+        var imgObj=$('#images')
+        if(imgObj){
+           const imgData=getImgUrl(imgObj.attr('data'))
+           let dynamicEl=[];
+           let videoUrl
+           proImgArr=imgData.split(',');
+           proImgArr.forEach((v,index)=>{
+            if(v.indexOf('.mp4')<0 && v){
+                dynamicEl.push( {
+                            src:v,
+                            thumb: getMiniImgUrl2(v)
+                        },)
+            }else if(v){
+               videoUrl=v 
+            }
+           })
+           if(videoUrl){
+            imgObj.hide();
+            $("#maxImgBox").hide();
+            html='<video src="'+videoUrl+'" loop muted poster="'+proImgArr[0]+'" preload="metadata" controls style="display: block;width:100%;"></video>';
+            $(".videoBox").html(html);
+           }else{
+            try {
+
+            const lgContainer = document.getElementById('maxImgBox');
+            const inlineGallery = lightGallery(lgContainer, {
+                    container: lgContainer,
+                    dynamic: true,
+                    download:false,
+                    hash: false,
+                    closable: false,
+                    showMaximizeIcon: true,
+                    appendSubHtmlTo: '.lg-item',
+                    slideDelay: 400,
+                    allowMediaOverlap:true,
+                    plugins: [lgZoom, lgThumbnail],
+                    dynamicEl,
+                    lgZoom:{
+                        alignThumbnails:'left'
+                    }
+                });
+                inlineGallery.openGallery();
+
+            } catch (error) {
+               location.reload();
+            }
+
+            
+           }
+
+           
+        }
+        
+    })
+</script>

@@ -1,0 +1,95 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<!--{hook tag__start.htm}-->
+
+
+		<div class="d-flex justify-content-between">
+			<ol class="breadcrumb col border-light border-left-primary">
+				<!--{hook tag__breadcrumb_li_startd.htm}-->
+				<li class="breadcrumb-item"><a href="<?php echo $conf['path'];?>"><i class="icon-home text-primary" aria-hidden="true"></i></a></li>
+				<!--{hook tag__breadcrumb_li_before.htm}-->
+				<li class="breadcrumb-item">
+					<a href="<?php echo url('brands-list');?>">
+						Brands
+                    </a>
+				</li>
+				<li class="breadcrumb-item">
+					<a href="<?php echo $read['url'];?>">
+                        <?php echo $read['name'];?>
+                    </a>
+				</li>
+				<!--{hook tag__breadcrumb_li_end.htm}-->
+			</ol>
+			<!--{hook tag__breadcrumb_ol.htm}-->
+			
+		</div>
+
+
+								
+<?php if ($tagForumList) { ?>
+				<div class="mb-3"><div class="card-header bg-light"><h3 class="h6 font-weight-bold my-0">
+            <?php echo $read['name'];?>&nbsp;Category:
+                </h3></div><div class="tagBrands">
+
+
+				<a id="tagAll" href="/brands/<?php echo $tagid;?>">All</a>
+				<?php foreach ($tagForumList as $forum) { ?>
+
+					<a id="tagFid<?php echo $forum['fid'] ?>" href='/brands/<?php echo $tagid.'?tagFid='.$forum['fid'] ?>'><?php echo $forum['name'] ?></a>
+					
+					<?php } ?>
+					</div></div>
+			<?php } ?>
+
+
+
+
+
+
+				<div class="row mainBody">
+
+			
+							<!--{hook tag__threadlist_before.htm}-->
+							<?php include _include(APP_PATH . 'view/htm/thread_list.inc.htm');?>
+							<!--{hook tag__threadlist_after.htm}-->
+	
+				</div>
+
+				<!--{hook tag__list_mod_before.htm}-->
+
+				<?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+
+				<!--{hook tag__page_before.htm}-->
+
+				<?php if ($pagination) { ?>
+				<nav class="my-3">
+					<ul class="pagination justify-content-center flex-wrap">
+						<?php echo $pagination; ?>
+					</ul>
+            <div class="loadMoreBox">
+                <button type="button" id="listLoadMore" curPage="<?php echo $page ?>" class="btn btn-secondary btn-lg">Load More</button>
+            </div>
+				</nav>
+				<?php } ?>
+				<!--{hook tag__page_after.htm}-->
+
+    <!--<div class="col-lg-3 d-none d-lg-block aside"></div>-->
+    <!--{hook tag__after.htm}-->
+
+<!--{hook tag__end.htm}-->
+
+<?php include _include(APP_PATH . 'view/htm/footer.inc.htm');?>
+<script>
+    (function ($) {
+    $('#nav li[data-active="fid-tag"]').addClass('active');
+			var tagFid="<?php echo $tagFid; ?>";
+			if(tagFid){
+				$("#tagFid"+tagFid).addClass('active');
+			}else{
+				$("#tagAll").addClass('active');
+			}
+
+    })(jQuery);
+</script>
+
+<!--{hook tag__js.htm}-->

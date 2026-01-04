@@ -1,0 +1,22 @@
+<script>
+    var body = $('body');
+    body.on('click', 'a#favorites', function () {
+        let jthis = $(this);
+        let uid = jthis.attr('data-uid');
+        if ('0' != uid) {
+            var tid = $(this).attr('tid');
+            $.xpost(xn_bg.url('home-favorites'), {'type': 0, 'tid':tid}, function (code, message) {
+                if (0 == code) {
+                    var favorites = $('#favorites-n');
+                    favorites.html(xn_bg.intval(favorites.html()) + 1);
+                    $.alert(message);
+                } else {
+                    $.alert(message);
+                }
+            });
+        } else {
+            $.ajax_modal(xn_bg.url('user-login'), 'Login', 'md');
+        }
+        return false;
+    });
+</script>

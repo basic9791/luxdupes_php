@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理系统</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .pagination-controls {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #perPageSelect {
+            padding: 5px;
+        }
+        #pageInfo {
+            margin: 0 10px;
+        }
+        .search-box {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        #searchInput {
+            padding: 8px;
+            width: 200px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px; border: 1px solid #ddd; }
+        .form-group { margin-bottom: 10px; }
+        .action-buttons { margin: 15px 0; }
+        .action-buttons button, .import-btn {
+            padding: 8px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .import-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        #statusMsg {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        .success { background: #dff0d8; color: #3c763d; }
+        .error { background: #f2dede; color: #a94442; }
+    </style>
+</head>
+<body>
+    <h1>用户管理</h1>
+    <div id="userList"></div>
+    <div class="action-buttons">
+        <div class="pagination-controls">
+            <select id="perPageSelect">
+                <option value="10">10条/页</option>
+                <option value="25" selected>25条/页</option>
+                <option value="50">50条/页</option>
+                <option value="100">100条/页</option>
+            </select>
+            <button id="prevPage">上一页</button>
+            <span id="pageInfo">第1页</span>
+            <button id="nextPage">下一页</button>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="输入用户名关键词">
+            <select id="statusFilter">
+                <option value="">所有状态</option>
+                <option value="0">启用</option>
+                <option value="1">禁用</option>
+            </select>
+            <button id="searchBtn">搜索</button>
+        </div>
+        <button id="addUserBtn">添加用户</button>
+        <button id="exportBtn">导出CSV</button>
+        <label for="csvImport" class="import-btn">导入CSV</label>
+        <input type="file" id="csvImport" accept=".csv" style="display:none;">
+    </div>
+    <div id="statusMsg"></div>
+    <div id="userForm" style="display:none;">
+        <h2>添加用户</h2>
+        <div class="form-group">
+            <label>用户名:</label>
+            <input type="text" id="username">
+        </div>
+        <div class="form-group">
+            <label>邮箱:</label>
+            <input type="email" id="email">
+        </div>
+        <div class="form-group">
+            <label>个人口号:</label>
+            <input type="text" id="slogan">
+        </div>
+        <div class="form-group">
+            <label>头像URL:</label>
+            <input type="text" id="avatar">
+        </div>
+        <div class="form-group">
+            <label>状态:</label>
+            <select id="status">
+                <option value="0">启用</option>
+                <option value="1">禁用</option>
+            </select>
+        </div>
+        <h3>工作信息</h3>
+        <div class="form-group">
+            <label>公司名称:</label>
+            <input type="text" id="company_name">
+        </div>
+        <div class="form-group">
+            <label>职位:</label>
+            <input type="text" id="job_title">
+        </div>
+        <div class="form-group">
+            <label>入职日期:</label>
+            <input type="date" id="job_start_date">
+        </div>
+        <div class="form-group">
+            <label>结束日期:</label>
+            <input type="date" id="job_end_date">
+        </div>
+        <h3>教育信息</h3>
+        <div class="form-group">
+            <label>学校名称:</label>
+            <input type="text" id="school_name">
+        </div>
+        <div class="form-group">
+            <label>专业:</label>
+            <input type="text" id="major">
+        </div>
+        <div class="form-group">
+            <label>辅修专业:</label>
+            <input type="text" id="minor">
+        </div>
+        <div class="form-group">
+            <label>学位类型:</label>
+            <input type="text" id="degree_type">
+        </div>
+        <div class="form-group">
+            <label>毕业年份:</label>
+            <input type="number" id="graduation_year">
+        </div>
+        <h3>地区信息</h3>
+        <div class="form-group">
+            <label>所在地区:</label>
+            <input type="text" id="region">
+        </div>
+        <div class="form-group">
+            <label>开始日期:</label>
+            <input type="date" id="region_start_date">
+        </div>
+        <div class="form-group">
+            <label>结束日期:</label>
+            <input type="date" id="region_end_date">
+        </div>
+        <button id="saveUserBtn">保存</button>
+        <button id="cancelBtn">取消</button>
+    </div>
+
+    <script>
+    $(function() {
+        loadUsers();
+        
+        $('#addUserBtn').click(function() {
+            $('#userForm').show();
+        });
+        
+        $('#cancelBtn').click(function() {
+            $('#userForm').hide();
+        });
+        
+        $('#saveUserBtn').click(function() {
+            const user = {
+                username: $('#username').val(),
+                email: $('#email').val(),
+                slogan: $('#slogan').val(),
+                avatar: $('#avatar').val(),
+                status: $('#status').val(),
+                company_name: $('#company_name').val(),
+                job_title: $('#job_title').val(),
+                job_start_date: $('#job_start_date').val(),
+                job_end_date: $('#job_end_date').val(),
+                school_name: $('#school_name').val(),
+                major: $('#major').val(),
+                minor: $('#minor').val(),
+                degree_type: $('#degree_type').val(),
+                graduation_year: $('#graduation_year').val(),
+                region: $('#region').val(),
+                region_start_date: $('#region_start_date').val(),
+                region_end_date: $('#region_end_date').val()
+            };
+            
+            const editId = $('#userForm').data('editId');
+            const url = editId ? `users.php?action=edit&id=${editId}` : 'users.php?action=add';
+            
+            $.ajax({
+                url: url,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(user),
+                success: function() {
+                    loadUsers();
+                    $('#userForm').hide();
+                }
+            });
+        });
+    });
+    
+    let currentPage = 1;
+    let currentPerPage = 25;
+    let totalPages = 1;
+    
+    function loadUsers(keyword = '', page = 1, perPage = 25) {
+        const status = $('#statusFilter').val();
+        const urlParams = new URLSearchParams();
+        if (keyword) urlParams.set('keyword', keyword);
+        if (status !== '') urlParams.set('status', status);
+        urlParams.set('page', page);
+        urlParams.set('per_page', perPage);
+        
+        const url = `users.php?action=list&${urlParams.toString()}`;
+            
+        $.get(url, function(response) {
+            currentPage = response.pagination.current_page;
+            currentPerPage = response.pagination.per_page;
+            totalPages = response.pagination.total_pages;
+            
+            $('#pageInfo').text(`第${currentPage}页/共${totalPages}页`);
+            $('#perPageSelect').val(currentPerPage);
+            
+            let html = '<table><tr><th>ID</th><th>用户名</th><th>邮箱</th><th>个人口号</th></tr>';
+            response.users.forEach(user => {
+                html += `<tr><td>${user.id}</td><td>${user.username}</td><td>${user.email}</td><td>${user.slogan}</td>
+                <td><button onclick="editUser(${user.id})">编辑</button></td>
+                <td><button onclick="deleteUser(${user.id})">删除</button></td></tr>`;
+            });
+            html += '</table>';
+            $('#userList').html(html);
+        });
+    }
+    function editUser(id) {
+        $.get(`users.php?action=get&id=${id}`, function(user) {
+            // 设置基本用户信息
+            $('#username').val(user.username);
+            $('#email').val(user.email);
+            $('#slogan').val(user.slogan);
+            $('#avatar').val(user.avatar);
+            $('#status').val(user.status);
+            
+            // 设置工作信息
+            $('#company_name').val(user.company_name);
+            $('#job_title').val(user.job_title);
+            $('#job_start_date').val(user.job_start_date);
+            $('#job_end_date').val(user.job_end_date);
+            
+            // 设置教育信息
+            $('#school_name').val(user.school_name);
+            $('#major').val(user.major);
+            $('#minor').val(user.minor);
+            $('#degree_type').val(user.degree_type);
+            $('#graduation_year').val(user.graduation_year);
+            
+            // 设置地区信息
+            $('#region').val(user.region);
+            $('#region_start_date').val(user.region_start_date);
+            $('#region_end_date').val(user.region_end_date);
+            $('#userForm h2').text('编辑用户');
+            $('#userForm').data('editId', id).show();
+        });
+    }
+    
+    function deleteUser(id) {
+        if(confirm('确定要删除这个用户吗?')) {
+            $.ajax({
+                url: `users.php?action=delete&id=${id}`,
+                success: function() {
+                    loadUsers();
+                }
+            });
+        }
+    }
+    $('#searchBtn').click(function() {
+        const keyword = $('#searchInput').val();
+        loadUsers(keyword);
+    });
+    
+    $('#searchInput').keypress(function(e) {
+        if (e.which === 13) {
+            const keyword = $('#searchInput').val();
+            loadUsers(keyword, 1, currentPerPage);
+        }
+    });
+    
+    $('#perPageSelect').change(function() {
+        const perPage = $(this).val();
+        loadUsers($('#searchInput').val(), 1, perPage);
+    });
+    
+    $('#prevPage').click(function() {
+        if (currentPage > 1) {
+            loadUsers($('#searchInput').val(), currentPage - 1, currentPerPage);
+        }
+    });
+    
+    $('#nextPage').click(function() {
+        if (currentPage < totalPages) {
+            loadUsers($('#searchInput').val(), currentPage + 1, currentPerPage);
+        }
+    });
+    
+    $('#exportBtn').click(function() {
+        window.location.href = 'users.php?action=export';
+    });
+
+    $('#csvImport').change(function() {
+        if(this.files.length > 0) {
+            const formData = new FormData();
+            formData.append('csv', this.files[0]);
+            
+            $.ajax({
+                url: 'users.php?action=import',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function() {
+                    showStatus('导入成功', 'success');
+                    loadUsers();
+                },
+                error: function() {
+                    showStatus('导入失败', 'error');
+                }
+            });
+        }
+    });
+
+    function showStatus(msg, type) {
+        const status = $('#statusMsg');
+        status.text(msg).removeClass().addClass(type).show();
+        setTimeout(() => status.fadeOut(), 3000);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<!--{hook tag_list_start.htm}-->
+<style>
+    
+  .tagNavBox{
+
+}
+.tagFindBox{
+  display: flex;
+  justify-content: flex-end;
+}  
+ 
+.brandKeyword{
+     border:1px solid #ddd;
+     width:110px;display:inline-block; margin-right:10px;border-radius: 4px;font-size: 12px;
+ }
+ .branBtn{
+     background:#eec7c7;border:1px solid #eec7c7; color:#333; font-size: 11px;border-radius: 4px; padding:0 3px; white-space: nowrap;
+ }
+ 
+ .branBtnCurr{
+     background:#643200;border-color:#643200; color:#fff;
+ }
+    
+</style>
+
+<div class="row">
+	<div class="col-lg-12">
+		<div class="content mr-3">
+			<div class="d-flex justify-content-between shadow border-light border-left-primary justify-content-between breadcrumb tagNavBox" style="padding:5px 0 5px 5px">
+				<ol class="row " style="margin:0; padding:5px 0 0;">
+
+					<li class="breadcrumb-item"><a href="<?php echo $conf['path'];?>"><i class="icon-home text-primary" aria-hidden="true"></i></a></li>
+					<li class="breadcrumb-item">
+						<a href="<?php echo $header['mobile_link'];?>">
+							Brands
+						</a>
+					</li>
+		
+					<!--{hook tag_list_breadcrumb_li.htm}-->
+					
+				</ol>
+				
+					<div class="tagFindBox col">
+				    <input type="text" class="brandKeyword" placeholder="brand keyword" id="brandKeyword"> 
+				    
+		
+
+  				    <button type="button" class="branBtn" style="margin-right: 10px;" id="azBtn">A~Z&nbsp;<i class="icon-sort-alpha-asc"></i>
+</button> 
+				    <button type="button" class="branBtn branBtnCurr" id="hotBtn">Hot&nbsp;<i class="icon-sort-amount-desc"></i></button>
+		    
+
+	
+				</div>
+			
+				<!--{hook tag_list_breadcrumb_ol.htm}-->
+			</div>
+
+			<ul class="row list-unstyled mb-0" id="brandBox">
+				<?php if($taglist){foreach ($taglist as &$_tag){ ?>
+				<li class="col-md-3 tap mb-3" data-href="<?php echo $_tag['url'];?>">
+					<div class="card">
+						<div class="card-body">
+							<ul class="list-unstyled d-flex justify-content-between">
+								<li>
+                                    <h2 class="h6 mb-0">
+                                        <a href="<?php echo $_tag['url'];?>">
+                                            <strong>
+                                                <?php echo $_tag['name'];?>
+                                            </strong>
+                                        </a>
+                                    </h2>
+								</li>
+								<li>
+									<?php echo $_tag['count'];?>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+
+				<?php }}else{ ?>
+				<li class="col-md-12">
+                    <?php echo lang('none');?>
+                </li>
+				<?php } ?>
+			</ul>
+
+		
+		</div>
+	</div>
+</div>
+
+<!--{hook tag_list_end.htm}-->
+
+<?php include _include(APP_PATH . 'view/htm/footer.inc.htm');?>
+
+<script>
+    (function ($) {
+        var brandList=<?php echo json_encode($taglist);?>;
+        var curList
+        var timeHandle
+
+        $("#hotBtn").click(function(){
+             $("#azBtn").removeClass('branBtnCurr');
+            $(this).addClass('branBtnCurr');
+            
+            let list=JSON.parse(JSON.stringify(brandList))
+            list.sort((a, b) => b.count - a.count); 
+            curList=list;
+            inputWord()
+        })
+        
+        $("#azBtn").click(function(){
+            
+            curList=sortList(brandList,"name");
+            $("#hotBtn").removeClass('branBtnCurr');
+            $(this).addClass('branBtnCurr');
+            inputWord()
+        })
+        
+        $("#brandKeyword").on('input',function(){
+            timeHandle && clearTimeout(timeHandle);
+            timeHandle=setTimeout(()=>{
+               inputWord()
+            },100)
+            
+            
+          
+          
+        });
+        $('#nav li[data-active="fid-tag"]').addClass('active');
+        function inputWord(){
+         var word=$("#brandKeyword").val().toLowerCase()
+          var list=[];
+          if(!curList) curList=brandList;
+          curList.forEach(v=>{
+              var name=v.name.toLowerCase()
+            //   console.log(name,word);
+              if(name.indexOf(word)>-1){
+                  list.push(v)
+              }
+          })
+          
+             outHtml(list);  
+    }
+    function outHtml(list){
+        var html='';
+        list.forEach(v=>{
+            // html.='<li><h2 class="h6 mb-0"><a href="/brands/'+v.tid+'"><strong>'+v.tid+'</strong></a></h2></li>';
+            html+='<li class="col-md-3 tap mb-3" data-href="'+v.url+'"><div class="card"><div class="card-body"><ul class="list-unstyled d-flex justify-content-between"><li><h2 class="h6 mb-0"><a href="'+v.url+'"><strong>'+v.name+'</strong></a></h2></li><li>'+v.count+'</li></ul></div></div></li>'
+        })
+        $("#brandBox").html(html);
+    }
+
+    function sortList(arr,flag){
+    return arr.sort((a,b) => { 
+        return a[flag].localeCompare(b[flag])
+    })
+    }
+
+        
+    })(jQuery);
+
+</script>
+
+
+
+<!--{hook tag_list_js.htm}-->

@@ -1,0 +1,594 @@
+<!--{hook header_nav_start.htm}-->
+<header class="navbar navbar-expand-lg navbar-dark bg-primary py-1 mb-3" id="header">
+	<div class="container-fluid">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav"
+			aria-controls="navbar_collapse" aria-expanded="false" aria-label="<?php echo lang('toggler_menu');?>">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!--{hook header_nav_logo_before.htm}-->
+		<?php if ('index' == $route) { ?>
+		<h1 class="d-none">
+			<?php echo $conf['sitename'] ;?>
+		</h1>
+		<?php } ?>
+		<a class="navbar-brand text-truncate d-flex flex-wrap" title="<?php echo $conf['sitename'] ;?>" href="<?php echo $conf['path'];?>">
+			<!--替换LOGO 直接替换 view/img/logo.png 不要修改此处-->
+			<img src="<?php echo view_path(),$conf['logo_mobile_url'],$static_version;?>" class="logo-2"
+				alt="<?php echo $conf['sitename'] ;?>">
+		</a>
+
+		<div style="display: flex;">
+			<!--{hook header_nav_logo_after.htm}-->
+
+			<?php if(empty($uid)) { ?>
+			<!--登录图标-->
+			<a class="navbar-brand d-block d-lg-none" rel="nofollow" href="<?php echo url('user-login');?>"
+				aria-label="<?php echo lang('login');?>"> <i class="icon-user"></i></a>
+			<?php } else { ?>
+			<?php if (group_access($gid, 'allowthread')) { ?>
+
+			<!--{hook header_nav_create.htm}-->
+
+			<?php } else { ?>
+			<!--搜索图标-->
+			<a class="navbar-brand d-block d-lg-none" href="<?php echo url('operate-search');?>"><i
+					class="icon-search"></i></a>
+			<?php } ?>
+			<?php } ?>
+		</div>
+
+		<!--{hook header_nav_user_icon_after.htm}-->
+
+		<div class="collapse navbar-collapse pt-0" id="nav">
+			<!-- 左侧：栏目 -->
+			<ul class="navbar-nav mr-auto">
+
+
+				<li class="nav-item dropdown" fid="497" data-active="fid-497"><a class="nav-link dropdown-toggle"
+						href="/category/497" id="Menu-497" role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"><i class="icon-circle-o d-md-none"></i>&nbsp;Shop</a>
+					<div class="dropdown-menu" aria-labelledby="Menu-497">
+						<a class="dropdown-item" href="/list/498"><i class="icon-circle-o d-md-none"></i>&nbsp;Handbags</a>
+						<a class="dropdown-item" href="/list/499"><i class="icon-circle-o d-md-none"></i>&nbsp;Shoes</a>
+						<a class="dropdown-item" href="/list/506"><i class="icon-circle-o d-md-none"></i>&nbsp;Watches</a>
+						<a class="dropdown-item" href="/list/500"><i class="icon-circle-o d-md-none"></i>&nbsp;Accessories</a>
+						<a class="dropdown-item" href="/list/505"><i class="icon-circle-o d-md-none"></i>&nbsp;BELT</a>
+						<a class="dropdown-item" href="/list/504"><i class="icon-circle-o d-md-none"></i>&nbsp;NECKLACE</a>
+						<a class="dropdown-item" href="/list/501"><i class="icon-circle-o d-md-none"></i>&nbsp;SUNGLASSES</a>
+						<a class="dropdown-item" href="/list/502"><i class="icon-circle-o d-md-none"></i>&nbsp;BRACELET</a>
+						<a class="dropdown-item" href="/list/507"><i class="icon-circle-o d-md-none"></i>&nbsp;Clothings</a>
+						<a class="dropdown-item" href="/list/503"><i class="icon-circle-o d-md-none"></i>&nbsp;Uncategorized</a>
+								
+						
+							</div>
+				</li>
+
+
+				<li class="nav-item " fid="478" data-active="fid-tag"><a class="nav-link " href="/brands/list"><i
+							class="icon-circle-o d-md-none"></i>&nbsp;Brands</a></li>
+
+				<li class="nav-item dropdown" fid="1" data-active="fid-1"><a class="nav-link dropdown-toggle" href="/category/1"
+						id="Menu-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+							class="icon-circle-o d-md-none"></i>&nbsp;Women's Bags</a>
+					<div class="dropdown-menu" aria-labelledby="Menu-1"><a class="dropdown-item" href="/list/21"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Alexander Wang Women's Bags</a><a class="dropdown-item"
+							href="/list/8"><i class="icon-circle-o d-md-none"></i>&nbsp;Balenciaga Women's Bags</a><a
+							class="dropdown-item" href="/list/15"><i class="icon-circle-o d-md-none"></i>&nbsp;Bottega Veneta Women's
+							Bags</a><a class="dropdown-item" href="/list/16"><i class="icon-circle-o d-md-none"></i>&nbsp;Bulgari
+							Women's Bags</a><a class="dropdown-item" href="/list/11"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Burberry Women's Bags</a><a class="dropdown-item"
+							href="/list/10"><i class="icon-circle-o d-md-none"></i>&nbsp;Celine Women's Bags</a><a
+							class="dropdown-item" href="/list/4"><i class="icon-circle-o d-md-none"></i>&nbsp;Chanel Women's
+							Bags</a><a class="dropdown-item" href="/list/22"><i class="icon-circle-o d-md-none"></i>&nbsp;Chloé
+							Women's Bags</a><a class="dropdown-item" href="/list/17"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Delvaux Women's Bags</a><a class="dropdown-item"
+							href="/list/5"><i class="icon-circle-o d-md-none"></i>&nbsp;Dior Women's Bags</a><a class="dropdown-item"
+							href="/list/14"><i class="icon-circle-o d-md-none"></i>&nbsp;Fendi Women's Bags</a><a
+							class="dropdown-item" href="/list/20"><i class="icon-circle-o d-md-none"></i>&nbsp;Goyard Women's
+							Bags</a><a class="dropdown-item" href="/list/3"><i class="icon-circle-o d-md-none"></i>&nbsp;Gucci Women's
+							Bags</a><a class="dropdown-item" href="/list/6"><i class="icon-circle-o d-md-none"></i>&nbsp;Hermès
+							Women's Bags</a><a class="dropdown-item" href="/list/13"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Loewe Women's Bags</a><a class="dropdown-item"
+							href="/list/23"><i class="icon-circle-o d-md-none"></i>&nbsp;Loro Piana Women's Bags</a><a
+							class="dropdown-item" href="/list/2"><i class="icon-circle-o d-md-none"></i>&nbsp;Louis Vuitton Women's
+							Bags</a><a class="dropdown-item" href="/list/19"><i class="icon-circle-o d-md-none"></i>&nbsp;MCM Women's
+							Bags</a><a class="dropdown-item" href="/list/12"><i class="icon-circle-o d-md-none"></i>&nbsp;Miu Miu
+							Women's Bags</a><a class="dropdown-item" href="/list/9"><i class="icon-circle-o d-md-none"></i>&nbsp;Prada
+							Women's Bags</a><a class="dropdown-item" href="/list/18"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Valentino Women's Bags</a><a class="dropdown-item"
+							href="/list/7"><i class="icon-circle-o d-md-none"></i>&nbsp;YSL Women's Bags</a></div>
+				</li>
+
+				<li class="nav-item dropdown" fid="24" data-active="fid-24"><a class="nav-link dropdown-toggle"
+						href="/category/24" id="Menu-24" role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"><i class="icon-circle-o d-md-none"></i>&nbsp;Men's Bags</a>
+					<div class="dropdown-menu" aria-labelledby="Menu-24"><a class="dropdown-item" href="/list/33"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Bally Men's Bags</a><a class="dropdown-item"
+							href="/list/31"><i class="icon-circle-o d-md-none"></i>&nbsp;Bottega Veneta Men's Bags</a><a
+							class="dropdown-item" href="/list/30"><i class="icon-circle-o d-md-none"></i>&nbsp;Burberry Men's
+							Bags</a><a class="dropdown-item" href="/list/27"><i class="icon-circle-o d-md-none"></i>&nbsp;Dior Men's
+							Bags</a><a class="dropdown-item" href="/list/29"><i class="icon-circle-o d-md-none"></i>&nbsp;Fendi Men's
+							Bags</a><a class="dropdown-item" href="/list/32"><i class="icon-circle-o d-md-none"></i>&nbsp;Givenchy
+							Men's Bags</a><a class="dropdown-item" href="/list/26"><i class="icon-circle-o d-md-none"></i>&nbsp;Gucci
+							Men's Bags</a><a class="dropdown-item" href="/list/25"><i class="icon-circle-o d-md-none"></i>&nbsp;Louis
+							Vuitton Men's Bags</a><a class="dropdown-item" href="/list/35"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;MCM Men's Bags</a><a class="dropdown-item" href="/list/28"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Prada Men's Bags</a><a class="dropdown-item"
+							href="/list/34"><i class="icon-circle-o d-md-none"></i>&nbsp;Thom Browne Men's Bags</a></div>
+				</li>
+
+
+				<li class="nav-item dropdown" fid="40" data-active="fid-40"><a class="nav-link dropdown-toggle"
+						href="/category/40" id="Menu-40" role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"><i class="icon-circle-o d-md-none"></i>&nbsp;Wallets</a>
+					<div class="dropdown-menu" aria-labelledby="Menu-40"><a class="dropdown-item" href="/list/54"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Bally Wallets</a><a class="dropdown-item" href="/list/47"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;Burberry Wallets</a><a class="dropdown-item"
+							href="/list/49"><i class="icon-circle-o d-md-none"></i>&nbsp;Celine Wallets</a><a class="dropdown-item"
+							href="/list/43"><i class="icon-circle-o d-md-none"></i>&nbsp;Chanel Wallets</a><a class="dropdown-item"
+							href="/list/44"><i class="icon-circle-o d-md-none"></i>&nbsp;Dior Wallets</a><a class="dropdown-item"
+							href="/list/50"><i class="icon-circle-o d-md-none"></i>&nbsp;Fendi Wallets</a><a class="dropdown-item"
+							href="/list/51"><i class="icon-circle-o d-md-none"></i>&nbsp;Givenchy Wallets</a><a class="dropdown-item"
+							href="/list/42"><i class="icon-circle-o d-md-none"></i>&nbsp;Gucci Wallets</a><a class="dropdown-item"
+							href="/list/41"><i class="icon-circle-o d-md-none"></i>&nbsp;Louis Vuitton Wallets</a><a
+							class="dropdown-item" href="/list/46"><i class="icon-circle-o d-md-none"></i>&nbsp;Miu Miu Wallets</a><a
+							class="dropdown-item" href="/list/48"><i class="icon-circle-o d-md-none"></i>&nbsp;Prada Wallets</a><a
+							class="dropdown-item" href="/list/52"><i class="icon-circle-o d-md-none"></i>&nbsp;Versace Wallets</a><a
+							class="dropdown-item" href="/list/45"><i class="icon-circle-o d-md-none"></i>&nbsp;YSL Wallets</a></div>
+				</li>
+
+
+
+				<li class="nav-item dropdown" fid="999" data-active="fid-999"><a class="nav-link dropdown-toggle"
+						href="/category/1" id="Menu-999" role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"><i class="icon-circle-o d-md-none"></i>&nbsp;More category</a>
+					<ul class="dropdown-menu" aria-labelledby="Menu-999">
+
+
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/36">Travel Luggage</a>
+							<div class="menuChilBox">
+								<a href="/list/39">Backpacks</a>
+								<a href="/list/38">Travel Bags</a>
+								<a href="/list/37">Trolley Cases</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/55">Women's Clothing</a>
+							<div class="menuChilBox">
+								<a href="/list/78">Acne Studios Women's Clothing</a>
+								<a href="/list/68">Alexander Wang Women's Clothing</a>
+								<a href="/list/79">Armani Women's Clothing</a>
+								<a href="/list/64">Balenciaga Women's Clothing</a>
+								<a href="/list/81">Balmain Women's Clothing</a>
+								<a href="/list/71">Bottega Veneta Women's Clothing</a>
+								<a href="/list/61">Burberry Women's Clothing</a>
+								<a href="/list/87">Cashmere Coats, Furs</a>
+								<a href="/list/67">Celine Women's Clothing</a>
+								<a href="/list/56">Chanel Women's Clothing</a>
+								<a href="/list/73">Chloé Women's Clothing</a>
+								<a href="/list/72">Chrome Hearts Women's Clothing</a>
+								<a href="/list/58">Dior Women's Clothing</a>
+								<a href="/list/84">Dolce &amp; Gabbana Women's Clothing</a>
+								<a href="/list/66">Fendi Women's Clothing</a>
+								<a href="/list/69">Givenchy Women's Clothing</a>
+								<a href="/list/88">Goose Down Jacket Women's</a>
+								<a href="/list/57">Gucci Women's Clothing</a>
+								<a href="/list/59">Hermès Women's Clothing</a>
+								<a href="/list/80">Kenzo Women's Clothing</a>
+								<a href="/list/63">Loewe Women's Clothing</a>
+								<a href="/list/370">Louis Vuitton Women's Clothing</a>
+								<a href="/list/83">MaxMara Women's Clothing</a>
+								<a href="/list/65">Miu Miu Women's Clothing</a>
+								<a href="/list/74">Moncler Women's Clothing</a>
+								<a href="/list/85">Moschino Women's Clothing</a>
+								<a href="/list/82">OffWhite Women's Clothing</a>
+								<a href="/list/90">Other Brands of Women's Clothing</a>
+								<a href="/list/62">Prada Women's Clothing</a>
+								<a href="/list/89">Premium Women's Down Jackets</a>
+								<a href="/list/76">The North Face Women's Clothing</a>
+								<a href="/list/75">Thom Browne Women's Clothing</a>
+								<a href="/list/86">Valentino Women's Clothing</a>
+								<a href="/list/70">Versace Women's Clothing</a>
+								<a href="/list/60">YSL Women's Clothing</a>
+								<a href="/list/77">Zimmermann Women's Clothing</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/91">Men's Clothing</a>
+							<div class="menuChilBox">
+								<a href="/list/101">Armani Men's Clothing</a>
+								<a href="/list/116">Balenciaga Men's Clothing</a>
+								<a href="/list/109">Bottega Veneta Men's Clothing</a>
+								<a href="/list/112">Burberry Men's Clothing</a>
+								<a href="/list/94">Canada Goose Men's Clothing</a>
+								<a href="/list/111">Celine Men's Clothing</a>
+								<a href="/list/119">Chanel Men's Clothing</a>
+								<a href="/list/102">Chrome Hearts Men's Clothing</a>
+								<a href="/list/120">Dior Men's Clothing</a>
+								<a href="/list/97">Dolce &amp; Gabbana Men's Clothing</a>
+								<a href="/list/115">Fendi Men's Clothing</a>
+								<a href="/list/104">Givenchy Men's Clothing</a>
+								<a href="/list/121">Gucci Men's Clothing</a>
+								<a href="/list/118">Hermès Men's Clothing</a>
+								<a href="/list/99">Kenzo Men's Clothing</a>
+								<a href="/list/114">Loewe Men's Clothing</a>
+								<a href="/list/122">Louis Vuitton Men's Clothing</a>
+								<a href="/list/105">Mastermind Japan Men's Clothing</a>
+								<a href="/list/110">Moncler Men's Clothing</a>
+								<a href="/list/98">Moschino Men's Clothing</a>
+								<a href="/list/100">Off-White Men's Clothing</a>
+								<a href="/list/95">Other Brands of Men's Clothing</a>
+								<a href="/list/117">Prada Men's Clothing</a>
+								<a href="/list/93">Premium Men's Down Jackets</a>
+								<a href="/list/123">Summer Shorts</a>
+								<a href="/list/107">The North Face Men's Clothing</a>
+								<a href="/list/108">Thom Browne Men's Clothing</a>
+								<a href="/list/96">Valentino Men's Clothing</a>
+								<a href="/list/103">Versace Men's Clothing</a>
+								<a href="/list/113">YSL Men's Clothing</a>
+								<a href="/list/106">Zegna Men's Clothing</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/124">Women's Shoes</a>
+							<div class="menuChilBox">
+								<a href="/list/168">AIR JORDAN Women's Shoes</a>
+								<a href="/list/167">Alexander Wang Women's Shoes</a>
+								<a href="/list/166">Amiri Women's Shoes</a>
+								<a href="/list/165">Balenciaga Women's Shoes</a>
+								<a href="/list/164">Bally Women's Shoes</a>
+								<a href="/list/163">Balmain Women's Shoes</a>
+								<a href="/list/162">Bottega Veneta Women's Shoes</a>
+								<a href="/list/161">Brunello Cucinelli Women's Shoes</a>
+								<a href="/list/160">Burberry Women's Shoes</a>
+								<a href="/list/159">Celine Women's Shoes</a>
+								<a href="/list/158">Chanel Women's Shoes</a>
+								<a href="/list/157">Chloé Women's Shoes</a>
+								<a href="/list/156">Christian Louboutin Women's Shoes</a>
+								<a href="/list/155">Dior Women's Shoes</a>
+								<a href="/list/154">Dolce &amp; Gabbana Women's Shoes</a>
+								<a href="/list/153">Fendi Women's Shoes</a>
+								<a href="/list/152">Ferragamo Women's Shoes</a>
+								<a href="/list/151">Givenchy Women's Shoes</a>
+								<a href="/list/150">Golden Goose Women's Shoes</a>
+								<a href="/list/149">Gucci Women's Shoes</a>
+								<a href="/list/147">HOGAN Women's Shoes</a>
+								<a href="/list/148">Hermès Women's Shoes</a>
+								<a href="/list/146">JIL SANDER Women's Shoes</a>
+								<a href="/list/145">Jimmy Choo Women's Shoes</a>
+								<a href="/list/144">LANVIN Women's Shoes</a>
+								<a href="/list/143">Loewe Women's Shoes</a>
+								<a href="/list/142">Loro Piana Women's Shoes</a>
+								<a href="/list/141">Louis Vuitton Women's Shoes</a>
+								<a href="/list/140">Maison Margiela Women's Shoes</a>
+								<a href="/list/139">Manolo Blahnik Women's Shoes</a>
+								<a href="/list/138">Marni Women's Shoes</a>
+								<a href="/list/137">McQueen Women's Shoes</a>
+								<a href="/list/136">Miu Miu Women's Shoes</a>
+								<a href="/list/134">Other Brands of Women's Shoes</a>
+								<a href="/list/133">Prada Women's Shoes</a>
+								<a href="/list/132">Rick Owens Women's Shoes</a>
+								<a href="/list/131">Roger Vivier Women's Shoes</a>
+								<a href="/list/130">Sergio Rossi Women's Shoes</a>
+								<a href="/list/129">TODS Women's Shoes</a>
+								<a href="/list/128">UGG Women's Shoes</a>
+								<a href="/list/127">Valentino Women's Shoes</a>
+								<a href="/list/371">Versace Women's Shoes</a>
+								<a href="/list/125">YSL Women's Shoes</a>
+								<a href="/list/126">Yeezy Women's Shoes</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/169">Men's Shoes</a>
+							<div class="menuChilBox">
+								<a href="/list/203">AJ Men's Shoes</a>
+								<a href="/list/202">Armani Men's Shoes</a>
+								<a href="/list/201">Balenciaga Men's Shoes</a>
+								<a href="/list/200">Bally Men's Shoes</a>
+								<a href="/list/199">Balmain Men's Shoes</a>
+								<a href="/list/198">Basketball Shoes for Real Games</a>
+								<a href="/list/197">Berluti Men's Shoes</a>
+								<a href="/list/196">Bottega Veneta Men's Shoes</a>
+								<a href="/list/195">Burberry Men's Shoes</a>
+								<a href="/list/194">Celine Men's Shoes</a>
+								<a href="/list/193">Chanel Men's Shoes</a>
+								<a href="/list/192">Dior Men's Shoes</a>
+								<a href="/list/191">Dolce &amp; Gabbana Men's Shoes</a>
+								<a href="/list/190">Fendi Men's Shoes</a>
+								<a href="/list/189">Ferragamo Men's Shoes</a>
+								<a href="/list/188">Givenchy Men's Shoes</a>
+								<a href="/list/187">Gucci Men's Shoes</a>
+								<a href="/list/186">Hermès Men's Shoes</a>
+								<a href="/list/185">Kenzo Men's Shoes</a>
+								<a href="/list/184">Loewe Men's Shoes</a>
+								<a href="/list/183">Louis Vuitton Men's Shoes</a>
+								<a href="/list/182">McQueen Men's Shoes</a>
+								<a href="/list/181">Moncler Men's Shoes</a>
+								<a href="/list/180">Off-White Men's Shoes</a>
+								<a href="/list/179">Other Brands of Men's Shoes</a>
+								<a href="/list/178">Prada Men's Shoes</a>
+								<a href="/list/176">TOD'S Men's Shoes</a>
+								<a href="/list/177">Thom Browne Men's Shoes</a>
+								<a href="/list/175">UGG Men's Shoes</a>
+								<a href="/list/174">Valentino Men's Shoes</a>
+								<a href="/list/173">Versace Men's Shoes</a>
+								<a href="/list/171">YSL Men's Shoes</a>
+								<a href="/list/172">Yeezy Men's Shoes</a>
+								<a href="/list/170">Zegna Men's Shoes</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/204">Trendy Shoes</a>
+							<div class="menuChilBox">
+								<a href="/list/221">AJ Series</a>
+								<a href="/list/223">Adidas Originals Series</a>
+								<a href="/list/222">Air Force Series</a>
+								<a href="/list/220">Asics Series</a>
+								<a href="/list/219">Converse Series</a>
+								<a href="/list/218">Dunk Series</a>
+								<a href="/list/217">Ecco Series</a>
+								<a href="/list/216">GGCC Series</a>
+								<a href="/list/214">MLB Series</a>
+								<a href="/list/215">Mihara Yasuhiro Series</a>
+								<a href="/list/213">New Balance Series</a>
+								<a href="/list/211">Puma Series</a>
+								<a href="/list/210">Rick Owens Series</a>
+								<a href="/list/209">Salomon Series</a>
+								<a href="/list/208">Sandals and Slippers Series</a>
+								<a href="/list/207">Timberland Series</a>
+								<a href="/list/206">Vans Series</a>
+								<a href="/list/205">Yeezy Series</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/349">Belts</a>
+							<div class="menuChilBox">
+								<a href="/list/367">Balenciaga Belts</a>
+								<a href="/list/366">Bottega Veneta Belts</a>
+								<a href="/list/365">Burberry Belts</a>
+								<a href="/list/364">Celine Belts</a>
+								<a href="/list/363">Chanel Belts</a>
+								<a href="/list/362">Dior Belts</a>
+								<a href="/list/361">Fendi Belts</a>
+								<a href="/list/360">Ferragamo Belts</a>
+								<a href="/list/359">Gucci Belts</a>
+								<a href="/list/358">Hermès Belts</a>
+								<a href="/list/356">LV Belts</a>
+								<a href="/list/357">Loewe Belts</a>
+								<a href="/list/355">Miu Miu Belts</a>
+								<a href="/list/354">Montblanc Belts</a>
+								<a href="/list/353">Prada Belts</a>
+								<a href="/list/352">Valentino Belts</a>
+								<a href="/list/351">Versace Belts</a>
+								<a href="/list/350">YSL Belts</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/327">Scarves</a>
+							<div class="menuChilBox">
+								<a href="/list/348">Acne Studios Scarves</a>
+								<a href="/list/328">Blanket Series</a>
+								<a href="/list/347">Burberry Scarves</a>
+								<a href="/list/346">Celine Scarves</a>
+								<a href="/list/345">Chanel Scarves</a>
+								<a href="/list/344">Chanel Small Ribbons</a>
+								<a href="/list/343">Dior Scarves</a>
+								<a href="/list/342">Dior Small Ribbons</a>
+								<a href="/list/341">Dior Ties</a>
+								<a href="/list/340">Fendi Scarves</a>
+								<a href="/list/339">Givenchy Scarves</a>
+								<a href="/list/338">Gucci Scarves</a>
+								<a href="/list/337">Hermès Scarves</a>
+								<a href="/list/336">Hermès Small Ribbons</a>
+								<a href="/list/335">Hermès Ties</a>
+								<a href="/list/333">LV Scarves</a>
+								<a href="/list/332">LV Small Ribbons</a>
+								<a href="/list/331">LV Ties</a>
+								<a href="/list/334">Loewe Scarves</a>
+								<a href="/list/330">McQueen Scarves</a>
+								<a href="/list/329">Shawl Series</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/310">Eyewear</a>
+							<div class="menuChilBox">
+								<a href="/list/326">Balenciaga Eyewear</a>
+								<a href="/list/325">Burberry Eyewear</a>
+								<a href="/list/324">Cartier Eyewear</a>
+								<a href="/list/323">Celine Eyewear</a>
+								<a href="/list/322">Chanel Eyewear</a>
+								<a href="/list/321">Dior Eyewear</a>
+								<a href="/list/320">Fendi Eyewear</a>
+								<a href="/list/319">GM Eyewear</a>
+								<a href="/list/318">Gucci Eyewear</a>
+								<a href="/list/315">LV Eyewear</a>
+								<a href="/list/317">Loewe Eyewear</a>
+								<a href="/list/316">Louis Vuitton Eyewear</a>
+								<a href="/list/314">Miu Miu Eyewear</a>
+								<a href="/list/313">Montblanc Eyewear</a>
+								<a href="/list/312">Prada Eyewear</a>
+								<a href="/list/311">Versace Eyewear</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/294">Hats</a>
+							<div class="menuChilBox">
+								<a href="/list/302">Balenciaga Hats</a>
+								<a href="/list/301">Burberry Hats</a>
+								<a href="/list/304">Celine Hats</a>
+								<a href="/list/306">Chanel Hats</a>
+								<a href="/list/297">Chrome Hearts Hats</a>
+								<a href="/list/307">Dior Hats</a>
+								<a href="/list/298">Fendi Hats</a>
+								<a href="/list/308">Gucci Hats</a>
+								<a href="/list/309">LV Hats</a>
+								<a href="/list/299">Loewe Hats</a>
+								<a href="/list/300">Miu Miu Hats</a>
+								<a href="/list/295">Pillow Series</a>
+								<a href="/list/305">Prada Hats</a>
+								<a href="/list/296">Valentino Hats</a>
+								<a href="/list/303">YSL Hats</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/274">Jewelry</a>
+							<div class="menuChilBox">
+								<a href="/list/293">Bulgari Jewelry</a>
+								<a href="/list/292">Cartier Jewelry</a>
+								<a href="/list/291">Celine Jewelry</a>
+								<a href="/list/290">Chanel Jewelry</a>
+								<a href="/list/289">Chrome Hearts Jewelry</a>
+								<a href="/list/288">Dior Jewelry</a>
+								<a href="/list/287">Fendi Jewelry</a>
+								<a href="/list/286">Fred Jewelry</a>
+								<a href="/list/285">Graff Jewelry</a>
+								<a href="/list/284">Gucci Jewelry</a>
+								<a href="/list/283">Hermès Jewelry</a>
+								<a href="/list/282">Louis Vuitton Jewelry</a>
+								<a href="/list/281">Miu Miu Jewelry</a>
+								<a href="/list/280">Niche Series Jewelry</a>
+								<a href="/list/279">Qeelin Jewelry</a>
+								<a href="/list/278">Tiffany &amp; Co. Jewelry</a>
+								<a href="/list/277">Van Cleef &amp; Arpels Jewelry</a>
+								<a href="/list/276">Vivienne Westwood Jewelry</a>
+								<a href="/list/275">YSL Jewelry</a>
+							</div>
+						</li>
+						<li class="menuLi">
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/224">Watches</a>
+							<div class="menuChilBox">
+								<a href="/list/368">Armani Watches</a>
+								<a href="/list/273">Audemars Piguet Watches</a>
+								<a href="/list/268">BVLGARI Watches</a>
+								<a href="/list/272">Bell &amp; Ross Watches</a>
+								<a href="/list/271">Blancpain Watches</a>
+								<a href="/list/270">Breguet Watches</a>
+								<a href="/list/269">Breitling Watches</a>
+								<a href="/list/266">CASIO Watches</a>
+								<a href="/list/265">CHANEL Watches</a>
+								<a href="/list/264">Chopard Watches</a>
+								<a href="/list/263">Corum Watches</a>
+								<a href="/list/260">FRANCK MULLER Watches</a>
+								<a href="/list/261">Ferragamo Watches</a>
+								<a href="/list/259">Girard - Perregaux Watches</a>
+								<a href="/list/258">Glashütte Original Watches</a>
+								<a href="/list/257">Grand Seiko Watches</a>
+								<a href="/list/256">Gucci Watches</a>
+								<a href="/list/254">HUBLOT Watches</a>
+								<a href="/list/253">IWC Watches</a>
+								<a href="/list/252">JAEGER - LECOULTRE Watches</a>
+								<a href="/list/251">Joker Watches</a>
+								<a href="/list/248">LONGINES Watches</a>
+								<a href="/list/250">Ladies Watches</a>
+								<a href="/list/249">Lange &amp; Söhne Watches</a>
+								<a href="/list/245">MIDO Watches</a>
+								<a href="/list/246">Maurice Lacroix Watches</a>
+								<a href="/list/244">Montblanc Watches</a>
+								<a href="/list/243">NOMOS Watches</a>
+								<a href="/list/242">OMEGA Watches</a>
+								<a href="/list/241">ORIS Watches</a>
+								<a href="/list/239">PARMIGIANI Watches</a>
+								<a href="/list/238">PATEK PHILIPPE Watches</a>
+								<a href="/list/237">PIAGET Watches</a>
+								<a href="/list/240">Panerai Watches</a>
+								<a href="/list/233">ROLEX Watches</a>
+								<a href="/list/235">Richard Mille Watches</a>
+								<a href="/list/234">Roger Dubuis Watches</a>
+								<a href="/list/232">SevenFriday Watches</a>
+								<a href="/list/231">TAG Heuer Watches</a>
+								<a href="/list/230">TISSOT Watches</a>
+								<a href="/list/229">TUDOR Watches</a>
+								<a href="/list/228">ULYSSE NARDIN Watches</a>
+								<a href="/list/227">Vacheron Constantin Watches</a>
+								<a href="/list/226">Van Cleef &amp; Arpels Watches</a>
+								<a href="/list/225">ZENITH Watches</a>
+							</div>
+						</li>
+						<!-- <li class="menuLi">
+							<a href="/list/372">Uncategorized</a>
+						</li> -->
+					</ul>
+
+				</li>
+
+			</ul>
+			<!-- 右侧：用户 -->
+			<ul class="navbar-nav navUserBox">
+				<!-- 搜索 -->
+				<li class="nav-item searchBox" id="searchBox">
+					<div class="form-group searchInputBox px-2 mb-0 mt-1">
+						<form action="<?php echo url('operate-search'); ?>" id="form-search">
+							<div class="input-group input-group-sm mb-0">
+
+								<div class="input-group-prepend categorySelectBox">
+									<ul class="categoryBox" id="categoryAllFindBox">
+
+
+									</ul>
+									<button class="btn btn-light categoryBtn btn-search-sm dropdown-toggle" type="button"
+										id="buttonCategory" style="border-radius: 4px 0 0 4px;height: 31px; overflow: hidden;"><span
+											id="btnCategoryText" fid="<?php echo $fidFInd ;?>">
+											<?php echo $fnameFind?$fnameFind:'All category' ;?>
+										</span>
+										<span id="clearSelect"><i class="icon-remove"></i></span>
+									</button>
+
+								</div>
+								<input type="text" id="inputKeyword" class="form-control" placeholder="<?php echo lang('keyword'); ?>"
+									name="keyword" value="<?php echo $keyword ;?>">
+								<input type="hidden" name="range" value="1">
+
+								<div class="input-group-append">
+									<button class="btn btn-secondary btn-search-sm">
+										<i class="icon-search"></i>
+									</button>
+								</div>
+
+								<i id="closeSearchBox" class="icon-times-circle"></i>
+							</div>
+						</form>
+					</div>
+
+					<button class="btn btn-secondary btn-search-sm" style="background-color: #fff; color:#000;" type="button"
+						id="openSearchBtn">
+						<i class="icon-search"></i>
+					</button>
+
+				</li>
+				<!--{hook header_nav_user_start.htm}-->
+				<li class="nav-item"><a class="nav-link" rel="nofollow" href="/home/favorites" title="Wishlist"><i
+							class="icon-heart"></i></a></li>
+				<?php if(empty($uid)) { ?>
+				<li class="nav-item"><a class="nav-link" rel="nofollow" title="<?php echo lang('login');?>"
+						data-modal-title="<?php echo lang('login');?>" data-modal-size="md"
+						href="<?php echo url('user-login');?>"><i class="icon-user"></i></a></li>
+
+
+
+				<?php } else { ?>
+				<li class="nav-item username"><a class="nav-link" title="<?php echo $user['username'];?>" rel="nofollow"
+						href="<?php echo url('home');?>"><!--<img class="avatar-1" src="<?php echo $user['avatar_url'];?>">&nbsp;-->
+						<i class="icon-user"></i></a></li>
+
+
+				<!-- 管理员 -->
+				<?php if(group_access($gid, 'intoadmin')) { ?>
+				<li class="nav-item"><a class="nav-link" title="<?php echo lang('admin_page');?>" rel="nofollow"
+						href="<?php echo $conf['path'];?>admin/"><i class="icon-cogs"></i></a></li>
+				<?php } ?>
+				<!--{hook header_nav_admin_page_after.htm}-->
+				<li class="nav-item"><a class="nav-link" title="<?php echo lang('logout');?>" rel="nofollow" id="user-logout"
+						href="<?php echo url('user-logout');?>"><i class="icon-sign-out"></i></a></li>
+				<?php } ?>
+				<!--{hook header_nav_user_end.htm}-->
+			</ul>
+		</div>
+
+
+	</div>
+</header>
+<div style="min-height: 53px ; margin-bottom: 0"></div>
+
+<!--{hook header_nav_end.htm}-->

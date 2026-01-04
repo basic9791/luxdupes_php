@@ -1,0 +1,233 @@
+<?php $db = GLOBALS('db');?>
+<?php $starttime = GLOBALS('starttime');?>
+<?php $time = GLOBALS('time');?>
+<?php $ip = GLOBALS('ip');?>
+<?php $useragent = GLOBALS('useragent');?>
+<?php $forumlist = GLOBALS('forumlist');?>
+<?php $fid = GLOBALS('fid');?>
+<?php $conf = GLOBALS('conf');?>
+<?php $config = GLOBALS('config');?>
+<?php $static_version = $conf['static_version'];?>
+				
+			<!--{hook footer_start.htm}-->
+		
+			<?php  echo xn_debug_info(); ?>
+
+
+        </div>
+	</div>
+	
+	<!--{hook footer_nav_before.htm}-->
+	
+	<?php include _include(APP_PATH.'view/htm/footer_nav.inc.htm');?>
+	
+	<!--{hook footer_nav_after.htm}-->
+	
+	<!--[if ltg IE 9]>
+	<script>window.location = '<?php echo url('browser');?>';</script>
+	<![endif]-->
+	
+	<!--{hook footer_js_before.htm}-->
+
+<?php $browser = get__browser();?>
+<?php if('ie' == $browser['name']) { ?>
+<script src="<?php echo view_path();?>js/es6-shim.js<?php echo $static_version;?>"></script>
+<?php } ?>
+<!-- <script src="https://api.goaffpro.com/loader.js?shop=qvzcpotukn"></script> -->
+<script src="<?php echo $conf['path'];?>lang/<?php echo $conf['lang'];?>/lang.js<?php echo $static_version;?>"></script>
+<script src="<?php echo view_path();?>js/jquery.min.js<?php echo $static_version;?>"></script>
+<script src="<?php echo view_path();?>js/popper.min.js<?php echo $static_version;?>"></script>
+<script src="<?php echo view_path();?>js/bootstrap.min.js<?php echo $static_version;?>"></script>
+<script src="<?php echo view_path();?>js/xiuno.mini.js<?php echo $static_version;?>"></script>
+<script src="<?php echo view_path();?>js/bootstrap-plugin.js<?php echo $static_version;?>"></script>
+<script src="<?php echo view_path();?>js/async.min.js<?php echo $static_version;?>"></script>
+<script src="<?php echo view_path();?>js/form.js<?php echo $static_version;?>"></script>
+
+
+
+
+	<script>
+	var debug = DEBUG = <?php echo DEBUG; ?>;
+	var url_rewrite_on = <?php echo $conf['url_rewrite_on'];?>;
+	var url_path = '<?php echo $conf['path'];?>';
+	var fid = <?php echo $fid;?>;
+	var uid = <?php echo intval($uid);?>;
+	var gid = <?php echo intval($gid);?>;
+	xn_bg.options.water_image_url = '<?php echo view_path(),$conf['logo_water_url'];?>';	/*水印图片 / watermark image*/
+	</script>
+	<script src="<?php echo view_path();?>js/wellcms.mini.js<?php echo $static_version;?>"></script>
+
+
+<script src="<?php echo view_path();?>js/echo.min.js<?php echo $static_version;?>"></script>
+
+
+<script>
+
+    (function ($) {
+        
+        path = "<?php echo $conf['path'];?>";
+        var tid = "<?php echo $tid;?>";
+        var fid=<?php echo $fid; ?>;
+
+        $(".thListImgLinkBox").each(function(){
+            const imgData=$(this).attr('data')
+            const imgArr=imgData.split(',');
+            let url=getImgUrl(imgArr[0])
+            url=getMiniImgUrl(url)
+            if(!url) url='/view/img/nopic.png';
+            let html='<img class="w-100 rounded img1" data-echo="'+url+'"/>';
+            if (!isMobile() && imgArr[1] && imgArr[1].indexOf('.mp4')<0) {
+                let url=getImgUrl(imgArr[1])
+                url=getMiniImgUrl(url)
+                html+='<img class="w-100 rounded img2" data-echo="'+url+'"/>'
+            }
+            url && $(this).append(html);
+            
+            
+
+            
+            if(imgData.indexOf('.mp4')>-1){
+                $(this).addClass('video')
+                $(this).append('<img class="playIco" src="/view/img/play.svg"/>')
+            }
+        })
+
+
+
+        
+        if(tid){
+            $("#body img").each(function(k, v){
+                var imgData=$(this).attr('imgUrl');
+                if(imgData){
+                    const imgArr=imgData.split(',');
+                    const url=getMiniImgUrl(getImgUrl(imgArr[0]));
+
+                    $(this).attr('data-echo',url);
+                }
+                var imgUrl=$(this).attr('data-echo');
+                if(!imgUrl){
+                    imgUrl=$(this).attr('src');
+                }
+                $(this).attr('src',"/upload/loading.gif");
+                $(this).attr('data-echo',imgUrl);
+                var img = $("img").get(k).outerHTML;
+                
+                
+                img = img.replace('src', 'data-echo');
+                var This= $(this)
+                img.onload = function(){
+                    
+                    This.replaceWith(img);
+                   
+                }
+            });
+        }
+        
+        
+        
+        
+            
+       
+          
+            
+    })(jQuery);
+    
+
+
+function getMiniImgUrl(str){
+        if(!str) return '';
+         if(str.indexOf('amzrepe.com')>-1 || str.indexOf('amzswis.com')>-1 || str.indexOf('amzrep.top')>-1){
+           str= str.replace(/\.jpg/ig,'-433x433.jpg')
+  
+        }else if(str.indexOf('xcimg.szwego.com')>-1){
+           str= str.replace(/\.jpg/ig,'.jpg?imageMogr2/auto-orient/thumbnail/!320x320r/quality/100/format/jpg')
+        }
+        return str;
+    }
+    function getImgUrl(str){
+        if(!str) return '';
+        str=str.replace(/\b1\//,'//xcimg.szwego.com/');
+        str=str.replace(/\,1\//g,',//xcimg.szwego.com/');
+
+        str=str.replace(/\b2\//,'//amzrepe.com/wp-content/uploads/');
+        str=str.replace(/\,2\//g,',//amzrepe.com/wp-content/uploads/');
+
+        
+        str=str.replace(/\bc\//,'//amzrep.top/wp-content/uploads/');
+        str=str.replace(/\,c\//g,',//amzrep.top/wp-content/uploads/');
+
+        
+        str=str.replace(/\bw\//,'//amzswis.com/wp-content/uploads/');
+        str=str.replace(/\,w\//g,',//amzswis.com/wp-content/uploads/');
+
+
+       
+        
+
+        return str
+    }
+
+    echo.init({offset: 100,throttle: 250,unload: false});
+
+    var xn={};
+</script>
+
+
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="javascript:void(0);">
+	<i class="icon-angle-up"></i>
+</a>
+<!-- Scroll to bottom Button-->
+<a class="scroll-to-bottom rounded" href="javascript:void(0);" style="display: inline;">
+	<i class="icon-angle-down"></i>
+</a>
+	<!--{hook footer_js_after.htm}-->
+
+
+
+</body>
+<!--{hook footer_body_after.htm}-->
+</html>
+<!--{hook footer_end.htm}-->
+
+<?php echo cron_run();?>
+
+
+
+<script id="chatway" async="true"></script>
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>
+var _hmt = _hmt || [];
+$(function(){
+
+        LA.init({<?php echo $conf['id_ck_51_la'];?>,screenRecord:true})
+        setTimeout(()=>{
+            $("#chatway").attr('src','//cdn.chatway.app/widget.js?id=KQKQllj0AK4n')
+        },5000)
+
+        var gAsid="<?php echo $conf['GAsid'];?>";
+        
+
+       gAsid && $.getScript("https://www.googletagmanager.com/gtag/js?id="+gAsid, function(data, textStatus, jqxhr) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', gAsid);
+        });
+
+})
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+

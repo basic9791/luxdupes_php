@@ -1,0 +1,128 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+<!--{hook index_flat_start.htm}-->
+
+<div class="row">
+    <div class="col-lg-9 main">
+        <?php if ($forum_nav[$forum['fid']]['son']) { ?>
+        <div class="container-fluid">
+            <ul class="nav">
+                <?php $forum_nav = category_tree(GLOBALS('forum_nav')); foreach($forum_nav[$forum['fid']]['sonlist'] as $_forum) { ?>
+                <li class="nav-item" fid="<?php echo $_forum['fid'];?>" data-active="fid-<?php echo $_forum['fid'];?>">
+                    <a class="nav-link" href="<?php echo $_forum['url'];?>">
+                    <?php echo $_forum['name'];?>
+                    </a>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
+        <?php } ?>
+
+        <!--{hook index_flat_main_start.htm}-->
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link <?php echo 'default' == $active ? 'active' : '';?>" href="<?php echo $conf['path'];?>">
+                        <?php echo lang('new_thread');?>
+                    </a>
+                </li>
+                <!--{hook index_flat_thread_list_nav_item_after.htm}-->
+            </ul>
+        </div>
+        <ul class="threadlist list-group list-group-flush">
+            <!--{hook index_flat_threadlist_before.htm}-->
+            <?php include _include(APP_PATH . 'view/htm/thread_list.inc.htm');?>
+            <!--{hook index_flat_threadlist_after.htm}-->
+        </ul>
+
+        <!--{hook index_flat_mod_before.htm}-->
+
+        <?php include _include(APP_PATH.'view/htm/thread_list_mod.inc.htm');?>
+
+        <!--{hook index_flat_page_before.htm}-->
+        <?php if ($pagination) { ?>
+        <nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+            
+            <div class="loadMoreBox">
+                <button type="button" id="listLoadMore" curPage="<?php echo $page ?>" class="btn btn-secondary btn-lg">Load More</button>
+            </div>
+        </nav>
+        <?php } ?>
+        <!--{hook index_flat_page_end.htm}-->
+    </div>
+
+    <div class="col-lg-3 d-none d-lg-block aside">
+        <!--{hook index_flat_before.htm}-->
+        <div class="card-site-info bg-white">
+            <!--{hook index_flat_site_start.htm}-->
+            <div class="mx-3 pt-3">
+                <h5 class="text-center">
+                    <?php echo $conf['sitename'];?>
+                </h5>
+                <!--{hook index_flat_sitename_after.htm}-->
+                <div class="small line-height-3">
+                    <?php echo $conf['sitebrief'];?>
+                </div>
+                <!--{hook index_flat_sitebrief_after.htm}-->
+            </div>
+            <!--{hook index_flat_site_before.htm}-->
+            
+            <!--{hook index_flat_site_end.htm}-->
+        </div>
+        <!--{hook index_flat_middle.htm}-->
+
+        <?php if($flaglist){foreach($flaglist as &$_flag) { ?>
+        <div class="d-none d-lg-block aside mt-3">
+            <div class="card-header">
+                <h3 class="font-weight-bold my-0">
+                    <a href="<?php echo $_flag['url'];?>" title='<?php echo $_flag['name'];?>' aria-label='<?php echo $_flag['name'];?>'>
+                        <?php echo $_flag['name']; ?>
+                    </a>
+                </h3>
+            </div>
+            <ul class="list-group list-group-flush nowrap">
+                <?php if($_flag['list']){foreach($_flag['list'] as $_thread) { ?>
+                <li class="list-group-item bg-white">
+                    <h4 class="my-0">
+                        <a href="<?php echo $_thread['url'];?>" class="d-block ellipsis" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?> title='<?php echo $_thread['subject'];?>' aria-label='<?php echo $_thread['subject'];?>'>
+                            <?php echo $_thread['subject'];?>
+                        </a>
+                    </h4>
+                </li>
+                <?php }} ?>
+            </ul>
+        </div>
+        <?php }} ?>
+
+        <?php if(!empty($linklist)){ ?>
+        <div class="d-none d-lg-block aside mt-3">
+            <div class="card-header">
+                <h3 class="font-weight-bold my-0">
+                    <?php echo lang('friends_link');?>
+                </h3>
+            </div>
+            <ul class="list-group list-group-flush nowrap">
+                <?php foreach($linklist as &$_link) { ?>
+                <li class="list-group-item">
+                    <a href="<?php echo $_link['url'];?>" class="d-block"  target="_blank" aria-label='<?php echo $_link['name'];?>'>
+                        <?php echo $_link['name'];?>
+                    </a>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
+        <?php } ?>
+    </div>
+</div>
+
+<!--{hook index_flat_end.htm}-->
+
+<?php include _include(APP_PATH . 'view/htm/footer.inc.htm');?>
+
+<script>
+    $('#nav li[data-active="fid-<?php echo $fid;?>"]').addClass('active');
+</script>
+<!--{hook index_flat_js.htm}-->

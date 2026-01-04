@@ -1,0 +1,117 @@
+<script>
+  $(function(){
+     updateCartNum();
+     var priceItemNumBox=$(".priceItemNumBox")
+
+     priceItemNumBox && priceItemNumBox.each(function(){
+        var price=$(this).attr('price')
+        var yPrice='$'+(price/0.6).toFixed(2);
+        $(this).removeClass('none')
+        $(this).prev().html(yPrice);
+     })
+  })
+
+  function getOrderCode(id,timestamp){
+    if(timestamp<100000000000) timestamp*=1000
+    var _D=new Date(timestamp)
+    // console.log(111,_D,timestamp)
+    var code='' //String(_D.getFullYear())
+    var month=_D.getMonth() + 1
+    var y=_D.getDate()
+    if(month<10) month='0'+month
+    if(y<10) y='0'+y;
+    code+=month+y+id
+    return code
+  }
+  function getDateEnFormat(timestamp){
+    if(timestamp<100000000000) timestamp*=1000
+    var _D=new Date(timestamp)
+    // console.log(_D,timestamp)
+    var monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+    var dateFormat=monthNames[_D.getMonth()]+' '+_D.getDate()+', '+_D.getFullYear()
+    return dateFormat;
+  }
+
+  function updateCartNum(){
+   var cart=localStorage.getItem('cart')
+         var num=0;
+        if(cart){
+        
+         cart=JSON.parse(cart)
+             cart.forEach(v=>{
+            num+=v.num
+        })
+        
+         $("#cartNum").text(num)
+         $("#cartNum").show();
+         $("#cartNumMob").text(num)
+         $("#cartNumMob").show();
+         
+        }
+        if(!num){
+          $("#cartNum").hide();
+          $("#cartNumMob").hide();
+        }
+  }
+
+
+    $(document).on('click', '.checkPrice', checkPrice)
+
+  $(document).on('click', '.addCardBtn', function(event) {
+
+    event.stopPropagation();
+
+    var parentElements = $(this).parents('.threadLi');
+    var tid=parentElements.attr('tid')
+    var proName=parentElements.find('.titleName').text()
+    var price=parentElements.find('.priceBox').attr('price')
+    var imgUrl=parentElements.find('.img1').attr('src');
+    if(!imgUrl){
+      imgUrl=parentElements.find('.img2').attr('src');
+    }
+
+
+    var proJson={
+            proName,
+            price,
+            tid,
+            num:1,
+            imgUrl
+        }
+
+        var cart=localStorage.getItem('cart')
+        
+        if(cart){
+            cart=JSON.parse(cart)
+            curPro=cart.find(f=>{
+                return f.tid==tid 
+            })
+            if(curPro){
+                curPro.num+=1;
+            }else{
+                cart.push(proJson)
+            }
+
+        }else{
+            cart =[proJson]
+        }
+        var addSuccess=$("#addSuccess"+tid)
+
+        if(!addSuccess.length){
+          parentElements.append('	<div id="addSuccess'+tid+'" style="display: none;" class="alert alert-primary addSuccess" role="alert">Has been added to your cart. <a href="/cart" >View Cart</a></div>');
+           addSuccess=$("#addSuccess"+tid)
+
+        }
+        
+        
+        addSuccess.slideDown();
+        setTimeout(()=>{
+            addSuccess.slideUp();
+        },5000)
+        localStorage.setItem('cart',JSON.stringify(cart));
+        updateCartNum()
+
+    return false;
+  })
+  
+</script>

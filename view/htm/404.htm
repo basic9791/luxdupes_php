@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .error-container {
+            text-align: center;
+            color: white;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+        }
+        .error-code {
+            font-size: 8rem;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #fff, #e0e0e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .error-title {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+            font-weight: 300;
+        }
+        .error-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .countdown {
+            font-size: 1.5rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: inline-block;
+            min-width: 300px;
+        }
+        .countdown-number {
+            font-weight: bold;
+            color: #FFD700;
+            font-size: 2rem;
+        }
+        .btn-home {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+            color: white;
+        }
+        .icon-404 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .additional-links {
+            margin-top: 2rem;
+        }
+        .additional-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .additional-links a:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="icon-404">
+            <i class="fas fa-search-minus"></i>
+        </div>
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Page Not Found</h2>
+        <p class="error-description">
+            Oops! The page you're looking for doesn't exist, has been moved, or is temporarily unavailable.
+        </p>
+        
+        <div class="countdown">
+            <i class="fas fa-clock"></i>
+            Auto redirect to homepage in <span class="countdown-number" id="countdown">10</span> seconds
+        </div>
+        
+        <div>
+            <a href="/" class="btn-home">
+                <i class="fas fa-home"></i> Go to Homepage Now
+            </a>
+        </div>
+        
+        <div class="additional-links">
+            <a href="javascript:history.back()">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </a>
+            <a href="/contact">
+                <i class="fas fa-envelope"></i> Contact Support
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let countdown = 10;
+        const countdownElement = document.getElementById('countdown');
+        let interval;
+        
+        function updateCountdown() {
+            countdownElement.textContent = countdown;
+            
+            // Add animation when countdown reaches last 3 seconds
+            if (countdown <= 3) {
+                countdownElement.style.color = '#FF6B6B';
+                countdownElement.style.animation = 'pulse 1s infinite';
+            }
+            
+            // When countdown reaches 0, redirect
+            if (countdown <= 0) {
+                clearInterval(interval);
+                // Fallback redirect method
+                setTimeout(() => {
+                    window.location.replace('/');
+                }, 100);
+                return;
+            }
+            
+            countdown--;
+        }
+        
+        // Add pulse animation for countdown
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initial update
+        updateCountdown();
+        
+        // Update countdown every second
+        interval = setInterval(updateCountdown, 1000);
+        
+        // Cancel auto-redirect if user clicks the manual button
+        document.querySelector('.btn-home').addEventListener('click', function(e) {
+            e.preventDefault();
+            clearInterval(interval);
+            window.location.replace('/');
+        });
+    </script>
+</body>
+</html>

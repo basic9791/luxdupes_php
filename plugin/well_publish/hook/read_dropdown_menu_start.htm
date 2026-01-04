@@ -1,0 +1,21 @@
+<?php if($allowverify) { ?>
+
+<?php if(1 == $thread['status']) { ?>
+<!-- 详情页审核链接 -->
+<a class="confirm dropdown-item" data-method="post" data-confirm-text="<?php echo lang('well_publish_verified');?>" href="<?php echo url('verify-thread-'.$thread['tid'], array('verified'=>1,'safe_token'=>$safe_token)); ?>" title="<?php echo lang('well_publish_verified');?>">
+    <?php echo lang('well_publish_verified');?>
+</a>
+<?php } ?>
+
+<!-- 详情页退稿链接 -->
+<a class="confirm dropdown-item" data-method="post" data-confirm-text="<?php echo lang('well_publish_reject');?>" href="<?php echo url('verify-thread-'.$thread['tid'], array('verified'=>0,'safe_token'=>$safe_token)); ?>" title="<?php echo lang('well_publish_reject');?>">
+    <?php echo lang('well_publish_reject');?>
+</a>
+<?php } ?>
+
+<!-- 详情页编辑链接 -->
+<?php if($allowupdate) { ?>
+<a href="<?php echo url('home-content', array('op'=>'update','tid' => $thread['tid'])); ?>" title="<?php echo lang('edit');?>" class="dropdown-item">
+    <?php echo lang('edit');?>
+</a>
+<?php } ?>

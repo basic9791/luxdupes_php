@@ -1,0 +1,98 @@
+				<!--{hook comment_list_inc_start.htm}-->
+
+				<?php if($postlist) { foreach($postlist as $_post) { ?>
+					<li class="row <?php echo $_post['classname'];?>" data-pid="<?php echo $_post['pid'];?>" data-uid="<?php echo $_post['uid'];?>">
+                        <div class="col-lg-12 d-flex justify-content-between text-muted my-2">
+                            <div>
+                                <!--{hook comment_list_inc_avatar_before.htm}-->
+                                <span class="position-relative">
+                                   <a href="<?php echo url('user-' . $_post['uid']);?>" class="mr-2" tabindex="-1">
+                                    <img class="avatar-1" src="<?php echo $_post['user_avatar_url'];?>">
+                                       <!--{hook comment_list_inc_avatar_after.htm}-->
+                                   </a>
+                                </span>
+                                <!--{hook comment_list_inc_username_before.htm}-->
+                                <span>
+                                    <a href="<?php echo url('user-' . $_post['uid']);?>" class="text-muted">
+                                        <?php echo $_post['username'];?>
+                                    </a>
+                                </span>
+                                <!--{hook comment_list_inc_username_after.htm}-->
+
+                                <!--{hook comment_list_inc_create_date_before.htm}-->
+                                <span class="date text-grey ml-2">
+                                    <?php echo $_post['create_date_fmt'];?>
+                                </span>
+                                <!--{hook comment_list_inc_create_date_after.htm}-->
+                            </div>
+                            <div>
+                                <!--{hook comment_list_inc_quote_before.htm}-->
+                                <?php if($allowpost) { ?>
+                                <a href="javascript:void(0)" data-tid="<?php echo $_post['tid'];?>" data-pid="<?php echo $_post['pid'];?>" class="text-grey well_reply mr-2">
+                                    <i class="icon-reply" title="<?php echo lang('quote');?>"></i>
+                                    <span class="d-none">
+                                        <?php echo lang('quote');?>
+                                    </span>
+                                </a>
+                                <?php } ?>
+                                <!--{hook comment_list_inc_quote_after.htm}-->
+
+                                <!--{hook comment_list_inc_floor_before.htm}-->
+                                <?php if($_post['floor']) { ?>
+                                <span class="floor-parent mr-2">
+                                    <span class="floor mr-1">
+                                        <?php echo $_post['floor'];?>
+                                    </span>
+                                    <?php echo lang('floor');?>
+                                </span>
+                                <?php } ?>
+                                <!--{hook comment_list_inc_floor_after.htm}-->
+
+                                <?php if($_post['allowdelete'] || $_post['allowupdate']) { ?>
+                                <span class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" role="button" aria-haspopup="true" aria-expanded="false"><?php echo lang('manage');?></a>
+                                    <span class="dropdown-menu dropdown-menu-right animated--fade-in-up border-left-primary py-0">
+
+                                        <?php if(2 == array_value($forum, 'comment', 0)) { ?>
+                                        <?php if($allowupdate || $_post['allowupdate']) { ?>
+                                        <a href="<?php echo url('comment-update-'.$_post['pid']);?>" class="dropdown-item"><?php echo lang('edit');?></a>
+                                        <?php } ?>
+                                        <?php } ?>
+                                        <!--{hook comment_list_inc_delete_before.htm}-->
+                                        <?php if($allowdelete || $_post['allowdelete']) { ?>
+                                        <a data-href="<?php echo url('comment-delete-'.$_post['pid']);?>" data-confirm-text="<?php echo lang('confirm_delete');?>" href="javascript:void(0);" class="dropdown-item post_delete _confirm">
+                                            <?php echo lang('delete');?>
+                                        </a>
+                                        <?php } ?>
+                                        <!--{hook comment_list_inc_delete_after.htm}-->
+                                    </span>
+                                </span>
+                                <?php } ?>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 message my-2 text-break">
+
+                            <!--{hook comment_list_inc_subject_before.htm}-->
+                            <?php if(!isset($thread) && !empty($_post['subject'])) {?>
+                            <h6 class="h6 text-break font-weight-bold">
+                                <a href="<?php echo $_post['url'];?>" target="_blank">
+                                    <?php echo $_post['subject'];?>
+                                </a>
+                            </h6>
+                            <?php } ?>
+                            <!--{hook comment_list_inc_subject_after.htm}-->
+
+                            <!--{hook comment_list_inc_message_before.htm}-->
+                            <?php echo $_post['message'];?>
+                            <div class="comment-plugin d-flex justify-content-end mt-3">
+                                <!--{hook comment_list_inc_message_after.htm}-->
+                            </div>
+                            <!--{hook comment_list_inc_filelist_before.htm}-->
+                            <?php echo data_file_list_html($_post['filelist']);?>
+                            <!--{hook comment_list_inc_filelist_after.htm}-->
+                        </div>
+					</li>
+				<?php }} ?>
+				
+				<!--{hook comment_list_inc_end.htm}-->

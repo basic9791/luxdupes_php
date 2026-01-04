@@ -1,0 +1,87 @@
+<!--{hook thread__list_inc_start.htm}-->
+
+<?php if($threadlist) { 
+    $readUrl=isset($readUrl)?$readUrl:'';
+    foreach($threadlist as &$_thread) { 
+    ?>
+<div class="threadlist col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 threadLi" data-href="<?php echo $_thread['url'].$readUrl; ?>" tid="<?php echo $_thread['tid'];?>">
+
+     <!-- <?php echo $_thread['allowtop']?'manBody':''; ?> -->
+
+    <?php if($_thread['allowtop']) { ?>
+    <div class="custom-control custom-checkbox ml-2">
+        <input class="custom-control-input" type="checkbox" id="modtid-<?php echo $_thread['tid']; ?>" name="modtid" value="<?php echo $_thread['tid']; ?>" />
+        <label class="custom-control-label custom-checkbox" for="modtid-<?php echo $_thread['tid']; ?>">
+        </label>
+    </div>
+    <?php } ?>
+
+   
+        <div>
+            <?php if ($_thread['image_url']) { ?>
+            
+                <a href="<?php echo $_thread['url'].$readUrl; ?>" class="thListImgLinkBox" data="<?php echo $_thread['image_url'];?>">
+                    <img src="/upload/loading.gif"/>
+                </a>
+            
+            <?php } elseif ($_thread['icon']) { ?>
+           
+                <a href="<?php echo $_thread['url'].$readUrl; ?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                    <img class="d-block w-100 rounded" src="<?php echo $_thread['icon_fmt'];?>" title='<?php echo $_thread['subject'];?>' alt='<?php echo $_thread['subject'];?>' />
+                    <!--{hook thread__list_inc_avatar_after.htm}-->
+                </a>
+          
+            <?php } ?>
+            <div>
+
+                <!--{hook thread__list_inc_thread_start.htm}-->
+
+                <div class="col-lg-12 subject">
+
+                    <!--{hook thread__list_inc_sticky_before.htm}-->
+                    <?php if($_thread['sticky'] > 0) {?>
+                    <span class="mr-2 font-weight-bold badge badge-<?php echo $_thread['sticky_class'];?>">
+                        Sticky
+                    </span>
+                    <?php } ?>
+                    <!--{hook thread__list_inc_sticky_after.htm}-->
+
+                    <!--{hook thread__list_inc_closed_before.htm}-->
+                    <?php if($_thread['closed'] > 0) { ?>
+                    <span class="mr-2">
+                        <i class="icon-lock text-<?php echo 1==$_thread['closed']?'danger':'dark';?>"></i>
+                    </span>
+                    <?php } ?>
+                    <!--{hook thread__list_inc_closed_after.htm}-->
+                        <!--{hook thread__list_inc_subject_before.htm}-->
+                        <a href="<?php echo $_thread['url'].$readUrl; ?>" class="titleName" aria-label="<?php echo $_thread['subject'];?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                        <?php echo $_thread['subject'];?>
+                        </a>
+                        <!--{hook thread__list_inc_subject_after.htm}-->
+                    <!--{hook thread__list_inc_subject__after.htm}-->
+                    <?php if($_thread['files'] > 0) { ?>
+                    &nbsp;<i class="icon small filetype other"></i>&nbsp;
+                    <?php } ?>
+                </div>
+
+                <!--{hook thread__list_inc_brief_before.htm}-->
+
+
+
+                <!--{hook thread__list_inc_tag_before.htm}-->
+
+
+
+               
+            </div>
+        </div>
+  
+</div>
+<?php }} else { ?>
+
+    <div><?php echo lang('none');?></div>
+
+<?php } ?>
+
+
+<!--{hook thread__list_inc_end.htm}-->

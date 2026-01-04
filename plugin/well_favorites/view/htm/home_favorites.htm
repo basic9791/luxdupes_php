@@ -1,0 +1,77 @@
+<template include="./view/htm/common.header.htm">
+	<slot name="body">
+        <!-- threadlist 必须保留 -->
+        <ul class="threadlist list-unstyled bg-white">
+            <?php if($threadlist) { foreach($threadlist as $_thread) { ?>
+            <li class="media thread tap" data-href="<?php echo $_thread['url']; ?>" id="<?php echo $_thread['id'];?>">
+
+                <div class="custom-control custom-checkbox ml-2">
+                    <input class="custom-control-input" type="checkbox" id="modid-<?php echo $_thread['id']; ?>" name="modid" value="<?php echo $_thread['id']; ?>" />
+                    <label class="custom-control-label custom-checkbox" for="modid-<?php echo $_thread['id']; ?>">
+                    </label>
+                </div>
+
+                <div class="media-body">
+                    <div class="subject">
+                        <h2 class="h6 text-break font-weight-bold d-inline" style="display: flex!important;">
+                             <?php if ($_thread['image_url']) { ?>
+            <div class="col-4 col-md-3" style="margin-right: 10px;">
+                <a href="<?php echo $_thread['url']; ?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                    <img class="d-block w-100 rounded" data-echo="<?php echo $_thread['image_url'];?>" src="/upload/loading.gif" title='<?php echo $_thread['subject'];?>' alt='<?php echo $_thread['subject'];?>' />
+                    <!--{hook thread__list_inc_avatar_after.htm}-->
+                </a>
+            </div>
+            <?php } ?>
+                            <a href="<?php echo $_thread['url']; ?>" aria-label="<?php echo $_thread['subject'];?>">
+                            <?php echo $_thread['subject'];?>
+                            </a>
+                        </h2>
+                    </div>
+                </div>
+            </li>
+            <?php }} ?>
+		</ul>
+
+        <div class="text-center">
+            <label class="mr-3">
+                <input type="checkbox" data-target='input[name="modid"]' class="checkall mt-2 mr-2" value="" aria-label="<?php echo lang('checkall');?>" />
+                <?php echo lang('checkall');?>
+            </label>
+            <div class="btn-group mod-button my-3" role="group" aria-label="">
+                <button class="btn btn-secondary delete" data-href="<?php echo url('home-favorites');?>">
+                    <?php echo lang('delete');?>
+                </button>
+            </div>
+        </div>
+
+        <!-- 分页-->
+		<?php if ($pagination) { ?>
+		<nav class="my-3">
+            <ul class="pagination justify-content-center flex-wrap">
+                <?php echo $pagination; ?>
+            </ul>
+        </nav>
+		<?php } ?>
+	</slot>
+</template>
+
+<script>
+    var body = $('body');
+    body.on('click', 'button.delete', function() {
+        var jthis = $(this);
+        var idarr = $('input[name="modid"]').checked();
+        var href = jthis.data('href');
+        var safe_token = '<?php echo $safe_token;?>';
+        if (window.confirm(lang.confirm_delete)) {
+            $.xpost(href, {type:1,idarr:idarr,safe_token: safe_token}, function(code, message) {
+                if(code == 0) {
+                    window.location.reload();
+                } else {
+                    $.alert(message);
+                }
+            });
+        }
+        return false;
+    });
+    $('a[data-active="menu-home"],a[data-active="home-favorites"]').addClass('active');
+</script>
