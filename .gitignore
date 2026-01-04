@@ -1,11 +1,13 @@
 # Build and Release Folders
 bin-debug/
 bin-release/
-
+conf/conf.php
+conf/smtp.conf.php
 upload/website_attach/
 upload/thumbnail/
 upload/am/
-
+tmp/
+log/
 [Oo]bj/
 [Bb]in/
 
