@@ -1,12 +1,11 @@
 # Build and Release Folders
 bin-debug/
 bin-release/
-tmp/
-log/
+
 upload/website_attach/
 upload/thumbnail/
 upload/am/
-conf/
+
 [Oo]bj/
 [Bb]in/
 
