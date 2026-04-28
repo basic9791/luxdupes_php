@@ -126,7 +126,7 @@ if (!defined('SKIP_ROUTE')) {
         case 'intodb':
             include _include(APP_PATH . 'route/intodb.php');
             break;
-        case 'intodb_shop':
+        case 'intodb_bang':
             include _include(APP_PATH . 'route/intodb_shop.php');
             break;
         case 'browser':
