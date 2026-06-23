@@ -92,7 +92,30 @@
             }
         })
 
+         $(".thListImgLinkBoxEmail").each(function(){
+            const imgData=$(this).attr('data')
+            $(this).removeAttr('data')
+            const imgArr=imgData.split(',');
+            let url=getImgUrl(imgArr[0])
+            url=getMiniImgUrl(url)
 
+            let html='<img class="w-100 rounded" src="https:'+url+'"/>';
+
+            url && $(this).append(html);
+            
+            
+
+            
+            if(imgData.indexOf('.mp4')>-1){
+                $(this).addClass('video')
+                $(this).append('<img class="playIco" src="/view/img/play.svg"/>')
+            }
+        })
+
+        if($(".thListImgLinkBoxEmail").length>0){
+            $(".addCardBtn").remove();
+
+        }
 
         
         if(tid){

@@ -1,0 +1,78 @@
+<!--{hook thread__list_inc_start.htm}-->
+
+    <style>
+        .row{
+            display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+        }
+        a{
+            color:#666;
+        }
+.delPrice{
+   color: #aaa;
+    text-decoration: line-through;
+}
+.proBox {
+    white-space: nowrap;
+    display: flex;
+    line-height: 1.5em;
+    font-weight: 400;
+}
+.itemBox{
+    max-width:433px
+}
+        </style>
+
+<?php if($threadlist) { 
+
+    $readUrl=isset($readUrl)?$readUrl:'';
+    foreach($threadlist as &$_thread) { 
+    ?>
+<div class="itemBox">
+
+
+   
+        <div>
+            <?php if ($_thread['image_url']) { ?>
+            
+                <a href="https://luxdupes.com<?php echo $_thread['url'].$readUrl; ?>" class="thListImgLinkBoxEmail" data="<?php echo $_thread['image_url'];?>">
+                   
+                </a>
+      <?php }  ?>
+           
+                
+            <div>
+
+   
+
+         
+                  
+         
+                        <a href="https://luxdupes.com<?php echo $_thread['url'].$readUrl; ?>" class="titleName" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                        <?php echo $_thread['subject'];?>
+                        </a>
+                
+     
+  <!--{hook thread__list_inc_subject_after.htm}-->
+                    <!--{hook thread__list_inc_subject__after.htm}-->
+
+
+
+
+               
+            </div>
+        </div>
+  
+</div>
+<?php }} else { ?>
+
+    <div><?php echo lang('none');?></div>
+
+<?php } ?>
+
+
+<!--{hook thread__list_inc_end.htm}-->
+

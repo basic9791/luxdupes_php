@@ -148,6 +148,7 @@ if (0 == $website_mode) {
     // hook index_flat_start.php
 
     $page = param(1, 1);
+    $isEmail = param(2);
     $pagesize = $conf['pagesize'];
     $threadlist = $tidlist = NULL;
     $threads = 0;
