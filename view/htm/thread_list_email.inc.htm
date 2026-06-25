@@ -1,29 +1,47 @@
 <!--{hook thread__list_inc_start.htm}-->
 
     <style>
-        .row{
+         .row {
             display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            width: 100%;
+
 
         }
-        a{
-            color:#666;
+
+        a {
+            color: #666;
         }
-.delPrice{
-   color: #aaa;
-    text-decoration: line-through;
-}
-.proBox {
-    white-space: nowrap;
-    display: flex;
-    line-height: 1.5em;
-    font-weight: 400;
-}
-.itemBox{
-    max-width:433px
-}
+
+        .delPrice {
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .proBox {
+            white-space: nowrap;
+            line-height: 1.5em;
+            font-weight: 400;
+            display: block;
+            width:100%;
+            position:absolute;
+            left:0;
+            text-align: center;
+            bottom:10px
+        }
+
+        .itemBox {
+            max-width: 50%;
+            text-align: center;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .itemBox img {
+            width: 100%
+        }
         </style>
 
 <?php if($threadlist) { 
@@ -43,17 +61,13 @@
                 </a>
       <?php }  ?>
            
-                
-            <div>
+
 
    
 
          
                   
          
-                        <a href="https://luxdupes.com<?php echo $_thread['url'].$readUrl; ?>" class="titleName" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
-                        <?php echo $_thread['subject'];?>
-                        </a>
                 
      
   <!--{hook thread__list_inc_subject_after.htm}-->
@@ -63,7 +77,7 @@
 
 
                
-            </div>
+      
         </div>
   
 </div>
