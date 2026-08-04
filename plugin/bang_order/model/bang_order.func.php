@@ -99,7 +99,7 @@ function getPaymentMessageHtml($deliveryAddress,$goodsArr,$orderCode,$price_tota
                 Here is a step-by-step instruction video showing how to pay on Remitly(<a rel='nofollow'
                     href='https://remitly.com/'>https://remitly.com/</a>):<br />
                 Link: <a rel='nofollow'
-                    href='https://www.youtube.com/watch?v=97SfdQNt3xs'>https://www.youtube.com/watch?v=97SfdQNt3xs</a><br /><br />
+                    href='https://www.youtube.com/watch?v=58yLO8K5sXc'>https://www.youtube.com/watch?v=58yLO8K5sXc</a><br /><br />
 
 
 
