@@ -16,6 +16,8 @@ switch ($action) {
 
         user_login_check();
 
+  
+
         // hook comment_create_start.php
 
         $tid = param(2, 0);
@@ -83,6 +85,8 @@ switch ($action) {
                 FALSE === well_token_verify($uid, $safe_token) and message(1, lang('illegal_operation'));
             }
 
+           
+
             // hook comment_create_post_start.php
 
             $doctype = param('doctype', 0);
@@ -110,7 +114,18 @@ switch ($action) {
 
             // hook comment_create_post_center.php
 
-            $post = array('tid' => $tid, 'uid' => $uid, 'fid' => $fid, 'create_date' => $time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message);
+            if($user['gid'] == 1){
+                $n_uid = mt_rand(10, 81);
+                $end = time()-3600*24*1;
+                $start = strtotime('-3 month');
+                $n_time = mt_rand($start, $end);
+                $post = array('tid' => $tid, 'uid' => $n_uid, 'fid' => $fid, 'create_date' => $n_time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message);
+
+            }else{
+                $post = array('tid' => $tid, 'uid' => $uid, 'fid' => $fid, 'create_date' => $time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message);
+            }
+
+            $post = array('tid' => $tid, 'uid' => $n_uid, 'fid' => $fid, 'create_date' => $n_time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message);
             // hook comment_create_post_middle.php
             $pid = comment_create($post);
             FALSE === $pid and message(-1, lang('create_post_failed'));

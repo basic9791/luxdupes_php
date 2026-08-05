@@ -15,7 +15,7 @@
 'well_publish_verify' => '投稿审核',
 'well_comment_verify' => '评论审核',
 'well_verify_content' => '审核内容',
-'well_latest_news' => '动态',
+'well_latest_news' => '通过验证的评论',
 'well_publish_pending_thread' => '待审主题',
 'well_publish_verify_thread' => '审核主题',
 'well_publish_pending_comment' => '待审评论',
