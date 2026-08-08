@@ -74,8 +74,8 @@ function thread_tid__find_res($cond = array(), $orderby = array(), $page = 1, $p
                 foreach ($arr as &$v) {
                     if (isset($v['uid']) && isset($users[$v['uid']])) {
                         $v['username'] = $users[$v['uid']]['username'];
-                        $dir = substr(sprintf("%09d", $user['uid']), 0, 3);
-                        $v['avatar_url'] = $v['avatar'] ? file_path() . "avatar/$dir/$user[uid].png?" . $v['avatar'] : view_path() . 'img/avatar.png';
+                        $dir = substr(sprintf("%09d", $v['uid']), 0, 3);
+                        $v['avatar_url'] = $v['avatar'] ? file_path() . "avatar/$dir/$v[uid].png?" . $v['avatar'] : view_path() . 'img/avatar.png';
                     }
                 }
                 unset($v);
