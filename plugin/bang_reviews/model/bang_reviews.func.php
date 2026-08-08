@@ -36,7 +36,7 @@ function thread_tid_find_by_fid_res($page = 1, $pagesize = 1000, $desc = TRUE)
 function thread_tid_find_by_fid_res_count()
 {
 
-    $r = db_count('website_comment',$cond = array('quotepid' => 0),$d);
+    $r = db_count('website_comment', array('quotepid' => 0));
     return $r;
 }
 
