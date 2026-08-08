@@ -1,0 +1,495 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+<style>
+	.cr-comment-images {
+		display: flex;
+	}
+
+	.cr-comment-images img {
+		width: 100px;
+		height: 100px;
+		margin-right: 10px;
+		object-fit: cover;
+		cursor: pointer;
+
+	}
+
+	.star {
+		font-size: 24px;
+		color: #ccc;
+		cursor: pointer;
+	}
+
+	.star.selected {
+		color: #f80;
+	}
+
+	.star-rating b {
+		padding-right: 5px;
+	}
+
+	.star-rating {
+		padding: 5px 0;
+	}
+
+	.star-rating b span {
+		color: red;
+	}
+
+	.img‑modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.85);
+		z-index: 9999;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+	}
+
+	.img‑modal img {
+		max-width: 90%;
+		max-height: 90vh;
+		border: 2px solid #fff;
+	}
+
+	.comment_container_box {
+		display: flex;
+
+		list-style-type: none;
+		margin: 25px 0;
+		padding: 25px 15px;
+		overflow: hidden;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.resMainBox {
+		margin: 15px auto;
+		max-width: 1140px;
+	}
+
+	.cr-comment-text {
+
+		flex: 1;
+		margin-left: 10px;
+	}
+
+	.cr-rating-product-name {
+		display: flex;
+	}
+
+	.review__verified {
+		padding: 0 15px;
+		color: #aaa;
+	}
+
+	.product-img {
+		height: 60px;
+		width: 60px;
+		object-fit: cover;
+		margin-right: 10px;
+		border: 1px solid #eee;
+	}
+
+	.description {
+		margin-top: 10px;
+		word-break: break-word;
+	}
+
+	.rating_count {
+		display: flex;
+		width: 100%;
+		max-width: 1140px;
+		margin: 15px auto;
+		padding: 15px 0;
+		background: #fafafa;
+	}
+
+	.rating_count_box {
+		flex: 1;
+		border-right: 1px solid #eee;
+		text-align: center;
+		margin-right: 10px;
+	}
+	.rating_list {
+		flex: 1;
+	}
+
+	.rating_count_box_inner {
+		font-size: 33px;
+		font-weight: bold;
+		padding-top: 15px;
+	}
+
+	.rating_count_bo .star {
+		font-size: 18px;
+	}
+	.ivole-histogramCell3,
+	.cr-histogram-rating-value,
+	.cr-histogram-rating-label .star{
+		font-size: 12px;
+	}
+	.ivole-histogramCell1{
+		text-align: right;
+	}
+	.ivole-meter {
+		overflow: hidden;
+		background: #f2f2f2;
+		background: -webkit-linear-gradient(top, #eee, #f6f6f6);
+		background: linear-gradient(to bottom, #eee, #f6f6f6);
+		background-color: #f3f3f3;
+		height: 22px;
+		border-radius: 1px;
+		box-shadow: inset 0 1px 2px rgba(0, 0, 0, .4), inset 0 0 0 1px rgba(0, 0, 0, .1);
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box
+	}
+
+	.ivole-meter .ivole-meter-bar {
+		border-radius: 1px;
+		background: #fb0;
+		background: -webkit-linear-gradient(top, #ffce00, #ffa700);
+		background: linear-gradient(to bottom, #ffce00, #ffa700);
+		background-color: #ffce00;
+		box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .05);
+		-webkit-transition: width .5s ease;
+		transition: width .5s ease;
+		float: left;
+		font-size: 0;
+		height: 100%;
+		width: 0;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box
+	}
+
+	.ivole-meter .ivole-meter-bar:before {
+		background-color: rgba(255, 255, 255, .25);
+		content: "";
+		display: block;
+		font-size: 0;
+		height: 1px;
+		margin: 1px
+	}
+	.resMainBox h1{font-size: 2rem;}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell1 {
+		white-space: nowrap;
+		width: auto;
+	}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell2 {
+		width: 70%;
+	}
+
+	.cr-all-reviews-shortcode .cr-histogramTable .ivole-histogramRow .ivole-histogramCell2 {
+		min-width: 100px;
+	}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell3 {
+		text-align: right;
+		white-space: nowrap;
+		width: auto;
+	}
+
+	.cr-histogramTable {
+		margin-bottom: 0px;
+		width: 100%;
+		max-width: 320px;
+		min-width: auto;
+		margin: 0 auto;
+	}
+
+	.cr-histogramTable .ivole-histogramRow {
+		display: flex;
+		align-items: center;
+	}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell1,
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell2,
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell3 {
+		padding: 0.2rem 0.3rem;
+		box-sizing: border-box;
+	}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell1 {
+		flex: 0 0 2rem;
+		min-width: 2rem;
+		white-space: nowrap;
+	}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell2 {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell3 {
+		flex: 0 0 2.75rem;
+		min-width: 2.75rem;
+		text-align: left;
+	}
+
+	.cr-histogramTable .ivole-histogramRow:first-child .ivole-histogramCell1,
+	.cr-histogramTable .ivole-histogramRow:first-child .ivole-histogramCell2,
+	.cr-histogramTable .ivole-histogramRow:first-child .ivole-histogramCell3 {
+		padding-top: 0
+	}
+
+	.cr-histogramTable .ivole-histogramRow:last-child .ivole-histogramCell1,
+	.cr-histogramTable .ivole-histogramRow:last-child .ivole-histogramCell2,
+	.cr-histogramTable .ivole-histogramRow:last-child .ivole-histogramCell3 {
+		padding-bottom: 0;
+	}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell1 {
+		padding-left: 0
+	}
+
+	.cr-histogramTable .ivole-histogramRow .ivole-histogramCell3 {
+		padding-right: 0
+	}
+
+
+	@media (max-width: 800px) {
+
+		.comment_container_box {
+			padding: 25px 15px;
+			margin: 25px 0;
+		}
+	}
+
+	.pageBox{
+		text-align: center;
+
+	}
+	.pageBox span{
+		padding:0 20px; font-size: 1.2rem;
+	}
+</style>
+
+
+<div class="resMainBox">
+
+	<h1>Verified Customers Reviews</h1>
+ 
+
+	<div class="rating_count">
+		<div class="rating_count_box">
+			<div class="rating_count_box_inner">
+				5.0
+			</div>
+			<div class="cr-star-rating">
+				<span class="star selected">&#9733;</span><span class="star selected">&#9733;</span>
+				<span class="star selected">&#9733;</span>
+				<span class="star selected">&#9733;</span>
+				<span class="star selected">&#9733;</span></span>
+			</div>
+			<div class="cr-star-text">
+				Based on <?php echo $total;?>&nbsp;reviews
+			</div>
+
+		</div>
+		<div class="rating_list">
+			<div class="ivole-summaryBox cr-all-reviews-ajax">
+				<div class="cr-histogramTable">
+					<div class="ivole-histogramRow">
+						<div class="ivole-histogramCell1"><span class="cr-histogram-a" data-rating="5"><span
+									class="cr-histogram-rating-label"><span
+										class="cr-histogram-rating-value">5</span>
+									<span class="star selected">&#9733;</span></span></span></div>
+						<div class="ivole-histogramCell2">
+							<div class="cr-histogram-a" data-rating="5">
+								<div class="ivole-meter">
+									<div class="ivole-meter-bar" style="width: 99%">99</div>
+								</div>
+							</div>
+						</div>
+						<div class="ivole-histogramCell3"><span class="cr-histogram-a" data-rating="5">99%</span></div>
+					</div>
+					<div class="ivole-histogramRow">
+						<div class="ivole-histogramCell1"><span class="cr-histogram-a" data-rating="4"><span
+									class="cr-histogram-rating-label"><span
+										class="cr-histogram-rating-value">4</span>
+									<span class="star selected">&#9733;</span></span></span></div>
+						<div class="ivole-histogramCell2">
+							<div class="cr-histogram-a" data-rating="4">
+								<div class="ivole-meter">
+									<div class="ivole-meter-bar" style="width: 1%">1</div>
+								</div>
+							</div>
+						</div>
+						<div class="ivole-histogramCell3"><span class="cr-histogram-a" data-rating="4">1%</span></div>
+					</div>
+					<div class="ivole-histogramRow">
+						<div class="ivole-histogramCell1"><span class="cr-histogram-a" data-rating="3"><span
+									class="cr-histogram-rating-label"><span
+										class="cr-histogram-rating-value">3</span><span class="star selected">&#9733;</span></span></span></div>
+						<div class="ivole-histogramCell2">
+							<div class="cr-histogram-a" data-rating="3">
+								<div class="ivole-meter">
+									<div class="ivole-meter-bar" style="width: 0%">0</div>
+								</div>
+							</div>
+						</div>
+						<div class="ivole-histogramCell3"><span class="cr-histogram-a" data-rating="3">0%</span></div>
+					</div>
+					<div class="ivole-histogramRow">
+						<div class="ivole-histogramCell1"><span class="cr-histogram-rating-label"><span
+									class="cr-histogram-rating-value">2</span>
+								<span class="star selected">&#9733;</span></span></div>
+						<div class="ivole-histogramCell2">
+							<div class="ivole-meter">
+								<div class="ivole-meter-bar" style="width: 0%"></div>
+							</div>
+						</div>
+						<div class="ivole-histogramCell3">0%</div>
+					</div>
+					<div class="ivole-histogramRow">
+						<div class="ivole-histogramCell1"><span class="cr-histogram-rating-label"><span
+									class="cr-histogram-rating-value">1</span>
+								<span class="star selected">&#9733;</span></span></div>
+						<div class="ivole-histogramCell2">
+							<div class="ivole-meter">
+								<div class="ivole-meter-bar" style="width: 0%"></div>
+							</div>
+						</div>
+						<div class="ivole-histogramCell3">0%</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<?php if($tidlistRes) { 
+    foreach($tidlistRes as &$_thread) { 
+    ?>
+
+
+
+	<div class="comment_container_box">
+		<div class="cr-comment-avatar">
+			<img alt="" src="<?php echo $_thread['avatar_url'];?>" class="avatar-60 photo cr-std-avatar" height="60"
+				width="60">
+		</div>
+
+		<div class="cr-comment-text">
+
+			<span class="review__author">
+				<?php echo $_thread['username'];?>
+			</span>
+			<span class="review__verified">Reviewer</span>
+			<time class="review__published-date">
+				<?php echo date('F j, Y', $_thread['create_date']);?>
+			</time>
+
+			<?php if($_thread['subject']) { ?>
+
+			<div class="cr-rating-product-name">
+				<div class="proImg">
+					<a class="iv-comment-product-a thListImgLinkBox2s" href="/read/<?php echo $_thread['tid'];?>"
+						data="<?php echo $_thread['image_url'];?>"
+						title="<?php echo $_thread['subject'];?>"></a>
+				</div>
+
+				<div class="cr-product-name-picture"><a class="cr-comment-productname-a"
+						href="/read/<?php echo $_thread['tid'];?>" title="<?php echo $_thread['subject'];?>">
+						<div class="crstar-rating-svg">
+							<span class="text-grey"><span class="star selected">&#9733;</span><span
+									class="star selected">&#9733;</span>
+								<span class="star selected">&#9733;</span>
+								<span class="star selected">&#9733;</span>
+								<span class="star selected">&#9733;</span></span>
+						</div>
+						<?php echo $_thread['subject'];?>
+					</a></div>
+			</div>
+
+			<?php } else { ?>
+				<div class="cr-rating-product-name">
+				<div class="proImg">
+					
+				</div>
+
+				<div class="cr-product-name-picture">
+						<div class="crstar-rating-svg">
+							<span class="text-grey"><span class="star selected">&#9733;</span><span
+									class="star selected">&#9733;</span>
+								<span class="star selected">&#9733;</span>
+								<span class="star selected">&#9733;</span>
+								<span class="star selected">&#9733;</span></span>
+						</div>
+						</div>
+			</div>
+
+
+				<?php } ?>
+
+			<div class="description">
+				<p>
+					<?php echo $_thread['message'];?>
+				</p>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<?php } 
+}?>
+
+<div class="pageBox">
+	<?php if($page > 1) { ?>
+<a href="/reviews?page=<?php echo $page-1;?>"> < Previous </a>
+<?php } ?>
+<span> <?php echo $page;?> / <?php echo $pageTotal;?> </span>
+<?php if($page < $pageTotal) { ?>
+<a href="/reviews?page=<?php echo $page+1;?>"> Next > </a>
+<?php } ?>
+</div>
+
+</div>
+
+<!-- 弹窗容器 -->
+<div class="img‑modal">
+	<img src="" alt="preview">
+</div>
+
+<?php include _include(APP_PATH.'view/htm/footer.inc.htm');?>
+
+<script>
+
+	$(function () {
+		// 点击图片
+		$('.cr-comment-text img').on('click', function () {
+			const src = $(this).attr('src');
+			if (!src) return;
+			$('.img‑modal img').attr('src', src);
+			$('.img‑modal').css('display', 'flex');
+		});
+
+		// 点击遮罩关闭弹窗
+		$('.img‑modal').on('click', function () {
+			$(this).hide();
+		});
+	});
+
+</script>
