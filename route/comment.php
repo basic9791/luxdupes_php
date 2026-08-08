@@ -92,6 +92,7 @@ switch ($action) {
             $doctype = param('doctype', 0);
             $quotepid = param('quotepid', 0);
             $message = param('message', '', FALSE);
+            $rating = param('rating', '', FALSE);
 
             empty($message) and message('message', lang('please_input_message'));
 
@@ -119,13 +120,13 @@ switch ($action) {
                 $end = strtotime('-6 month');
                 $start = strtotime('-24 month');
                 $n_time = mt_rand($start, $end);
-                $post = array('tid' => $tid, 'uid' => $n_uid, 'fid' => $fid, 'create_date' => $n_time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message);
+                $post = array('tid' => $tid, 'uid' => $n_uid, 'fid' => $fid, 'create_date' => $n_time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message, 'rating' => $rating);
 
             }else{
-                $post = array('tid' => $tid, 'uid' => $uid, 'fid' => $fid, 'create_date' => $time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message);
+                $post = array('tid' => $tid, 'uid' => $uid, 'fid' => $fid, 'create_date' => $time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message, 'rating' => $rating);
             }
 
-            $post = array('tid' => $tid, 'uid' => $n_uid, 'fid' => $fid, 'create_date' => $n_time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message);
+            
             // hook comment_create_post_middle.php
             $pid = comment_create($post);
             FALSE === $pid and message(-1, lang('create_post_failed'));

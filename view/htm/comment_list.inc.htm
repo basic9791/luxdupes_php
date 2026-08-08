@@ -16,8 +16,14 @@
                                     <a href="<?php echo url('user-' . $_post['uid']);?>" class="text-muted">
                                         <?php echo $_post['username'];?>
                                     </a>
+                                  
                                 </span>
                                 <!--{hook comment_list_inc_username_after.htm}-->
+                                <span class="text-grey ml-2"><span class="star selected">&#9733;</span><span class="star selected">&#9733;</span>
+									<span class="star selected">&#9733;</span>
+									<span class="star selected">&#9733;</span>
+									<span class="star selected">&#9733;</span></span>
+                                
 
                                 <!--{hook comment_list_inc_create_date_before.htm}-->
                                 <span class="date text-grey ml-2">
@@ -96,3 +102,6 @@
 				<?php }} ?>
 				
 				<!--{hook comment_list_inc_end.htm}-->
+
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>

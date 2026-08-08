@@ -15,7 +15,7 @@
 'well_publish_verify' => 'Contribution review',
 'well_comment_verify' => 'Comment review',
 'well_verify_content' => 'Review content',
-'well_latest_news' => 'Verified Customers Reviews',
+'well_latest_news' => 'Latest',
 'well_publish_pending_thread' => 'Pending article',
 'well_publish_verify_thread' => 'Verify article',
 'well_publish_pending_comment' => 'Pending comment',

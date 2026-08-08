@@ -91,6 +91,18 @@
                 $(this).append('<img class="playIco" src="/view/img/play.svg"/>')
             }
         })
+         $(".thListImgLinkBox2s").each(function(){
+            const imgData=$(this).attr('data')
+            const imgArr=imgData.split(',');
+            let url=getImgUrl(imgArr[0])
+            url=getMiniImgUrl(url)
+            if(!url) url='/view/img/nopic.png';
+            let html='<img class="product-img" data-echo="'+url+'"/>';
+
+            url && $(this).append(html);
+            
+
+        })
 
          $(".thListImgLinkBoxEmail").each(function(){
             const imgData=$(this).attr('data')

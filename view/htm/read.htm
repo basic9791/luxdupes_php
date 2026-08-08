@@ -2,7 +2,41 @@
 <style>.cr-comment-images{
 	display:flex;
 }
+.cr-comment-images img{
+	width: 100px;
+	height: 100px;
+	margin-right: 10px;
+	 object-fit: cover;
+
+}
+.star { font-size: 24px; color: #ccc; cursor: pointer; }
+									.star.selected { color: #f80; }
+									.star-rating b{
+										padding-right: 5px;
+									}
+									.star-rating{padding: 5px 0;}
+									.star-rating b span{
+										color: red;
+									}
+
+									.img‑modal {
+    position: fixed;
+    top:0;left:0;right:0;bottom:0;
+    background:rgba(0,0,0,0.85);
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+.img‑modal img {
+    max-width:90%;
+    max-height:90vh;
+    border:2px solid #fff;
+}
 </style>
+
+
 
 <!--{hook read_start.htm}-->
 
@@ -102,6 +136,7 @@
                                         <?php echo $thread['username'];?>
                                     </a>
 								</span>
+
                                 <!--{hook read_date_before.htm}-->
 								<span class="date text-grey ml-2">
                                     <?php echo $thread['create_date_fmt_ymd'];?>
@@ -292,10 +327,41 @@
                             <form action="<?php echo $comment_action;?>" method="post" id="form" class="d-block">
                                 <input type="hidden" name="doctype" value="1" />
                                 <input type="hidden" name="quotepid" value="0" />
+								
+                                <input type="hidden" name="rating" id="rating" value="5" />
+
                                 <!--{hook read_comment_form_before.htm}-->
                                 <div class="message mt-1">
                                     <textarea class="form-control" placeholder="<?php echo lang('message');?>" name="message" id="message"></textarea>
                                 </div>
+								
+								<div class="star-rating" id="starBox">
+									<b>Your rating <span>*</span></b> <span class="star selected" data-value="1">&#9733;</span>
+									<span class="star selected" data-value="2">&#9733;</span>
+									<span class="star selected" data-value="3">&#9733;</span>
+									<span class="star selected" data-value="4">&#9733;</span>
+									<span class="star selected" data-value="5">&#9733;</span>
+								</div>
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 <!--{hook read_comment_form_after.htm}-->
                                 <div class="d-flex justify-content-around text-muted mt-2 small">
                                     <!--{hook read_quick_comment_submit_before.htm}-->
@@ -471,9 +537,30 @@
 	</div>
     <?php } ?>
 
+
+	<!-- 弹窗容器 -->
+<div class="img‑modal">
+    <img src="" alt="preview">
+</div>
+
 <!--{hook read_end.htm}-->
 
 <?php include _include(APP_PATH . 'view/htm/footer.inc.htm');?>
+			<script>
+									$(document).ready(function() {
+										$('#starBox .star').click(function() {
+											var value = $(this).data('value');
+											$('#starBox .star').removeClass('selected');
+											for(var i=2;i<=value+1;i++){
+												$('#starBox .star:nth-child('+i+')').addClass('selected');
+											}
+											$('#rating').val( value);
+								
+											})
+											
+										});
+						
+								</script>
 
 <script>
 var forum_url = '<?php echo array_value($forum, 'url');?>';
@@ -494,6 +581,22 @@ body.on('submit', '#form', function() {
 		}
 	});
 	return false;
+});
+
+
+$(function(){
+    // 点击图片
+    $('.cr-comment-text img').on('click',function(){
+        const src = $(this).attr('src');
+		if(!src) return;
+        $('.img‑modal img').attr('src', src);
+        $('.img‑modal').css('display','flex');
+    });
+
+    // 点击遮罩关闭弹窗
+    $('.img‑modal').on('click',function(){
+        $(this).hide();
+    });
 });
 
 /*缩放图片，适应屏幕大小*/

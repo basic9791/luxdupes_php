@@ -38,10 +38,30 @@
 					<input type="hidden" name="doctype" value="<?php echo $form_doctype;?>" />
 					<input type="hidden" name="safe_token" value="<?php echo $safe_token;?>" />
 					<input type="hidden" name="quotepid" value="<?php echo $quotepid;?>" />
+					 <input type="hidden" name="rating" id="rating" value="5" />
 					<!--{hook comment_quotepid_before.htm}-->
 					<div class="form-group">
 						<textarea class="form-control" placeholder="<?php echo lang('message');?>" name="message" id="message" style="height: 300px;"><?php echo $form_message;?></textarea>
 					</div>
+
+					<style>
+									.star { font-size: 24px; color: #ccc; cursor: pointer; }
+									.star.selected { color: #f80; }
+									.star-rating b{
+										padding-right: 5px;
+									}
+									.star-rating{padding: 5px 0;}
+									.star-rating b span{
+										color: red;
+									}
+								</style>
+								<div class="star-rating">
+									<b>Your rating <span>*</span></b> <span class="star selected" data-value="1">&#9733;</span>
+									<span class="star selected" data-value="2">&#9733;</span>
+									<span class="star selected" data-value="3">&#9733;</span>
+									<span class="star selected" data-value="4">&#9733;</span>
+									<span class="star selected" data-value="5">&#9733;</span>
+								</div>
 					
 					<!--{hook comment_message_after.htm}-->
 
@@ -72,6 +92,22 @@
 <!--{hook comment_end.htm}-->
 
 <?php include _include(APP_PATH.'view/htm/footer.inc.htm');?>
+			<script>
+									$(document).ready(function() {
+										$('.star').click(function() {
+											var value = $(this).data('value');
+											$('.star').removeClass('selected');
+											for(var i=2;i<=value+1;i++){
+												$('.star:nth-child('+i+')').addClass('selected');
+											}
+											$('#rating').val( value);
+								
+											})
+											
+										});
+						
+								</script>
+								
 <script ajax-eval="true">
 	<!--{hook comment_js_start.htm}-->
 
