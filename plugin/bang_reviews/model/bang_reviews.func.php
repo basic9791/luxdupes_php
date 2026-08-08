@@ -46,7 +46,8 @@ function thread_tid__find_res($cond = array(), $orderby = array(), $page = 1, $p
   
     $arr = db_find('website_comment', $cond, $orderby, $page, $pagesize, $key, $col, $d);
 
-
+    print_r($arr);
+    echo "<br>111111111111111111111=============";
     // $dir = substr(sprintf("%09d", $user['uid']), 0, 3);
     // // hook model_user_format_avatar_url_before.php
     // $user['avatar_url'] = $user['avatar'] ? file_path() . "avatar/$dir/$user[uid].png?" . $user['avatar'] : view_path() . 'img/avatar.png';
