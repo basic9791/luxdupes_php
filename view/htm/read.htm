@@ -6,6 +6,7 @@
 	width: 100px;
 	height: 100px;
 	margin-right: 10px;
+	cursor: pointer;
 	 object-fit: cover;
 
 }
@@ -586,7 +587,7 @@ body.on('submit', '#form', function() {
 
 $(function(){
     // 点击图片
-    $('.cr-comment-text img').on('click',function(){
+    $('.message img').on('click',function(){
         const src = $(this).attr('src');
 		if(!src) return;
         $('.img‑modal img').attr('src', src);
