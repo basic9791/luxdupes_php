@@ -25,6 +25,6 @@ include _include(APP_PATH . 'plugin/bang_reviews/model/bang_reviews.func.php');
     
 
     $tidlistRes = well_thread_find_tid_res( $page, 20);
-    print_r($tidlistRes);
+
     include _include(theme_load('reviews', '', 'bang_reviews'));
 
