@@ -118,7 +118,7 @@ switch ($action) {
             if($user['gid'] == 1){
                 $n_uid = mt_rand(2922, 3486);
                 $end = time()-3600*24*1;
-                $start =  time()-3600*24*5;
+                $start =  time()-3600*24*15;
                 $n_time = mt_rand($start, $end);
                 $post = array('tid' => $tid, 'uid' => $n_uid, 'fid' => $fid, 'create_date' => $n_time, 'userip' => $longip, 'doctype' => $doctype, 'quotepid' => $quotepid, 'message' => $message, 'rating' => $rating);
 
