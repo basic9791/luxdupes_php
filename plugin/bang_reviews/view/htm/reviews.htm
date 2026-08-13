@@ -252,12 +252,17 @@
 		padding-right: 0
 	}
 
-
+	.avatar-60 img{
+			width:60px;
+		}
 	@media (max-width: 800px) {
 
 		.comment_container_box {
 			padding: 25px 15px;
 			margin: 25px 0;
+		}
+		img.avatar-60 {
+			width:20px;
 		}
 	}
 
@@ -386,8 +391,7 @@
 
 	<div class="comment_container_box">
 		<div class="cr-comment-avatar">
-			<img alt="" src="<?php echo $_thread['avatar_url'];?>" class="avatar-60 photo cr-std-avatar" height="60"
-				width="60">
+			<img alt="" src="<?php echo $_thread['avatar_url'];?>" class="avatar-60 photo cr-std-avatar">
 		</div>
 
 		<div class="cr-comment-text">
