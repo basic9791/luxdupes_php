@@ -1637,6 +1637,7 @@ $(function () {
             // console.log(333, imgList)
             const listImgArr = imgList.split(",")
             let img2 = '';
+            listImgArr[1]=listImgArr[1]||listImgArr[0]
             if (!isMobile() && listImgArr[1] && listImgArr[1].indexOf('.mp4')<0) {
               img2 =`<img class="w-100 rounded img2" ${src}="${listImgArr[1]}">`
             }

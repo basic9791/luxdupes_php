@@ -26,7 +26,7 @@ $image_url=preg_replace('/\s+/', '', $image_url);
 $image_url=rtrim($image_url,',');
 
 $image_url = str_replace('https://amzrepe.com/wp-content/uploads/','2/', $image_url);
-$image_url = str_replace('https://amzrep.top/wp-content/uploads','c', $image_url);
+$image_url = str_replace('https://amzclothes.com/wp-content/uploads','c', $image_url);
 $image_url = str_replace('https://amzswis.com/wp-content/uploads','w', $image_url);
 
 // 2,4,5,6,7,8,

@@ -76,6 +76,7 @@
             url=getMiniImgUrl(url)
             if(!url) url='/view/img/nopic.png';
             let html='<img class="w-100 rounded img1" data-echo="'+url+'"/>';
+            imgArr[1]=imgArr[1]||imgArr[0]
             if (!isMobile() && imgArr[1] && imgArr[1].indexOf('.mp4')<0) {
                 let url=getImgUrl(imgArr[1])
                 url=getMiniImgUrl(url)
@@ -171,7 +172,7 @@
 
 function getMiniImgUrl(str){
         if(!str) return '';
-         if(str.indexOf('amzrepe.com')>-1 || str.indexOf('amzswis.com')>-1 || str.indexOf('amzrep.top')>-1){
+         if(str.indexOf('amzrepe.com')>-1 || str.indexOf('amzswis.com')>-1 || str.indexOf('amzclothes.com')>-1){
            str= str.replace(/\.jpg/ig,'-433x433.jpg')
   
         }else if(str.indexOf('xcimg.szwego.com')>-1){
@@ -188,8 +189,8 @@ function getMiniImgUrl(str){
         str=str.replace(/\,2\//g,',//amzrepe.com/wp-content/uploads/');
 
         
-        str=str.replace(/\bc\//,'//amzrep.top/wp-content/uploads/');
-        str=str.replace(/\,c\//g,',//amzrep.top/wp-content/uploads/');
+        str=str.replace(/\bc\//,'//amzclothes.com/wp-content/uploads/');
+        str=str.replace(/\,c\//g,',//amzclothes.com/wp-content/uploads/');
 
         
         str=str.replace(/\bw\//,'//amzswis.com/wp-content/uploads/');
