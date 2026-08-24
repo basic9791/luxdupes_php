@@ -1627,8 +1627,9 @@ select option {
 
 
 .priceBox {
-    color: #666;
+    color: #000;
     vertical-align: middle;
+    font-size: 1.2em;
 }
 
 .lg-outer .lg-thumb-outer,
