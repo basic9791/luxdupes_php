@@ -12,16 +12,13 @@
 			<?php echo $conf['sitename'] ;?>
 		</h1>
 		<?php } ?>
-		<a class="navbar-brand text-truncate d-flex flex-wrap" title="<?php echo $conf['sitename'] ;?>"
-			href="<?php echo $conf['path'];?>">
+		<a class="navbar-brand text-truncate d-flex flex-wrap" title="<?php echo $conf['sitename'] ;?>" href="<?php echo $conf['path'];?>">
 			<!--替换LOGO 直接替换 view/img/logo.png 不要修改此处-->
 			<?php if($conf['logo_mobile_url']) { ?>
 			<img src="<?php echo view_path(),$conf['logo_mobile_url'],$static_version;?>" class="logo-2"
 				alt="<?php echo $conf['sitename'] ;?>">
 			<?php } else { ?>
-			<span style="font-weight: 600;font-size: 20px;color:#fff;">
-				<?php echo $conf['sitename'] ;?>
-			</span>
+			<span style="font-weight: 600;font-size: 20px;color:#fff;"><?php echo $conf['sitename'] ;?></span>
 			<?php }?>
 
 			</style>
@@ -52,80 +49,53 @@
 		<div class="collapse navbar-collapse pt-0" id="nav">
 			<!-- 左侧：栏目 -->
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item dropdown">
-					<a class="nav-link" href="/reviews"><i class="icon-circle-o d-md-none"></i>&nbsp;Reviews</a>
-				</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="/reviews"><i class="icon-circle-o d-md-none"></i>&nbsp;Reviews</a>
+						</li>
 
 
 				<li class="nav-item dropdown" fid="497" data-active="fid-497"><a class="nav-link dropdown-toggle"
 						href="/category/497" id="Menu-497" role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"><i class="icon-circle-o d-md-none"></i>&nbsp;Shop</a>
 					<div class="dropdown-menu" aria-labelledby="Menu-497">
-						<a class="dropdown-item" href="/list/498"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;Handbags</a>
+						<a class="dropdown-item" href="/list/498"><i class="icon-circle-o d-md-none"></i>&nbsp;Handbags</a>
 						<a class="dropdown-item" href="/list/499"><i class="icon-circle-o d-md-none"></i>&nbsp;Shoes</a>
-						<a class="dropdown-item" href="/list/506"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;Watches</a>
-						<a class="dropdown-item" href="/list/500"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;Accessories</a>
+						<a class="dropdown-item" href="/list/506"><i class="icon-circle-o d-md-none"></i>&nbsp;Watches</a>
+						<a class="dropdown-item" href="/list/500"><i class="icon-circle-o d-md-none"></i>&nbsp;Accessories</a>
 						<a class="dropdown-item" href="/list/505"><i class="icon-circle-o d-md-none"></i>&nbsp;BELT</a>
-						<a class="dropdown-item" href="/list/504"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;NECKLACE</a>
-						<a class="dropdown-item" href="/list/501"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;SUNGLASSES</a>
-						<a class="dropdown-item" href="/list/502"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;BRACELET</a>
-						<a class="dropdown-item" href="/list/507"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;Clothings</a>
-						<a class="dropdown-item" href="/list/503"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;Uncategorized</a>
-
-
-					</div>
+						<a class="dropdown-item" href="/list/504"><i class="icon-circle-o d-md-none"></i>&nbsp;NECKLACE</a>
+						<a class="dropdown-item" href="/list/501"><i class="icon-circle-o d-md-none"></i>&nbsp;SUNGLASSES</a>
+						<a class="dropdown-item" href="/list/502"><i class="icon-circle-o d-md-none"></i>&nbsp;BRACELET</a>
+						<a class="dropdown-item" href="/list/507"><i class="icon-circle-o d-md-none"></i>&nbsp;Clothings</a>
+						<a class="dropdown-item" href="/list/503"><i class="icon-circle-o d-md-none"></i>&nbsp;Uncategorized</a>
+								
+						
+							</div>
 				</li>
 
 
 				<li class="nav-item " fid="478" data-active="fid-tag"><a class="nav-link " href="/brands/list"><i
 							class="icon-circle-o d-md-none"></i>&nbsp;Brands</a></li>
 
-				<li class="nav-item dropdown" fid="1" data-active="fid-1"><a class="nav-link dropdown-toggle"
-						href="/category/1" id="Menu-1" role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"><i class="icon-circle-o d-md-none"></i>&nbsp;Women's Bags</a>
+				<li class="nav-item dropdown" fid="1" data-active="fid-1"><a class="nav-link dropdown-toggle" href="/category/1"
+						id="Menu-1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+							class="icon-circle-o d-md-none"></i>&nbsp;Women's Bags</a>
 					<div class="dropdown-menu" aria-labelledby="Menu-1"><a class="dropdown-item" href="/list/21"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐀𝐥𝗲𝘅𝗮𝗻𝗱𝗲𝗿 𝗪𝐚𝗻𝐠</a><a
-							class="dropdown-item" href="/list/8"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐁𝐚𝗹𝗲𝐧𝐜𝗶𝐚𝗴𝗮</a><a
-							class="dropdown-item" href="/list/15"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐁𝐨𝘁𝘁𝗲𝗴𝐚 𝐕𝐞𝗻𝐞𝘁𝗮</a><a
-							class="dropdown-item" href="/list/16"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐁𝘂𝐥𝗴𝐚𝗿𝗶</a><a class="dropdown-item"
-							href="/list/11"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐮𝗿𝗯𝗲𝗿𝗿𝘆</a><a
-							class="dropdown-item" href="/list/10"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐂𝗲𝐥𝗶𝗻𝗲</a><a class="dropdown-item"
-							href="/list/4"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗖𝗵𝗮𝗻𝐞𝗹</a><a
-							class="dropdown-item" href="/list/22"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐂𝐡𝗹𝐨é</a><a class="dropdown-item"
-							href="/list/17"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗗𝐞𝐥𝘃𝗮𝐮𝘅</a><a
-							class="dropdown-item" href="/list/5"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗗𝐢𝗼𝐫</a><a class="dropdown-item"
+								class="icon-circle-o d-md-none"></i>&nbsp;𝐀𝐥𝗲𝘅𝗮𝗻𝗱𝗲𝗿 𝗪𝐚𝗻𝐠</a><a class="dropdown-item"
+							href="/list/8"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐁𝐚𝗹𝗲𝐧𝐜𝗶𝐚𝗴𝗮</a><a
+							class="dropdown-item" href="/list/15"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐁𝐨𝘁𝘁𝗲𝗴𝐚 𝐕𝐞𝗻𝐞𝘁𝗮</a><a class="dropdown-item" href="/list/16"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐁𝘂𝐥𝗴𝐚𝗿𝗶</a><a class="dropdown-item" href="/list/11"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐮𝗿𝗯𝗲𝗿𝗿𝘆</a><a class="dropdown-item"
+							href="/list/10"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐂𝗲𝐥𝗶𝗻𝗲</a><a
+							class="dropdown-item" href="/list/4"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗖𝗵𝗮𝗻𝐞𝗹</a><a class="dropdown-item" href="/list/22"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐂𝐡𝗹𝐨é</a><a class="dropdown-item" href="/list/17"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;𝗗𝐞𝐥𝘃𝗮𝐮𝘅</a><a class="dropdown-item"
+							href="/list/5"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗗𝐢𝗼𝐫</a><a class="dropdown-item"
 							href="/list/14"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗙𝗲𝗻𝗱𝗶</a><a
-							class="dropdown-item" href="/list/20"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝗼𝐲𝐚𝐫𝗱</a><a class="dropdown-item"
-							href="/list/3"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐮𝗰𝐜𝐢</a><a
-							class="dropdown-item" href="/list/6"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐇𝗲𝐫𝗺è𝐬</a><a class="dropdown-item"
-							href="/list/13"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗟𝐨𝗲𝘄𝐞</a><a
-							class="dropdown-item" href="/list/23"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗟𝗼𝐫𝗼
-							𝐏𝗶𝗮n𝗮</a><a class="dropdown-item" href="/list/2"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗟𝗼𝘂𝗶𝘀 𝐕𝐮𝗶𝘁𝘁𝗼𝐧</a><a
-							class="dropdown-item" href="/list/19"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗠𝗖𝗠</a><a class="dropdown-item"
-							href="/list/12"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐌𝐢𝘂 𝐌𝗶𝘂</a><a
-							class="dropdown-item" href="/list/9"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗣𝗿𝗮𝗱𝐚</a><a class="dropdown-item"
-							href="/list/18"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗩𝐚𝐥𝗲𝗻𝐭𝗶𝐧𝗼</a><a
-							class="dropdown-item" href="/list/7"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐘𝐒𝗟</a>
-					</div>
+							class="dropdown-item" href="/list/20"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝗼𝐲𝐚𝐫𝗱</a><a class="dropdown-item" href="/list/3"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐮𝗰𝐜𝐢</a><a class="dropdown-item" href="/list/6"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐇𝗲𝐫𝗺è𝐬</a><a class="dropdown-item" href="/list/13"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;𝗟𝐨𝗲𝘄𝐞</a><a class="dropdown-item"
+							href="/list/23"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗟𝗼𝐫𝗼  𝐏𝗶𝗮n𝗮</a><a
+							class="dropdown-item" href="/list/2"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗟𝗼𝘂𝗶𝘀 𝐕𝐮𝗶𝘁𝘁𝗼𝐧</a><a class="dropdown-item" href="/list/19"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗠𝗖𝗠</a><a class="dropdown-item" href="/list/12"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐌𝐢𝘂 𝐌𝗶𝘂</a><a class="dropdown-item" href="/list/9"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗣𝗿𝗮𝗱𝐚</a><a class="dropdown-item" href="/list/18"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;𝗩𝐚𝐥𝗲𝗻𝐭𝗶𝐧𝗼</a><a class="dropdown-item"
+							href="/list/7"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐘𝐒𝗟</a></div>
 				</li>
 
 				<li class="nav-item dropdown" fid="24" data-active="fid-24"><a class="nav-link dropdown-toggle"
@@ -133,22 +103,13 @@
 						aria-expanded="false"><i class="icon-circle-o d-md-none"></i>&nbsp;Men's Bags</a>
 					<div class="dropdown-menu" aria-labelledby="Menu-24"><a class="dropdown-item" href="/list/33"><i
 								class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐚𝐥𝗹𝐲</a><a class="dropdown-item"
-							href="/list/31"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐁𝐨𝘁𝘁𝗲𝗴𝐚
-							𝐕𝐞𝗻𝐞𝘁𝗮</a><a class="dropdown-item" href="/list/30"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐮𝗿𝗯𝗲𝗿𝗿𝘆 </a><a class="dropdown-item"
-							href="/list/27"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗗𝐢𝗼𝐫 </a><a
-							class="dropdown-item" href="/list/29"><i
-								class="icon-circle-o d-md-none"></a>&nbsp;𝗙𝗲𝗻𝗱𝗶 </a><a class="dropdown-item"
-							href="/list/32"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐢𝐯𝗲𝐧𝐜𝗵𝐲
-						</a><a class="dropdown-item" href="/list/26"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐮𝗰𝐜𝐢
-						</a><a class="dropdown-item" href="/list/25"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻</a><a
-							class="dropdown-item" href="/list/35"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗠𝗖𝗠</a><a class="dropdown-item"
-							href="/list/28"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗣𝗿𝗮𝗱𝐚</a><a
-							class="dropdown-item" href="/list/34"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐓𝐡𝐨𝗺
-							𝗕𝗿𝗼𝘄𝐧𝗲</a></div>
+							href="/list/31"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐁𝐨𝘁𝘁𝗲𝗴𝐚 𝐕𝐞𝗻𝐞𝘁𝗮</a><a
+							class="dropdown-item" href="/list/30"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐮𝗿𝗯𝗲𝗿𝗿𝘆 </a><a class="dropdown-item" href="/list/27"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗗𝐢𝗼𝐫 </a><a class="dropdown-item" href="/list/29"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗙𝗲𝗻𝗱𝗶 </a><a class="dropdown-item" href="/list/32"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐢𝐯𝗲𝐧𝐜𝗵𝐲
+							</a><a class="dropdown-item" href="/list/26"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐮𝗰𝐜𝐢
+							</a><a class="dropdown-item" href="/list/25"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻</a><a class="dropdown-item" href="/list/35"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;𝗠𝗖𝗠</a><a class="dropdown-item" href="/list/28"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;𝗣𝗿𝗮𝗱𝐚</a><a class="dropdown-item"
+							href="/list/34"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐓𝐡𝐨𝗺 𝗕𝗿𝗼𝘄𝐧𝗲</a></div>
 				</li>
 
 
@@ -156,25 +117,19 @@
 						href="/category/40" id="Menu-40" role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"><i class="icon-circle-o d-md-none"></i>&nbsp;Wallets</a>
 					<div class="dropdown-menu" aria-labelledby="Menu-40"><a class="dropdown-item" href="/list/54"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐚𝐥𝗹𝐲</a><a class="dropdown-item"
-							href="/list/47"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐮𝗿𝗯𝗲𝗿𝗿𝘆</a><a
-							class="dropdown-item" href="/list/49"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐂𝗲𝐥𝗶𝗻𝗲</a><a class="dropdown-item"
-							href="/list/43"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗖𝗵𝗮𝗻𝐞𝗹</a><a
-							class="dropdown-item" href="/list/44"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗗𝐢𝗼𝐫</a><a class="dropdown-item"
-							href="/list/50"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗙𝗲𝗻𝗱𝗶</a><a
-							class="dropdown-item" href="/list/51"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐢𝐯𝗲𝐧𝐜𝗵𝐲</a><a class="dropdown-item"
-							href="/list/42"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐮𝗰𝐜𝐢</a><a
-							class="dropdown-item" href="/list/41"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗟𝗼𝘂𝗶𝘀 𝐕𝐮𝗶𝘁𝘁𝗼𝐧</a><a
-							class="dropdown-item" href="/list/46"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐌𝐢𝘂
-							𝐌𝗶𝘂</a><a class="dropdown-item" href="/list/48"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝗣𝗿𝗮𝗱𝐚</a><a class="dropdown-item"
-							href="/list/52"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗩𝗲𝐫𝘀𝗮𝗰𝗲</a><a
-							class="dropdown-item" href="/list/45"><i
-								class="icon-circle-o d-md-none"></i>&nbsp;𝐘𝐒𝗟</a></div>
+								class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐚𝐥𝗹𝐲</a><a class="dropdown-item" href="/list/47"><i
+								class="icon-circle-o d-md-none"></i>&nbsp;𝗕𝐮𝗿𝗯𝗲𝗿𝗿𝘆</a><a class="dropdown-item"
+							href="/list/49"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐂𝗲𝐥𝗶𝗻𝗲</a><a class="dropdown-item"
+							href="/list/43"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗖𝗵𝗮𝗻𝐞𝗹</a><a class="dropdown-item"
+							href="/list/44"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗗𝐢𝗼𝐫</a><a class="dropdown-item"
+							href="/list/50"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗙𝗲𝗻𝗱𝗶</a><a class="dropdown-item"
+							href="/list/51"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐢𝐯𝗲𝐧𝐜𝗵𝐲</a><a class="dropdown-item"
+							href="/list/42"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐆𝐮𝗰𝐜𝐢</a><a class="dropdown-item"
+							href="/list/41"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗟𝗼𝘂𝗶𝘀 𝐕𝐮𝗶𝘁𝘁𝗼𝐧</a><a
+							class="dropdown-item" href="/list/46"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐌𝐢𝘂 𝐌𝗶𝘂</a><a
+							class="dropdown-item" href="/list/48"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗣𝗿𝗮𝗱𝐚</a><a
+							class="dropdown-item" href="/list/52"><i class="icon-circle-o d-md-none"></i>&nbsp;𝗩𝗲𝐫𝘀𝗮𝗰𝗲</a><a
+							class="dropdown-item" href="/list/45"><i class="icon-circle-o d-md-none"></i>&nbsp;𝐘𝐒𝗟</a></div>
 				</li>
 
 
@@ -186,8 +141,7 @@
 
 
 						<li class="menuLi">
-							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/36">Travel
-								Luggage</a>
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/36">Travel Luggage</a>
 							<div class="menuChilBox">
 								<a href="/list/39">Backpacks</a>
 								<a href="/list/38">Travel Bags</a>
@@ -195,8 +149,7 @@
 							</div>
 						</li>
 						<li class="menuLi">
-							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/55">Women's
-								Clothing</a>
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/55">Women's Clothing</a>
 							<div class="menuChilBox">
 								<a href="/list/78">𝗔𝐜𝐧𝗲 𝐒𝘁𝐮𝐝𝐢𝗼𝐬</a>
 								<a href="/list/68">𝐀𝐥𝗲𝘅𝗮𝗻𝗱𝗲𝗿 𝗪𝐚𝗻𝐠</a>
@@ -237,8 +190,7 @@
 							</div>
 						</li>
 						<li class="menuLi">
-							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/91">Men's
-								Clothing</a>
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/91">Men's Clothing</a>
 							<div class="menuChilBox">
 								<a href="/list/101">𝐀𝗿𝗺𝐚𝐧𝗶</a>
 								<a href="/list/116">𝐁𝐚𝗹𝗲𝐧𝐜𝗶𝐚𝗴𝗮</a>
@@ -274,8 +226,7 @@
 							</div>
 						</li>
 						<li class="menuLi">
-							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/124">Women's
-								Shoes</a>
+							<i class="icon-caret-right"></i><a class="menuParLink" href="/category/124">Women's Shoes</a>
 							<div class="menuChilBox">
 								<a href="/list/168">𝐀𝐈𝗥 𝐉𝐎𝐑𝗗𝗔𝗡</a>
 								<a href="/list/167">𝐀𝐥𝗲𝘅𝗮𝗻𝗱𝗲𝗿 𝗪𝐚𝗻𝐠</a>
@@ -303,7 +254,7 @@
 								<a href="/list/145">𝗝𝗶𝐦𝐦𝐲 𝐂𝗵𝐨𝐨</a>
 								<a href="/list/144">𝐋𝗔𝗡𝐕𝗜𝗡</a>
 								<a href="/list/143">𝗟𝐨𝗲𝘄𝐞</a>
-								<a href="/list/142">𝗟𝗼𝐫𝗼 𝐏𝗶𝗮n𝗮</a>
+								<a href="/list/142">𝗟𝗼𝐫𝗼  𝐏𝗶𝗮n𝗮</a>
 								<a href="/list/141">𝗟𝗼𝘂𝗶𝘀 𝐕𝐮𝗶𝘁𝘁𝗼𝐧</a>
 								<a href="/list/140">𝐌𝐚𝗶𝘀𝗼𝗻 𝐌𝗮𝐫𝗴𝗶𝗲𝐥𝗮</a>
 								<a href="/list/139">𝗠𝐚𝐧𝗼𝗹𝐨 𝐁𝗹𝗮𝐡𝗻𝐢𝐤</a>
@@ -549,11 +500,11 @@
 								<a href="/list/225">𝗭𝐄𝗡𝗜𝐓𝐇</a>
 							</div>
 						</li>
-
+						
 					</ul>
 
 				</li>
-
+		
 
 			</ul>
 			<!-- 右侧：用户 -->
@@ -569,9 +520,8 @@
 
 
 									</ul>
-									<button class="btn btn-light categoryBtn btn-search-sm dropdown-toggle"
-										type="button" id="buttonCategory"
-										style="border-radius: 4px 0 0 4px;height: 31px; overflow: hidden;"><span
+									<button class="btn btn-light categoryBtn btn-search-sm dropdown-toggle" type="button"
+										id="buttonCategory" style="border-radius: 4px 0 0 4px;height: 31px; overflow: hidden;"><span
 											id="btnCategoryText" fid="<?php echo $fidFInd ;?>">
 											<?php echo $fnameFind?$fnameFind:'All category' ;?>
 										</span>
@@ -579,9 +529,8 @@
 									</button>
 
 								</div>
-								<input type="text" id="inputKeyword" class="form-control"
-									placeholder="<?php echo lang('keyword'); ?>" name="keyword"
-									value="<?php echo $keyword ;?>">
+								<input type="text" id="inputKeyword" class="form-control" placeholder="<?php echo lang('keyword'); ?>"
+									name="keyword" value="<?php echo $keyword ;?>">
 								<input type="hidden" name="range" value="1">
 
 								<div class="input-group-append">
@@ -595,8 +544,8 @@
 						</form>
 					</div>
 
-					<button class="btn btn-secondary btn-search-sm" style="background-color: #fff; color:#000;"
-						type="button" id="openSearchBtn">
+					<button class="btn btn-secondary btn-search-sm" style="background-color: #fff; color:#000;" type="button"
+						id="openSearchBtn">
 						<i class="icon-search"></i>
 					</button>
 
@@ -623,8 +572,8 @@
 						href="<?php echo $conf['path'];?>admin/"><i class="icon-cogs"></i></a></li>
 				<?php } ?>
 				<!--{hook header_nav_admin_page_after.htm}-->
-				<li class="nav-item"><a class="nav-link" title="<?php echo lang('logout');?>" rel="nofollow"
-						id="user-logout" href="<?php echo url('user-logout');?>"><i class="icon-sign-out"></i></a></li>
+				<li class="nav-item"><a class="nav-link" title="<?php echo lang('logout');?>" rel="nofollow" id="user-logout"
+						href="<?php echo url('user-logout');?>"><i class="icon-sign-out"></i></a></li>
 				<?php } ?>
 				<!--{hook header_nav_user_end.htm}-->
 			</ul>
@@ -634,4 +583,5 @@
 	</div>
 </header>
 <div style="min-height: 53px ; margin-bottom: 0"></div>
+
 <!--{hook header_nav_end.htm}-->
