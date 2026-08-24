@@ -1621,8 +1621,7 @@ select option {
 }
 
 .delPrice {
-    color: #aaa;
-    text-decoration: line-through;
+    color: #aaa;font-size:0.8em;margin-right: 5px;
 }
 
 
