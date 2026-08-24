@@ -1502,7 +1502,7 @@ select option {
 
 
 .delPrice {
-    color: #aaa;
+    color: #aaa;font-size:0.8em;margin-right: 5px;
     text-decoration: line-through;
 }
 
@@ -1620,15 +1620,11 @@ select option {
     display: none;
 }
 
-.delPrice {
-    color: #aaa;
-    text-decoration: line-through;
-}
+
 
 
 .priceBox {
-    color: #666;
-    vertical-align: middle;
+    color:#000;vertical-align:middle;font-weight: 600;
 }
 
 .lg-outer .lg-thumb-outer,
