@@ -242,15 +242,15 @@ $(function(){
             $("#chatway").attr('src','')
         },600)
 
-        var gAsid="<?php echo $conf['GAsid'];?>";
+    //     var gAsid="<?php echo $conf['GAsid'];?>";
         
 
-       gAsid && $.getScript("https://www.googletagmanager.com/gtag/js?id="+gAsid, function(data, textStatus, jqxhr) {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', gAsid);
-        });
+    //    gAsid && $.getScript("https://www.googletagmanager.com/gtag/js?id="+gAsid, function(data, textStatus, jqxhr) {
+    //         window.dataLayer = window.dataLayer || [];
+    //         function gtag(){dataLayer.push(arguments);}
+    //         gtag('js', new Date());
+    //         gtag('config', gAsid);
+    //     });
 
 })
 
