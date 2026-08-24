@@ -409,12 +409,11 @@
 			<div class="cr-rating-product-name">
 				<div class="proImg">
 					<a class="iv-comment-product-a thListImgLinkBox2s" href="/read/<?php echo $_thread['tid'];?>"
-						data="<?php echo $_thread['image_url'];?>"
-						title="<?php echo $_thread['subject'];?>"></a>
+						data="<?php echo $_thread['image_url'];?>"></a>
 				</div>
 
 				<div class="cr-product-name-picture"><a class="cr-comment-productname-a"
-						href="/read/<?php echo $_thread['tid'];?>" title="<?php echo $_thread['subject'];?>">
+						href="/read/<?php echo $_thread['tid'];?>">
 						<div class="crstar-rating-svg">
 							<span class="text-grey"><span class="star selected">&#9733;</span><span
 									class="star selected">&#9733;</span>
@@ -422,7 +421,7 @@
 								<span class="star selected">&#9733;</span>
 								<span class="star selected">&#9733;</span></span>
 						</div>
-						<?php echo $_thread['subject'];?>
+						<?php echo strToFlourish($_thread['subject']);?>
 					</a></div>
 			</div>
 
