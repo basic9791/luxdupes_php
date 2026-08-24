@@ -28,7 +28,7 @@
             <?php } elseif ($_thread['icon']) { ?>
            
                 <a href="<?php echo $_thread['url'].$readUrl; ?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
-                    <img class="d-block w-100 rounded" src="<?php echo $_thread['icon_fmt'];?>" title='<?php echo $_thread['subject'];?>' alt='<?php echo $_thread['subject'];?>' />
+                    <img class="d-block w-100 rounded" src="<?php echo $_thread['icon_fmt'];?>" />
                     <!--{hook thread__list_inc_avatar_after.htm}-->
                 </a>
           
@@ -55,8 +55,8 @@
                     <?php } ?>
                     <!--{hook thread__list_inc_closed_after.htm}-->
                         <!--{hook thread__list_inc_subject_before.htm}-->
-                        <a href="<?php echo $_thread['url'].$readUrl; ?>" class="titleName" aria-label="<?php echo $_thread['subject'];?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
-                        <?php echo $_thread['subject'];?>
+                        <a href="<?php echo $_thread['url'].$readUrl; ?>" class="titleName" aria-label="<?php echo strToFlourish($_thread['subject']);?>" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?>>
+                        <?php echo strToFlourish($_thread['subject']);?>
                         </a>
                         <!--{hook thread__list_inc_subject_after.htm}-->
                     <!--{hook thread__list_inc_subject__after.htm}-->

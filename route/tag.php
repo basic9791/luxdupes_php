@@ -102,7 +102,17 @@ switch ($action) {
         } else {
             $tidarr = arrlist_values($arr, 'tid');
             $threadlist = well_thread_find($tidarr, $pagesize);
+
+                    foreach ($threadlist as $_tid => &$item) {
+
+
+                //修改，例：全部标题加上【热销】前缀
+                $item['subject'] = strToFlourish($item['subject']);
+            }
         }
+
+
+
 
         // hook tag_middle.php
         

@@ -83,10 +83,29 @@ if (1 == $forum['type']) {
 
             $arr = array('tidlist' => $tidlist, 'stickylist' => $stickylist);
 
+          
+
+            // foreach ($arr as $k => $v) {
+            //     $arr[$k]['subject'] = strToFlourish($v['subject']);
+            // }
+
+            
+
             // hook list_unified_pull_before.php
 
             $arrlist = thread_unified_pull($arr);
+
+            foreach ($arrlist['threadlist'] as $_tid => &$item) {
+
+
+                //修改，例：全部标题加上【热销】前缀
+                $item['subject'] = strToFlourish($item['subject']);
+            }
+
+            //   print_r($arrlist);
+            // exit;
             $threadlist = array_value($arrlist, 'threadlist');
+            
             $flaglist = array_value($arrlist, 'flaglist');
 
             // hook list_unified_pull_after.php
@@ -99,6 +118,8 @@ if (1 == $forum['type']) {
             $pagination = pager($page_url, $num, $page, $pagesize);
 
             // hook list_header_before.php
+            $forum['name'] =strToFlourish($forum['name'] );
+            $fup['name'] =strToFlourish($fup['name'] );
 
             $seo_title = $forum['seo_title'] ? $forum['seo_title'] : $forum['name'] . '-' . $conf['sitename'];
             $header['title'] = strip_tags($seo_title);

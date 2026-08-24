@@ -166,10 +166,16 @@ switch ($thread['type']) {
 
         // hook read_article_after.php
 
-        $header['title'] = $thread['subject'];
+         $thread['subject']=strToFlourish($thread['subject']);
+        
+        $thread['message']=strToFlourish($thread['message']);
+
+        $header['title'] = $thread['subject'].'-'.$conf['sitename'];
+
+
         $header['mobile_link'] = $thread['url'];
-        $header['keywords'] = $thread['keyword'] ? $thread['keyword'] : $thread['subject'];
-        $header['description'] = $thread['description'] ? $thread['description'] : $thread['brief'];
+        // $header['keywords'] = $thread['keyword'] ? $thread['keyword'] : $thread['subject'];
+        // $header['description'] = $thread['description'] ? $thread['description'] : $thread['brief'];
         $_SESSION['fid'] = $fid;
 
         // hook read_article_end.php

@@ -751,6 +751,74 @@ function comment_brief($s, $len = 100)
     return $s;
 }
 
+
+/**
+ * 优化的 strToFlourish - 使用静态缓存，避免重复计算
+ * 
+ * 优化点:
+ * 1. 预缓存品牌名 => 花体名 映射表 (只计算一次)
+ * 2. unfancyText 使用 strtr 批量替换 (比循环快)
+ * 3. str_replace 支持数组参数 (一次调用替换所有)
+ */
+function strToFlourish($content) {
+    // 【关键优化】静态缓存：品牌名 -> 花体名 的映射表
+    // 只在第一次调用时计算，后续调用直接使用缓存
+    static $replaceMap = null;
+    if ($replaceMap === null) {
+        // $brandArr = ["Louis Vuitton","LV","Chanel","Dior","Gucci","Hermès","Prada","Burberry","Fendi","Balenciaga","YSL","Celine","Loewe","Miu Miu","AIMER MEN","Valentino","Moncler","Versace","Bottega Veneta","Givenchy","Nike","Chrome Hearts","DolceGabbana","Ferragamo","Thom Browne","AIR JORDAN","Zegna","Adidas","Dunk","Balmain","Other Brands of","Bally","Alexander Wang","Summer Shorts","Armani","McQueen","TODS","Van CleefArpels","Cartier","Bulgari","Roger Vivier","Jimmy Choo","New Balance","Niche","ROLEX","Premium Jackets","MaxMara","Kenzo","Vivienne Westwood","Qeelin","Loro piana","Maison Margiela","PATEK PHILIPPE","Yeezy","Moschino","UGG","OffWhite","Goyard","TiffanyCo","AIGLE","Montblanc","MCM","OMEGA","Panerai","Ladies","Audemars Piguet","Graff","Acne Studios","MiuMiu","Sandals and Slippers","Zimmermann","IWC","Mastermind Japan","The North Face","Gina","Cashmere Coats","Alexander McQueen","Berluti","Delvaux","Goose Down Jacket","Bottega","Basketball Shoes","Breitling","Christian Louboutin","GM","TheNorthFace","Brunello Cucinelli","Golden Goose","NY","LONGINES","Sergio","Richard Mille","BVLGARI","HUBLOT","Audemars","FOG Essential","MLB","Salvatore Ferragamo","Vacheron Constantin","SevenFriday","Puma","JAEGERLECOULTRE","WellDone","TOM FORD","Canada Goose","Vans","Parma","Maison Michel","Asics","LI NING","Birkenstock","Blancpain","GGCC","Boy London","master mind","DG","Daniel Wellington","PIAGET","Chopard","RayBan","HOGAN","FRANCK MULLER","Rick Owens","Maurice Lacroix","TUDOR","Ecco","Stone Island","Off White","Breguet","Roger Dubuis","STUSSY","Michael Kors","HUGO Boss","Evisu","Converse","CLARINS","JIL SANDER","Blanket","Carhartt","Marni","Amina Muaddi","kolon sport","Manolo Blahnik","TAG Heuer","Salomon","Amiri","Essentials","POLO","Shawl","Van Cleef","Fred","Lanvin","Max Mara","margiela","Lola Rose","Dickies","MARIE MAGE","CASIO","MachMach","Timberland","Glashütte Original","BellRoss","Jordan","Palm Angels","ULYSSE NARDIN","Elizabeth Arden","ZENITH","Tory Burch","Calvin Klein","Descente","Jean Paul Gaultier","ORIS","Mihara Yasuhiro","Christopher Kane","Under Armour","Chloé","Pillow","Polo ralph lauren","MIDO","Apm monaco","Movado","Snow Peak","GENTLE MONSTER","Kelly","Dsquared","Jacquemus","RagBone","TISSOT","Champion","COSME DECORTE","LangeSöhne","Joker","Corum","GirardPerregaux","PARMIGIANI","NOMOS","Grand Seiko","Yohji Yamamoto","Nicholas Kirkwood","Swarovski","ACOLDWALL","SKII","Matthew Williamson","PREMIATA",
+        // "Travel",'Hermes','Bottege Veneta','Bottege','GG','GUCCI','DIOR'
+        // ];
+         $brandArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+        
+        $replaceMap = [];
+        foreach ($brandArr as $brand) {
+            $replaceMap[$brand] = unfancyText($brand);
+        }
+    }
+
+    // 【优化】str_replace 支持数组参数，一次调用完成所有替换
+    return str_replace(array_keys($replaceMap), array_values($replaceMap), $content);
+}
+
+
+
+function unfancyText(string $text): string {
+    // 静态缓存：字符映射表 (4组合并)
+    static $charMap = null;
+    if ($charMap === null) {
+        $group2 = [
+            'A'=>'𝗔','B'=>'𝗕','C'=>'𝗖','D'=>'𝗗','E'=>'𝗘','F'=>'𝗙','G'=>'𝗚','H'=>'𝗛',
+            'I'=>'𝗜','J'=>'𝗝','K'=>'𝗞','L'=>'𝗟','M'=>'𝗠','N'=>'𝗡','O'=>'𝗢','P'=>'𝗣',
+            'Q'=>'𝗤','R'=>'𝗥','S'=>'𝗦','T'=>'𝗧','U'=>'𝗨','V'=>'𝗩','W'=>'𝗪','X'=>'𝗫',
+            'Y'=>'𝗬','Z'=>'𝗭','a'=>'𝗮','b'=>'𝗯','c'=>'𝗰','d'=>'𝗱','e'=>'𝗲','f'=>'𝗳',
+            'g'=>'𝗴','h'=>'𝗵','i'=>'𝗶','j'=>'𝗷','k'=>'𝗸','l'=>'𝗹','m'=>'𝗺','n'=>'𝗻',
+            'o'=>'𝗼','p'=>'𝗽','q'=>'𝗾','r'=>'𝗿','s'=>'𝘀','t'=>'𝘁','u'=>'𝘂','v'=>'𝘃',
+            'w'=>'𝘄','x'=>'𝘅','y'=>'𝘆','z'=>'𝘇'
+        ];
+        $group4 = [
+            'A'=>'𝐀','B'=>'𝐁','C'=>'𝐂','D'=>'𝐃','E'=>'𝐄','F'=>'𝐅','G'=>'𝐆','H'=>'𝐇',
+            'I'=>'𝐈','J'=>'𝐉','K'=>'𝐊','L'=>'𝐋','M'=>'𝐌','N'=>'𝐍','O'=>'𝐎','P'=>'𝐏',
+            'Q'=>'𝐐','R'=>'𝐑','S'=>'𝐒','T'=>'𝐓','U'=>'𝐔','V'=>'𝐕','W'=>'𝐖','X'=>'𝐗',
+            'Y'=>'𝐘','Z'=>'𝐙','a'=>'𝐚','b'=>'𝐛','c'=>'𝐜','d'=>'𝐝','e'=>'𝐞','f'=>'𝐟',
+            'g'=>'𝐠','h'=>'𝐡','i'=>'𝐢','j'=>'𝐣','k'=>'𝐤','l'=>'𝐥','m'=>'𝐦','n'=>'𝐧',
+            'o'=>'𝐨','p'=>'𝐩','q'=>'𝐪','r'=>'𝐫','s'=>'𝐬','t'=>'𝐭','u'=>'𝐮','v'=>'𝐯',
+            'w'=>'𝐰','x'=>'𝐱','y'=>'𝐲','z'=>'𝐳'
+        ];
+        
+        // 【优化】预生成随机映射表：每个标准字符固定对应一个随机选中的花体字符
+        // 这样同一文本中相同字母的花体风格一致，且只需生成一次
+        $charMap = [];
+        foreach ($group2 as $char => $fancy) {
+            $options = [$fancy, $group4[$char]];
+            $charMap[$char] = $options[array_rand($options)];
+        }
+    }
+    
+    // 【优化】strtr 比 mb_substr 循环快 5-10 倍
+    return strtr($text, $charMap);
+}
+
+
 // hook model_comment_end.php
 
 ?>

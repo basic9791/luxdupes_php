@@ -236,6 +236,15 @@ $active = 'default';
 // hook index_end.php
 
 if ($ajax) {
+
+     foreach ($arrlist['threadlist'] as $_tid => &$item) {
+
+
+                //修改，例：全部标题加上【热销】前缀
+                $item['subject'] = strToFlourish($item['subject']);
+            }
+
+
     $apilist['header'] = $header;
     $apilist['extra'] = $extra;
     $apilist['num'] = $num;

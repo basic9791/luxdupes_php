@@ -58,7 +58,7 @@
 				</li>
 				<li class="breadcrumb-item">
 					<a href="/brands/<?php echo $tagid.$tagUrl;?>">
-                        <?php echo strToFlourish($forum['name']);?>
+                        <?php echo $forum['name'];?>
                     </a>
 				</li>
 
@@ -66,7 +66,7 @@
 				if($forum['fup']) { ?>
 			<li class="breadcrumb-item">
 			    <a href="<?php echo url('category-' . $forum['fup'], '', FALSE);?>" tabindex="0">
-							 <?php echo strToFlourish($fup['name'])?>
+							 <?php echo $fup['name'];?>
 						</a>
 			   
 			</li>
@@ -74,7 +74,7 @@
 			
 			<li class="breadcrumb-item">
                 <a href="<?php echo $forum['url']; ?>">
-                    <?php echo strToFlourish($forum['name']);?>
+                    <?php echo $forum['name'];?>
                 </a>
       </li>
 			<?php } ?>
@@ -84,7 +84,7 @@
             <!--{hook read_main_breadcrumb_after.htm}-->
 			<li class="breadcrumb-item active d-none">
                 <a href="<?php echo $thread['url']; ?>">
-                    <?php echo strToFlourish($thread['subject']);?>
+                    <?php echo trToFlourish($thread['subject']);?>
                 </a>
             </li>
 			<!--{hook read_main_breadcrumb_middle.htm}-->
@@ -124,7 +124,7 @@
 						<!--{hook read_subject_before.htm}-->
 						<h1 class="h5 text-break font-weight-bold">
 							<!--{hook read_subject_start.htm}-->
-							<?php echo strToFlourish($thread['subject']);?>
+							<?php echo trToFlourish($thread['subject']);?>
 							<!--{hook read_subject_end.htm}-->
 						</h1>
 						<!--{hook read_subject_after.htm}-->
@@ -181,7 +181,7 @@
 						<span class="badge border border-secondary mr-2">
                             <h2 class="h6 mb-0 small">
                                 <a class="text-secondary" href="<?php echo url('brands-' . $_tag);?>">
-                                    <?php echo strToFlourish($_tagname); ?>
+                                    <?php echo $_tagname; ?>
                                 </a>
 							</h2>
                         </span>
@@ -211,7 +211,7 @@
 					<?php if($fid == 799) { 
 						 echo str_ireplace('luxdupes',$conf['sitename'],$data['message']) ;
 					}else {
-						echo strToFlourish($data['message']) ;
+						echo trToFlourish($data['message']) ;
 					}?>
 
 					<?php if($thread['type']==9) {   $index=0;?>
@@ -473,7 +473,7 @@
             
     			<h4 class="h6 my-0">
     				<a href="<?php echo $_thread['url'].$tagUrl;?>" class="d-block text-truncate">
-    					<?php echo strToFlourish($_thread['subject']);?>
+    					<?php echo trToFlourish($_thread['subject']);?>
     				</a>
     			</h4>
     		</li>
@@ -526,7 +526,7 @@
                 <li class="thread">
                     <h4 class="h6 my-0 mx-3">
 						<a href="<?php echo $_thread['url'].$tagUrl;?>" class="d-block ellipsis" <?php echo (10==$_thread['type']?'rel="nofollow" target="_blank"':''); ?> >
-                            <?php echo strToFlourish($_thread['subject']);?>
+                            <?php echo trToFlourish($_thread['subject']);?>
 						</a>
 					</h4>
 				</li>

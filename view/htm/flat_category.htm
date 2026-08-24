@@ -10,7 +10,7 @@
                 <?php if ($_forum['threads']>0) { ?>
                 <li class="nav-item" fid="<?php echo $_forum['fid'];?>" data-active="fid-<?php echo $_forum['fid'];?>">
                     <a class="nav-link" href="<?php echo $_forum['url'];?>">
-                    <?php echo $_forum['name'];?>(<?php echo $_forum['threads'];?>)
+                    <?php echo strToFlourish($_forum['name']);?>(<?php echo $_forum['threads'];?>)
                     </a>
                 </li>
                 <?php } ?>

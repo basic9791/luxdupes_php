@@ -32,10 +32,10 @@
 	<meta name="keywords" content="<?php echo $header['keywords'];?>" />
 	<?php } ?>
 
-	<meta name="description" content="<?php echo $header['description'];?>" />
+	<meta name="description"/>
 
 	<title>
-		<?php echo $header['description'].'-'.$header['title'];?>
+	<?php echo $header['title'];?>
 	</title>
 
 	<!--{hook header_link_before.htm}-->
@@ -53,6 +53,16 @@
 	<link rel="stylesheet" href="<?php echo view_path();?>css/font-awesome.min.css<?php echo $static_version;?>">
 
 	<link rel="stylesheet" href="<?php echo view_path();?>css/wellcms.mini.css<?php echo $static_version;?>">
+	<style>
+		body,div,html,span,li,a {
+
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;      /* IE 10 and IE 11 */
+    user-select: none;          /* Standard syntax */
+
+		}
+	</style>
 	<!--{hook header_link_after.htm}-->
 </head>
 

@@ -171,6 +171,12 @@ switch ($forum['model']) {
         // hook category_article_end.php
 
         if ($ajax) {
+               foreach ($arrlist['threadlist'] as $_tid => &$item) {
+
+
+                //修改，例：全部标题加上【热销】前缀
+                $item['subject'] = strToFlourish($item['subject']);
+            }
             $apilist['page'] = $page;
             $apilist['pagesize'] = $pagesize;
             $apilist['num'] = $num;

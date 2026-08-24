@@ -4,17 +4,17 @@ return array(
   "1"=> array(
     array(
       "fid"=> "112",
-      "name"=> "Burberry Men&#039;s Clothing",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Men&#039;s Clothing",
       "count"=> 3862
     ),
     array(
       "fid"=> "11",
-      "name"=> "Burberry Women&#039;s Bags",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Women&#039;s Bags",
       "count"=> 3833
     ),
     array(
       "fid"=> "61",
-      "name"=> "Burberry Women&#039;s Clothing",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Women&#039;s Clothing",
       "count"=> 2078
     ),
     array(
@@ -24,37 +24,37 @@ return array(
     ),
     array(
       "fid"=> "325",
-      "name"=> "Burberry Eyewear",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Eyewear",
       "count"=> 934
     ),
     array(
       "fid"=> "195",
-      "name"=> "Burberry Men&#039;s Shoes",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Men&#039;s Shoes",
       "count"=> 916
     ),
     array(
       "fid"=> "365",
-      "name"=> "Burberry Belts",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Belts",
       "count"=> 859
     ),
     array(
       "fid"=> "301",
-      "name"=> "Burberry Hats",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Hats",
       "count"=> 688
     ),
     array(
       "fid"=> "160",
-      "name"=> "Burberry Women&#039;s Shoes",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Women&#039;s Shoes",
       "count"=> 556
     ),
     array(
       "fid"=> "47",
-      "name"=> "Burberry Wallets",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Wallets",
       "count"=> 387
     ),
     array(
       "fid"=> "347",
-      "name"=> "Burberry Scarves",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Scarves",
       "count"=> 363
     ),
     array(
@@ -64,7 +64,7 @@ return array(
     ),
     array(
       "fid"=> "30",
-      "name"=> "Burberry Men&#039;s Bags",
+      "name"=> "𝗕𝐮𝐫𝗯𝐞𝗿𝐫𝘆 Men&#039;s Bags",
       "count"=> 76
     ),
     array(
@@ -94,29 +94,29 @@ return array(
     ),
     array(
       "fid"=> "348",
-      "name"=> "Acne Studios Scarves",
+      "name"=> "𝗔𝗰𝗻𝐞 𝗦𝐭𝐮𝐝𝐢𝗼𝘀 Scarves",
       "count"=> 1
     )
   ),
   "2"=> array(
     array(
       "fid"=> "3",
-      "name"=> "Gucci Women&#039;s Bags",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Women&#039;s Bags",
       "count"=> 7555
     ),
     array(
       "fid"=> "57",
-      "name"=> "Gucci Women&#039;s Clothing",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Women&#039;s Clothing",
       "count"=> 5160
     ),
     array(
       "fid"=> "121",
-      "name"=> "Gucci Men&#039;s Clothing",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Men&#039;s Clothing",
       "count"=> 4511
     ),
     array(
       "fid"=> "318",
-      "name"=> "Gucci Eyewear",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Eyewear",
       "count"=> 3858
     ),
     array(
@@ -126,27 +126,27 @@ return array(
     ),
     array(
       "fid"=> "149",
-      "name"=> "Gucci Women&#039;s Shoes",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Women&#039;s Shoes",
       "count"=> 3372
     ),
     array(
       "fid"=> "359",
-      "name"=> "Gucci Belts",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Belts",
       "count"=> 2057
     ),
     array(
       "fid"=> "187",
-      "name"=> "Gucci Men&#039;s Shoes",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Men&#039;s Shoes",
       "count"=> 782
     ),
     array(
       "fid"=> "284",
-      "name"=> "Gucci Jewelry",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Jewelry",
       "count"=> 569
     ),
     array(
       "fid"=> "308",
-      "name"=> "Gucci Hats",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Hats",
       "count"=> 532
     ),
     array(
@@ -156,12 +156,12 @@ return array(
     ),
     array(
       "fid"=> "338",
-      "name"=> "Gucci Scarves",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Scarves",
       "count"=> 343
     ),
     array(
       "fid"=> "26",
-      "name"=> "Gucci Men&#039;s Bags",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Men&#039;s Bags",
       "count"=> 330
     ),
     array(
@@ -171,7 +171,7 @@ return array(
     ),
     array(
       "fid"=> "42",
-      "name"=> "Gucci Wallets",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Wallets",
       "count"=> 165
     ),
     array(
@@ -211,7 +211,7 @@ return array(
     ),
     array(
       "fid"=> "256",
-      "name"=> "Gucci Watches",
+      "name"=> "𝐆𝐮𝐜𝐜𝗶 Watches",
       "count"=> 1
     ),
     array(
@@ -223,32 +223,32 @@ return array(
   "3"=> array(
     array(
       "fid"=> "58",
-      "name"=> "Dior Women&#039;s Clothing",
+      "name"=> "𝐃𝗶𝐨𝗿 Women&#039;s Clothing",
       "count"=> 7319
     ),
     array(
       "fid"=> "5",
-      "name"=> "Dior Women&#039;s Bags",
+      "name"=> "𝐃𝗶𝐨𝗿 Women&#039;s Bags",
       "count"=> 6708
     ),
     array(
       "fid"=> "120",
-      "name"=> "Dior Men&#039;s Clothing",
+      "name"=> "𝐃𝗶𝐨𝗿 Men&#039;s Clothing",
       "count"=> 4321
     ),
     array(
       "fid"=> "288",
-      "name"=> "Dior Jewelry",
+      "name"=> "𝐃𝗶𝐨𝗿 Jewelry",
       "count"=> 3985
     ),
     array(
       "fid"=> "155",
-      "name"=> "Dior Women&#039;s Shoes",
+      "name"=> "𝐃𝗶𝐨𝗿 Women&#039;s Shoes",
       "count"=> 2886
     ),
     array(
       "fid"=> "307",
-      "name"=> "Dior Hats",
+      "name"=> "𝐃𝗶𝐨𝗿 Hats",
       "count"=> 1600
     ),
     array(
@@ -258,17 +258,17 @@ return array(
     ),
     array(
       "fid"=> "362",
-      "name"=> "Dior Belts",
+      "name"=> "𝐃𝗶𝐨𝗿 Belts",
       "count"=> 1488
     ),
     array(
       "fid"=> "321",
-      "name"=> "Dior Eyewear",
+      "name"=> "𝐃𝗶𝐨𝗿 Eyewear",
       "count"=> 1210
     ),
     array(
       "fid"=> "192",
-      "name"=> "Dior Men&#039;s Shoes",
+      "name"=> "𝐃𝗶𝐨𝗿 Men&#039;s Shoes",
       "count"=> 959
     ),
     array(
@@ -283,12 +283,12 @@ return array(
     ),
     array(
       "fid"=> "343",
-      "name"=> "Dior Scarves",
+      "name"=> "𝐃𝗶𝐨𝗿 Scarves",
       "count"=> 423
     ),
     array(
       "fid"=> "342",
-      "name"=> "Dior Small Ribbons",
+      "name"=> "𝐃𝗶𝐨𝗿 Small Ribbons",
       "count"=> 290
     ),
     array(
@@ -298,7 +298,7 @@ return array(
     ),
     array(
       "fid"=> "27",
-      "name"=> "Dior Men&#039;s Bags",
+      "name"=> "𝐃𝗶𝐨𝗿 Men&#039;s Bags",
       "count"=> 150
     ),
     array(
@@ -318,7 +318,7 @@ return array(
     ),
     array(
       "fid"=> "341",
-      "name"=> "Dior Ties",
+      "name"=> "𝐃𝗶𝐨𝗿 𝐓𝗶𝐞𝘀",
       "count"=> 40
     ),
     array(
@@ -328,7 +328,7 @@ return array(
     ),
     array(
       "fid"=> "44",
-      "name"=> "Dior Wallets",
+      "name"=> "𝐃𝗶𝐨𝗿 Wallets",
       "count"=> 15
     ),
     array(
@@ -350,32 +350,32 @@ return array(
   "4"=> array(
     array(
       "fid"=> "67",
-      "name"=> "Celine Women&#039;s Clothing",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Women&#039;s Clothing",
       "count"=> 2563
     ),
     array(
       "fid"=> "10",
-      "name"=> "Celine Women&#039;s Bags",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Women&#039;s Bags",
       "count"=> 2096
     ),
     array(
       "fid"=> "304",
-      "name"=> "Celine Hats",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Hats",
       "count"=> 2038
     ),
     array(
       "fid"=> "291",
-      "name"=> "Celine Jewelry",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Jewelry",
       "count"=> 1222
     ),
     array(
       "fid"=> "159",
-      "name"=> "Celine Women&#039;s Shoes",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Women&#039;s Shoes",
       "count"=> 996
     ),
     array(
       "fid"=> "111",
-      "name"=> "Celine Men&#039;s Clothing",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Men&#039;s Clothing",
       "count"=> 901
     ),
     array(
@@ -385,17 +385,17 @@ return array(
     ),
     array(
       "fid"=> "364",
-      "name"=> "Celine Belts",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Belts",
       "count"=> 565
     ),
     array(
       "fid"=> "323",
-      "name"=> "Celine Eyewear",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Eyewear",
       "count"=> 465
     ),
     array(
       "fid"=> "194",
-      "name"=> "Celine Men&#039;s Shoes",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Men&#039;s Shoes",
       "count"=> 346
     ),
     array(
@@ -415,7 +415,7 @@ return array(
     ),
     array(
       "fid"=> "346",
-      "name"=> "Celine Scarves",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Scarves",
       "count"=> 35
     ),
     array(
@@ -430,7 +430,7 @@ return array(
     ),
     array(
       "fid"=> "49",
-      "name"=> "Celine Wallets",
+      "name"=> "𝐂𝗲𝗹𝗶𝗻𝐞 Wallets",
       "count"=> 26
     ),
     array(
@@ -522,7 +522,7 @@ return array(
     ),
     array(
       "fid"=> "335",
-      "name"=> "Hermes Ties",
+      "name"=> "Hermes 𝐓𝗶𝐞𝘀",
       "count"=> 348
     ),
     array(
@@ -557,7 +557,7 @@ return array(
     ),
     array(
       "fid"=> "394",
-      "name"=> "Prada Ties",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 𝐓𝗶𝐞𝘀",
       "count"=> 2
     ),
     array(
@@ -569,37 +569,37 @@ return array(
   "6"=> array(
     array(
       "fid"=> "290",
-      "name"=> "Chanel Jewelry",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Jewelry",
       "count"=> 7820
     ),
     array(
       "fid"=> "4",
-      "name"=> "Chanel Women&#039;s Bags",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Women&#039;s Bags",
       "count"=> 7336
     ),
     array(
       "fid"=> "158",
-      "name"=> "Chanel Women&#039;s Shoes",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Women&#039;s Shoes",
       "count"=> 6004
     ),
     array(
       "fid"=> "56",
-      "name"=> "Chanel Women&#039;s Clothing",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Women&#039;s Clothing",
       "count"=> 4896
     ),
     array(
       "fid"=> "306",
-      "name"=> "Chanel Hats",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Hats",
       "count"=> 3068
     ),
     array(
       "fid"=> "322",
-      "name"=> "Chanel Eyewear",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Eyewear",
       "count"=> 1912
     ),
     array(
       "fid"=> "363",
-      "name"=> "Chanel Belts",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Belts",
       "count"=> 1564
     ),
     array(
@@ -609,12 +609,12 @@ return array(
     ),
     array(
       "fid"=> "119",
-      "name"=> "Chanel Men&#039;s Clothing",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Men&#039;s Clothing",
       "count"=> 1024
     ),
     array(
       "fid"=> "345",
-      "name"=> "Chanel Scarves",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Scarves",
       "count"=> 888
     ),
     array(
@@ -624,12 +624,12 @@ return array(
     ),
     array(
       "fid"=> "43",
-      "name"=> "Chanel Wallets",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Wallets",
       "count"=> 500
     ),
     array(
       "fid"=> "193",
-      "name"=> "Chanel Men&#039;s Shoes",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Men&#039;s Shoes",
       "count"=> 420
     ),
     array(
@@ -644,7 +644,7 @@ return array(
     ),
     array(
       "fid"=> "265",
-      "name"=> "CHANEL Watches",
+      "name"=> "𝐂𝗛𝐀𝗡𝗘𝗟 Watches",
       "count"=> 266
     ),
     array(
@@ -654,7 +654,7 @@ return array(
     ),
     array(
       "fid"=> "344",
-      "name"=> "Chanel Small Ribbons",
+      "name"=> "𝐂𝐡𝐚𝗻𝐞𝐥 Small Ribbons",
       "count"=> 198
     ),
     array(
@@ -696,79 +696,79 @@ return array(
   "7"=> array(
     array(
       "fid"=> "162",
-      "name"=> "Bottega Veneta Women&#039;s Shoes",
+      "name"=> "𝗕𝗼𝐭𝘁𝐞𝗴𝐚 𝐕𝗲𝗻𝗲𝐭𝐚 Women&#039;s Shoes",
       "count"=> 1719
     ),
     array(
       "fid"=> "366",
-      "name"=> "Bottega Veneta Belts",
+      "name"=> "𝗕𝗼𝐭𝘁𝐞𝗴𝐚 𝐕𝗲𝗻𝗲𝐭𝐚 Belts",
       "count"=> 877
     ),
     array(
       "fid"=> "71",
-      "name"=> "Bottega Veneta Women&#039;s Clothing",
+      "name"=> "𝗕𝗼𝐭𝘁𝐞𝗴𝐚 𝐕𝗲𝗻𝗲𝐭𝐚 Women&#039;s Clothing",
       "count"=> 847
     ),
     array(
       "fid"=> "109",
-      "name"=> "Bottega Veneta Men&#039;s Clothing",
+      "name"=> "𝗕𝗼𝐭𝘁𝐞𝗴𝐚 𝐕𝗲𝗻𝗲𝐭𝐚 Men&#039;s Clothing",
       "count"=> 745
     ),
     array(
       "fid"=> "15",
-      "name"=> "Bottega Veneta Women&#039;s Bags",
+      "name"=> "𝗕𝗼𝐭𝘁𝐞𝗴𝐚 𝐕𝗲𝗻𝗲𝐭𝐚 Women&#039;s Bags",
       "count"=> 739
     ),
     array(
       "fid"=> "196",
-      "name"=> "Bottega Veneta Men&#039;s Shoes",
+      "name"=> "𝗕𝗼𝐭𝘁𝐞𝗴𝐚 𝐕𝗲𝗻𝗲𝐭𝐚 Men&#039;s Shoes",
       "count"=> 669
     ),
     array(
       "fid"=> "31",
-      "name"=> "Bottega Veneta Men&#039;s Bags",
+      "name"=> "𝗕𝗼𝐭𝘁𝐞𝗴𝐚 𝐕𝗲𝗻𝗲𝐭𝐚 Men&#039;s Bags",
       "count"=> 163
     )
   ),
   "9"=> array(
     array(
       "fid"=> "7",
-      "name"=> "YSL Women&#039;s Bags",
+      "name"=> "𝐘𝐒𝗟 Women&#039;s Bags",
       "count"=> 6583
     ),
     array(
       "fid"=> "125",
-      "name"=> "YSL Women&#039;s Shoes",
+      "name"=> "𝐘𝐒𝗟 Women&#039;s Shoes",
       "count"=> 1485
     ),
     array(
       "fid"=> "60",
-      "name"=> "YSL Women&#039;s Clothing",
+      "name"=> "𝐘𝐒𝗟 Women&#039;s Clothing",
       "count"=> 1473
     ),
     array(
       "fid"=> "113",
-      "name"=> "YSL Men&#039;s Clothing",
+      "name"=> "𝐘𝐒𝗟 Men&#039;s Clothing",
       "count"=> 818
     ),
     array(
       "fid"=> "45",
-      "name"=> "YSL Wallets",
+      "name"=> "𝐘𝐒𝗟 Wallets",
       "count"=> 689
     ),
     array(
       "fid"=> "350",
-      "name"=> "YSL Belts",
+      "name"=> "𝐘𝐒𝗟 Belts",
       "count"=> 683
     ),
     array(
       "fid"=> "171",
-      "name"=> "YSL Men&#039;s Shoes",
+      "name"=> "𝐘𝐒𝗟 Men&#039;s Shoes",
       "count"=> 533
     ),
     array(
       "fid"=> "303",
-      "name"=> "YSL Hats",
+      "name"=> "𝐘𝐒𝗟 Hats",
       "count"=> 467
     ),
     array(
@@ -783,7 +783,7 @@ return array(
     ),
     array(
       "fid"=> "275",
-      "name"=> "YSL Jewelry",
+      "name"=> "𝐘𝐒𝗟 Jewelry",
       "count"=> 68
     ),
     array(
@@ -808,7 +808,7 @@ return array(
     ),
     array(
       "fid"=> "391",
-      "name"=> "YSL Scarves",
+      "name"=> "𝐘𝐒𝗟 Scarves",
       "count"=> 2
     ),
     array(
@@ -825,7 +825,7 @@ return array(
   "10"=> array(
     array(
       "fid"=> "20",
-      "name"=> "Goyard Women&#039;s Bags",
+      "name"=> "𝐆𝗼𝐲𝗮𝐫𝗱 Women&#039;s Bags",
       "count"=> 720
     ),
     array(
@@ -842,7 +842,7 @@ return array(
   "11"=> array(
     array(
       "fid"=> "252",
-      "name"=> "JAEGER - LECOULTRE Watches",
+      "name"=> "𝐉𝐀𝗘𝗚𝗘𝗥 - 𝗟𝐄𝗖𝐎𝗨𝐋𝗧𝐑𝗘 Watches",
       "count"=> 180
     ),
     array(
@@ -854,7 +854,7 @@ return array(
   "12"=> array(
     array(
       "fid"=> "260",
-      "name"=> "FRANCK MULLER Watches",
+      "name"=> "𝗙𝗥𝐀𝐍𝐂𝐊 𝐌𝗨𝗟𝗟𝐄𝗥 Watches",
       "count"=> 114
     ),
     array(
@@ -866,29 +866,29 @@ return array(
   "13"=> array(
     array(
       "fid"=> "248",
-      "name"=> "LONGINES Watches",
+      "name"=> "𝐋𝐎𝗡𝐆𝗜𝐍𝗘𝐒 Watches",
       "count"=> 299
     )
   ),
   "14"=> array(
     array(
       "fid"=> "114",
-      "name"=> "Loewe Men&#039;s Clothing",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Men&#039;s Clothing",
       "count"=> 3164
     ),
     array(
       "fid"=> "13",
-      "name"=> "Loewe Women&#039;s Bags",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Women&#039;s Bags",
       "count"=> 2730
     ),
     array(
       "fid"=> "63",
-      "name"=> "Loewe Women&#039;s Clothing",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Women&#039;s Clothing",
       "count"=> 2124
     ),
     array(
       "fid"=> "299",
-      "name"=> "Loewe Hats",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Hats",
       "count"=> 987
     ),
     array(
@@ -898,12 +898,12 @@ return array(
     ),
     array(
       "fid"=> "184",
-      "name"=> "Loewe Men&#039;s Shoes",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Men&#039;s Shoes",
       "count"=> 556
     ),
     array(
       "fid"=> "357",
-      "name"=> "Loewe Belts",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Belts",
       "count"=> 515
     ),
     array(
@@ -913,17 +913,17 @@ return array(
     ),
     array(
       "fid"=> "334",
-      "name"=> "Loewe Scarves",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Scarves",
       "count"=> 170
     ),
     array(
       "fid"=> "317",
-      "name"=> "Loewe Eyewear",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Eyewear",
       "count"=> 124
     ),
     array(
       "fid"=> "143",
-      "name"=> "Loewe Women&#039;s Shoes",
+      "name"=> "𝐋𝐨𝐞𝘄𝐞 Women&#039;s Shoes",
       "count"=> 115
     ),
     array(
@@ -950,37 +950,37 @@ return array(
   "15"=> array(
     array(
       "fid"=> "117",
-      "name"=> "Prada Men&#039;s Clothing",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Men&#039;s Clothing",
       "count"=> 4737
     ),
     array(
       "fid"=> "9",
-      "name"=> "Prada Women&#039;s Bags",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Women&#039;s Bags",
       "count"=> 2906
     ),
     array(
       "fid"=> "62",
-      "name"=> "Prada Women&#039;s Clothing",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Women&#039;s Clothing",
       "count"=> 2795
     ),
     array(
       "fid"=> "178",
-      "name"=> "Prada Men&#039;s Shoes",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Men&#039;s Shoes",
       "count"=> 2694
     ),
     array(
       "fid"=> "133",
-      "name"=> "Prada Women&#039;s Shoes",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Women&#039;s Shoes",
       "count"=> 1652
     ),
     array(
       "fid"=> "305",
-      "name"=> "Prada Hats",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Hats",
       "count"=> 1597
     ),
     array(
       "fid"=> "312",
-      "name"=> "Prada Eyewear",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Eyewear",
       "count"=> 1045
     ),
     array(
@@ -990,12 +990,12 @@ return array(
     ),
     array(
       "fid"=> "353",
-      "name"=> "Prada Belts",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Belts",
       "count"=> 560
     ),
     array(
       "fid"=> "48",
-      "name"=> "Prada Wallets",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Wallets",
       "count"=> 551
     ),
     array(
@@ -1015,7 +1015,7 @@ return array(
     ),
     array(
       "fid"=> "28",
-      "name"=> "Prada Men&#039;s Bags",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 Men&#039;s Bags",
       "count"=> 151
     ),
     array(
@@ -1030,7 +1030,7 @@ return array(
     ),
     array(
       "fid"=> "394",
-      "name"=> "Prada Ties",
+      "name"=> "𝐏𝗿𝗮𝐝𝗮 𝐓𝗶𝐞𝘀",
       "count"=> 3
     )
   ),
@@ -1064,7 +1064,7 @@ return array(
   "17"=> array(
     array(
       "fid"=> "116",
-      "name"=> "Balenciaga Men&#039;s Clothing",
+      "name"=> "𝗕𝐚𝗹𝗲𝗻𝗰𝐢𝐚𝐠𝗮 Men&#039;s Clothing",
       "count"=> 3469
     ),
     array(
@@ -1074,37 +1074,37 @@ return array(
     ),
     array(
       "fid"=> "302",
-      "name"=> "Balenciaga Hats",
+      "name"=> "𝗕𝐚𝗹𝗲𝗻𝗰𝐢𝐚𝐠𝗮 Hats",
       "count"=> 1719
     ),
     array(
       "fid"=> "64",
-      "name"=> "Balenciaga Women&#039;s Clothing",
+      "name"=> "𝗕𝐚𝗹𝗲𝗻𝗰𝐢𝐚𝐠𝗮 Women&#039;s Clothing",
       "count"=> 1665
     ),
     array(
       "fid"=> "201",
-      "name"=> "Balenciaga Men&#039;s Shoes",
+      "name"=> "𝗕𝐚𝗹𝗲𝗻𝗰𝐢𝐚𝐠𝗮 Men&#039;s Shoes",
       "count"=> 1499
     ),
     array(
       "fid"=> "165",
-      "name"=> "Balenciaga Women&#039;s Shoes",
+      "name"=> "𝗕𝐚𝗹𝗲𝗻𝗰𝐢𝐚𝐠𝗮 Women&#039;s Shoes",
       "count"=> 1155
     ),
     array(
       "fid"=> "8",
-      "name"=> "Balenciaga Women&#039;s Bags",
+      "name"=> "𝗕𝐚𝗹𝗲𝗻𝗰𝐢𝐚𝐠𝗮 Women&#039;s Bags",
       "count"=> 1100
     ),
     array(
       "fid"=> "367",
-      "name"=> "Balenciaga Belts",
+      "name"=> "𝗕𝐚𝗹𝗲𝗻𝗰𝐢𝐚𝐠𝗮 Belts",
       "count"=> 347
     ),
     array(
       "fid"=> "326",
-      "name"=> "Balenciaga Eyewear",
+      "name"=> "𝗕𝐚𝗹𝗲𝗻𝗰𝐢𝐚𝐠𝗮 Eyewear",
       "count"=> 219
     ),
     array(
@@ -1131,32 +1131,32 @@ return array(
   "18"=> array(
     array(
       "fid"=> "115",
-      "name"=> "Fendi Men&#039;s Clothing",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Men&#039;s Clothing",
       "count"=> 3459
     ),
     array(
       "fid"=> "14",
-      "name"=> "Fendi Women&#039;s Bags",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Women&#039;s Bags",
       "count"=> 3295
     ),
     array(
       "fid"=> "66",
-      "name"=> "Fendi Women&#039;s Clothing",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Women&#039;s Clothing",
       "count"=> 2119
     ),
     array(
       "fid"=> "190",
-      "name"=> "Fendi Men&#039;s Shoes",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Men&#039;s Shoes",
       "count"=> 1362
     ),
     array(
       "fid"=> "361",
-      "name"=> "Fendi Belts",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Belts",
       "count"=> 686
     ),
     array(
       "fid"=> "298",
-      "name"=> "Fendi Hats",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Hats",
       "count"=> 680
     ),
     array(
@@ -1166,22 +1166,22 @@ return array(
     ),
     array(
       "fid"=> "320",
-      "name"=> "Fendi Eyewear",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Eyewear",
       "count"=> 427
     ),
     array(
       "fid"=> "153",
-      "name"=> "Fendi Women&#039;s Shoes",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Women&#039;s Shoes",
       "count"=> 392
     ),
     array(
       "fid"=> "50",
-      "name"=> "Fendi Wallets",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Wallets",
       "count"=> 330
     ),
     array(
       "fid"=> "340",
-      "name"=> "Fendi Scarves",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Scarves",
       "count"=> 145
     ),
     array(
@@ -1196,7 +1196,7 @@ return array(
     ),
     array(
       "fid"=> "29",
-      "name"=> "Fendi Men&#039;s Bags",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Men&#039;s Bags",
       "count"=> 101
     ),
     array(
@@ -1206,7 +1206,7 @@ return array(
     ),
     array(
       "fid"=> "287",
-      "name"=> "Fendi Jewelry",
+      "name"=> "𝐅𝗲𝐧𝗱𝐢 Jewelry",
       "count"=> 56
     ),
     array(
@@ -1228,7 +1228,7 @@ return array(
   "19"=> array(
     array(
       "fid"=> "238",
-      "name"=> "PATEK PHILIPPE Watches",
+      "name"=> "𝗣𝐀𝐓𝗘𝐊 𝗣𝗛𝐈𝐋𝗜𝗣𝗣𝗘 Watches",
       "count"=> 631
     ),
     array(
@@ -1240,7 +1240,7 @@ return array(
   "20"=> array(
     array(
       "fid"=> "240",
-      "name"=> "Panerai Watches",
+      "name"=> "𝐏𝐚𝐧𝗲𝐫𝐚𝗶 Watches",
       "count"=> 559
     ),
     array(
@@ -1267,7 +1267,7 @@ return array(
   "21"=> array(
     array(
       "fid"=> "271",
-      "name"=> "Blancpain Watches",
+      "name"=> "𝗕𝐥𝐚𝐧𝐜𝐩𝐚𝗶𝐧 Watches",
       "count"=> 138
     ),
     array(
@@ -1279,7 +1279,7 @@ return array(
   "22"=> array(
     array(
       "fid"=> "227",
-      "name"=> "Vacheron Constantin Watches",
+      "name"=> "𝐕𝐚𝐜𝐡𝐞𝐫𝗼𝐧 𝐂𝗼𝗻𝘀𝐭𝐚𝐧𝐭𝗶𝐧 Watches",
       "count"=> 207
     ),
     array(
@@ -1291,51 +1291,51 @@ return array(
   "23"=> array(
     array(
       "fid"=> "273",
-      "name"=> "Audemars Piguet Watches",
+      "name"=> "𝗔𝐮𝗱𝗲𝐦𝐚𝗿𝐬 𝗣𝐢𝗴𝐮𝐞𝐭 Watches",
       "count"=> 638
     )
   ),
   "24"=> array(
     array(
       "fid"=> "17",
-      "name"=> "Delvaux Women&#039;s Bags",
+      "name"=> "𝐃𝐞𝐥𝐯𝐚𝐮𝘅 Women&#039;s Bags",
       "count"=> 432
     )
   ),
   "25"=> array(
     array(
       "fid"=> "86",
-      "name"=> "Valentino Women&#039;s Clothing",
+      "name"=> "𝐕𝗮𝗹𝐞𝐧𝐭𝐢𝐧𝐨 Women&#039;s Clothing",
       "count"=> 2274
     ),
     array(
       "fid"=> "174",
-      "name"=> "Valentino Men&#039;s Shoes",
+      "name"=> "𝐕𝗮𝗹𝐞𝐧𝐭𝐢𝐧𝐨 Men&#039;s Shoes",
       "count"=> 1922
     ),
     array(
       "fid"=> "96",
-      "name"=> "Valentino Men&#039;s Clothing",
+      "name"=> "𝐕𝗮𝗹𝐞𝐧𝐭𝐢𝐧𝐨 Men&#039;s Clothing",
       "count"=> 1540
     ),
     array(
       "fid"=> "127",
-      "name"=> "Valentino Women&#039;s Shoes",
+      "name"=> "𝐕𝗮𝗹𝐞𝐧𝐭𝐢𝐧𝐨 Women&#039;s Shoes",
       "count"=> 1436
     ),
     array(
       "fid"=> "18",
-      "name"=> "Valentino Women&#039;s Bags",
+      "name"=> "𝐕𝗮𝗹𝐞𝐧𝐭𝐢𝐧𝐨 Women&#039;s Bags",
       "count"=> 540
     ),
     array(
       "fid"=> "296",
-      "name"=> "Valentino Hats",
+      "name"=> "𝐕𝗮𝗹𝐞𝐧𝐭𝐢𝐧𝐨 Hats",
       "count"=> 287
     ),
     array(
       "fid"=> "352",
-      "name"=> "Valentino Belts",
+      "name"=> "𝐕𝗮𝗹𝐞𝐧𝐭𝐢𝐧𝐨 Belts",
       "count"=> 237
     ),
     array(
@@ -1367,7 +1367,7 @@ return array(
   "26"=> array(
     array(
       "fid"=> "253",
-      "name"=> "IWC Watches",
+      "name"=> "𝐈𝐖𝗖 Watches",
       "count"=> 527
     ),
     array(
@@ -1379,56 +1379,56 @@ return array(
   "27"=> array(
     array(
       "fid"=> "250",
-      "name"=> "Ladies Watches",
+      "name"=> "𝗟𝗮𝗱𝐢𝐞𝘀 Watches",
       "count"=> 639
     )
   ),
   "28"=> array(
     array(
       "fid"=> "65",
-      "name"=> "Miu Miu Women&#039;s Clothing",
+      "name"=> "𝗠𝐢𝐮 𝐌𝗶𝐮 Women&#039;s Clothing",
       "count"=> 2805
     ),
     array(
       "fid"=> "136",
-      "name"=> "Miu Miu Women&#039;s Shoes",
+      "name"=> "𝗠𝐢𝐮 𝐌𝗶𝐮 Women&#039;s Shoes",
       "count"=> 2446
     ),
     array(
       "fid"=> "300",
-      "name"=> "Miu Miu Hats",
+      "name"=> "𝗠𝐢𝐮 𝐌𝗶𝐮 Hats",
       "count"=> 1632
     ),
     array(
       "fid"=> "281",
-      "name"=> "Miu Miu Jewelry",
+      "name"=> "𝗠𝐢𝐮 𝐌𝗶𝐮 Jewelry",
       "count"=> 1592
     ),
     array(
       "fid"=> "12",
-      "name"=> "Miu Miu Women&#039;s Bags",
+      "name"=> "𝗠𝐢𝐮 𝐌𝗶𝐮 Women&#039;s Bags",
       "count"=> 448
     ),
     array(
       "fid"=> "355",
-      "name"=> "Miu Miu Belts",
+      "name"=> "𝗠𝐢𝐮 𝐌𝗶𝐮 Belts",
       "count"=> 371
     ),
     array(
       "fid"=> "314",
-      "name"=> "Miu Miu Eyewear",
+      "name"=> "𝗠𝐢𝐮 𝐌𝗶𝐮 Eyewear",
       "count"=> 319
     ),
     array(
       "fid"=> "46",
-      "name"=> "Miu Miu Wallets",
+      "name"=> "𝗠𝐢𝐮 𝐌𝗶𝐮 Wallets",
       "count"=> 16
     )
   ),
   "29"=> array(
     array(
       "fid"=> "231",
-      "name"=> "TAG Heuer Watches",
+      "name"=> "𝗧𝗔𝗚 𝐇𝗲𝐮𝗲𝐫 Watches",
       "count"=> 57
     ),
     array(
@@ -1440,7 +1440,7 @@ return array(
   "30"=> array(
     array(
       "fid"=> "233",
-      "name"=> "ROLEX Watches",
+      "name"=> "𝗥𝐎𝐋𝐄𝗫 Watches",
       "count"=> 990
     ),
     array(
@@ -1457,7 +1457,7 @@ return array(
   "31"=> array(
     array(
       "fid"=> "242",
-      "name"=> "OMEGA Watches",
+      "name"=> "𝐎𝗠𝗘𝗚𝗔 Watches",
       "count"=> 662
     ),
     array(
@@ -1469,26 +1469,26 @@ return array(
   "32"=> array(
     array(
       "fid"=> "234",
-      "name"=> "Roger Dubuis Watches",
+      "name"=> "𝐑𝗼𝐠𝐞𝗿 𝐃𝐮𝗯𝐮𝐢𝐬 Watches",
       "count"=> 92
     )
   ),
   "33"=> array(
     array(
       "fid"=> "264",
-      "name"=> "Chopard Watches",
+      "name"=> "𝗖𝗵𝐨𝐩𝗮𝗿𝐝 Watches",
       "count"=> 129
     )
   ),
   "34"=> array(
     array(
       "fid"=> "293",
-      "name"=> "Bulgari Jewelry",
+      "name"=> "𝗕𝐮𝐥𝗴𝐚𝐫𝐢 Jewelry",
       "count"=> 1345
     ),
     array(
       "fid"=> "16",
-      "name"=> "Bulgari Women&#039;s Bags",
+      "name"=> "𝗕𝐮𝐥𝗴𝐚𝐫𝐢 Women&#039;s Bags",
       "count"=> 195
     ),
     array(
@@ -1500,14 +1500,14 @@ return array(
   "35"=> array(
     array(
       "fid"=> "232",
-      "name"=> "SevenFriday Watches",
+      "name"=> "𝗦𝐞𝘃𝗲𝐧𝗙𝗿𝗶𝗱𝐚𝐲 Watches",
       "count"=> 191
     )
   ),
   "36"=> array(
     array(
       "fid"=> "269",
-      "name"=> "Breitling Watches",
+      "name"=> "𝐁𝗿𝗲𝐢𝘁𝐥𝐢𝐧𝗴 Watches",
       "count"=> 192
     ),
     array(
@@ -1519,7 +1519,7 @@ return array(
   "37"=> array(
     array(
       "fid"=> "268",
-      "name"=> "BVLGARI Watches",
+      "name"=> "𝐁𝗩𝗟𝗚𝗔𝐑𝐈 Watches",
       "count"=> 272
     ),
     array(
@@ -1536,36 +1536,36 @@ return array(
   "38"=> array(
     array(
       "fid"=> "229",
-      "name"=> "TUDOR Watches",
+      "name"=> "𝐓𝐔𝗗𝗢𝐑 Watches",
       "count"=> 109
     )
   ),
   "39"=> array(
     array(
       "fid"=> "279",
-      "name"=> "Qeelin Jewelry",
+      "name"=> "𝗤𝐞𝐞𝐥𝗶𝗻 Jewelry",
       "count"=> 954
     )
   ),
   "40"=> array(
     array(
       "fid"=> "102",
-      "name"=> "Chrome Hearts Men&#039;s Clothing",
+      "name"=> "𝐂𝐡𝗿𝐨𝗺𝐞 𝐇𝐞𝐚𝗿𝐭𝘀 Men&#039;s Clothing",
       "count"=> 1542
     ),
     array(
       "fid"=> "72",
-      "name"=> "Chrome Hearts Women&#039;s Clothing",
+      "name"=> "𝐂𝐡𝗿𝐨𝗺𝐞 𝐇𝐞𝐚𝗿𝐭𝘀 Women&#039;s Clothing",
       "count"=> 1394
     ),
     array(
       "fid"=> "289",
-      "name"=> "Chrome Hearts Jewelry",
+      "name"=> "𝐂𝐡𝗿𝐨𝗺𝐞 𝐇𝐞𝐚𝗿𝐭𝘀 Jewelry",
       "count"=> 831
     ),
     array(
       "fid"=> "297",
-      "name"=> "Chrome Hearts Hats",
+      "name"=> "𝐂𝐡𝗿𝐨𝗺𝐞 𝐇𝐞𝐚𝗿𝐭𝘀 Hats",
       "count"=> 672
     ),
     array(
@@ -1582,12 +1582,12 @@ return array(
   "41"=> array(
     array(
       "fid"=> "324",
-      "name"=> "Cartier Eyewear",
+      "name"=> "𝐂𝐚𝐫𝘁𝐢𝗲𝗿 Eyewear",
       "count"=> 733
     ),
     array(
       "fid"=> "292",
-      "name"=> "Cartier Jewelry",
+      "name"=> "𝐂𝐚𝐫𝘁𝐢𝗲𝗿 Jewelry",
       "count"=> 681
     ),
     array(
@@ -1614,46 +1614,46 @@ return array(
   "42"=> array(
     array(
       "fid"=> "360",
-      "name"=> "Ferragamo Belts",
+      "name"=> "𝐅𝗲𝐫𝐫𝗮𝐠𝗮𝐦𝐨 Belts",
       "count"=> 1691
     ),
     array(
       "fid"=> "152",
-      "name"=> "Ferragamo Women&#039;s Shoes",
+      "name"=> "𝐅𝗲𝐫𝐫𝗮𝐠𝗮𝐦𝐨 Women&#039;s Shoes",
       "count"=> 1399
     ),
     array(
       "fid"=> "189",
-      "name"=> "Ferragamo Men&#039;s Shoes",
+      "name"=> "𝐅𝗲𝐫𝐫𝗮𝐠𝗮𝐦𝐨 Men&#039;s Shoes",
       "count"=> 1098
     ),
     array(
       "fid"=> "261",
-      "name"=> "Ferragamo Watches",
+      "name"=> "𝐅𝗲𝐫𝐫𝗮𝐠𝗮𝐦𝐨 Watches",
       "count"=> 2
     )
   ),
   "43"=> array(
     array(
       "fid"=> "280",
-      "name"=> "Niche Series Jewelry",
+      "name"=> "𝗡𝐢𝐜𝐡𝗲 Series Jewelry",
       "count"=> 1294
     )
   ),
   "44"=> array(
     array(
       "fid"=> "354",
-      "name"=> "Montblanc Belts",
+      "name"=> "𝗠𝐨𝐧𝘁𝐛𝗹𝗮𝐧𝐜 Belts",
       "count"=> 588
     ),
     array(
       "fid"=> "313",
-      "name"=> "Montblanc Eyewear",
+      "name"=> "𝗠𝐨𝐧𝘁𝐛𝗹𝗮𝐧𝐜 Eyewear",
       "count"=> 154
     ),
     array(
       "fid"=> "244",
-      "name"=> "Montblanc Watches",
+      "name"=> "𝗠𝐨𝐧𝘁𝐛𝗹𝗮𝐧𝐜 Watches",
       "count"=> 4
     ),
     array(
@@ -1665,37 +1665,37 @@ return array(
   "45"=> array(
     array(
       "fid"=> "103",
-      "name"=> "Versace Men&#039;s Clothing",
+      "name"=> "𝗩𝗲𝐫𝐬𝗮𝐜𝐞 Men&#039;s Clothing",
       "count"=> 1923
     ),
     array(
       "fid"=> "70",
-      "name"=> "Versace Women&#039;s Clothing",
+      "name"=> "𝗩𝗲𝐫𝐬𝗮𝐜𝐞 Women&#039;s Clothing",
       "count"=> 997
     ),
     array(
       "fid"=> "351",
-      "name"=> "Versace Belts",
+      "name"=> "𝗩𝗲𝐫𝐬𝗮𝐜𝐞 Belts",
       "count"=> 828
     ),
     array(
       "fid"=> "173",
-      "name"=> "Versace Men&#039;s Shoes",
+      "name"=> "𝗩𝗲𝐫𝐬𝗮𝐜𝐞 Men&#039;s Shoes",
       "count"=> 711
     ),
     array(
       "fid"=> "126",
-      "name"=> "Yeezy Women&#039;s Shoes",
+      "name"=> "𝐘𝗲𝐞𝘇𝐲 Women&#039;s Shoes",
       "count"=> 679
     ),
     array(
       "fid"=> "311",
-      "name"=> "Versace Eyewear",
+      "name"=> "𝗩𝗲𝐫𝐬𝗮𝐜𝐞 Eyewear",
       "count"=> 610
     ),
     array(
       "fid"=> "52",
-      "name"=> "Versace Wallets",
+      "name"=> "𝗩𝗲𝐫𝐬𝗮𝐜𝐞 Wallets",
       "count"=> 307
     ),
     array(
@@ -1727,64 +1727,64 @@ return array(
   "46"=> array(
     array(
       "fid"=> "246",
-      "name"=> "Maurice Lacroix Watches",
+      "name"=> "𝐌𝗮𝐮𝐫𝗶𝗰𝐞 𝗟𝗮𝗰𝗿𝗼𝗶𝘅 Watches",
       "count"=> 113
     )
   ),
   "47"=> array(
     array(
       "fid"=> "270",
-      "name"=> "Breguet Watches",
+      "name"=> "𝗕𝐫𝐞𝐠𝐮𝐞𝘁 Watches",
       "count"=> 92
     )
   ),
   "48"=> array(
     array(
       "fid"=> "237",
-      "name"=> "PIAGET Watches",
+      "name"=> "𝐏𝗜𝐀𝐆𝗘𝗧 Watches",
       "count"=> 129
     )
   ),
   "49"=> array(
     array(
       "fid"=> "277",
-      "name"=> "Van Cleef &amp; Arpels Jewelry",
+      "name"=> "𝗩𝐚𝗻 𝗖𝗹𝐞𝐞𝐟 &amp; 𝐀𝐫𝗽𝗲𝗹𝐬 Jewelry",
       "count"=> 1799
     ),
     array(
       "fid"=> "226",
-      "name"=> "Van Cleef &amp; Arpels Watches",
+      "name"=> "𝗩𝐚𝗻 𝗖𝗹𝐞𝐞𝐟 &amp; 𝐀𝐫𝗽𝗲𝗹𝐬 Watches",
       "count"=> 7
     )
   ),
   "50"=> array(
     array(
       "fid"=> "278",
-      "name"=> "Tiffany &amp; Co. Jewelry",
+      "name"=> "𝗧𝐢𝗳𝐟𝗮𝗻𝘆 &amp; Co. Jewelry",
       "count"=> 770
     )
   ),
   "51"=> array(
     array(
       "fid"=> "137",
-      "name"=> "McQueen Women&#039;s Shoes",
+      "name"=> "𝐌𝗰𝐐𝐮𝗲𝐞𝐧 Women&#039;s Shoes",
       "count"=> 1727
     ),
     array(
       "fid"=> "182",
-      "name"=> "McQueen Men&#039;s Shoes",
+      "name"=> "𝐌𝗰𝐐𝐮𝗲𝐞𝐧 Men&#039;s Shoes",
       "count"=> 168
     ),
     array(
       "fid"=> "330",
-      "name"=> "McQueen Scarves",
+      "name"=> "𝐌𝗰𝐐𝐮𝗲𝐞𝐧 Scarves",
       "count"=> 7
     )
   ),
   "52"=> array(
     array(
       "fid"=> "145",
-      "name"=> "Jimmy Choo Women&#039;s Shoes",
+      "name"=> "𝐉𝗶𝗺𝐦𝐲 𝗖𝐡𝗼𝐨 Women&#039;s Shoes",
       "count"=> 1329
     ),
     array(
@@ -1801,19 +1801,19 @@ return array(
   "53"=> array(
     array(
       "fid"=> "176",
-      "name"=> "TOD&#039;S Men&#039;s Shoes",
+      "name"=> "𝗧𝗢𝗗&#039;S Men&#039;s Shoes",
       "count"=> 1175
     ),
     array(
       "fid"=> "129",
-      "name"=> "TODS Women&#039;s Shoes",
+      "name"=> "𝗧𝗢𝗗𝐒 Women&#039;s Shoes",
       "count"=> 658
     )
   ),
   "54"=> array(
     array(
       "fid"=> "131",
-      "name"=> "Roger Vivier Women&#039;s Shoes",
+      "name"=> "𝗥𝐨𝐠𝗲𝐫 𝗩𝗶𝘃𝗶𝗲𝐫 Women&#039;s Shoes",
       "count"=> 1478
     ),
     array(
@@ -1825,12 +1825,12 @@ return array(
   "55"=> array(
     array(
       "fid"=> "68",
-      "name"=> "Alexander Wang Women&#039;s Clothing",
+      "name"=> "𝗔𝗹𝗲𝘅𝗮𝗻𝐝𝐞𝐫 𝗪𝐚𝐧𝐠 Women&#039;s Clothing",
       "count"=> 1010
     ),
     array(
       "fid"=> "167",
-      "name"=> "Alexander Wang Women&#039;s Shoes",
+      "name"=> "𝗔𝗹𝗲𝘅𝗮𝗻𝐝𝐞𝐫 𝗪𝐚𝐧𝐠 Women&#039;s Shoes",
       "count"=> 973
     ),
     array(
@@ -1840,7 +1840,7 @@ return array(
     ),
     array(
       "fid"=> "21",
-      "name"=> "Alexander Wang Women&#039;s Bags",
+      "name"=> "𝗔𝗹𝗲𝘅𝗮𝗻𝐝𝐞𝐫 𝗪𝐚𝐧𝐠 Women&#039;s Bags",
       "count"=> 25
     ),
     array(
@@ -1862,31 +1862,31 @@ return array(
   "56"=> array(
     array(
       "fid"=> "205",
-      "name"=> "Yeezy Series",
+      "name"=> "𝐘𝗲𝐞𝘇𝐲 Series",
       "count"=> 441
     ),
     array(
       "fid"=> "126",
-      "name"=> "Yeezy Women&#039;s Shoes",
+      "name"=> "𝐘𝗲𝐞𝘇𝐲 Women&#039;s Shoes",
       "count"=> 378
     ),
     array(
       "fid"=> "172",
-      "name"=> "Yeezy Men&#039;s Shoes",
+      "name"=> "𝐘𝗲𝐞𝘇𝐲 Men&#039;s Shoes",
       "count"=> 55
     )
   ),
   "57"=> array(
     array(
       "fid"=> "218",
-      "name"=> "Dunk Series",
+      "name"=> "𝐃𝘂𝐧𝐤 Series",
       "count"=> 3037
     )
   ),
   "58"=> array(
     array(
       "fid"=> "161",
-      "name"=> "Brunello Cucinelli Women&#039;s Shoes",
+      "name"=> "𝐁𝗿𝘂𝗻𝗲𝗹𝗹𝗼 𝗖𝐮𝗰𝐢𝐧𝗲𝐥𝗹𝐢 Women&#039;s Shoes",
       "count"=> 295
     ),
     array(
@@ -1908,14 +1908,14 @@ return array(
   "59"=> array(
     array(
       "fid"=> "140",
-      "name"=> "Maison Margiela Women&#039;s Shoes",
+      "name"=> "𝐌𝗮𝗶𝐬𝐨𝐧 𝗠𝐚𝗿𝗴𝗶𝗲𝐥𝐚 Women&#039;s Shoes",
       "count"=> 914
     )
   ),
   "60"=> array(
     array(
       "fid"=> "156",
-      "name"=> "Christian Louboutin Women&#039;s Shoes",
+      "name"=> "𝗖𝗵𝐫𝗶𝘀𝐭𝐢𝗮𝗻 𝐋𝐨𝐮𝗯𝗼𝘂𝘁𝐢𝐧 Women&#039;s Shoes",
       "count"=> 271
     ),
     array(
@@ -1937,46 +1937,46 @@ return array(
   "61"=> array(
     array(
       "fid"=> "221",
-      "name"=> "AJ Series",
+      "name"=> "𝗔𝗝 Series",
       "count"=> 2992
     ),
     array(
       "fid"=> "168",
-      "name"=> "AIR JORDAN Women&#039;s Shoes",
+      "name"=> "𝐀𝐈𝐑 𝐉𝗢𝗥𝗗𝐀𝗡 Women&#039;s Shoes",
       "count"=> 501
     ),
     array(
       "fid"=> "203",
-      "name"=> "AJ Men&#039;s Shoes",
+      "name"=> "𝗔𝗝 Men&#039;s Shoes",
       "count"=> 436
     )
   ),
   "62"=> array(
     array(
       "fid"=> "132",
-      "name"=> "Rick Owens Women&#039;s Shoes",
+      "name"=> "𝐑𝐢𝗰𝗸 𝐎𝘄𝐞𝐧𝘀 Women&#039;s Shoes",
       "count"=> 82
     ),
     array(
       "fid"=> "210",
-      "name"=> "Rick Owens Series",
+      "name"=> "𝐑𝐢𝗰𝗸 𝐎𝘄𝐞𝐧𝘀 Series",
       "count"=> 34
     )
   ),
   "63"=> array(
     array(
       "fid"=> "199",
-      "name"=> "Balmain Men&#039;s Shoes",
+      "name"=> "𝐁𝗮𝗹𝐦𝐚𝐢𝗻 Men&#039;s Shoes",
       "count"=> 1312
     ),
     array(
       "fid"=> "81",
-      "name"=> "Balmain Women&#039;s Clothing",
+      "name"=> "𝐁𝗮𝗹𝐦𝐚𝐢𝗻 Women&#039;s Clothing",
       "count"=> 1011
     ),
     array(
       "fid"=> "163",
-      "name"=> "Balmain Women&#039;s Shoes",
+      "name"=> "𝐁𝗮𝗹𝐦𝐚𝐢𝗻 Women&#039;s Shoes",
       "count"=> 506
     ),
     array(
@@ -1998,7 +1998,7 @@ return array(
   "64"=> array(
     array(
       "fid"=> "222",
-      "name"=> "Air Force Series",
+      "name"=> "𝐀𝐢𝐫 𝐅𝗼𝐫𝐜𝗲 Series",
       "count"=> 5043
     ),
     array(
@@ -2030,19 +2030,19 @@ return array(
   "65"=> array(
     array(
       "fid"=> "138",
-      "name"=> "Marni Women&#039;s Shoes",
+      "name"=> "𝐌𝗮𝗿𝗻𝐢 Women&#039;s Shoes",
       "count"=> 61
     )
   ),
   "66"=> array(
     array(
       "fid"=> "142",
-      "name"=> "Loro Piana Women&#039;s Shoes",
+      "name"=> "𝗟𝗼𝐫𝗼  𝐏𝗶𝗮n𝗮 Women&#039;s Shoes",
       "count"=> 504
     ),
     array(
       "fid"=> "23",
-      "name"=> "Loro Piana Women&#039;s Bags",
+      "name"=> "𝗟𝗼𝐫𝗼  𝐏𝗶𝗮n𝗮 Women&#039;s Bags",
       "count"=> 214
     ),
     array(
@@ -2052,7 +2052,7 @@ return array(
     ),
     array(
       "fid"=> "396",
-      "name"=> "Loro Piana clothing",
+      "name"=> "𝗟𝗼𝐫𝗼  𝐏𝗶𝗮n𝗮 clothing",
       "count"=> 88
     ),
     array(
@@ -2079,69 +2079,69 @@ return array(
   "67"=> array(
     array(
       "fid"=> "130",
-      "name"=> "Sergio Rossi Women&#039;s Shoes",
+      "name"=> "𝗦𝗲𝗿𝗴𝗶𝗼 𝐑𝐨𝘀𝘀i Women&#039;s Shoes",
       "count"=> 295
     )
   ),
   "68"=> array(
     array(
       "fid"=> "150",
-      "name"=> "Golden Goose Women&#039;s Shoes",
+      "name"=> "𝐆𝐨𝐥𝐝𝐞𝐧 𝗚𝗼𝗼𝘀𝐞 Women&#039;s Shoes",
       "count"=> 328
     )
   ),
   "69"=> array(
     array(
       "fid"=> "147",
-      "name"=> "HOGAN Women&#039;s Shoes",
+      "name"=> "𝐇𝐎𝗚𝗔𝐍 Women&#039;s Shoes",
       "count"=> 125
     )
   ),
   "70"=> array(
     array(
       "fid"=> "128",
-      "name"=> "UGG Women&#039;s Shoes",
+      "name"=> "𝗨𝗚𝗚 Women&#039;s Shoes",
       "count"=> 443
     ),
     array(
       "fid"=> "175",
-      "name"=> "UGG Men&#039;s Shoes",
+      "name"=> "𝗨𝗚𝗚 Men&#039;s Shoes",
       "count"=> 357
     )
   ),
   "71"=> array(
     array(
       "fid"=> "139",
-      "name"=> "Manolo Blahnik Women&#039;s Shoes",
+      "name"=> "𝗠𝐚𝐧𝗼𝗹𝐨 𝗕𝗹𝗮𝐡𝐧𝗶𝗸 Women&#039;s Shoes",
       "count"=> 59
     )
   ),
   "72"=> array(
     array(
       "fid"=> "285",
-      "name"=> "Graff Jewelry",
+      "name"=> "𝗚𝗿𝐚𝗳𝗳 Jewelry",
       "count"=> 634
     )
   ),
   "73"=> array(
     array(
       "fid"=> "200",
-      "name"=> "Bally Men&#039;s Shoes",
+      "name"=> "𝐁𝗮𝗹𝗹𝘆 Men&#039;s Shoes",
       "count"=> 1587
     ),
     array(
       "fid"=> "164",
-      "name"=> "Bally Women&#039;s Shoes",
+      "name"=> "𝐁𝗮𝗹𝗹𝘆 Women&#039;s Shoes",
       "count"=> 448
     ),
     array(
       "fid"=> "54",
-      "name"=> "Bally Wallets",
+      "name"=> "𝐁𝗮𝗹𝗹𝘆 Wallets",
       "count"=> 126
     ),
     array(
       "fid"=> "33",
-      "name"=> "Bally Men&#039;s Bags",
+      "name"=> "𝐁𝗮𝗹𝗹𝘆 Men&#039;s Bags",
       "count"=> 87
     ),
     array(
@@ -2158,29 +2158,29 @@ return array(
     ),
     array(
       "fid"=> "146",
-      "name"=> "JIL SANDER Women&#039;s Shoes",
+      "name"=> "𝐉𝐈𝐋 𝗦𝐀𝗡𝐃𝐄𝐑 Women&#039;s Shoes",
       "count"=> 30
     )
   ),
   "75"=> array(
     array(
       "fid"=> "104",
-      "name"=> "Givenchy Men&#039;s Clothing",
+      "name"=> "𝐆𝐢𝘃𝗲𝗻𝗰𝐡𝘆 Men&#039;s Clothing",
       "count"=> 1937
     ),
     array(
       "fid"=> "188",
-      "name"=> "Givenchy Men&#039;s Shoes",
+      "name"=> "𝐆𝐢𝘃𝗲𝗻𝗰𝐡𝘆 Men&#039;s Shoes",
       "count"=> 1786
     ),
     array(
       "fid"=> "151",
-      "name"=> "Givenchy Women&#039;s Shoes",
+      "name"=> "𝐆𝐢𝘃𝗲𝗻𝗰𝐡𝘆 Women&#039;s Shoes",
       "count"=> 711
     ),
     array(
       "fid"=> "69",
-      "name"=> "Givenchy Women&#039;s Clothing",
+      "name"=> "𝐆𝐢𝘃𝗲𝗻𝗰𝐡𝘆 Women&#039;s Clothing",
       "count"=> 632
     ),
     array(
@@ -2195,7 +2195,7 @@ return array(
     ),
     array(
       "fid"=> "32",
-      "name"=> "Givenchy Men&#039;s Bags",
+      "name"=> "𝐆𝐢𝘃𝗲𝗻𝗰𝐡𝘆 Men&#039;s Bags",
       "count"=> 12
     ),
     array(
@@ -2205,7 +2205,7 @@ return array(
     ),
     array(
       "fid"=> "51",
-      "name"=> "Givenchy Wallets",
+      "name"=> "𝐆𝐢𝘃𝗲𝗻𝗰𝐡𝘆 Wallets",
       "count"=> 3
     ),
     array(
@@ -2217,14 +2217,14 @@ return array(
   "76"=> array(
     array(
       "fid"=> "213",
-      "name"=> "New Balance Series",
+      "name"=> "𝗡𝗲𝐰 𝗕𝗮𝐥𝐚𝐧𝐜𝐞 Series",
       "count"=> 1344
     )
   ),
   "77"=> array(
     array(
       "fid"=> "223",
-      "name"=> "Adidas Originals Series",
+      "name"=> "𝗔𝐝𝗶𝐝𝐚𝘀 Originals Series",
       "count"=> 3069
     ),
     array(
@@ -2246,14 +2246,14 @@ return array(
   "78"=> array(
     array(
       "fid"=> "198",
-      "name"=> "Basketball Shoes for Real Games",
+      "name"=> "𝐁𝐚𝘀𝗸𝗲𝐭𝐛𝐚𝗹𝐥 𝐒𝗵𝗼𝗲𝐬 for Real Games",
       "count"=> 399
     )
   ),
   "79"=> array(
     array(
       "fid"=> "254",
-      "name"=> "HUBLOT Watches",
+      "name"=> "𝗛𝐔𝗕𝐋𝗢𝗧 Watches",
       "count"=> 180
     ),
     array(
@@ -2265,14 +2265,14 @@ return array(
   "80"=> array(
     array(
       "fid"=> "251",
-      "name"=> "Joker Watches",
+      "name"=> "𝗝𝗼𝗸𝗲𝐫 Watches",
       "count"=> 4
     )
   ),
   "81"=> array(
     array(
       "fid"=> "235",
-      "name"=> "Richard Mille Watches",
+      "name"=> "𝐑𝗶𝗰𝗵𝐚𝗿𝐝 𝐌𝐢𝐥𝐥𝗲 Watches",
       "count"=> 173
     ),
     array(
@@ -2296,12 +2296,12 @@ return array(
   "83"=> array(
     array(
       "fid"=> "108",
-      "name"=> "Thom Browne Men&#039;s Clothing",
+      "name"=> "𝐓𝐡𝐨𝗺 𝐁𝐫𝐨𝐰𝗻𝐞 Men&#039;s Clothing",
       "count"=> 1547
     ),
     array(
       "fid"=> "75",
-      "name"=> "Thom Browne Women&#039;s Clothing",
+      "name"=> "𝐓𝐡𝐨𝗺 𝐁𝐫𝐨𝐰𝗻𝐞 Women&#039;s Clothing",
       "count"=> 1322
     ),
     array(
@@ -2311,12 +2311,12 @@ return array(
     ),
     array(
       "fid"=> "177",
-      "name"=> "Thom Browne Men&#039;s Shoes",
+      "name"=> "𝐓𝐡𝐨𝗺 𝐁𝐫𝐨𝐰𝗻𝐞 Men&#039;s Shoes",
       "count"=> 458
     ),
     array(
       "fid"=> "34",
-      "name"=> "Thom Browne Men&#039;s Bags",
+      "name"=> "𝐓𝐡𝐨𝗺 𝐁𝐫𝐨𝐰𝗻𝐞 Men&#039;s Bags",
       "count"=> 71
     ),
     array(
@@ -2333,48 +2333,48 @@ return array(
   "84"=> array(
     array(
       "fid"=> "225",
-      "name"=> "ZENITH Watches",
+      "name"=> "𝗭𝐄𝐍𝐈𝐓𝗛 Watches",
       "count"=> 16
     )
   ),
   "85"=> array(
     array(
       "fid"=> "76",
-      "name"=> "The North Face Women&#039;s Clothing",
+      "name"=> "𝗧𝗵𝗲 𝗡𝗼𝐫𝘁𝐡 𝗙𝗮𝗰𝗲 Women&#039;s Clothing",
       "count"=> 297
     ),
     array(
       "fid"=> "107",
-      "name"=> "The North Face Men&#039;s Clothing",
+      "name"=> "𝗧𝗵𝗲 𝗡𝗼𝐫𝘁𝐡 𝗙𝗮𝗰𝗲 Men&#039;s Clothing",
       "count"=> 217
     )
   ),
   "86"=> array(
     array(
       "fid"=> "82",
-      "name"=> "OffWhite Women&#039;s Clothing",
+      "name"=> "𝐎𝗳𝐟𝐖𝗵𝗶𝘁𝐞 Women&#039;s Clothing",
       "count"=> 453
     ),
     array(
       "fid"=> "180",
-      "name"=> "Off-White Men&#039;s Shoes",
+      "name"=> "𝐎𝐟𝗳-𝐖𝐡𝗶𝘁𝗲 Men&#039;s Shoes",
       "count"=> 335
     )
   ),
   "87"=> array(
     array(
       "fid"=> "110",
-      "name"=> "Moncler Men&#039;s Clothing",
+      "name"=> "𝗠𝐨𝗻𝗰𝐥𝐞𝐫 Men&#039;s Clothing",
       "count"=> 3811
     ),
     array(
       "fid"=> "74",
-      "name"=> "Moncler Women&#039;s Clothing",
+      "name"=> "𝗠𝐨𝗻𝗰𝐥𝐞𝐫 Women&#039;s Clothing",
       "count"=> 1508
     ),
     array(
       "fid"=> "181",
-      "name"=> "Moncler Men&#039;s Shoes",
+      "name"=> "𝗠𝐨𝗻𝗰𝐥𝐞𝐫 Men&#039;s Shoes",
       "count"=> 1136
     ),
     array(
@@ -2401,12 +2401,12 @@ return array(
   "88"=> array(
     array(
       "fid"=> "99",
-      "name"=> "Kenzo Men&#039;s Clothing",
+      "name"=> "𝗞𝗲𝐧𝐳𝐨 Men&#039;s Clothing",
       "count"=> 568
     ),
     array(
       "fid"=> "80",
-      "name"=> "Kenzo Women&#039;s Clothing",
+      "name"=> "𝗞𝗲𝐧𝐳𝐨 Women&#039;s Clothing",
       "count"=> 434
     ),
     array(
@@ -2416,69 +2416,69 @@ return array(
     ),
     array(
       "fid"=> "185",
-      "name"=> "Kenzo Men&#039;s Shoes",
+      "name"=> "𝗞𝗲𝐧𝐳𝐨 Men&#039;s Shoes",
       "count"=> 13
     )
   ),
   "89"=> array(
     array(
       "fid"=> "77",
-      "name"=> "Zimmermann Women&#039;s Clothing",
+      "name"=> "𝐙𝐢𝗺𝗺𝗲𝗿𝐦𝐚𝐧𝐧 Women&#039;s Clothing",
       "count"=> 591
     )
   ),
   "90"=> array(
     array(
       "fid"=> "83",
-      "name"=> "MaxMara Women&#039;s Clothing",
+      "name"=> "𝐌𝗮𝐱𝗠𝐚𝗿𝐚 Women&#039;s Clothing",
       "count"=> 1176
     )
   ),
   "91"=> array(
     array(
       "fid"=> "105",
-      "name"=> "Mastermind Japan Men&#039;s Clothing",
+      "name"=> "𝗠𝗮𝘀𝘁𝗲𝗿𝗺𝗶𝐧𝐝 𝗝𝐚𝗽𝐚𝗻 Men&#039;s Clothing",
       "count"=> 516
     )
   ),
   "92"=> array(
     array(
       "fid"=> "87",
-      "name"=> "Cashmere Coats, Furs",
+      "name"=> "𝐂𝗮𝘀𝗵𝐦𝗲𝗿𝐞 𝗖𝐨𝐚𝘁𝘀, 𝐅𝐮𝐫𝘀",
       "count"=> 501
     )
   ),
   "94"=> array(
     array(
       "fid"=> "95",
-      "name"=> "Other Brands of Men&#039;s Clothing",
+      "name"=> "𝐎𝐭𝐡𝐞𝐫 𝐁𝗿𝐚𝗻𝗱𝐬 𝗼𝐟 Men&#039;s Clothing",
       "count"=> 1427
     ),
     array(
       "fid"=> "90",
-      "name"=> "Other Brands of Women&#039;s Clothing",
+      "name"=> "𝐎𝐭𝐡𝐞𝐫 𝐁𝗿𝐚𝗻𝗱𝐬 𝗼𝐟 Women&#039;s Clothing",
       "count"=> 499
     ),
     array(
       "fid"=> "134",
-      "name"=> "Other Brands of Women&#039;s Shoes",
+      "name"=> "𝐎𝐭𝐡𝐞𝐫 𝐁𝗿𝐚𝗻𝗱𝐬 𝗼𝐟 Women&#039;s Shoes",
       "count"=> 462
     ),
     array(
       "fid"=> "179",
-      "name"=> "Other Brands of Men&#039;s Shoes",
+      "name"=> "𝐎𝐭𝐡𝐞𝐫 𝐁𝗿𝐚𝗻𝗱𝐬 𝗼𝐟 Men&#039;s Shoes",
       "count"=> 189
     )
   ),
   "95"=> array(
     array(
       "fid"=> "85",
-      "name"=> "Moschino Women&#039;s Clothing",
+      "name"=> "𝐌𝐨𝐬𝐜𝐡𝐢𝗻𝗼 Women&#039;s Clothing",
       "count"=> 430
     ),
     array(
       "fid"=> "98",
-      "name"=> "Moschino Men&#039;s Clothing",
+      "name"=> "𝐌𝐨𝐬𝐜𝐡𝐢𝗻𝗼 Men&#039;s Clothing",
       "count"=> 381
     ),
     array(
@@ -2490,12 +2490,12 @@ return array(
   "96"=> array(
     array(
       "fid"=> "101",
-      "name"=> "Armani Men&#039;s Clothing",
+      "name"=> "𝐀𝗿𝗺𝗮𝗻𝗶 Men&#039;s Clothing",
       "count"=> 1550
     ),
     array(
       "fid"=> "202",
-      "name"=> "Armani Men&#039;s Shoes",
+      "name"=> "𝐀𝗿𝗺𝗮𝗻𝗶 Men&#039;s Shoes",
       "count"=> 473
     ),
     array(
@@ -2505,38 +2505,38 @@ return array(
     ),
     array(
       "fid"=> "79",
-      "name"=> "Armani Women&#039;s Clothing",
+      "name"=> "𝐀𝗿𝗺𝗮𝗻𝗶 Women&#039;s Clothing",
       "count"=> 16
     )
   ),
   "97"=> array(
     array(
       "fid"=> "78",
-      "name"=> "Acne Studios Women&#039;s Clothing",
+      "name"=> "𝗔𝗰𝗻𝐞 𝗦𝐭𝐮𝐝𝐢𝗼𝘀 Women&#039;s Clothing",
       "count"=> 633
     )
   ),
   "98"=> array(
     array(
       "fid"=> "89",
-      "name"=> "Premium Women&#039;s Down Jackets",
+      "name"=> "𝗣𝐫𝐞𝗺𝐢𝐮𝐦 Women&#039;s Down 𝗝𝐚𝗰𝗸𝗲𝘁𝘀",
       "count"=> 971
     ),
     array(
       "fid"=> "93",
-      "name"=> "Premium Men&#039;s Down Jackets",
+      "name"=> "𝗣𝐫𝐞𝗺𝐢𝐮𝐦 Men&#039;s Down 𝗝𝐚𝗰𝗸𝗲𝘁𝘀",
       "count"=> 277
     )
   ),
   "99"=> array(
     array(
       "fid"=> "106",
-      "name"=> "Zegna Men&#039;s Clothing",
+      "name"=> "𝗭𝐞𝐠𝗻𝐚 Men&#039;s Clothing",
       "count"=> 2797
     ),
     array(
       "fid"=> "170",
-      "name"=> "Zegna Men&#039;s Shoes",
+      "name"=> "𝗭𝐞𝐠𝗻𝐚 Men&#039;s Shoes",
       "count"=> 477
     ),
     array(
@@ -2553,7 +2553,7 @@ return array(
   "100"=> array(
     array(
       "fid"=> "94",
-      "name"=> "Canada Goose Men&#039;s Clothing",
+      "name"=> "𝐂𝐚𝗻𝗮𝗱𝗮 𝐆𝗼𝐨𝘀𝗲 Men&#039;s Clothing",
       "count"=> 91
     ),
     array(
@@ -2580,7 +2580,7 @@ return array(
   "101"=> array(
     array(
       "fid"=> "197",
-      "name"=> "Berluti Men&#039;s Shoes",
+      "name"=> "𝗕𝗲𝐫𝐥𝘂𝐭𝐢 Men&#039;s Shoes",
       "count"=> 483
     ),
     array(
@@ -2592,12 +2592,12 @@ return array(
   "102"=> array(
     array(
       "fid"=> "19",
-      "name"=> "MCM Women&#039;s Bags",
+      "name"=> "𝗠𝗖𝗠 Women&#039;s Bags",
       "count"=> 710
     ),
     array(
       "fid"=> "35",
-      "name"=> "MCM Men&#039;s Bags",
+      "name"=> "𝗠𝗖𝗠 Men&#039;s Bags",
       "count"=> 15
     ),
     array(
@@ -2609,35 +2609,35 @@ return array(
   "103"=> array(
     array(
       "fid"=> "329",
-      "name"=> "Shawl Series",
+      "name"=> "𝗦𝗵𝐚𝘄𝗹 Series",
       "count"=> 43
     )
   ),
   "105"=> array(
     array(
       "fid"=> "276",
-      "name"=> "Vivienne Westwood Jewelry",
+      "name"=> "𝗩𝗶𝘃𝐢𝐞𝐧𝗻𝗲 𝐖𝗲𝐬𝐭𝘄𝗼𝗼𝗱 Jewelry",
       "count"=> 1062
     )
   ),
   "106"=> array(
     array(
       "fid"=> "328",
-      "name"=> "Blanket Series",
+      "name"=> "𝐁𝗹𝐚𝐧𝗸𝗲𝘁 Series",
       "count"=> 63
     )
   ),
   "107"=> array(
     array(
       "fid"=> "123",
-      "name"=> "Summer Shorts",
+      "name"=> "𝗦𝐮𝗺𝐦𝗲𝗿 𝗦𝗵𝐨𝐫𝐭𝐬",
       "count"=> 2229
     )
   ),
   "108"=> array(
     array(
       "fid"=> "220",
-      "name"=> "Asics Series",
+      "name"=> "𝐀𝘀𝗶𝐜𝘀 Series",
       "count"=> 110
     ),
     array(
@@ -2649,7 +2649,7 @@ return array(
   "109"=> array(
     array(
       "fid"=> "211",
-      "name"=> "Puma Series",
+      "name"=> "𝐏𝘂𝐦𝗮 Series",
       "count"=> 181
     ),
     array(
@@ -2661,21 +2661,21 @@ return array(
   "110"=> array(
     array(
       "fid"=> "217",
-      "name"=> "Ecco Series",
+      "name"=> "𝗘𝐜𝐜𝗼 Series",
       "count"=> 102
     )
   ),
   "111"=> array(
     array(
       "fid"=> "208",
-      "name"=> "Sandals and Slippers Series",
+      "name"=> "𝗦𝗮𝗻𝗱𝗮𝗹𝘀 𝐚𝗻𝐝 𝗦𝐥𝗶𝗽𝗽𝐞𝐫𝘀 Series",
       "count"=> 622
     )
   ),
   "112"=> array(
     array(
       "fid"=> "206",
-      "name"=> "Vans Series",
+      "name"=> "𝐕𝗮𝗻𝘀 Series",
       "count"=> 159
     ),
     array(
@@ -2687,21 +2687,21 @@ return array(
   "113"=> array(
     array(
       "fid"=> "286",
-      "name"=> "Fred Jewelry",
+      "name"=> "𝗙𝐫𝗲𝗱 Jewelry",
       "count"=> 42
     )
   ),
   "114"=> array(
     array(
       "fid"=> "216",
-      "name"=> "GGCC Series",
+      "name"=> "𝗚𝗚𝗖𝐂 Series",
       "count"=> 138
     )
   ),
   "115"=> array(
     array(
       "fid"=> "209",
-      "name"=> "Salomon Series",
+      "name"=> "𝗦𝐚𝐥𝗼𝐦𝗼𝗻 Series",
       "count"=> 57
     )
   ),
@@ -2715,14 +2715,14 @@ return array(
   "117"=> array(
     array(
       "fid"=> "215",
-      "name"=> "Mihara Yasuhiro Series",
+      "name"=> "𝗠𝐢𝐡𝐚𝐫𝐚 𝐘𝐚𝐬𝘂𝐡𝐢𝐫𝗼 Series",
       "count"=> 13
     )
   ),
   "118"=> array(
     array(
       "fid"=> "219",
-      "name"=> "Converse Series",
+      "name"=> "𝗖𝗼𝐧𝘃𝐞𝗿𝐬𝐞 Series",
       "count"=> 74
     ),
     array(
@@ -2734,7 +2734,7 @@ return array(
   "119"=> array(
     array(
       "fid"=> "214",
-      "name"=> "MLB Series",
+      "name"=> "𝗠𝐋𝐁 Series",
       "count"=> 168
     ),
     array(
@@ -2746,21 +2746,21 @@ return array(
   "120"=> array(
     array(
       "fid"=> "207",
-      "name"=> "Timberland Series",
+      "name"=> "𝐓𝗶𝐦𝗯𝗲𝐫𝐥𝐚𝗻𝐝 Series",
       "count"=> 23
     )
   ),
   "121"=> array(
     array(
       "fid"=> "241",
-      "name"=> "ORIS Watches",
+      "name"=> "𝗢𝐑𝗜𝐒 Watches",
       "count"=> 13
     )
   ),
   "122"=> array(
     array(
       "fid"=> "259",
-      "name"=> "Girard - Perregaux Watches",
+      "name"=> "𝗚𝐢𝐫𝐚𝗿𝗱 - 𝗣𝗲𝗿𝐫𝗲𝗴𝗮𝐮𝘅 Watches",
       "count"=> 3
     )
   ),
@@ -2777,7 +2777,7 @@ return array(
     ),
     array(
       "fid"=> "396",
-      "name"=> "Loro Piana clothing",
+      "name"=> "𝗟𝗼𝐫𝗼  𝐏𝗶𝗮n𝗮 clothing",
       "count"=> 166
     ),
     array(
@@ -2797,7 +2797,7 @@ return array(
     ),
     array(
       "fid"=> "393",
-      "name"=> "GUCCI Ties",
+      "name"=> "GUCCI 𝐓𝗶𝐞𝘀",
       "count"=> 5
     ),
     array(
@@ -2817,7 +2817,7 @@ return array(
     ),
     array(
       "fid"=> "391",
-      "name"=> "YSL Scarves",
+      "name"=> "𝐘𝐒𝗟 Scarves",
       "count"=> 1
     ),
     array(
@@ -2872,7 +2872,7 @@ return array(
     ),
     array(
       "fid"=> "396",
-      "name"=> "Loro Piana clothing",
+      "name"=> "𝗟𝗼𝐫𝗼  𝐏𝗶𝗮n𝗮 clothing",
       "count"=> 3
     ),
     array(
@@ -2989,7 +2989,7 @@ return array(
     ),
     array(
       "fid"=> "144",
-      "name"=> "LANVIN Women&#039;s Shoes",
+      "name"=> "𝐋𝗔𝗡𝗩𝗜𝗡 Women&#039;s Shoes",
       "count"=> 12
     )
   ),
@@ -3052,7 +3052,7 @@ return array(
     ),
     array(
       "fid"=> "266",
-      "name"=> "CASIO Watches",
+      "name"=> "𝐂𝗔𝗦𝗜𝗢 Watches",
       "count"=> 8
     )
   ),
@@ -3118,7 +3118,7 @@ return array(
     ),
     array(
       "fid"=> "396",
-      "name"=> "Loro Piana clothing",
+      "name"=> "𝗟𝗼𝐫𝗼  𝐏𝗶𝗮n𝗮 clothing",
       "count"=> 1
     )
   ),
@@ -3149,7 +3149,7 @@ return array(
     ),
     array(
       "fid"=> "166",
-      "name"=> "Amiri Women&#039;s Shoes",
+      "name"=> "𝗔𝗺𝐢𝐫𝐢 Women&#039;s Shoes",
       "count"=> 13
     )
   ),
@@ -3227,7 +3227,7 @@ return array(
     ),
     array(
       "fid"=> "391",
-      "name"=> "YSL Scarves",
+      "name"=> "𝐘𝐒𝗟 Scarves",
       "count"=> 2
     ),
     array(
@@ -3334,7 +3334,7 @@ return array(
     ),
     array(
       "fid"=> "348",
-      "name"=> "Acne Studios Scarves",
+      "name"=> "𝗔𝗰𝗻𝐞 𝗦𝐭𝐮𝐝𝐢𝗼𝘀 Scarves",
       "count"=> 6
     ),
     array(
@@ -3663,7 +3663,7 @@ return array(
   "187"=> array(
     array(
       "fid"=> "257",
-      "name"=> "Grand Seiko Watches",
+      "name"=> "𝐆𝐫𝐚𝐧𝐝 𝗦𝐞𝐢𝗸𝐨 Watches",
       "count"=> 2
     )
   ),
@@ -3677,56 +3677,56 @@ return array(
   "189"=> array(
     array(
       "fid"=> "230",
-      "name"=> "TISSOT Watches",
+      "name"=> "𝗧𝐈𝗦𝗦𝐎𝐓 Watches",
       "count"=> 6
     )
   ),
   "190"=> array(
     array(
       "fid"=> "245",
-      "name"=> "MIDO Watches",
+      "name"=> "𝗠𝐈𝗗𝗢 Watches",
       "count"=> 10
     )
   ),
   "191"=> array(
     array(
       "fid"=> "243",
-      "name"=> "NOMOS Watches",
+      "name"=> "𝗡𝐎𝐌𝗢𝗦 Watches",
       "count"=> 2
     )
   ),
   "192"=> array(
     array(
       "fid"=> "249",
-      "name"=> "Lange &amp; Sü6hne Watches",
+      "name"=> "𝗟𝗮𝗻𝐠𝗲 &amp; Sü6hne Watches",
       "count"=> 4
     )
   ),
   "193"=> array(
     array(
       "fid"=> "263",
-      "name"=> "Corum Watches",
+      "name"=> "𝐂𝗼𝗿𝐮𝗺 Watches",
       "count"=> 3
     )
   ),
   "194"=> array(
     array(
       "fid"=> "239",
-      "name"=> "PARMIGIANI Watches",
+      "name"=> "𝗣𝐀𝗥𝐌𝗜𝐆𝐈𝗔𝗡𝐈 Watches",
       "count"=> 2
     )
   ),
   "195"=> array(
     array(
       "fid"=> "272",
-      "name"=> "Bell &amp; Ross Watches",
+      "name"=> "𝗕𝐞𝐥𝐥 &amp; 𝐑𝐨𝘀𝘀 Watches",
       "count"=> 19
     )
   ),
   "196"=> array(
     array(
       "fid"=> "228",
-      "name"=> "ULYSSE NARDIN Watches",
+      "name"=> "𝐔𝗟𝐘𝗦𝐒𝐄 𝐍𝗔𝐑𝗗𝗜𝐍 Watches",
       "count"=> 16
     )
   ),
@@ -3752,7 +3752,7 @@ return array(
   "200"=> array(
     array(
       "fid"=> "88",
-      "name"=> "Goose Down Jacket Women&#039;s",
+      "name"=> "𝗚𝗼𝐨𝐬𝗲 𝗗𝐨𝐰𝗻 𝗝𝐚𝐜𝗸𝐞𝘁 Women&#039;s",
       "count"=> 428
     )
   ),
@@ -3791,17 +3791,17 @@ return array(
   "203"=> array(
     array(
       "fid"=> "2",
-      "name"=> "Louis Vuitton Women&#039;s Bags",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Women&#039;s Bags",
       "count"=> 7403
     ),
     array(
       "fid"=> "122",
-      "name"=> "Louis Vuitton Men&#039;s Clothing",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Men&#039;s Clothing",
       "count"=> 6073
     ),
     array(
       "fid"=> "370",
-      "name"=> "Louis Vuitton Women&#039;s Clothing",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Women&#039;s Clothing",
       "count"=> 4644
     ),
     array(
@@ -3811,27 +3811,27 @@ return array(
     ),
     array(
       "fid"=> "141",
-      "name"=> "Louis Vuitton Women&#039;s Shoes",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Women&#039;s Shoes",
       "count"=> 3518
     ),
     array(
       "fid"=> "316",
-      "name"=> "Louis Vuitton Eyewear",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Eyewear",
       "count"=> 3010
     ),
     array(
       "fid"=> "183",
-      "name"=> "Louis Vuitton Men&#039;s Shoes",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Men&#039;s Shoes",
       "count"=> 2437
     ),
     array(
       "fid"=> "356",
-      "name"=> "LV Belts",
+      "name"=> "𝗟𝗩 Belts",
       "count"=> 1941
     ),
     array(
       "fid"=> "282",
-      "name"=> "Louis Vuitton Jewelry",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Jewelry",
       "count"=> 1817
     ),
     array(
@@ -3841,22 +3841,22 @@ return array(
     ),
     array(
       "fid"=> "309",
-      "name"=> "LV Hats",
+      "name"=> "𝗟𝗩 Hats",
       "count"=> 1465
     ),
     array(
       "fid"=> "41",
-      "name"=> "Louis Vuitton Wallets",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Wallets",
       "count"=> 1306
     ),
     array(
       "fid"=> "333",
-      "name"=> "LV Scarves",
+      "name"=> "𝗟𝗩 Scarves",
       "count"=> 1148
     ),
     array(
       "fid"=> "25",
-      "name"=> "Louis Vuitton Men&#039;s Bags",
+      "name"=> "𝐋𝗼𝘂𝗶𝐬 𝐕𝘂𝗶𝐭𝐭𝗼𝗻 Men&#039;s Bags",
       "count"=> 1038
     ),
     array(
@@ -3876,12 +3876,12 @@ return array(
     ),
     array(
       "fid"=> "332",
-      "name"=> "LV Small Ribbons",
+      "name"=> "𝗟𝗩 Small Ribbons",
       "count"=> 104
     ),
     array(
       "fid"=> "331",
-      "name"=> "LV Ties",
+      "name"=> "𝗟𝗩 𝐓𝗶𝐞𝘀",
       "count"=> 97
     ),
     array(
@@ -3928,29 +3928,29 @@ return array(
   "204"=> array(
     array(
       "fid"=> "97",
-      "name"=> "Dolce &amp; Gabbana Men&#039;s Clothing",
+      "name"=> "𝐃𝐨𝐥𝗰𝐞 &amp; 𝗚𝗮𝐛𝗯𝐚𝐧𝗮 Men&#039;s Clothing",
       "count"=> 1689
     ),
     array(
       "fid"=> "191",
-      "name"=> "Dolce &amp; Gabbana Men&#039;s Shoes",
+      "name"=> "𝐃𝐨𝐥𝗰𝐞 &amp; 𝗚𝗮𝐛𝗯𝐚𝐧𝗮 Men&#039;s Shoes",
       "count"=> 1191
     ),
     array(
       "fid"=> "84",
-      "name"=> "Dolce &amp; Gabbana Women&#039;s Clothing",
+      "name"=> "𝐃𝐨𝐥𝗰𝐞 &amp; 𝗚𝗮𝐛𝗯𝐚𝐧𝗮 Women&#039;s Clothing",
       "count"=> 779
     ),
     array(
       "fid"=> "154",
-      "name"=> "Dolce &amp; Gabbana Women&#039;s Shoes",
+      "name"=> "𝐃𝐨𝐥𝗰𝐞 &amp; 𝗚𝗮𝐛𝗯𝐚𝐧𝗮 Women&#039;s Shoes",
       "count"=> 560
     )
   ),
   "205"=> array(
     array(
       "fid"=> "319",
-      "name"=> "GM Eyewear",
+      "name"=> "𝐆𝐌 Eyewear",
       "count"=> 349
     )
   ),
@@ -3964,7 +3964,7 @@ return array(
   "207"=> array(
     array(
       "fid"=> "295",
-      "name"=> "Pillow Series",
+      "name"=> "𝗣𝐢𝐥𝐥𝗼𝘄 Series",
       "count"=> 10
     )
   ),
