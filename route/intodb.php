@@ -105,8 +105,7 @@ if ('POST' == $method) {
         // $flag_forum='32';
         $fid=372;
 
-    }
-    if($fid===374){
+    }else if($fid===374){
         $price=335;
     }
 
