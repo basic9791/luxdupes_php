@@ -106,6 +106,9 @@ if ('POST' == $method) {
         $fid=372;
 
     }
+    if($fid===374 && (!$price || $price<1    )){
+        $price=335
+    }
 
 
     $keyword=$tags;
