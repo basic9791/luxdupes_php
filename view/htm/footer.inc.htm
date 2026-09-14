@@ -81,6 +81,8 @@
                 let url=getImgUrl(imgArr[1])
                 url=getMiniImgUrl(url)
                 html+='<img class="w-100 rounded img2" data-echo="'+url+'"/>'
+            }else{
+               html+='<img class="w-100 rounded img2" data-echo="'+url+'"/>' 
             }
             url && $(this).append(html);
             

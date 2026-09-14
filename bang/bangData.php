@@ -369,7 +369,9 @@ $classList = array(
   array("fid" => 393, "uid" => 1, "name" => "GUCCI Ties","price"=>false),
   array("fid" => 394, "uid" => 1, "name" => "Prada Ties","price"=>false),
   array("fid" => 395, "uid" => 1, "name" => "Balenciaga Ties","price"=>false),
-  array("fid" => 396, "uid" => 1, "name" => "Loro Piana clothing","price"=>false)
+  array("fid" => 396, "uid" => 1, "name" => "Loro Piana clothing","price"=>false),
+  
+  array("fid" => 374, "uid" => 1, "name" => "Video","price"=>[550,599]),
 
 );
 

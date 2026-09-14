@@ -1,0 +1,28 @@
+<div class="headerScale" id="headerScale">
+If you can’t find the item you’re looking for on our website, please contact us via Email:<a href="mailto:<?php echo $smtp['email'];?>"><?php echo $smtp['email'];?></a>. or WhatsApp:<a href="https://api.whatsapp.com/send/?phone=<?php echo $conf['phone_hot'].$conf['phone'];?>">
+    <?php echo $conf['phone_hot'].$conf['phone'];?>
+  </a>. We’ll help you find it as quickly as possible.
+
+
+</div>
+<style>
+.headerScale{
+  padding:15px; text-align: center;
+  line-height: 1.2em;
+  background-color: #000;
+  color:#aaa;
+  display: none;
+}
+.headerScale a{
+  color: #fff; font-weight: bold;
+}
+
+</style>
+<script>
+  window.addEventListener('load',function(){
+    $("#headerScale").slideDown();
+    //  setTimeout(()=>{
+    //    $("#headerScale").slideUp();
+    //  },12000)
+  })
+</script>
