@@ -16,6 +16,16 @@
 
         </div>
 	</div>
+
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $conf['G_ANALYTICS_ID'];?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '<?php echo $conf['G_ANALYTICS_ID'];?>');
+</script>
 	
 	<!--{hook footer_nav_before.htm}-->
 	
