@@ -17,6 +17,8 @@
         </div>
 	</div>
 
+
+    <?php if($conf['G_ANALYTICS_ID']) { ?>
         <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $conf['G_ANALYTICS_ID'];?>"></script>
 <script>
@@ -26,7 +28,7 @@
 
   gtag('config', '<?php echo $conf['G_ANALYTICS_ID'];?>');
 </script>
-	
+<?php } ?>	
 	<!--{hook footer_nav_before.htm}-->
 	
 	<?php include _include(APP_PATH.'view/htm/footer_nav.inc.htm');?>
