@@ -9,7 +9,7 @@
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: .25rem; margin-bottom: 15px;">
-			 Keywords:<b style="margin-right: 25px; display: inline;color:#000"><?php echo xn_urldecode($keyword);?> </b>
+			 Keywords:<b style="margin-right: 25px; display: inline;color:#000"><?php echo strToFlourish(xn_urldecode($keyword));?> </b>
 
 			<?php if($fnameFind) { ?>
 				Category: <b style="margin-right: 25px; display: inline;color:#000"><?php echo $fnameFind;?></b>

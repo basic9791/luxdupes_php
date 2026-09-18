@@ -1383,7 +1383,7 @@ function selectMainBox() {
         { fid: 342, fnm: "𝐃𝗶𝐨𝐫 Small Ribbons" },
         { fid: 341, fnm: "𝐃𝗶𝐨𝐫 𝗧𝐢𝐞𝘀" },
         { fid: 340, fnm: "𝐅𝗲𝗻𝐝𝐢 Scarves" },
-        { fid: 339, fnm: "𝐆𝗶𝐯𝐞𝗻𝐜𝗵𝘆 Scarves" },
+        { fid: 339, fnm: "𝐆𝗶***𝗵𝘆 Scarves" },
         { fid: 338, fnm: "𝐆𝘂𝗰𝗰𝐢 Scarves" },
         { fid: 337, fnm: "𝗛𝗲𝐫𝐦è𝐬 Scarves" },
         { fid: 336, fnm: "𝗛𝗲𝐫𝐦è𝐬 Small Ribbons" },
