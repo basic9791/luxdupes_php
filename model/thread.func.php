@@ -1046,7 +1046,7 @@ function well_thread_find_by_keyword($keyword,$fid, $d = NULL)
     // $fidWhere="fid != 37 AND";
     // hook model__thread_find_by_keyword_before.php
 
-    $threadlist = db_sql_find("SELECT * FROM `{$d->tablepre}website_thread` WHERE $fidWhere subject LIKE '%$keyword%' LIMIT 60", 'tid', $d);
+    $threadlist = db_sql_find("SELECT * FROM `{$d->tablepre}website_thread` WHERE $fidWhere LOWER(subject) LIKE LOWER('%$keyword%') LIMIT 60", 'tid', $d);
 
     // hook model__thread_find_by_keyword_before.php
 

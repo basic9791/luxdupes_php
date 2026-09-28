@@ -490,7 +490,7 @@ switch ($action) {
 
             } elseif ('site_url' == $search_type) {
 
-                $site_url = 'https://www.baidu.com/s?wd=site%3A' . _SERVER('HTTP_HOST') . '%20{keyword}';
+                $site_url = 'https://www.google.com/s?wd=site%3A' . _SERVER('HTTP_HOST') . '%20{keyword}';
                 $url = str_replace('{keyword}', $keyword_decode, $site_url);
                 http_location($url);
             }
