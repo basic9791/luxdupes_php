@@ -198,6 +198,8 @@ function getMiniImgUrl(str){
         if(!str) return '';
         str=str.replace(/\b1\//,'//xcimg.szwego.com/');
         str=str.replace(/\,1\//g,',//xcimg.szwego.com/');
+        str=str.replace(/\b01\//,'//xcimg.szwego.com/');
+        str=str.replace(/\,01\//g,',//xcimg.szwego.com/');
 
         str=str.replace(/\b2\//,'//amzrepe.com/wp-content/uploads/');
         str=str.replace(/\,2\//g,',//amzrepe.com/wp-content/uploads/');
