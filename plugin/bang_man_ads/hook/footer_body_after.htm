@@ -9,9 +9,7 @@ $(function(){
     if(!fbq) return;
 $('.addCardBtn').on('click', function() {
     fbq('track', 'AddToCart');
-    }, {
-  test_event_code: "TEST65812" // 测试代码放在第三个参数对象
-});
+    });
 
     $('#addCart').on('click', function() {
 
@@ -23,9 +21,7 @@ $('.addCardBtn').on('click', function() {
             content_type: "read",
             value: price,
             currency: "USD"
-            }, {
-  test_event_code: "TEST65812" // 测试代码放在第三个参数对象
-});
+            });
     });
 
 
@@ -35,7 +31,10 @@ $('.addCardBtn').on('click', function() {
 
     $('#cart_payments').on('click', function() {
         var total = parseFloat($('#totalPrice').text()); 
-        fbq('track', 'Purchase', {value: total, currency: 'USD'});
+        var time=new Date().getTime()
+        fbq('track', 'Purchase', {value: total, currency: 'USD'}, {
+            event_id: time // event_id，CAPI配套用来去重
+            });
     });
 
    
