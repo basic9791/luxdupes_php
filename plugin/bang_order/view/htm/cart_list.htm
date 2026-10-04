@@ -63,7 +63,7 @@
                     Subtotal ({{totalItems}} items): <b>${{totalPrice}}</b>
                 </div>
                 <div class="totalBox" v-if="totalItems>0">
-                    <a rel="nofollow" href="#checkout" @click="pageType=1" role="button" aria-pressed="true"
+                    <a rel="nofollow" href="#checkout" @click="pageType=1" role="button" aria-pressed="true" id="cart_checkout"
                         class="btn btn-block btn-dark">Proceed to
                         checkout</a>
 
@@ -193,7 +193,7 @@
 
                     </el-table>
                     <div class="totalBox">
-                        Free delivery Subtotal ({{totalItems}} items): <b style="color:#720eec">${{totalPrice}}</b>
+                        Free delivery Subtotal ({{totalItems}} items): <b style="color:#720eec" id="totalPrice">${{totalPrice}}</b>
                     </div>
                     <div class="infoBox priceInfo" v-if="isViewPrice">
                         Due to pending price confirmation, the product price is currently displayed as zero. Please
@@ -238,7 +238,7 @@
                         </el-radio-group>
                     </div>
                     <div class="totalBox" v-if="totalItems>0">
-                        <a href="#payments" role="button" @click="saveOrder" aria-pressed="true"
+                        <a href="#payments" role="button" @click="saveOrder" aria-pressed="true" id="cart_payments"
                             class="btn btn-block btn-dark">Proceed to checkout</a>
                     </div>
                 </div>

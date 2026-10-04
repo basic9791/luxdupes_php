@@ -1,0 +1,12 @@
+{
+    "name": "bang manage Ads / 广告管理。",
+    "brief": "manage Ads./ 广告管理",
+    "type": "0",
+    "version": "1.0.08",
+    "software_version": "1.0",
+    "installed": 1,
+    "enable": 1,
+    "hooks_rank": [],
+    "overwrites_rank": [],
+    "dependencies": []
+}

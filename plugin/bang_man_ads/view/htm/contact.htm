@@ -1,0 +1,89 @@
+<?php include _include(APP_PATH.'view/htm/header.inc.htm');?>
+
+
+<form>
+    <div class="jumbotron">
+  <h1 class="display-4">Contact us</h1>
+  <p class="lead">Should you have any inquiries, please don't hesitate to reach out to us. We guarantee a response within 24 hours.</p>
+  <hr class="my-4">
+  <p>Address: <?php echo $conf['sitename'];?> Co. Ltd. 98th Renmin RD, Tianhe District, Guangzhou City, GuangDong Province, China</p>
+  <p>Email:<a href="mailto:<?php echo $smtp['email'];?>"><?php echo $smtp['email'];?></a>.</p>
+  <p>WhatsApp:<a href="https://api.whatsapp.com/send/?phone=<?php echo $conf['phone_hot'].$conf['phone'];?>">
+    <?php echo '(+'.$conf['phone_hot'].')'.$conf['phone'];?>
+  </a></p>
+
+</div>
+  <div style="padding:25px">
+  <div class="form-group">
+    <label for="exampleInputPassword1">Name<b>*</b></label>
+    <input type="text" class="form-control" id="name" placeholder="Your name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address<b>*</b></label>
+    <input type="email" class="form-control" id="email" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Message<b>*</b></label>
+    <textarea maxlength="550" class="form-control" placeholder="Message" rows="6" name="message"></textarea>
+  </div>
+   <?php if($uid){?>
+  <button type="button" id="sendButton" class="btn btn-block btn-primary">Submit</button>
+
+
+  <?php } else {?>
+
+
+    
+       You need to log in before leaving a message.
+    
+  <?php }?>
+
+  </div>
+</form>
+<div class="loading"> <img src="/upload/loading.gif" /></div>
+
+
+
+
+<?php include _include(APP_PATH.'view/htm/footer.inc.htm');?>
+
+<script>
+    if ($(document.body).width() < 992) {
+        $('#nav-show').css({ "position": "fixed", "top": "0", "bottom": "0", "right": "0", "z-index": "1032" })
+        $('.nav-block,.button-hide').css("top", "45%")
+    }
+
+    $("#sendButton").click(send)
+    function send(){
+        var safe_token = '<?php echo $safe_token;?>'
+        var name=$('#name').val()
+        var email=$('#email').val()
+        var message=$('form textarea:eq(0)').val()
+        if(!name) return $.alert('Kindly provide your name to proceed.')
+        if(!email) return $.alert('Kindly provide your email to proceed.')
+        if(!message) return $.alert('Kindly provide your message to proceed.')
+        var data={name,email,message
+    } 
+      $(".loading").show();
+
+        $.xpost('/contact/send', { safe_token,  data: JSON.stringify(data)}, function (code, message) {
+                  
+
+                            if (code == 0) {
+                                alert('Your submission has been successfully received. Kindly monitor your email inbox as we guarantee a professional response within the next 24 hours.')
+                            } else {
+                                alert(message)
+                            }
+                            location.reload();  
+                        })
+    }
+</script>
+<style>
+  .loading{
+    position: fixed;top:65px;left:0;width: 100%; height: 5000px; text-align: center;padding:150px 0;
+    background-color: #ffffff90; display: none;
+  }
+    .form-group b{
+        color:red
+    }
+</style>

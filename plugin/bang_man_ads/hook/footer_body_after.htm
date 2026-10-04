@@ -1,0 +1,44 @@
+
+<?php
+if ($conf['FB_APP_ID']) {
+?>
+<script>
+
+$(function(){
+    
+    if(!fbq) return;
+$('.addCardBtn').on('click', function() {
+    fbq('track', 'AddToCart');
+    });
+
+    $('#addCart').on('click', function() {
+
+
+        var price=$("#price").attr('price')
+        var tid=$("#addCart").attr('tid')
+        fbq('track', 'AddToCart', {
+            content_ids: [tid],
+            content_type: "read",
+            value: price,
+            currency: "USD"
+            });
+    });
+
+
+    $('#cart_checkout').on('click', function() { //
+     fbq('track', 'InitiateCheckout');
+    });
+
+    $('#cart_payments').on('click', function() {
+        var total = parseFloat($('#totalPrice').text()); 
+        fbq('track', 'Purchase', {value: total, currency: 'USD'});
+    });
+
+   
+
+});
+</script>
+
+<?php
+}
+?>
