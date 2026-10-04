@@ -9,7 +9,9 @@ $(function(){
     if(!fbq) return;
 $('.addCardBtn').on('click', function() {
     fbq('track', 'AddToCart');
-    });
+    }, {
+  test_event_code: "TEST65812" // 测试代码放在第三个参数对象
+});
 
     $('#addCart').on('click', function() {
 
@@ -21,7 +23,9 @@ $('.addCardBtn').on('click', function() {
             content_type: "read",
             value: price,
             currency: "USD"
-            });
+            }, {
+  test_event_code: "TEST65812" // 测试代码放在第三个参数对象
+});
     });
 
 
