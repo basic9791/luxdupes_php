@@ -160,7 +160,7 @@ Please kindly note that we just sell replica bags, we never scam our customers. 
       1.Click the button below or scan the QR code on the left to initiate payment.<br/>
       <a href='https://wise.com/pay/me/bangchaoy' style='display:inline-block; padding:5px 10px;color:#fff; background:#720eec; margin:15px 15px 15px 0;'>To Payment</a>
          Or Scan the QR code.
-<img style='max-width:150px' src='//$domain/upload/wise.png'/>
+<img style='max-width:150px' src='https://$domain/upload/wise.png'/>
      
       <br/>
       
@@ -215,7 +215,7 @@ Please kindly note that we just sell replica bags, we never scam our customers. 
 
       </div>
         Or Scan the QR code.<br/>
-<img style='max-width:629px;width:100%;' src='//$domain/upload/alipay.png'/>
+<img style='max-width:629px;width:100%;' src='https://$domain/upload/alipay.png'/>
      
       <br/><br/>
 

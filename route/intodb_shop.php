@@ -41,7 +41,7 @@ if(!$price){
     $price=0;
 }else{
    $price = str_replace(',','',$price) ;
-   $price=$price*0.7; 
+   $price=$price*0.6; 
 }
 
 // $subject = preg_replace($pattern, '', $subject);
