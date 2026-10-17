@@ -124,12 +124,7 @@ switch ($action) {
       $deliveryAddress,$goodsArr,$orderCode,
       $price_total,$payment,$manEmail,$conf,$time);
 
-    $manMessage=" <h2 style='color: #720eec;'>OrderCode: $orderCode</h2>
-                $table
 
-                <h2 style='color: #720eec;'>Shipping address</h2>
-                $billing
-                来源：$sitename";
     
     $message = preg_replace('/\s+/', ' ', $message);
 
@@ -146,8 +141,19 @@ switch ($action) {
     }
    
 
+    $myEmail = $smtp['email'];
 
-    $r = xn_send_mail($smtp, $conf['sitename'],$smtp['email'],"新订单：$orderCode", $manMessage);
+     $messageMain = "<div style='background:#f5f5f5;padding:10px; margin-bottom:25px'>
+              <div><b>Form:</b> $email</div>
+              <div><b>Date:</b> $myEmail</div>
+              <div><b>To:</b> $email</div>     
+              <div><b>Subject:</b> $subject</div></div>
+              <div style='border:1px solid #ccc; padding:10px'>
+              $message
+              </div>
+              ";
+
+    $r = xn_send_mail($smtp, $conf['sitename'],$smtp['email'],"新订单：$orderCode", $messageMain);
    
     $ms2=str_replace("'",'‘',$message);
     $paymentData="{'oid':$orderId,'orderCode':$orderCode,'time':$time,'alipayId':'$alipayId','familyName':'$familyName','givenName':'$givenName','phone':'$phone','message':'$ms2'}";
