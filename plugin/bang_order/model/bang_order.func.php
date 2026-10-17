@@ -6,7 +6,7 @@
 // hook model_bang_order_start.php
 
 // ------------> 根据条件生成支付请求的邮件主体。
-function getPaymentMessageHtml($deliveryAddress,$goodsArr,$orderCode,$price_total,$payment,$manEmail,$conf,$time){
+function getPaymentMessageHtml($deliveryAddress,$goodsArr,$orderCode,$price_total,$payment,$manEmail,$conf,$time,$coupon=NULL){
        
     $alipayId=$conf['pay_alipayId']; //'86-15819915273';
     $familyName=$conf['pay_familyName']; //'YANG';
@@ -29,6 +29,7 @@ function getPaymentMessageHtml($deliveryAddress,$goodsArr,$orderCode,$price_tota
 
    
     $proList="";
+    $goods_total=0;
     $billing="<div style='padding:10px; border:1px solid #ddd; margin:10px 0;'>
     $deliveryAddress->firstName $deliveryAddress->lastName<br/>
     $deliveryAddress->address <br/>
@@ -39,6 +40,8 @@ function getPaymentMessageHtml($deliveryAddress,$goodsArr,$orderCode,$price_tota
     </div>";
     
     foreach($goodsArr as $pro){
+      // 累计商品原价小计（优惠前）
+      $goods_total += floatval($pro->num) * floatval($pro->price);
       $proList.="<tbody>
           <tr >
           <td><a href='/read/$pro->tid'>$pro->proName</a><span style='color:#aaa; padding-left:10px'>$pro->proNotes</span></td>
@@ -52,6 +55,19 @@ function getPaymentMessageHtml($deliveryAddress,$goodsArr,$orderCode,$price_tota
 
 
   
+  // 优惠券行：有优惠券时展示优惠码与优惠金额
+  $couponRow='';
+  $subtotalShow=$price_total;
+  if($coupon && floatval($coupon['discount'])>0){
+      $couponDiscount=number_format(floatval($coupon['discount']),2,'.','');
+      $couponCodeStr=isset($coupon['code'])?$coupon['code']:'';
+      $subtotalShow=number_format($goods_total,2,'.','');
+      $couponRow="<tr >
+          <th colspan='2'>Coupon".($couponCodeStr?" ($couponCodeStr)":'').":</th>
+          <td style='color: #28a745;'>-$$couponDiscount</td>
+          </tr>";
+  }
+
   $table="<table border='1' width='100%' cellspacing='0' cellpadding='6'>
           <thead>
           <tr>
@@ -63,8 +79,9 @@ function getPaymentMessageHtml($deliveryAddress,$goodsArr,$orderCode,$price_tota
           $proList
           <tr >
           <th colspan='2'>Subtotal:</th>
-          <td style='color: #720eec;'>$$price_total</td>
+          <td style='color: #720eec;'>$$subtotalShow</td>
           </tr>
+          $couponRow
           <tr >
           <th colspan='3'>Payment method:Remitly(remitly.com or REMITLY App)</td>
           </tr>
@@ -160,7 +177,7 @@ Please kindly note that we just sell replica bags, we never scam our customers. 
       1.Click the button below or scan the QR code on the left to initiate payment.<br/>
       <a href='https://wise.com/pay/me/bangchaoy' style='display:inline-block; padding:5px 10px;color:#fff; background:#720eec; margin:15px 15px 15px 0;'>To Payment</a>
          Or Scan the QR code.
-<img style='max-width:150px' src='//$domain/upload/wise.png'/>
+<img style='max-width:150px' src='https://$domain/upload/wise.png'/>
      
       <br/>
       
@@ -215,7 +232,7 @@ Please kindly note that we just sell replica bags, we never scam our customers. 
 
       </div>
         Or Scan the QR code.<br/>
-<img style='max-width:629px;width:100%;' src='//$domain/upload/alipay.png'/>
+<img style='max-width:629px;width:100%;' src='https://$domain/upload/alipay.png'/>
      
       <br/><br/>
 
@@ -250,11 +267,6 @@ We provide 30 days money-back guarantee if you are not satisfied with your purch
 
     }
     return $message;
-
-
-
-
-
 
 }
 

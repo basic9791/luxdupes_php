@@ -62,8 +62,23 @@
                 <div class="totalBox">
                     Subtotal ({{totalItems}} items): <b>${{totalPrice}}</b>
                 </div>
+                <!-- 优惠券输入 -->
+                <div class="couponBox" v-if="cartData && cartData.length>0"
+                    style="padding:10px 15px; display:flex; align-items:center; flex-wrap:wrap; gap:8px;">
+                    <el-input v-model="couponCode" size="small" placeholder="Enter coupon code"
+                        style="width:200px; max-width:60%;" @keyup.enter.native="applyCoupon"></el-input>
+                    <el-button size="small" type="primary" :loading="couponLoading"
+                        @click="applyCoupon">Apply Coupon</el-button>
+                    <el-button v-if="couponDiscount>0" size="small" type="text" @click="removeCoupon">Remove</el-button>
+                </div>
+                <div class="totalBox" v-if="couponDiscount>0">
+                    Coupon ({{couponCodeApplied}}): <b style="color:#28a745;">-${{couponDiscount}}</b>
+                </div>
+                <div class="totalBox" v-if="couponDiscount>0">
+                    Total after discount: <b style="color:#720eec">${{payable}}</b>
+                </div>
                 <div class="totalBox" v-if="totalItems>0">
-                    <a rel="nofollow" href="#checkout" @click="pageType=1" role="button" aria-pressed="true"
+                    <a rel="nofollow" href="#checkout" @click="pageType=1" role="button" aria-pressed="true" id="cart_checkout"
                         class="btn btn-block btn-dark">Proceed to
                         checkout</a>
 
@@ -193,7 +208,14 @@
 
                     </el-table>
                     <div class="totalBox">
-                        Free delivery Subtotal ({{totalItems}} items): <b style="color:#720eec">${{totalPrice}}</b>
+                        Free delivery Subtotal ({{totalItems}} items): <b style="color:#720eec" id="totalPrice">${{totalPrice}}</b>
+                    </div>
+                    <!-- 优惠券折扣展示 -->
+                    <div class="totalBox" v-if="couponDiscount>0">
+                        Coupon ({{couponCodeApplied}}): <b style="color:#28a745;">-${{couponDiscount}}</b>
+                    </div>
+                    <div class="totalBox" v-if="couponDiscount>0">
+                        Total after discount: <b style="color:#720eec">${{payable}}</b>
                     </div>
                     <div class="infoBox priceInfo" v-if="isViewPrice">
                         Due to pending price confirmation, the product price is currently displayed as zero. Please
@@ -238,7 +260,7 @@
                         </el-radio-group>
                     </div>
                     <div class="totalBox" v-if="totalItems>0">
-                        <a href="#payments" role="button" @click="saveOrder" aria-pressed="true"
+                        <a href="#payments" role="button" @click="saveOrder" aria-pressed="true" id="cart_payments"
                             class="btn btn-block btn-dark">Proceed to checkout</a>
                     </div>
                 </div>
@@ -2656,6 +2678,11 @@
                     pageType: 0,
                     paypalType: 1,
                     cartData: [],
+                    // 优惠券
+                    couponCode: '',
+                    couponCodeApplied: '',
+                    couponDiscount: 0,
+                    couponLoading: false,
                     userId: '<?php echo $uid ?>',
                     isUserReg: false,
                     deliveryAddress: {
@@ -2811,6 +2838,20 @@
                     })
                     totalPrice = totalPrice.toFixed(2)
                     return totalPrice
+                },
+                // 应付金额 = 商品小计 - 优惠券优惠金额
+                payable() {
+                    let payable = parseFloat(this.totalPrice) - parseFloat(this.couponDiscount || 0)
+                    if (isNaN(payable) || payable < 0) payable = 0
+                    return payable.toFixed(2)
+                }
+            },
+            watch: {
+                // 购物车金额变化时，重新校验已应用的优惠券
+                totalPrice() {
+                    if (this.couponCodeApplied) {
+                        this.revalidateCoupon()
+                    }
                 }
             },
             mounted() {
@@ -2831,6 +2872,73 @@
 
                     return false
                 },
+                // 应用优惠券：向服务端校验优惠码并获取优惠金额
+                applyCoupon() {
+                    var code = (this.couponCode || '').trim()
+                    if (!code) {
+                        this.$message.error('Please enter a coupon code')
+                        return
+                    }
+                    if (!this.cartData || !this.cartData.length) {
+                        this.$message.error('Your Cart is empty')
+                        return
+                    }
+                    this.couponLoading = true
+                    var This = this
+                    var safe_token = '<?php echo $safe_token;?>'
+                    $.xpost('/cart/coupon', {
+                        safe_token: safe_token,
+                        coupon_code: code,
+                        amount: This.totalPrice
+                    }, function (c, message) {
+                        This.couponLoading = false
+                        if (c == 0) {
+                            var data = null
+                            try {
+                                data = JSON.parse(message)
+                            } catch (e) {
+                                This.$message.error('Response parse error')
+                                return
+                            }
+                            This.couponCodeApplied = data.code
+                            This.couponDiscount = parseFloat(data.discount).toFixed(2)
+                            This.$message.success('Coupon applied, you saved $' + This.couponDiscount)
+                        } else {
+                            This.$message.error(message)
+                        }
+                    })
+                },
+                // 移除优惠券
+                removeCoupon() {
+                    this.couponCode = ''
+                    this.couponCodeApplied = ''
+                    this.couponDiscount = 0
+                },
+                // 购物车金额变化后重新校验优惠券（静默，失败则自动清除）
+                revalidateCoupon() {
+                    var This = this
+                    var safe_token = '<?php echo $safe_token;?>'
+                    $.xpost('/cart/coupon', {
+                        safe_token: safe_token,
+                        coupon_code: This.couponCodeApplied,
+                        amount: This.totalPrice
+                    }, function (c, message) {
+                        if (c == 0) {
+                            var data = null
+                            try {
+                                data = JSON.parse(message)
+                            } catch (e) {
+                                return
+                            }
+                            This.couponDiscount = parseFloat(data.discount).toFixed(2)
+                        } else {
+                            // 不再可用（如低于最低消费）则清除
+                            This.couponCode = ''
+                            This.couponCodeApplied = ''
+                            This.couponDiscount = 0
+                        }
+                    })
+                },
                 async saveOrder() {
                     var safe_token = '<?php echo $safe_token;?>'
                     this.$refs['deliveryAddress'].validate((valid) => {
@@ -2846,7 +2954,7 @@
                         this.isLoading = true
                         let This = this
                         sessionStorage.removeItem('paymentsData')
-                        $.xpost('/cart/save', { safe_token, tids, deliveryAddress: JSON.stringify(this.deliveryAddress), paypalType: this.paypalType, price_total: this.totalPrice, cartData: JSON.stringify(this.cartData) }, function (code, message) {
+                        $.xpost('/cart/save', { safe_token, tids, deliveryAddress: JSON.stringify(this.deliveryAddress), paypalType: this.paypalType, price_total: this.payable, cartData: JSON.stringify(this.cartData), coupon_code: this.couponCodeApplied }, function (code, message) {
                             This.isLoading = false
 
                             if (code == 0) {
@@ -2861,7 +2969,7 @@
                                 This.paymentsData.message = This.paymentsData.message.replace(/‘/g, "'");
 
                                 console.log('messageJson', This.paymentsData)
-                                This.paymentsData.totalPrice = This.totalPrice
+                                This.paymentsData.totalPrice = This.payable
                                 sessionStorage.setItem('paymentsData', JSON.stringify(This.paymentsData))
                                 localStorage.removeItem('cart')
 
@@ -2870,7 +2978,7 @@
 
                                     window.goaffpro_order = {
                                         number: This.paymentsData.orderCode,
-                                        total: This.totalPrice
+                                        total: This.payable
                                     }
                                     window.goaffproTrackConversion(window.goaffpro_order)
                                 }

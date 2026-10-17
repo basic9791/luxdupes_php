@@ -63,4 +63,39 @@ if (!db_find_table($db->tablepre . 'bang_order')) {
     $r = db_exec($sql);
 }
 
+// 订单：优惠券码
+if (!db_find_field($db->tablepre . 'bang_order', 'coupon_code')) {
+    $sql = "ALTER TABLE  `{$db->tablepre}bang_order` ADD  `coupon_code` varchar(32) NOT NULL DEFAULT ''";
+    $r = db_exec($sql);
+}
+
+// 订单：优惠券优惠金额
+if (!db_find_field($db->tablepre . 'bang_order', 'coupon_amount')) {
+    $sql = "ALTER TABLE  `{$db->tablepre}bang_order` ADD  `coupon_amount` DECIMAL(10,2) NOT NULL DEFAULT '0.00'";
+    $r = db_exec($sql);
+}
+
+// 优惠券表
+if (!db_find_table($db->tablepre . 'bang_coupon')) {
+    $sql = "CREATE TABLE `{$db->tablepre}bang_coupon` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(32)  NOT NULL DEFAULT '', # 优惠券码（唯一）
+  `name` varchar(100)  NOT NULL DEFAULT '', # 优惠券名称
+  `type` int(1) unsigned NOT NULL DEFAULT '1', # 优惠类型 1.固定金额 2.订单百分比
+  `value` DECIMAL(10,2) NOT NULL DEFAULT '0.00', # 优惠值（金额或百分比）
+  `use_type` int(1) unsigned NOT NULL DEFAULT '1', # 使用类型 1.一次性 2.可重复
+  `total_num` int(11) unsigned NOT NULL DEFAULT '1', # 可使用总次数（一次性固定为1）
+  `used_num` int(11) unsigned NOT NULL DEFAULT '0', # 已使用次数
+  `min_amount` DECIMAL(10,2) NOT NULL DEFAULT '0.00', # 最低消费金额
+  `start_time` int(11) unsigned NOT NULL DEFAULT '0', # 有效期开始时间
+  `end_time` int(11) unsigned NOT NULL DEFAULT '0', # 有效期结束时间
+  `status` int(1) unsigned NOT NULL DEFAULT '1', # 状态 1.启用 0.禁用
+  `notes` varchar(255) NOT NULL DEFAULT '', # 备注
+  `create_date` int(11) unsigned NOT NULL DEFAULT '0', # 创建时间
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+    $r = db_exec($sql);
+}
+
 ?>
