@@ -1,12 +1,19 @@
 <?php include _include(ADMIN_PATH.'view/htm/header.inc.htm');?>
 
+<?php
+$default_subject = function_exists('bang_coupon_task_default_subject') ? bang_coupon_task_default_subject() : 'Something Special for Your Next Luxury Find';
+$default_content = function_exists('bang_coupon_task_default_content') ? bang_coupon_task_default_content() : '';
+$pagesize_list = isset($pagesize_list) && $pagesize_list ? $pagesize_list : array(20, 50, 100, 200, 300, 500);
+?>
+
 <div class="container-fluid">
 <div>
-  <form>
-<input value="<?php echo $orderCode;?>" placeholder="订单编码" id="orderCode"/>
-<input value="<?php echo $first_name;?>" placeholder="first Name" id="firstName"/>
-<select placeholder="订单状态" id="state">
-  
+  <form id="searchForm">
+<input value="<?php echo htmlspecialchars($orderCode);?>" placeholder="订单编码" id="orderCode" style="width:120px"/>
+<input value="<?php echo htmlspecialchars($first_name);?>" placeholder="first Name" id="firstName" style="width:120px"/>
+<input value="<?php echo htmlspecialchars($country);?>" placeholder="国家/地区" id="country" style="width:120px"/>
+<input value="<?php echo htmlspecialchars($url_man);?>" placeholder="来源域名 url_man" id="url_man" style="width:160px"/>
+<select id="state">
   <option value="" >全部</option>
   <option value="1" <?php echo $state==1?'selected':'' ?>>待支付</option>
   <option value="2" <?php echo $state==2?'selected':'' ?>>已支付</option>
@@ -15,11 +22,37 @@
   <option value="5" <?php echo $state==5?'selected':'' ?>>已完成</option>
   <option value="9" <?php echo $state==9?'selected':'' ?>>已取消</option>
 </select>
-<button id="handleSearchBtn" type="button" class="btn">搜索</button>
-
+<select id="coupon_send_status">
+  <option value="">优惠券:全部</option>
+  <option value="1" <?php echo ('1'===strval($coupon_send_status))?'selected':'' ?>>未发送</option>
+  <option value="2" <?php echo ('2'===strval($coupon_send_status))?'selected':'' ?>>已发送</option>
+</select>
+<input type="date" id="coupon_send_start" value="<?php echo htmlspecialchars($coupon_send_start);?>" title="优惠券发送日期(起)" style="width:140px"/>
+<input type="date" id="coupon_send_end" value="<?php echo htmlspecialchars($coupon_send_end);?>" title="优惠券发送日期(止)" style="width:140px"/>
+<label style="margin:0 8px;"><input type="checkbox" id="dedup" value="1" <?php echo $dedup?'checked':'' ?>/> 过滤重复邮箱(只保留最早一单)</label>
+<select id="pagesize" title="每页数量">
+  <?php foreach($pagesize_list as $_ps){ ?>
+  <option value="<?php echo $_ps;?>" <?php echo $pagesize==$_ps?'selected':'' ?>><?php echo $_ps;?> 条/页</option>
+  <?php } ?>
+</select>
+<select id="sort" title="排序">
+  <option value="desc" <?php echo ('asc'!=$sort)?'selected':'' ?>>新的在前</option>
+  <option value="asc" <?php echo ('asc'==$sort)?'selected':'' ?>>旧的在前</option>
+</select>
+<button id="handleSearchBtn" type="button" class="btn btn-primary btn-sm">搜索</button>
+<button id="handleResetBtn" type="button" class="btn btn-sm">重置</button>
   </form>
 
 </div>
+
+<div class="orderToolbar">
+    <label style="margin:0 10px 0 0;"><input type="checkbox" id="checkAll"/> 全选/全不选</label>
+    <button id="btnBatchCoupon" type="button" class="btn btn-sm btn-warning">批量发送优惠券</button>
+    <button id="btnBatchDelete" type="button" class="btn btn-sm btn-danger">批量删除</button>
+    <span id="selectedTip" class="tipText"></span>
+    <button id="btnTaskStatus" type="button" class="btn btn-sm btn-info" style="display:none;">查看发送进度</button>
+</div>
+
 <ul class="threadlist list-unstyled bg-white" id="ulMain">
 
         </ul>
@@ -37,41 +70,100 @@
     <img src="/upload/loading.gif" />
 </div>
 
+<!-- 发送优惠券弹窗 -->
+<div class="coupon-mask" id="couponMask">
+    <div class="coupon-dialog">
+        <h4>Send Coupon <span id="sendCountTip" class="tipText"></span></h4>
+        <div class="row-item">
+            <label>1. 选择优惠券（支持异步搜索）</label>
+            <div style="display:flex; gap:6px;">
+                <input id="couponKw" placeholder="输入优惠码或名称关键字，留空查最新50条" style="flex:1;" />
+                <button id="btnCouponSearch" type="button" class="btn btn-sm btn-secondary" style="white-space:nowrap;">搜索</button>
+            </div>
+            <div id="couponResult" class="coupon-result"></div>
+            <div class="coupon-tip">已选择：<b id="curCouponLabel">未选择</b></div>
+        </div>
+        <div class="row-item">
+            <label>2. 邮件标题</label>
+            <input id="mailSubject" value="<?php echo htmlspecialchars($default_subject);?>" />
+        </div>
+        <div class="row-item">
+            <label>3. 邮件内容（仅大括号 { } 内的部分可编辑，其余自动生成）</label>
+            <textarea id="mailContent" rows="6"><?php echo htmlspecialchars($default_content);?></textarea>
+        </div>
+        <div class="row-item">
+            <label>4. 发送时间（定时：到点后由 CLI 任务脚本发送；立即发送忽略此项）</label>
+            <input id="sendTime" type="datetime-local" />
+        </div>
+        <div class="row-item">
+            <label>预览</label>
+            <div id="mailPreview" class="mail-preview"></div>
+        </div>
+        <div class="dialog-btns">
+            <button type="button" class="btn btn-sm btn-secondary" id="btnCouponCancel">取消</button>
+            <button type="button" class="btn btn-sm btn-primary" id="btnCouponSchedule">定时发送</button>
+            <button type="button" class="btn btn-sm btn-success" id="btnCouponSendNow">立即发送</button>
+        </div>
+    </div>
+</div>
+
 
 <?php include _include(ADMIN_PATH.'view/htm/footer.inc.htm');?>
 
 
-
-
-
-
-
 <script>
+    var safe_token = '<?php echo $safe_token;?>';
+    var baseUrl = '/admin/index.php?0=bangOrder';
+    var json = <?php echo json_encode($threadlist ? $threadlist : array()); ?>;
+    var pendingIds = [];
+    var curCoupon = null;
+    var couponSearchResult = [];
+    var lastTaskId = 0;
+    var LS_KEY = 'bang_order_last_coupon';
 
+    $("#handleSearchBtn").click(handleSearch);
+    $("#handleResetBtn").click(function(){ window.location = baseUrl + '&page=1'; });
+    $("#pagesize,#sort").change(handleSearch);
 
-    var json=<?php echo json_encode($threadlist); ?>;
-
-   console.log(222,json)
-
-      $("#handleSearchBtn").click(handleSearch);
   function handleSearch(){
-    let url="/admin/index.php?0=bangOrder&page=1";
+    let url=baseUrl+"&page=1";
     let orderCode=$("#orderCode").val();
     let firstName=$("#firstName").val();
     let state=$("#state").val();
-    url+='&state='+state+'&firstName='+firstName+'&orderCode='+orderCode
-
-    console.log(url);
-
-    window.location = url
+    let country=$("#country").val();
+    let urlMan=$("#url_man").val();
+    let cStatus=$("#coupon_send_status").val();
+    let cStart=$("#coupon_send_start").val();
+    let cEnd=$("#coupon_send_end").val();
+    let dedup=$("#dedup").is(":checked")?1:0;
+    let pagesize=$("#pagesize").val();
+    let sort=$("#sort").val();
+    url+='&state='+state+'&firstName='+encodeURIComponent(firstName)+'&orderCode='+encodeURIComponent(orderCode);
+    url+='&country='+encodeURIComponent(country)+'&url_man='+encodeURIComponent(urlMan);
+    url+='&coupon_send_status='+cStatus+'&coupon_send_start='+encodeURIComponent(cStart)+'&coupon_send_end='+encodeURIComponent(cEnd);
+    url+='&dedup='+dedup+'&pagesize='+pagesize+'&sort='+sort;
+    window.location = url;
   }
     function getDateEnFormat(timestamp){
     if(timestamp<100000000000) timestamp*=1000
     var _D=new Date(timestamp)
-    // console.log(_D,timestamp)
     var monthNames = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12"];
     var dateFormat=monthNames[_D.getMonth()]+' '+_D.getDate()+', '+_D.getFullYear()
     return dateFormat;
+  }
+    function getDateEnFormatFull(timestamp){
+    if(!timestamp) return '';
+    if(timestamp<100000000000) timestamp*=1000
+    var _D=new Date(timestamp)
+    var monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    return monthNames[_D.getMonth()]+' '+_D.getDate()+', '+_D.getFullYear();
+  }
+    function getDateTimeFormat(timestamp){
+    if(!timestamp) return '';
+    if(timestamp<100000000000) timestamp*=1000
+    var _D=new Date(timestamp)
+    function pad(n){return n<10?'0'+n:''+n}
+    return _D.getFullYear()+'-'+pad(_D.getMonth()+1)+'-'+pad(_D.getDate())+' '+pad(_D.getHours())+':'+pad(_D.getMinutes());
   }
     var stateList=[
         {},
@@ -97,10 +189,17 @@
        curObj.state=parseInt(curObj.state)
         // console.log(curObj)
         html+='<li><div class="ordersTop">';
+        html+='<span class="chkBox"><input type="checkbox" class="orderChk" value="'+curObj.id+'"/></span>';
         html+='<span>Order:<b>#'+curObj.orderCode+'</b></span>';
         html+='<span class="date">'+dateStr+'</span>';
         html+='<span class="totalPrice">Order amount:<b>$'+curObj.price_total+'</b></span>';
-        html+='<span class="state">'+stateList[curObj.state].label+'</span> <span class="orderDetails" orderCode="'+curObj.orderCode+'">Details <i class="icon-chevron-up"></i><i class="icon-chevron-down"></i></span> </div>';
+        html+='<span class="state">'+stateList[curObj.state].label+'</span>';
+        if(curObj.coupon_send_date){
+            html+='<span class="couponSent">Coupon sent:<b>'+getDateTimeFormat(curObj.coupon_send_date)+'</b>'+(curObj.coupon_send_code?' ('+curObj.coupon_send_code+')':'')+'</span>';
+        }else{
+            html+='<span class="couponUnsent">Coupon: not sent</span>';
+        }
+        html+='<span class="orderDetails" orderCode="'+curObj.orderCode+'">Details <i class="icon-chevron-up"></i><i class="icon-chevron-down"></i></span> </div>';
         html+='<div class="orderBody" id="orderBody'+curObj.orderCode+'"><div class="proList">'
         let gIndex=0;
         curObj.goods.forEach(v=>{
@@ -120,6 +219,7 @@
 
         if(curObj.notes)html+='<div class="shippingBox">notes:'+curObj.notes+'</div>'
         html+='<div class="shippingBox">来源域名:'+curObj.url_man+'</div>'
+        html+='<div class="shippingBox">国家地区:'+(curObj.country_region||'')+'</div>'
         html+='<div class="shippingBox">管理备注: <textarea class="notesMan" jIndex="'+key+'"> '+curObj.notes_man+'</textarea></div>'
         html+='</div>'
         html+='<div class="shippingBox">'
@@ -149,6 +249,8 @@
         html+='<option value="9" '+(curObj.state==9?'selected':'')+'>已取消</option>'
         html+='</select>'
         html+='</span><button  onclick="updateData('+curObj.id+')" type="button" class="btn btn-success">保存</button>';
+        html+='<button  onclick="openCouponDialog(['+curObj.id+'])" type="button" class="btn btn-warning">发送优惠券</button>';
+        html+='<button  onclick="deleteOrders(['+curObj.id+'])" type="button" class="btn btn-danger">删除</button>';
         html+='<div class="bottom">';
         
         if(curObj.state==1){
@@ -165,6 +267,227 @@
 
     $("#ulMain").html(html)
     $("#loadingBox").hide();
+
+    //------------> 选择 / 批量操作
+    function getSelectedIds(){
+        var ids=[];
+        $(".orderChk:checked").each(function(){ ids.push(parseInt($(this).val())); });
+        return ids;
+    }
+    function refreshSelectedTip(){
+        var n=getSelectedIds().length;
+        $("#selectedTip").text(n? ('已选择 '+n+' 个订单') : '');
+    }
+    $(document).on("change",".orderChk",refreshSelectedTip);
+    $("#checkAll").change(function(){
+        var on=$(this).is(":checked");
+        $(".orderChk").prop("checked",on);
+        refreshSelectedTip();
+    });
+    $("#btnBatchCoupon").click(function(){
+        var ids=getSelectedIds();
+        if(!ids.length){ $.alert('请先选择订单'); return; }
+        openCouponDialog(ids);
+    });
+    $("#btnBatchDelete").click(function(){
+        var ids=getSelectedIds();
+        if(!ids.length){ $.alert('请先选择订单'); return; }
+        deleteOrders(ids);
+    });
+
+    function deleteOrders(ids){
+        if(!ids || !ids.length){ $.alert('请先选择订单'); return; }
+        if(!confirm('确定删除选中的 '+ids.length+' 个订单？删除后不可恢复！')) return;
+        $("#loadingBox").show();
+        $.xpost(baseUrl+'&1=delete',{ safe_token: safe_token, ids: ids }, function (code, message) {
+            $("#loadingBox").hide();
+            if (code == 0) {
+                $.alert(message);
+                setTimeout(function(){ window.location.reload(); }, 800);
+            } else {
+                $.alert(message);
+            }
+        });
+    }
+
+    //------------> 发送优惠券弹窗
+    function openCouponDialog(ids){
+        pendingIds = ids || [];
+        $("#sendCountTip").text('(已选 '+pendingIds.length+' 个订单)');
+        $("#sendTime").val(nowInputValue());
+        loadLastCoupon();
+        $("#couponMask").show();
+        searchCoupons('');
+        renderPreview();
+    }
+    $("#btnCouponCancel").click(function(){ $("#couponMask").hide(); });
+    $("#btnCouponSearch").click(function(){ searchCoupons($("#couponKw").val()); });
+    $("#couponKw").keyup(function(e){ if(e.keyCode==13) searchCoupons($(this).val()); });
+    $("#mailContent,#mailSubject").on("input", renderPreview);
+
+    function nowInputValue(){
+        var d=new Date();
+        function pad(n){return n<10?'0'+n:''+n}
+        return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())+'T'+pad(d.getHours())+':'+pad(d.getMinutes());
+    }
+
+    function saveLastCoupon(c){
+        try{ localStorage.setItem(LS_KEY, JSON.stringify(c)); }catch(e){}
+    }
+    function loadLastCoupon(){
+        try{
+            var s=localStorage.getItem(LS_KEY);
+            if(s){ curCoupon=JSON.parse(s); }else{ curCoupon=null; }
+        }catch(e){ curCoupon=null; }
+        renderCouponLabel();
+    }
+    function renderCouponLabel(){
+        if(curCoupon){
+            $("#curCouponLabel").text(curCoupon.code + ' (' + curCoupon.value_fmt + ', ' + curCoupon.use_type_fmt + ')');
+        }else{
+            $("#curCouponLabel").text('未选择');
+        }
+    }
+
+    function searchCoupons(kw){
+        $.xpost(baseUrl+'&1=couponSearch',{ keyword: kw||'' }, function (code, message) {
+            if (code != 0) { $("#couponResult").html('<div class="coupon-tip">'+message+'</div>'); return; }
+            var list=[];
+            try{ list=JSON.parse(message); }catch(e){ list=[]; }
+            couponSearchResult=list;
+            if(!list.length){
+                $("#couponResult").html('<div class="coupon-tip">未找到优惠券</div>');
+                return;
+            }
+            var h='';
+            list.forEach(function(v,i){
+                var active = (curCoupon && curCoupon.code==v.code) ? ' active' : '';
+                h+='<div class="coupon-item'+active+'" data-i="'+i+'">';
+                h+='<b>'+v.code+'</b>';
+                h+='<span class="cName">'+(v.name||'')+'</span>';
+                h+='<span class="cBadge">'+v.value_fmt+'</span>';
+                h+='<span class="cBadge">'+v.use_type_fmt+'</span>';
+                h+='<span class="cEnd">至 '+(v.end_time_fmt||'-')+'</span>';
+                h+='</div>';
+            });
+            $("#couponResult").html(h);
+        });
+    }
+    $(document).on("click",".coupon-item",function(){
+        var i=parseInt($(this).attr("data-i"));
+        curCoupon=couponSearchResult[i];
+        saveLastCoupon(curCoupon);
+        $(".coupon-item").removeClass("active");
+        $(this).addClass("active");
+        renderCouponLabel();
+        renderPreview();
+    });
+
+    function couponOffText(c){
+        if(!c) return '[X% OFF]';
+        if(c.type==1) return '$'+parseFloat(c.value).toFixed(2)+' OFF';
+        return parseFloat(c.value)+'% OFF';
+    }
+
+    function renderPreview(){
+        var c=curCoupon;
+        var name='Customer Name';
+        var code=c?c.code:'[COUPON CODE]';
+        var off=couponOffText(c);
+        var valid=(c&&c.end_time)?getDateEnFormatFull(c.end_time):'[Month Day, Year]';
+        var content=$("#mailContent").val()||'';
+        var h='';
+        h+='<p>Hi '+name+',</p>';
+        h+='<p class="editable">'+escapeHtml(content).replace(/\n/g,'<br/>')+'</p>';
+        h+='<p>Your Exclusive Coupon Code: <b>'+escapeHtml(code)+'</b></p>';
+        h+='<p>Enjoy <b>'+escapeHtml(off)+'</b> your next order!</p>';
+        h+='<p>Valid Until: <b>'+escapeHtml(valid)+'</b></p>';
+        h+='<p>Simply enter your coupon code at checkout before it expires to enjoy your special discount.</p>';
+        h+='<p>Thank you for being part of our community. We look forward to welcoming you back!</p>';
+        h+='<p>Warm regards,<br/>The <?php echo htmlspecialchars($conf['sitename']);?> Team</p>';
+        h+='<p class="terms">Terms and conditions apply.</p>';
+        $("#mailPreview").html(h);
+    }
+    function escapeHtml(s){
+        return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    // 校验并组装提交数据
+    function checkCouponForm(){
+        if(!pendingIds.length){ $.alert('请先选择订单'); return false; }
+        if(!curCoupon){ $.alert('请选择优惠券'); return false; }
+        return true;
+    }
+    function couponPostData(){
+        return {
+            safe_token: safe_token,
+            ids: pendingIds,
+            coupon_code: curCoupon.code,
+            subject: $("#mailSubject").val(),
+            content: $("#mailContent").val(),
+            send_time: $("#sendTime").val()
+        };
+    }
+
+    // 定时发送：只创建任务，到点后由 CLI 脚本执行
+    $("#btnCouponSchedule").click(function(){
+        if(!checkCouponForm()) return;
+        $("#loadingBox").show();
+        $.xpost(baseUrl+'&1=couponSend', couponPostData(), function (code, message) {
+            $("#loadingBox").hide();
+            if (code == 0) {
+                var r={};
+                try{ r=JSON.parse(message); }catch(e){}
+                lastTaskId=r.id||0;
+                var tip='定时任务已创建 #'+r.id+'，共 '+r.total+' 封，计划发送时间：'+r.send_time_fmt;
+                if(!r.spawned){
+                    tip+='\n未能在后台自动启动，请在服务器执行：\nphp plugin/bang_order/cli/send_coupon.php';
+                }
+                alert(tip);
+                $("#couponMask").hide();
+                $("#btnTaskStatus").show();
+            } else {
+                $.alert(message);
+            }
+        });
+    });
+
+    // 立即发送：当前请求内直接发送，不等定时脚本
+    $("#btnCouponSendNow").click(function(){
+        if(!checkCouponForm()) return;
+        if(!confirm('确定立即向选中的 '+pendingIds.length+' 个订单发送优惠券邮件？\n数量较多时需要一些时间，请勿关闭页面。')) return;
+        $("#btnCouponSendNow").prop('disabled', true).text('发送中...');
+        $("#loadingBox").show();
+        $.xpost(baseUrl+'&1=couponSendNow', couponPostData(), function (code, message) {
+            $("#loadingBox").hide();
+            $("#btnCouponSendNow").prop('disabled', false).text('立即发送');
+            if (code == 0) {
+                var r={};
+                try{ r=JSON.parse(message); }catch(e){}
+                lastTaskId=r.id||0;
+                var tip='发送完成（任务 #'+r.id+'）\n成功：'+(r.sent||0)+'  失败：'+(r.fail||0)+'  共：'+(r.total||0);
+                if(r.status!=2) tip+='\n状态：'+r.status_fmt+'，已尝试后台继续发送剩余部分。';
+                if(r.message) tip+='\n'+r.message;
+                alert(tip);
+                $("#couponMask").hide();
+                $("#btnTaskStatus").show();
+                setTimeout(function(){ window.location.reload(); }, 800);
+            } else {
+                $.alert(message);
+            }
+        });
+    });
+
+    $("#btnTaskStatus").click(function(){
+        if(!lastTaskId){ $.alert('暂无任务'); return; }
+        $.xpost(baseUrl+'&1=taskStatus',{ id: lastTaskId }, function (code, message) {
+            if(code!=0){ $.alert(message); return; }
+            var r={};
+            try{ r=JSON.parse(message); }catch(e){}
+            alert('任务 #'+r.id+' 状态：'+r.status_fmt+'，成功 '+r.sent+' / 失败 '+r.fail+' / 共 '+r.total);
+        });
+    });
+
     $(".notesMan").change(function(){
         let jIndex=$(this).attr("jIndex")
         let curData=json[jIndex]
@@ -188,11 +511,6 @@
         curData.goods.forEach(v=>{
           curData.price_total+=parseFloat(v.price) ;
         })
-
-        console.log(json,$(this).val(),jIndex,gIndex)
-
-
-
     });
     $(".orderDetails").click(function(){
         let code=$(this).attr('orderCode');
@@ -241,9 +559,6 @@
             $.alert(message)
          }
       });
-
-
-
     };
     function updateData(id){
       let data
@@ -275,16 +590,11 @@
         if (code == 0) {
           $.alert('保存成功')
           } else {
-                                $.alert(message)
-                            }
+            $.alert(message)
+          }
       });
-
-
-
     }
 </script>
-
-
 
 
 <script>
@@ -318,6 +628,20 @@ $('li a.bang_order').addClass('active');
 .ordersTop span{
     margin-right: 25px; display: inline-block;white-space: nowrap;;
 }
+.ordersTop .chkBox{ margin-right: 10px; }
+.couponSent{ color:#28a745; }
+.couponUnsent{ color:#aaa; }
+.orderToolbar{
+    padding:8px 10px;
+    background:#f7f7f7;
+    border:1px solid #eee;
+    margin-bottom:8px;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+}
+.tipText{ color:#888; font-size:13px; }
 
 .itemBox{
     display:flex ;
@@ -355,14 +679,23 @@ $('li a.bang_order').addClass('active');
 .iBox{
   display: inline-block;white-space: nowrap;
 }
+/* 发送优惠券弹窗 */
+.coupon-mask{ position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5); z-index: 9999; display: none; overflow: auto; }
+.coupon-dialog{ background: #fff; max-width: 720px; margin: 40px auto; padding: 20px; border-radius: 4px; }
+.coupon-dialog .row-item{ margin-bottom: 12px; }
+.coupon-dialog .row-item label{ display: block; font-weight: bold; margin-bottom: 4px; font-size: 13px; }
+.coupon-dialog .row-item input, .coupon-dialog .row-item textarea{ width: 100%; padding: 5px 8px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box; }
+.coupon-tip{ font-size: 12px; color: #888; margin-top: 4px; }
+.dialog-btns{ text-align: right; margin-top: 15px; }
+.dialog-btns button{ margin-left: 8px; }
+.coupon-result{ max-height: 220px; overflow: auto; border: 1px solid #eee; margin-top: 6px; }
+.coupon-item{ padding: 6px 10px; border-bottom: 1px solid #f0f0f0; cursor: pointer; font-size: 13px; }
+.coupon-item:hover{ background: #f7f7f7; }
+.coupon-item.active{ background: #e8f0ff; }
+.coupon-item .cName{ margin-left: 10px; color:#666; }
+.coupon-item .cBadge{ margin-left: 8px; color:#720eec; }
+.coupon-item .cEnd{ margin-left: 8px; color:#999; }
+.mail-preview{ border:1px solid #eee; padding:12px; font-size:13px; line-height:1.7; background:#fafafa; max-height:260px; overflow:auto; }
+.mail-preview .editable{ background:#fffbe6; }
+.mail-preview .terms{ color:#999; font-size:12px; }
 </style>
-
-
-
-
-
-
-
-
-
-
