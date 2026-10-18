@@ -479,6 +479,50 @@ function bang_order_find_by($cond=array(), $page = 1, $pagesize = 20)
     return $arrlist;
 }
 
+/*
+ * 后台订单分页查询（新的在前面）
+ * $dedup_email TRUE 时按邮箱去重，同一邮箱只保留最早（id 最小）的一单
+ */
+function bang_order_admin_find($cond = array(), $page = 1, $pagesize = 20, $dedup_email = FALSE)
+{
+    $db = $_SERVER['db'];
+    $page = max(1, intval($page));
+    $pagesize = max(1, intval($pagesize));
+    $offset = ($page - 1) * $pagesize;
+
+    $condadd = db_cond_to_sqladd($cond);
+
+    if ($dedup_email) {
+        // 同一邮箱只取最旧的一单
+        $sql = "SELECT MIN(`id`) AS id FROM {$db->tablepre}bang_order $condadd GROUP BY `email` ORDER BY id DESC LIMIT $offset,$pagesize";
+        $rows = db_sql_find($sql);
+        if (empty($rows)) return NULL;
+        $ids = array();
+        foreach ($rows as $row) $ids[] = intval($row['id']);
+        if (empty($ids)) return NULL;
+        return db_find('bang_order', array('id' => $ids), array('id' => -1), 1, count($ids), 'id');
+    }
+
+    return db_find('bang_order', $cond, array('id' => -1), $page, $pagesize, 'id');
+}
+
+/*
+ * 后台订单总数（对应 bang_order_admin_find）
+ */
+function bang_order_admin_count($cond = array(), $dedup_email = FALSE)
+{
+    $db = $_SERVER['db'];
+    $condadd = db_cond_to_sqladd($cond);
+
+    if ($dedup_email) {
+        $sql = "SELECT COUNT(DISTINCT `email`) AS num FROM {$db->tablepre}bang_order $condadd";
+        $arr = db_sql_find_one($sql);
+        return !empty($arr) ? intval($arr['num']) : 0;
+    }
+
+    return intval(db_count('bang_order', $cond));
+}
+
 // 用户购买哪些
 function bang_order_find_by_uid($_uid, $page = 1, $pagesize = 20)
 {
@@ -524,6 +568,11 @@ function bang_order_format(&$val)
     // hook model_bang_order_format_start.php
 
     $val['create_date_fmt'] = date('Y-m-d', $val['create_date']);
+
+    // 优惠券发送时间（后台展示用）
+    $val['coupon_send_date_fmt'] = empty($val['coupon_send_date']) ? '' : date('Y-m-d H:i', $val['coupon_send_date']);
+    $val['coupon_send_code'] = isset($val['coupon_send_code']) ? $val['coupon_send_code'] : '';
+    $val['coupon_send_num'] = isset($val['coupon_send_num']) ? intval($val['coupon_send_num']) : 0;
 
     $val['type_fmt'] = '';
     switch ($val['type']) {

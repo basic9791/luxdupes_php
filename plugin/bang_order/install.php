@@ -75,6 +75,47 @@ if (!db_find_field($db->tablepre . 'bang_order', 'coupon_amount')) {
     $r = db_exec($sql);
 }
 
+// 订单：最后发送优惠券的日期（防止同一邮箱重复发送）
+if (!db_find_field($db->tablepre . 'bang_order', 'coupon_send_date')) {
+    $sql = "ALTER TABLE  `{$db->tablepre}bang_order` ADD  `coupon_send_date` int(11) unsigned NOT NULL DEFAULT '0'";
+    $r = db_exec($sql);
+}
+
+// 订单：最后发送出去的优惠码
+if (!db_find_field($db->tablepre . 'bang_order', 'coupon_send_code')) {
+    $sql = "ALTER TABLE  `{$db->tablepre}bang_order` ADD  `coupon_send_code` varchar(32) NOT NULL DEFAULT ''";
+    $r = db_exec($sql);
+}
+
+// 订单：优惠券发送次数
+if (!db_find_field($db->tablepre . 'bang_order', 'coupon_send_num')) {
+    $sql = "ALTER TABLE  `{$db->tablepre}bang_order` ADD  `coupon_send_num` int(11) unsigned NOT NULL DEFAULT '0'";
+    $r = db_exec($sql);
+}
+
+// 优惠券发送任务表
+if (!db_find_table($db->tablepre . 'bang_coupon_task')) {
+    $sql = "CREATE TABLE `{$db->tablepre}bang_coupon_task` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `coupon_code` varchar(32) NOT NULL DEFAULT '', # 发送的优惠码
+  `subject` varchar(255) NOT NULL DEFAULT '', # 邮件标题
+  `content` text NOT NULL, # 邮件正文可编辑部分（{} 内）
+  `send_time` int(11) unsigned NOT NULL DEFAULT '0', # 计划发送时间
+  `status` int(1) unsigned NOT NULL DEFAULT '0', # 0.待发送 1.发送中 2.已完成 3.失败/取消
+  `total` int(11) unsigned NOT NULL DEFAULT '0', # 总订单数
+  `sent` int(11) unsigned NOT NULL DEFAULT '0', # 已成功
+  `fail` int(11) unsigned NOT NULL DEFAULT '0', # 已失败
+  `ids` text NOT NULL, # 订单ID集合 JSON
+  `create_date` int(11) unsigned NOT NULL DEFAULT '0',
+  `start_date` int(11) unsigned NOT NULL DEFAULT '0',
+  `end_date` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`),
+  KEY `send_time` (`send_time`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+    $r = db_exec($sql);
+}
+
 // 优惠券表
 if (!db_find_table($db->tablepre . 'bang_coupon')) {
     $sql = "CREATE TABLE `{$db->tablepre}bang_coupon` (
