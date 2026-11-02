@@ -25,7 +25,7 @@ $price = param('price') ;
 $image_url=preg_replace('/\s+/', '', $image_url);
 $image_url=rtrim($image_url,',');
 
-$image_url = str_replace('https://amzrepe.com/wp-content/uploads/','2/', $image_url);
+$image_url = str_replace('https://luxdupes.com/amzimg/','2/', $image_url);
 $image_url = str_replace('https://amzclothes.com/wp-content/uploads','c', $image_url);
 $image_url = str_replace('https://amzswis.com/wp-content/uploads','w', $image_url);
 
