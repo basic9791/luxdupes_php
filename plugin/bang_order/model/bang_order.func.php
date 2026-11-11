@@ -44,7 +44,7 @@ function getPaymentMessageHtml($deliveryAddress,$goodsArr,$orderCode,$price_tota
       $goods_total += floatval($pro->num) * floatval($pro->price);
       $proList.="<tbody>
           <tr >
-          <td><a href='/read/$pro->tid'>$pro->proName</a><span style='color:#aaa; padding-left:10px'>$pro->proNotes</span></td>
+          <td><a href='https://$domain/read/$pro->tid'>$pro->proName</a><span style='color:#aaa; padding-left:10px'>$pro->proNotes</span></td>
           <td style='color: #720eec;'>$pro->num</td>
           <td style='color: #720eec;'>$$pro->price</td>
           </tr>
